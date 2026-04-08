@@ -5500,53 +5500,29 @@ ul.pagination li a:hover {
 
 /* ── Hero meta strip (rodapé do hero) ── */
 .plano-hero-meta {
-    margin-top: 36px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 6px;
-    overflow: hidden;
-    backdrop-filter: blur(8px);
-}
-.plano-hero-meta > div {
-    padding: 28px 32px;
-    min-height: 128px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.plano-hero-meta > div + div {
-    border-left: 1px solid rgba(255,255,255,0.08);
+    gap: 48px;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    flex-wrap: wrap;
 }
 .plano-hero-meta-label {
     font-size: 0.7rem;
-    color: rgba(255,255,255,0.78);
-    letter-spacing: 0;
-    text-transform: none;
-    margin-bottom: 8px;
-    line-height: 1.35;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
 }
 .plano-hero-meta-value {
     font-family: 'Sora', 'Poppins', sans-serif;
-    font-size: clamp(2rem, 3.3vw, 3.25rem);
+    font-size: 1.5rem;
     font-weight: 800;
     color: #00aeef;
-    line-height: 1.02;
-    letter-spacing: -0.03em;
+    line-height: 1;
 }
 @media (max-width: 640px) {
-    .plano-hero-meta {
-        grid-template-columns: 1fr;
-    }
-    .plano-hero-meta > div {
-        min-height: 0;
-        padding: 20px;
-    }
-    .plano-hero-meta > div + div {
-        border-left: none;
-        border-top: 1px solid rgba(255,255,255,0.08);
-    }
+    .plano-hero-meta { gap: 24px; flex-direction: column; }
 }
 
 /* ── Seções base ── */
