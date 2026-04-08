@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "name": "Adina React Design System",
+    "version": "1.0.0",
+    "source": [
+      "template/adina_react/src/assets/css/main.css",
+      "template/adina_react/src/assets/css/spacing.css",
+      "template/adina_react/src/assets/css/rai.css"
+    ],
+    "notes": "Combina o tema base Adina com a camada institucional do RAI Previdencia BRB."
+  },
+  "color": {
+    "brand": {
+      "900": "#0a1f3c",
+      "800": "#183a6e",
+      "700": "#004282",
+      "500": "#0074c8"
+    },
+    "accent": {
+      "500": "#00aeef",
+      "100": "#e0f5fd"
+    },
+    "neutral": {
+      "950": "#20282d",
+      "800": "#223035",
+      "700": "#475569",
+      "600": "#666666",
+      "500": "#8b9aa4",
+      "400": "#999999",
+      "300": "#d3d3d3",
+      "200": "#e0e2e3",
+      "100": "#e6e6e6",
+      "50": "#f5f9ff",
+      "0": "#ffffff"
+    },
+    "semantic": {
+      "text": "#20282d",
+      "textMuted": "#475569",
+      "border": "#e6e6e6",
+      "surface": "#ffffff",
+      "surfaceSubtle": "#f5f9ff",
+      "surfaceInverse": "#0a1f3c"
+    }
+  },
+  "typography": {
+    "families": {
+      "sans": "Manrope, sans-serif",
+      "sansAlt": "Inter, sans-serif",
+      "display": "Poppins, sans-serif",
+      "brandHeading": "DM Serif Display, serif",
+      "brandBody": "DM Sans, sans-serif"
+    },
+    "sizes": {
+      "xs": "12px",
+      "sm": "14px",
+      "md": "16px",
+      "lg": "18px",
+      "xl": "20px",
+      "2xl": "24px",
+      "3xl": "30px",
+      "4xl": "50px",
+      "5xl": "80px"
+    },
+    "weights": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700,
+      "extrabold": 800
+    },
+    "lineHeights": {
+      "tight": 1.12,
+      "normal": 1.6,
+      "relaxed": 1.7
+    }
+  },
+  "spacing": {
+    "1": "4px",
+    "2": "8px",
+    "3": "12px",
+    "4": "16px",
+    "5": "20px",
+    "6": "24px",
+    "7": "28px",
+    "8": "32px",
+    "10": "40px",
+    "12": "48px",
+    "15": "60px",
+    "20": "80px"
+  },
+  "radius": {
+    "sm": "6px",
+    "md": "10px",
+    "lg": "14px",
+    "xl": "18px",
+    "2xl": "20px",
+    "pill": "999px",
+    "round": "50%"
+  },
+  "shadow": {
+    "sm": "0 4px 20px rgba(0, 0, 0, 0.04)",
+    "md": "0 8px 16px rgba(3, 4, 28, 0.3)",
+    "lg": "0 16px 36px rgba(10, 31, 60, 0.18)",
+    "xl": "0 12px 28px rgba(0, 174, 239, 0.4)"
+  },
+  "breakpoint": {
+    "xsMax": "575px",
+    "sm": "576px",
+    "md": "768px",
+    "lg": "992px",
+    "xl": "1200px",
+    "2xl": "1400px"
+  },
+  "layout": {
+    "containerWide": "1750px",
+    "containerContent": "1670px",
+    "sectionPaddingY": "80px",
+    "headerHeight": "88px",
+    "inputHeight": "56px",
+    "buttonHeight": "56px"
+  },
+  "components": {
+    "button": {
+      "primary": {
+        "background": "#20282d",
+        "text": "#ffffff",
+        "radius": "999px",
+        "padding": "19px 24px"
+      },
+      "brand": {
+        "background": "#00aeef",
+        "text": "#0a1f3c",
+        "radius": "10px",
+        "padding": "12px 24px"
+      }
+    },
+    "card": {
+      "default": {
+        "background": "#ffffff",
+        "border": "1px solid #e6e6e6",
+        "radius": "18px",
+        "shadow": "0 4px 20px rgba(0, 0, 0, 0.04)"
+      }
+    },
+    "input": {
+      "default": {
+        "height": "56px",
+        "border": "1px solid #e0e2e3",
+        "paddingX": "26px",
+        "radius": "14px"
+      }
+    }
+  }
+}

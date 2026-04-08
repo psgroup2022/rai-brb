@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adina React Design System Preview</title>
+    <style>
+      :root {
+        --brand-900: #0a1f3c;
+        --brand-800: #183a6e;
+        --brand-700: #004282;
+        --brand-500: #0074c8;
+        --accent-500: #00aeef;
+        --accent-100: #e0f5fd;
+        --neutral-950: #20282d;
+        --neutral-700: #475569;
+        --neutral-500: #8b9aa4;
+        --neutral-200: #e0e2e3;
+        --neutral-100: #e6e6e6;
+        --surface: #ffffff;
+        --surface-subtle: #f5f9ff;
+        --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.04);
+        --shadow-md: 0 16px 36px rgba(10, 31, 60, 0.18);
+        --radius-md: 10px;
+        --radius-lg: 14px;
+        --radius-xl: 18px;
+        --radius-pill: 999px;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Manrope, Arial, sans-serif;
+        color: var(--neutral-950);
+        background: linear-gradient(180deg, #f8fbff 0%, #eef5fb 100%);
+      }
+
+      .page {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 48px 24px 80px;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, var(--brand-900), var(--brand-700));
+        color: white;
+        border-radius: 28px;
+        padding: 40px;
+        box-shadow: var(--shadow-md);
+        margin-bottom: 32px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 8px 14px;
+        border-radius: var(--radius-pill);
+        background: rgba(0, 174, 239, 0.15);
+        border: 1px solid rgba(0, 174, 239, 0.35);
+        color: var(--accent-500);
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      h1 { font-size: 56px; line-height: 1.04; margin: 18px 0 12px; }
+      h2 { font-size: 28px; margin: 0 0 18px; }
+      p { line-height: 1.65; }
+
+      .section {
+        background: var(--surface);
+        border: 1px solid rgba(32, 40, 45, 0.08);
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: var(--shadow-sm);
+        margin-bottom: 24px;
+      }
+
+      .swatches,
+      .cards,
+      .controls {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+      }
+
+      .swatch {
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid rgba(32, 40, 45, 0.08);
+      }
+
+      .swatch-color { height: 108px; }
+      .swatch-meta { padding: 14px; font-size: 14px; background: white; }
+
+      .button-row { display: flex; gap: 12px; flex-wrap: wrap; }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        padding: 0 22px;
+        border-radius: var(--radius-pill);
+        font-weight: 700;
+        border: 1px solid transparent;
+      }
+      .btn-dark { background: var(--neutral-950); color: white; }
+      .btn-brand { background: var(--accent-500); color: var(--brand-900); border-radius: var(--radius-md); }
+      .btn-light { background: white; color: var(--neutral-950); border-color: var(--neutral-200); }
+
+      .card {
+        border-radius: var(--radius-xl);
+        padding: 24px;
+        background: white;
+        border: 1px solid var(--neutral-100);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .card.inverse {
+        background: linear-gradient(135deg, var(--brand-900), var(--brand-700));
+        color: white;
+        border: none;
+      }
+
+      .input {
+        width: 100%;
+        height: 56px;
+        border: 1px solid var(--neutral-200);
+        border-radius: var(--radius-lg);
+        padding: 0 18px;
+        font: inherit;
+      }
+
+      .caption { color: var(--neutral-500); font-size: 14px; }
+
+      @media (max-width: 767px) {
+        .page { padding: 24px 16px 56px; }
+        .hero { padding: 28px 20px; border-radius: 22px; }
+        h1 { font-size: 38px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <span class="eyebrow">Adina React</span>
+        <h1>Design system base para evolucao do template e da camada BRB.</h1>
+        <p>Este preview resume os tokens e os contratos visuais principais que agora estruturam o projeto.</p>
+      </section>
+
+      <section class="section">
+        <h2>Paleta</h2>
+        <div class="swatches">
+          <article class="swatch"><div class="swatch-color" style="background:#0a1f3c"></div><div class="swatch-meta">Brand 900<br>#0a1f3c</div></article>
+          <article class="swatch"><div class="swatch-color" style="background:#183a6e"></div><div class="swatch-meta">Brand 800<br>#183a6e</div></article>
+          <article class="swatch"><div class="swatch-color" style="background:#004282"></div><div class="swatch-meta">Brand 700<br>#004282</div></article>
+          <article class="swatch"><div class="swatch-color" style="background:#0074c8"></div><div class="swatch-meta">Brand 500<br>#0074c8</div></article>
+          <article class="swatch"><div class="swatch-color" style="background:#00aeef"></div><div class="swatch-meta">Accent 500<br>#00aeef</div></article>
+          <article class="swatch"><div class="swatch-color" style="background:#f5f9ff"></div><div class="swatch-meta">Surface subtle<br>#f5f9ff</div></article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Tipografia e botoes</h2>
+        <p class="caption">Titulos fortes, corpo limpo e botoes com contraste alto.</p>
+        <div class="button-row">
+          <button class="btn btn-dark">Botao primario</button>
+          <button class="btn btn-brand">Acao institucional</button>
+          <button class="btn btn-light">Secundario</button>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Cards</h2>
+        <div class="cards">
+          <article class="card">
+            <strong>Card default</strong>
+            <p>Superficie branca, borda suave e sombra leve para conteudo neutro.</p>
+          </article>
+          <article class="card inverse">
+            <strong>Card inverse</strong>
+            <p>Uso de azul institucional para destacar informacao estrategica.</p>
+          </article>
+          <article class="card">
+            <strong>KPI card</strong>
+            <p><span style="font-size:32px;font-weight:800;color:#004282">+12,4%</span><br><span class="caption">Exemplo de numero principal</span></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Inputs</h2>
+        <div class="controls">
+          <input class="input" type="text" placeholder="Campo padrao do sistema" />
+          <input class="input" type="search" placeholder="Busca no relatorio" />
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

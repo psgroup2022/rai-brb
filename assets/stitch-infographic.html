@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard Financeiro - Infográfico</title>
+<!-- BEGIN: External Resources -->
+<!-- Tailwind CSS v3 CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons (via CDN for visual cues) -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- END: External Resources -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            'deep-blue': '#0a2540',
+            'brand-blue': '#00d4ff',
+          },
+        },
+      },
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="glassmorphism-and-effects">
+    body {
+      background-color: #0a2540;
+      background-image: 
+        radial-gradient(at 0% 0%, hsla(210,100%,15%,1) 0, transparent 50%), 
+        radial-gradient(at 100% 100%, hsla(200,100%,10%,1) 0, transparent 50%),
+        radial-gradient(at 50% 50%, hsla(215,80%,12%,1) 0, transparent 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Frosted glass effect for cards */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      transition: all 0.3s ease;
+    }
+
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transform: translateY(-5px);
+    }
+
+    /* Glowing text and gradient text */
+    .text-glow {
+      text-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #fff 0%, #00d4ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Decorative blurred blobs for background depth */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: -1;
+      opacity: 0.2;
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="font-sans text-white antialiased flex items-center justify-center p-6 md:p-12">
+<!-- BEGIN: Decorative Background Elements -->
+<div class="blob bg-brand-blue w-96 h-96 top-[-10%] left-[-10%]"></div>
+<div class="blob bg-blue-800 w-[500px] h-[500px] bottom-[-10%] right-[-10%]"></div>
+<!-- END: Decorative Background Elements -->
+<!-- BEGIN: Main Content Grid -->
+<main class="max-w-7xl w-full" data-purpose="infographic-container">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1: Crescimento de participantes -->
+<!-- BEGIN: Card1 -->
+<section class="glass-card rounded-[2.5rem] p-8 flex flex-col justify-between min-h-[220px]" data-purpose="metric-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-4xl md:text-5xl font-extrabold gradient-text text-glow">+5,31%</h2>
+<i class="text-brand-blue w-8 h-8 opacity-70" data-lucide="users"></i>
+</div>
+<h3 class="text-xl font-semibold mb-2 leading-tight">Crescimento de participantes</h3>
+</div>
+<p class="text-blue-200/60 text-sm font-medium">Atingimos 7.619</p>
+</section>
+<!-- END: Card1 -->
+<!-- Card 2: Arrecadação total -->
+<!-- BEGIN: Card2 -->
+<section class="glass-card rounded-[3rem_1.5rem_3rem_1.5rem] p-8 flex flex-col justify-between min-h-[220px]" data-purpose="metric-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-4xl md:text-5xl font-extrabold gradient-text text-glow">+8,46%</h2>
+<i class="text-brand-blue w-8 h-8 opacity-70" data-lucide="trending-up"></i>
+</div>
+<h3 class="text-xl font-semibold mb-2 leading-tight">Arrecadação total</h3>
+</div>
+<p class="text-blue-200/60 text-sm font-medium">Receitas previdenciárias</p>
+</section>
+<!-- END: Card2 -->
+<!-- Card 3: Superávit BD-01 -->
+<!-- BEGIN: Card3 -->
+<section class="glass-card rounded-[1.5rem_3rem_1.5rem_3rem] p-8 flex flex-col justify-between min-h-[220px]" data-purpose="metric-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-4xl md:text-5xl font-extrabold text-white text-glow">103,20%</h2>
+<i class="text-brand-blue w-8 h-8 opacity-70" data-lucide="pie-chart"></i>
+</div>
+<h3 class="text-xl font-semibold mb-2 leading-tight">Superávit BD-01</h3>
+</div>
+<p class="text-blue-200/60 text-sm font-medium">R$ 91,1 milhões</p>
+</section>
+<!-- END: Card3 -->
+<!-- Card 4: Superávit CV-03 -->
+<!-- BEGIN: Card4 -->
+<section class="glass-card rounded-[1.5rem_3rem_1.5rem_3rem] p-8 flex flex-col justify-between min-h-[220px]" data-purpose="metric-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-4xl md:text-5xl font-extrabold text-white text-glow">100,86%</h2>
+<i class="text-brand-blue w-8 h-8 opacity-70" data-lucide="bar-chart-3"></i>
+</div>
+<h3 class="text-xl font-semibold mb-2 leading-tight">Superávit CV-03</h3>
+</div>
+<p class="text-blue-200/60 text-sm font-medium">R$ 8,2 milhões</p>
+</section>
+<!-- END: Card4 -->
+<!-- Card 5: Aumento de recursos -->
+<!-- BEGIN: Card5 -->
+<section class="glass-card rounded-[3rem_1.5rem_3rem_1.5rem] p-8 flex flex-col justify-between min-h-[220px]" data-purpose="metric-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-4xl md:text-5xl font-extrabold gradient-text text-glow">+8,52%</h2>
+<i class="text-brand-blue w-8 h-8 opacity-70" data-lucide="coins"></i>
+</div>
+<h3 class="text-xl font-semibold mb-2 leading-tight">Aumento de recursos dos planos</h3>
+</div>
+<p class="text-blue-200/60 text-xs font-medium leading-relaxed">De R$ 3,99 bi em 2024 para R$ 4,33 bi em 2025</p>
+</section>
+<!-- END: Card5 -->
+<!-- Card 6: Redução das Despesas -->
+<!-- BEGIN: Card6 -->
+<section class="glass-card rounded-[2.5rem] p-8 flex flex-col justify-between min-h-[220px]" data-purpose="metric-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-4xl md:text-5xl font-extrabold text-white text-glow">-4,14%</h2>
+<i class="text-brand-blue w-8 h-8 opacity-70" data-lucide="settings"></i>
+</div>
+<h3 class="text-xl font-semibold mb-2 leading-tight">Redução das Despesas Adm.</h3>
+</div>
+<p class="text-blue-200/60 text-xs font-medium leading-relaxed">Orçamento executado ficou abaixo do projetado</p>
+</section>
+<!-- END: Card6 -->
+</div>
+</main>
+<!-- END: Main Content Grid -->
+<!-- BEGIN: Scripts -->
+<script data-purpose="icon-initialization">
+    // Initialize Lucide icons
+    lucide.createIcons();
+  </script>
+<!-- END: Scripts -->
+</body></html>

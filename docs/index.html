@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAI 2025 — Previdência BRB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+:root {
+  --blue-900: #0a1f3c;
+  --blue-800: #0d2952;
+  --blue-700: #183a6e;
+  --blue-600: #004282;
+  --blue-500: #005aaa;
+  --blue-400: #0074c8;
+  --cyan: #00aeef;
+  --cyan-light: #e0f5fd;
+  --white: #ffffff;
+  --off-white: #f7fafd;
+  --gray-50: #f0f4f8;
+  --gray-100: #e2e8f0;
+  --gray-200: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-600: #475569;
+  --gray-800: #1e293b;
+  --pending-bg: #fff8e1;
+  --pending-border: #f59e0b;
+  --pending-text: #92400e;
+  --ff-display: 'DM Serif Display', Georgia, serif;
+  --ff-body: 'DM Sans', system-ui, sans-serif;
+  --shadow-sm: 0 2px 8px rgba(10, 31, 60, .06);
+  --shadow-md: 0 8px 24px rgba(10, 31, 60, .12);
+  --shadow-lg: 0 16px 48px rgba(10, 31, 60, .14);
+  --shadow-xl: 0 20px 60px rgba(10, 31, 60, .16);
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--ff-body); color: var(--gray-800); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+ul { list-style: none; }
+
+/* ─── LAYOUT ─── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 80px 0; }
+.section--alt { background: var(--off-white); }
+.section--dark { background: var(--blue-900); color: var(--white); }
+.section-label { font-size: .75rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--cyan); margin-bottom: 12px; }
+.section-title { font-family: var(--ff-display); font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.15; color: var(--blue-700); font-weight: 700; letter-spacing: -0.5px; }
+.section-title--white { color: var(--white); }
+.section-subtitle { font-size: 1.08rem; color: var(--gray-600); max-width: 680px; margin-top: 12px; line-height: 1.6; }
+.section-subtitle--white { color: rgba(255,255,255,.75); }
+.section-head { margin-bottom: 48px; }
+.divider { width: 56px; height: 4px; background: linear-gradient(90deg, var(--cyan) 0%, var(--blue-600) 100%); border-radius: 2px; margin-top: 16px; transition: all .3s ease; }
+.section:hover .divider { width: 72px; box-shadow: 0 4px 12px rgba(0, 174, 239, .3); }
+
+/* ─── PENDING BADGE ─── */
+.pending-block {
+  background: linear-gradient(135deg, rgba(255, 248, 225, .8) 0%, rgba(255, 253, 240, 1) 100%);
+  border: 1.5px solid var(--pending-border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  display: flex; align-items: flex-start; gap: 16px;
+  margin: 24px 0;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, .08);
+}
+.pending-block__icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+.pending-block__text strong { display: block; color: var(--pending-text); font-size: .85rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 4px; }
+.pending-block__text p { font-size: .93rem; color: #78350f; }
+.awaiting-badge { display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); color: #92400e; font-size: .78rem; font-weight: 700; padding: 6px 12px; border-radius: 20px; border: 1px solid #fcd34d; box-shadow: 0 2px 4px rgba(146, 64, 14, .1); }
+
+/* ─── NAV ─── */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-100);
+  transition: box-shadow .3s;
+}
+#navbar.scrolled { box-shadow: var(--shadow-md); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo img { height: 36px; display: block; }
+.nav-menu { display: flex; align-items: center; gap: 4px; }
+.nav-item { position: relative; }
+.nav-link {
+  font-size: .875rem; font-weight: 500; color: var(--blue-700);
+  padding: 8px 14px; border-radius: 8px;
+  transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex; align-items: center; gap: 4px;
+  white-space: nowrap;
+}
+.nav-link:hover, .nav-link.active { background: var(--cyan-light); color: var(--blue-600); box-shadow: 0 2px 8px rgba(0, 174, 239, .15); }
+.nav-link svg { width: 12px; height: 12px; transition: transform .2s; }
+.nav-item:hover .nav-link svg { transform: rotate(180deg); }
+.dropdown {
+  position: absolute; top: calc(100% + 4px); left: 0;
+  background: var(--white); border: 1px solid var(--gray-100);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  min-width: 240px; padding: 10px;
+  opacity: 0; visibility: hidden; transform: translateY(-8px);
+  transition: all .35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+}
+.nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown a {
+  display: block; padding: 10px 14px; border-radius: 8px;
+  font-size: .85rem; color: var(--gray-800); font-weight: 500;
+  transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.dropdown a:hover { background: var(--gray-100); color: var(--blue-600); }
+.nav-cta {
+  background: linear-gradient(135deg, var(--blue-600), var(--blue-500)); color: var(--white) !important;
+  border-radius: 8px; padding: 10px 18px !important; font-weight: 600; box-shadow: 0 4px 12px rgba(0, 66, 130, .25);
+  transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-cta:hover { background: linear-gradient(135deg, var(--blue-500), var(--blue-400)); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0, 66, 130, .4); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--blue-700); border-radius: 2px; transition: .3s; }
+
+/* ─── HERO ─── */
+#inicio {
+  padding-top: 140px; padding-bottom: 80px;
+  background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 55%, var(--blue-600) 100%);
+  position: relative; overflow: hidden;
+}
+#inicio::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 80% 50%, rgba(0,174,239,.18) 0%, transparent 70%);
+}
+#inicio::after {
+  content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 60px;
+  background: var(--white);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
+.hero-year {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(0,174,239,.2); color: var(--cyan);
+  font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(0,174,239,.3);
+  margin-bottom: 20px;
+}
+.hero-title {
+  font-family: var(--ff-display); font-size: clamp(2.4rem, 5vw, 3.8rem);
+  color: var(--white); line-height: 1.08; margin-bottom: 24px ; font-weight: 700; letter-spacing: -0.8px;
+}
+.hero-title em { color: var(--cyan); font-style: normal; }
+.hero-body { color: rgba(255,255,255,.8); font-size: 1.05rem; line-height: 1.7; margin-bottom: 32px; max-width: 500px; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 10px; font-weight: 600; font-size: .9rem;
+  transition: all .3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: none;
+}
+.btn-primary { background: var(--cyan); color: var(--blue-900); box-shadow: 0 4px 12px rgba(0, 174, 239, .25); }
+.btn-primary:hover { background: #00c4ff; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0, 174, 239, .35); }
+.btn-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,.5); }
+.btn-outline:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.8); }
+.hero-visual { display: flex; justify-content: center; }
+.hero-card-stack { position: relative; width: 100%; max-width: 400px; }
+.hc { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 18px; backdrop-filter: blur(10px); padding: 28px; box-shadow: 0 8px 32px rgba(0,0,0,.15); }
+.hc--main { position: relative; z-index: 2; }
+.hc--float { position: absolute; background: rgba(255,255,255,.08); }
+.hc-label { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 6px; }
+.hc-value { font-family: var(--ff-display); font-size: 2.6rem; color: var(--white); font-weight: 700; letter-spacing: -0.8px; }
+.hc-value--cyan { color: var(--cyan); }
+.hc-sub { font-size: .82rem; color: rgba(255,255,255,.6); margin-top: 4px; }
+.hc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+.hc-item { background: rgba(255,255,255,.05); border-radius: 10px; padding: 14px; }
+.hc-item-val { font-size: 1.3rem; font-weight: 700; color: var(--cyan); }
+.hc-item-lbl { font-size: .72rem; color: rgba(255,255,255,.55); margin-top: 3px; }
+
+/* ─── KPI STRIP ─── */
+.kpi-strip { background: var(--white); padding: 0; }
+.kpi-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border: 1px solid var(--gray-100); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); background: var(--white); }
+.kpi-card { padding: 32px 24px; text-align: center; border-right: 1px solid var(--gray-100); position: relative; transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
+.kpi-card:last-child { border-right: none; }
+.kpi-card:hover { background: var(--cyan-light); box-shadow: inset 0 0 0 1px var(--cyan); }
+.kpi-val { font-family: var(--ff-display); font-size: 2rem; color: var(--blue-600); line-height: 1; margin-bottom: 8px; font-weight: 700; letter-spacing: -0.5px; }
+.kpi-val--pos { color: #16a34a; }
+.kpi-val--neg { color: #dc2626; }
+.kpi-lbl { font-size: .78rem; color: var(--gray-600); font-weight: 500; line-height: 1.3; }
+.kpi-sub { font-size: .72rem; color: var(--gray-400); margin-top: 4px; }
+
+/* ─── APRESENTAÇÃO ─── */
+.apresentacao-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.apresentacao-body p { color: var(--gray-600); margin-bottom: 16px; font-size: 1rem; line-height: 1.75; }
+.apresentacao-assinatura { margin-top: 36px; padding-top: 28px; border-top: 2px solid var(--cyan); }
+.apresentacao-assinatura strong { display: block; color: var(--blue-700); font-size: 1rem; }
+.apresentacao-assinatura span { font-size: .85rem; color: var(--gray-400); }
+.destaque-box { background: linear-gradient(135deg, var(--blue-700) 0%, var(--blue-600) 100%); color: var(--white); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-md); }
+.destaque-box h3 { font-family: var(--ff-display); font-size: 1.5rem; color: var(--white); margin-bottom: 20px; }
+.destaque-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+.destaque-item:last-child { border-bottom: none; }
+.destaque-dot { width: 8px; height: 8px; background: var(--cyan); border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
+.destaque-text { font-size: .92rem; color: rgba(255,255,255,.85); }
+
+/* ─── MENSAGEM DIRETORIA ─── */
+.msg-dir-inner { max-width: 800px; }
+
+/* ─── RESUMO EXECUTIVO ─── */
+.resumo-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+.rk-card { background: var(--white); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-md); border-top: 4px solid var(--cyan); text-align: center; transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
+.rk-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.rk-card.confirmed .rk-val { color: var(--blue-600); }
+.rk-card.pending .rk-val { color: var(--pending-text); font-size: 1.2rem; }
+.rk-val { font-family: var(--ff-display); font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; letter-spacing: -0.5px; }
+.rk-lbl { font-size: .83rem; color: var(--gray-600); line-height: 1.4; }
+.rk-note { font-size: .72rem; color: var(--gray-400); margin-top: 6px; }
+
+/* ─── PERFIL CORP ─── */
+.patrocinadores-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.pat-list { background: var(--white); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100); }
+.pat-list h3 { font-size: 1rem; font-weight: 700; color: var(--blue-700); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--cyan); }
+.pat-list ol { padding-left: 0; counter-reset: pat; }
+.pat-list ol li { counter-increment: pat; display: flex; gap: 10px; padding: 7px 0; font-size: .88rem; color: var(--gray-600); border-bottom: 1px solid var(--gray-100); }
+.pat-list ol li::before { content: counter(pat); font-weight: 700; color: var(--blue-600); min-width: 20px; font-size: .8rem; }
+.nossa-gente { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+.ng-card { background: var(--white); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100); border-left: 4px solid var(--cyan); transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
+.ng-card:hover { box-shadow: var(--shadow-md); transform: translateX(2px); }
+.ng-card h4 { font-size: .95rem; font-weight: 700; color: var(--blue-700); margin-bottom: 8px; }
+.ng-card p { font-size: .88rem; color: var(--gray-600); line-height: 1.6; }
+
+/* ─── INDICADORES ─── */
+.indicadores-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.ind-card { background: var(--white); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100); transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
+.ind-card:hover { box-shadow: var(--shadow-md); border-color: var(--cyan); }
+.ind-card h4 { font-size: .85rem; font-weight: 700; color: var(--blue-700); margin-bottom: 12px; text-transform: uppercase; letter-spacing: .05em; }
+.ind-val { font-family: var(--ff-display); font-size: 1.8rem; color: var(--blue-600); margin-bottom: 6px; }
+.ind-text { font-size: .85rem; color: var(--gray-600); line-height: 1.5; }
+.ind-pending { font-size: .82rem; color: var(--pending-text); font-style: italic; }
+.chart-container { position: relative; height: 180px; margin-top: 16px; }
+
+/* ─── GOVERNANÇA ─── */
+.gov-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.gov-card { background: var(--white); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100); transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
+.gov-card:hover { box-shadow: var(--shadow-md); border-color: var(--cyan); }
+.gov-card h3 { font-size: 1rem; font-weight: 700; color: var(--blue-700); margin-bottom: 6px; padding-bottom: 12px; border-bottom: 2px solid var(--cyan); }
+.gov-card p { font-size: .88rem; color: var(--gray-600); line-height: 1.65; margin-bottom: 8px; }
+.gov-roles li { font-size: .85rem; color: var(--gray-600); padding: 5px 0; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; gap: 8px; }
+.gov-roles li::before { content: '•'; color: var(--cyan); font-size: 1.2rem; }
+.missao-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+.missao-card { background: linear-gradient(135deg, var(--blue-700) 0%, var(--blue-600) 100%); color: var(--white); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-md); transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
+.missao-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.missao-card h4 { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan); margin-bottom: 10px; }
+.missao-card p { font-size: .92rem; color: rgba(255,255,255,.85); line-height: 1.6; }
+.valores-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.valor-item { background: var(--white); border-radius: var(--radius); padding: 20px; display: flex; gap: 12px; align-items: flex-start; border: 1px solid var(--gray-100); transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
+.valor-item:hover { box-shadow: var(--shadow-sm); border-color: var(--cyan); }
+.valor-dot { width: 8px; height: 8px; background: var(--cyan); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+.valor-item strong { display: block; font-size: .85rem; color: var(--blue-700); margin-bottom: 3px; }
+.valor-item p { font-size: .82rem; color: var(--gray-600); }
+.orgaos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.orgao-card { background: var(--off-white); border-radius: var(--radius); padding: 20px; }
+.orgao-card h4 { font-size: .9rem; font-weight: 700; color: var(--blue-700); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--gray-200); }
+.orgao-tag { display: inline-block; font-size: .7rem; font-weight: 700; padding: 4px 10px; border-radius: 12px; margin-bottom: 8px; transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
+.orgao-tag--efetivo { background: linear-gradient(135deg, var(--cyan-light), #c0f0ff); color: var(--blue-700); }
+.orgao-tag--suplente { background: var(--gray-100); color: var(--gray-600); }
+.orgao-tag:hover { transform: scale(1.05); box-shadow: 0 2px 6px rgba(0, 0, 0, .1); }
+.orgao-card ul li { font-size: .82rem; color: var(--gray-700); padding: 4px 0; }
+.orgao-card ul li.pres { font-weight: 700; color: var(--blue-600); }
+.comites-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 32px; }
+.comite-card { background: var(--white); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); border-left: 4px solid var(--blue-600); transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
+.comite-card:hover { box-shadow: var(--shadow-md); border-left-color: var(--cyan); }
+.comite-card h4 { font-size: .9rem; font-weight: 700; color: var(--blue-700); margin-bottom: 8px; }
+.comite-card p { font-size: .83rem; color: var(--gray-600); line-height: 1.6; }
+
+/* ─── DESTAQUES ─── */
+.destaques-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+.dtab { padding: 10px 18px; border-radius: 22px; font-size: .85rem; font-weight: 600; cursor: pointer; border: 1.5px solid var(--gray-200); color: var(--gray-600); background: var(--white); transition: all .3s cubic-bezier(0.4, 0, 0.2, 1); }
+.dtab.active { background: var(--blue-700); color: var(--white); border-color: var(--blue-700); box-shadow: 0 4px 12px rgba(24, 58, 110, .25); }
+.dtab-content { display: none; }
+.dtab-content.active { display: block; }
+.asg-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: start; }
+.asg-icon-box { background: linear-gradient(135deg, var(--blue-700), var(--blue-600)); border-radius: var(--radius-lg); padding: 40px 32px; text-align: center; color: var(--white); box-shadow: var(--shadow-md); }
+.asg-icon { font-size: 3rem; margin-bottom: 12px; }
+.asg-icon-box h3 { font-family: var(--ff-display); font-size: 1.5rem; margin-bottom: 10px; }
+.asg-icon-box p { font-size: .88rem; color: rgba(255,255,255,.75); }
+.asg-content h4 { font-size: 1rem; font-weight: 700; color: var(--blue-700); margin: 20px 0 8px; }
+.asg-content p { font-size: .9rem; color: var(--gray-600); line-height: 1.7; margin-bottom: 8px; }
+.asg-items { display: grid; gap: 12px; margin-top: 16px; }
+.asg-item { display: flex; gap: 14px; background: var(--white); border-radius: var(--radius); padding: 18px; border: 1px solid var(--gray-100); transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
+.asg-item:hover { box-shadow: var(--shadow-sm); border-color: var(--cyan); }
+.asg-item-icon { font-size: 1.3rem; flex-shrink: 0; }
+.asg-item p { font-size: .88rem; color: var(--gray-700); line-height: 1.5; }
+.asg-item strong { display: block; font-size: .82rem; color: var(--blue-700); margin-bottom: 2px; }
+.innov-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.innov-card { background: var(--white); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100); display: flex; gap: 20px; align-items: flex-start; transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
+.innov-card:hover { box-shadow: var(--shadow-md); border-color: var(--blue-600); }
+.innov-icon { width: 52px; height: 52px; background: linear-gradient(135deg, var(--cyan-light), #c0f0ff); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0, 174, 239, .2); }
+.innov-card h4 { font-size: .95rem; font-weight: 700; color: var(--blue-700); margin-bottom: 6px; }
+.innov-card p { font-size: .85rem; color: var(--gray-600); line-height: 1.6; }
+.sec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.sec-content p { font-size: .9rem; color: var(--gray-600); line-height: 1.7; margin-bottom: 12px; }
+.sec-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.sec-tag { background: linear-gradient(135deg, var(--cyan-light), #c0f0ff); color: var(--blue-700); font-size: .78rem; font-weight: 700; padding: 6px 14px; border-radius: 20px; box-shadow: 0 2px 6px rgba(0, 174, 239, .15); }
+
+/* ─── RENTABILIDADE ─── */
+.rentabilidade-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border: 1px solid var(--gray-100); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); background: var(--white); }
+.rp-card { background: var(--white); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100); border-top: 4px solid var(--blue-600); text-align: center; transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
+.rp-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-top-color: var(--cyan); }
+.rp-plano { font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 6px; }
+.rp-rent { font-family: var(--ff-display); font-size: 2rem; color: var(--blue-600); }
+.rp-ref { font-size: .78rem; color: var(--gray-400); margin: 4px 0; }
+.rp-desemp { display: inline-block; background: linear-gradient(135deg, var(--cyan-light) 0%, #c0f0ff 100%); color: var(--blue-700); font-size: .78rem; font-weight: 700; padding: 6px 14px; border-radius: 16px; box-shadow: 0 2px 6px rgba(0, 174, 239, .2); }
+.rent-chart-wrapper { background: var(--white); border-radius: var(--radius-lg); padding: 36px; box-shadow: var(--shadow-md); border: 1px solid var(--gray-100); }
+.rent-chart-wrapper h3 { font-size: 1.1rem; font-weight: 700; color: var(--blue-700); margin-bottom: 24px; }
+
+/* ─── PLANOS (TABS) ─── */
+.plans-nav { background: var(--blue-900); border-radius: var(--radius-lg) var(--radius-lg) 0 0; padding: 16px 24px; display: flex; gap: 6px; flex-wrap: wrap; }
+.ptab { padding: 10px 18px; border-radius: 20px; font-size: .82rem; font-weight: 700; cursor: pointer; border: 1.5px solid rgba(255,255,255,.20); color: rgba(255,255,255,.65); background: transparent; transition: all .3s cubic-bezier(0.4, 0, 0.2, 1); white-space: nowrap; }
+.ptab:hover { border-color: var(--cyan); color: var(--white); }
+.ptab.active { background: var(--cyan); color: var(--blue-900); border-color: var(--cyan); box-shadow: 0 4px 12px rgba(0, 174, 239, .35); }
+.plans-body { background: var(--off-white); border-radius: 0 0 var(--radius-lg) var(--radius-lg); padding: 40px 32px; }
+.plan-content { display: none; }
+.plan-content.active { display: block; }
+.plan-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; margin-bottom: 32px; }
+.plan-title-group h2 { font-family: var(--ff-display); font-size: 2rem; color: var(--blue-700); }
+.plan-title-group .plan-type { font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 6px; }
+.plan-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+.pk { background: var(--white); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); text-align: center; border: 1px solid var(--gray-100); transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
+.pk:hover { box-shadow: var(--shadow-md); border-color: var(--cyan); }
+.pk-val { font-family: var(--ff-display); font-size: 1.7rem; color: var(--blue-600); }
+.pk-lbl { font-size: .78rem; color: var(--gray-500); margin-top: 4px; }
+.pk.highlight { background: linear-gradient(135deg, var(--blue-700), var(--blue-600)); color: var(--white); border: 1px solid var(--blue-600); box-shadow: var(--shadow-sm); }
+.pk.highlight .pk-val { color: var(--cyan); }
+.pk.highlight .pk-lbl { color: rgba(255,255,255,.75); }
+.plan-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 28px; }
+.plan-box { background: var(--white); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100); transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
+.plan-box:hover { box-shadow: var(--shadow-md); }
+.plan-box h3 { font-size: .9rem; font-weight: 700; color: var(--blue-700); margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--gray-100); text-transform: uppercase; letter-spacing: .05em; }
+.plan-box p { font-size: .87rem; color: var(--gray-600); line-height: 1.65; margin-bottom: 8px; }
+.pop-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
+.pop-stat { text-align: center; background: var(--off-white); border-radius: 8px; padding: 12px; }
+.pop-stat-val { font-weight: 700; font-size: 1rem; color: var(--blue-600); }
+.pop-stat-lbl { font-size: .72rem; color: var(--gray-500); margin-top: 2px; }
+.pop-evolucao { display: flex; gap: 16px; align-items: center; margin-top: 12px; padding: 12px; background: var(--off-white); border-radius: 8px; font-size: .85rem; }
+.pop-evolucao .arrow { font-size: 1.2rem; }
+.pop-evolucao .evo-pos { color: #16a34a; font-weight: 700; }
+.pop-evolucao .evo-neg { color: #dc2626; font-weight: 700; }
+.atuarial-vals { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.av { text-align: center; background: var(--off-white); border-radius: 8px; padding: 12px; }
+.av strong { display: block; font-size: .82rem; color: var(--blue-700); }
+.av span { font-size: .75rem; color: var(--gray-500); }
+.plan-chart-row { background: var(--white); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100); margin-bottom: 28px; transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
+.plan-chart-row:hover { box-shadow: var(--shadow-md); }
+.plan-chart-row h3 { font-size: .9rem; font-weight: 700; color: var(--blue-700); margin-bottom: 16px; text-transform: uppercase; letter-spacing: .05em; }
+.bar-chart-horiz { display: flex; flex-direction: column; gap: 14px; }
+.bchart-row { display: flex; align-items: center; gap: 12px; }
+.bchart-label { font-size: .8rem; color: var(--gray-600); min-width: 140px; text-align: right; }
+.bchart-bar-wrap { flex: 1; background: var(--gray-100); border-radius: 6px; height: 32px; position: relative; overflow: hidden; }
+.bchart-bar { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 12px; font-size: .78rem; font-weight: 700; color: var(--white); min-width: 60px; transition: all .6s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 8px rgba(0, 66, 130, .2); }
+.bchart-bar--rent { background: linear-gradient(90deg, var(--blue-600), var(--cyan)); }
+.bchart-bar--ref { background: linear-gradient(90deg, var(--gray-400), var(--gray-500)); }
+.bchart-bar--pend { background: linear-gradient(90deg, var(--pending-border), #f97316); color: var(--pending-text); }
+.bchart-val { font-size: .82rem; font-weight: 700; color: var(--gray-700); min-width: 50px; }
+.reg-alt-box { background: linear-gradient(135deg, var(--cyan-light), rgba(224, 245, 253, .5)); border-radius: var(--radius-lg); padding: 24px 28px; margin-top: 20px; border: 1px solid var(--cyan); }
+.reg-alt-box h4 { font-size: .9rem; font-weight: 700; color: var(--blue-700); margin-bottom: 8px; }
+.reg-alt-box p { font-size: .85rem; color: var(--gray-700); line-height: 1.6; }
+.plan-link { display: inline-flex; align-items: center; gap: 6px; font-size: .85rem; font-weight: 600; color: var(--blue-600); margin-top: 12px; }
+.plan-link:hover { color: var(--cyan); text-decoration: underline; }
+.perfil-tabs { display: flex; gap: 6px; margin-bottom: 16px; }
+.perfil-tab { padding: 6px 14px; border-radius: 20px; font-size: .8rem; font-weight: 600; cursor: pointer; border: 1px solid var(--gray-200); color: var(--gray-600); background: var(--white); transition: all .2s; }
+.perfil-tab.active { background: var(--blue-600); color: var(--white); border-color: var(--blue-600); }
+.rateio-grid { display: grid; gap: 8px; }
+.rateio-row { display: flex; align-items: center; gap: 10px; }
+.rateio-label { font-size: .82rem; min-width: 100px; color: var(--gray-700); }
+.rateio-bar-wrap { flex: 1; background: var(--gray-100); border-radius: 6px; height: 24px; overflow: hidden; }
+.rateio-bar { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--blue-700), var(--blue-600)); display: flex; align-items: center; padding-left: 10px; transition: all .6s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 8px rgba(24, 58, 110, .2); }
+.rateio-pct { font-size: .72rem; font-weight: 700; color: var(--white); }
+.rateio-val { font-size: .78rem; color: var(--gray-500); min-width: 38px; text-align: right; }
+
+/* ─── DOCUMENTOS ─── */
+.docs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.doc-card { background: var(--white); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100); display: flex; gap: 20px; align-items: flex-start; opacity: .85; transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
+.doc-card.pending { border: 1.5px dashed var(--pending-border); background: rgba(255, 248, 225, .3); }
+.doc-card:hover { box-shadow: var(--shadow-md); }
+.doc-icon { width: 52px; height: 52px; background: var(--gray-100); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+.doc-card h3 { font-size: 1rem; font-weight: 700; color: var(--gray-700); margin-bottom: 6px; }
+.doc-card p { font-size: .85rem; color: var(--gray-400); }
+
+/* ─── FOOTER ─── */
+footer { background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-800) 100%); color: var(--white); padding: 60px 0 28px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+footer .footer-brand img { height: 34px; filter: brightness(0) invert(1); opacity: .9; margin-bottom: 16px; }
+footer p { font-size: .85rem; color: rgba(255,255,255,.55); line-height: 1.7; }
+.footer-title { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan); margin-bottom: 16px; }
+.footer-links { display: flex; flex-direction: column; gap: 8px; }
+.footer-links a { font-size: .87rem; color: rgba(255,255,255,.65); transition: all .3s cubic-bezier(0.4, 0, 0.2, 1); }
+.footer-links a:hover { color: var(--cyan); transform: translateX(2px); }
+.contact-item { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }
+.contact-item span:first-child { font-size: .8rem; color: var(--cyan); min-width: 20px; margin-top: 1px; }
+.contact-item span:last-child { font-size: .83rem; color: rgba(255,255,255,.65); line-height: 1.5; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: .78rem; }
+
+/* ─── MOBILE ─── */
+@media (max-width: 1024px) {
+  .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+  .rent-plans { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .orgaos-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .section { padding: 56px 0; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { display: none; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .apresentacao-grid { grid-template-columns: 1fr; }
+  .patrocinadores-grid { grid-template-columns: 1fr; }
+  .nossa-gente { grid-template-columns: 1fr; }
+  .indicadores-grid { grid-template-columns: 1fr; }
+  .gov-grid { grid-template-columns: 1fr; }
+  .missao-grid { grid-template-columns: 1fr; }
+  .valores-grid { grid-template-columns: 1fr 1fr; }
+  .orgaos-grid { grid-template-columns: 1fr; }
+  .comites-grid { grid-template-columns: 1fr; }
+  .rent-plans { grid-template-columns: 1fr 1fr; }
+  .plan-kpis { grid-template-columns: 1fr 1fr; }
+  .plan-grid-2 { grid-template-columns: 1fr; }
+  .pop-stats { grid-template-columns: repeat(3, 1fr); }
+  .docs-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .asg-grid { grid-template-columns: 1fr; }
+  .innov-grid { grid-template-columns: 1fr; }
+  .sec-grid { grid-template-columns: 1fr; }
+  .resumo-kpis { grid-template-columns: 1fr 1fr; }
+  .nav-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--white); flex-direction: column; padding: 16px; box-shadow: var(--shadow-lg); border-top: 1px solid var(--gray-100); }
+  .nav-menu.open { display: flex; }
+  .dropdown { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; background: var(--gray-50); padding: 4px 8px; margin-left: 12px; }
+  .hamburger { display: flex; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#inicio" class="nav-logo">
+        <svg viewBox="0 0 297.6 161.1" height="36" xmlns="http://www.w3.org/2000/svg">
+          <style>.nl0{fill:#004282;fill-rule:evenodd}.nl1{fill:#183a6e;fill-rule:evenodd}.nl2{fill:#00aeef;fill-rule:evenodd}</style>
+          <path class="nl2" d="M17.9,61.8l-1.2,7.7c17.2,3.5,32.4,12.1,44.2,24.2l17.6-11.5s2-1.4,3-.2c0,0,.9.9-.9,2.8l-14.5,15c10.2,12.7,16.8,28.3,18.3,45.4h8.2l13.1-83.3H17.9Z"/>
+          <path class="nl0" d="M34.8,121.1l-.8-1,18.9-21.1c-10.2-10-23.1-17.2-37.6-20.2l-7.7,49c-1.3,9.2.3,17.3,15.7,17.3h51.7c-1.4-14.4-7-27.7-15.5-38.6l-24.7,14.6Z"/>
+          <path class="nl0" d="M155.7,101.2h0c8-4.2,13-12.2,13-21.2s-1.7-9.7-4.9-13c-3.7-3.8-8.2-5.3-16.6-5.3h-27.5l-.3,1.7-10.7,67.8c-.8,5-.1,13.7,10.8,13.7h0s18.9,0,18.9,0c16.1,0,27.3-11.1,27.3-27.1s-3.8-13.8-10-16.7M145.8,130.1h0c-3,2.1-5,2.6-12.2,2.6h-11.3l3.7-23.9h11.9c11.5,0,13,5,13,10s-1.9,9.1-5.1,11.3ZM138.7,95.7h-10.5l3.5-21.6h11.9c6.8,0,8,.6,9.1,2.1.9,1.3,1.3,2.7,1.3,4.8,0,8.8-6.1,14.8-15.2,14.8Z"/>
+          <path class="nl0" d="M209.3,109.2h0c11.9-2.3,21.2-13.8,21.2-27s-8.3-20.5-23.4-20.5h-26.1l-.3,1.7-11,70.5c-.5,3.6-3.2,11.1,9.9,11.1h1.3s.9,0,.9,0l.3-1.7,5-32.3h7.6l16.1,32.8.6,1.1h15.9l-1.5-2.9-16.6-32.9ZM189.1,98.7l3.9-24.6h11.2c10.3,0,12.2,2.8,12.2,8.2,0,9.8-6.7,16.5-16.8,16.5h-10.5Z"/>
+          <path class="nl0" d="M277.6,101.2h0c8-4.2,13-12.2,13-21.2s-1.7-9.7-4.9-13c-3.7-3.8-8.2-5.3-16.6-5.3h-27.5l-.3,1.7-10.7,67.7c-.7,4.9-.3,13.8,10.8,13.9h0s18.9,0,18.9,0c16.1,0,27.3-11.1,27.3-27.1s-3.8-13.8-10-16.7M267.8,130.1h0c-3,2.1-5,2.6-12.2,2.6h-11.2l3.7-23.9h11.9c11.5,0,13,5,13,10s-1.9,9.1-5.1,11.3ZM260.6,95.7h-10.5l3.5-21.6h11.9c6.9,0,8,.6,9.1,2.1.9,1.3,1.3,2.7,1.3,4.8,0,8.8-6.1,14.8-15.2,14.8Z"/>
+          <path class="nl1" d="M280.7,39.7h-8.6l5-9.6c.7-1.4,1.4-3.3,2-4.5h0c0,1.4.2,3.3.3,4.6l1.3,9.6ZM288.2,50.9l-4.3-30.6h-7.5l-15.8,30.6h6l3.3-6.5h11.3l.8,6.5h6.2ZM262.1,20.4h-5.8l-5.8,30.6h5.8l5.8-30.6ZM244.8,44.5c-1.8.7-4.1,1.4-6.4,1.4-4.8,0-6.6-2.6-6.6-6.5,0-6,3-14.2,10.9-14.2s3.8.5,5.5,1.2l1.7-5.3c-1.8-.6-4-1.1-6.7-1.1-12.7,0-17.9,11.2-17.9,20.6s2,10.7,11.4,10.7,5.7-.6,8.1-1.4v-5.3ZM217,50.9l5.8-30.6h-5.6l-1.4,7.4c-1,5-1.8,10.4-2.2,13.8h0c-.5-1.9-1.1-4-2.3-6.7l-6-14.5h-6.3l-5.8,30.6h5.6l1.5-8.3c1-4.9,1.9-11,2.2-14h0c.5,2,1.2,4.1,2.4,6.9l6.5,15.5h5.6ZM187.3,45.8h-11.2l1.6-8.2h10.2l.9-4.8h-10.2l1.4-7.5h11.2l1-4.9h-17l-5.8,30.6h17l1-5.1Z"/>
+        </svg>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item"><a href="#inicio" class="nav-link active">Início</a></li>
+        <li class="nav-item">
+          <a href="#institucional" class="nav-link">Institucional <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="dropdown">
+            <a href="#mensagem">Mensagem da Diretoria</a>
+            <a href="#resumo">Resumo Executivo</a>
+            <a href="#perfil">Perfil Corporativo</a>
+            <a href="#governanca">Governança</a>
+            <a href="#destaques">Destaques 2025</a>
+            <a href="#rentabilidade">Rentabilidade 2025</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#planos" class="nav-link">Nossos Planos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="dropdown">
+            <a href="#planos" onclick="switchPlan('bd01')">BD-01</a>
+            <a href="#planos" onclick="switchPlan('cd02')">CD-02</a>
+            <a href="#planos" onclick="switchPlan('cv03')">CV-03</a>
+            <a href="#planos" onclick="switchPlan('cdmetro')">CD-Metrô-DF</a>
+            <a href="#planos" onclick="switchPlan('cd05')">CD-05</a>
+            <a href="#planos" onclick="switchPlan('brasilia')">BrasíliaPrev</a>
+            <a href="#planos" onclick="switchPlan('regius')">RegiusPrev</a>
+            <a href="#planos" onclick="switchPlan('pga')">PGA</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="#documentos" class="nav-link">Documentos</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── HERO / INÍCIO ─── -->
+<section id="inicio">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-year">Relatório Anual de Informações · 2025</div>
+        <h1 class="hero-title">Um ano de <em>solidez</em> e crescimento sustentado</h1>
+        <p class="hero-body">Consolidamos resultados que reforçam o compromisso da Previdência BRB com uma gestão responsável, eficiente e orientada ao futuro de nossos participantes. Patrimônio acima de R$ 4 bilhões. Sete planos rentáveis. Governança reconhecida.</p>
+        <div class="hero-ctas">
+          <a href="#institucional" class="btn btn-primary">Conheça os resultados</a>
+          <a href="#planos" class="btn btn-outline">Ver nossos planos</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card-stack">
+          <div class="hc hc--main">
+            <div class="hc-label">Patrimônio Consolidado 2025</div>
+            <div class="hc-value hc-value--cyan">R$ 4,33 bi</div>
+            <div class="hc-sub">Crescimento de +8,52% em relação a 2024</div>
+            <div class="hc-grid">
+              <div class="hc-item">
+                <div class="hc-item-val">7.619</div>
+                <div class="hc-item-lbl">Participantes</div>
+              </div>
+              <div class="hc-item">
+                <div class="hc-item-val">+5,31%</div>
+                <div class="hc-item-lbl">Crescimento</div>
+              </div>
+              <div class="hc-item">
+                <div class="hc-item-val">7 planos</div>
+                <div class="hc-item-lbl">Superaram o benchmark</div>
+              </div>
+              <div class="hc-item">
+                <div class="hc-item-val">0,42%</div>
+                <div class="hc-item-lbl">Despesa/Ativo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GRANDES NÚMEROS ─── -->
+<section class="kpi-strip section" style="padding-top:48px">
+  <div class="container">
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-val kpi-val--pos">+5,31%</div>
+        <div class="kpi-lbl">Crescimento de Participantes</div>
+        <div class="kpi-sub">Atingimos 7.619</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val kpi-val--pos">+8,46%</div>
+        <div class="kpi-lbl">Arrecadação Total</div>
+        <div class="kpi-sub">Receitas previdenciais</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val">103,20%</div>
+        <div class="kpi-lbl">Superávit BD-01</div>
+        <div class="kpi-sub">R$ 91,1 milhões</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val">100,86%</div>
+        <div class="kpi-lbl">Superávit CV-03</div>
+        <div class="kpi-sub">R$ 8,2 milhões</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val kpi-val--pos">+8,52%</div>
+        <div class="kpi-lbl">Aumento dos Recursos</div>
+        <div class="kpi-sub">De R$ 3,99 bi → R$ 4,33 bi</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val kpi-val--neg">-4,14%</div>
+        <div class="kpi-lbl">Redução Despesas Adm.</div>
+        <div class="kpi-sub">Abaixo do orçado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── APRESENTAÇÃO ─── -->
+<section class="section" id="apresentacao">
+  <div class="container">
+    <div class="apresentacao-grid">
+      <div class="apresentacao-body">
+        <div class="section-label">Apresentação</div>
+        <h2 class="section-title">Resultados que constroem o futuro</h2>
+        <div class="divider"></div>
+        <div style="margin-top:24px">
+          <p>Consolidar uma série de resultados positivos em um ano bastante desafiador nos motiva a buscar metas mais ousadas para os próximos exercícios. Neste Relatório Anual 2025, apresentamos um panorama dos principais resultados dos planos previdenciários, bem como das ações institucionais realizadas pela Previdência BRB.</p>
+          <p>Ultrapassamos a marca de R$ 4 bilhões em patrimônio, conquista que reflete a solidez da Previdência BRB e a confiança de nossos participantes. Alcançamos retornos consistentes de rentabilidade nos sete planos, superando as metas atuariais e os índices de referência. Avançamos em iniciativas voltadas ao crescimento, à sustentabilidade dos planos de benefícios e à perenidade da Entidade.</p>
+          <p>Esses são alguns exemplos que demonstram o comprometimento da governança e dos colaboradores que trabalham alinhados e em sinergia para atingir os objetivos do Planejamento Estratégico. Convidamos você a conhecer os principais destaques e conquistas que marcaram o ano de 2025.</p>
+        </div>
+        <div class="apresentacao-assinatura">
+          <strong>Diretoria Executiva</strong>
+          <span>Previdência BRB · Relatório Anual 2025</span>
+        </div>
+      </div>
+      <div>
+        <div class="destaque-box">
+          <h3>Grandes Feitos de 2025</h3>
+          <div class="destaque-item"><div class="destaque-dot"></div><div class="destaque-text">Inclusão de Perfil de Investimentos nos Planos CD-05 e BrasíliaPrev</div></div>
+          <div class="destaque-item"><div class="destaque-dot"></div><div class="destaque-text">Alcançamos a marca de mil participantes no Plano CD-05</div></div>
+          <div class="destaque-item"><div class="destaque-dot"></div><div class="destaque-text">Alcançamos a marca de mil participantes no Plano BrasíliaPrev</div></div>
+          <div class="destaque-item"><div class="destaque-dot"></div><div class="destaque-text">Recebemos o 1º Assistido no Plano BrasíliaPrev</div></div>
+          <div class="destaque-item"><div class="destaque-dot"></div><div class="destaque-text">Patrimônio consolidado supera R$ 4,33 bilhões</div></div>
+          <div class="destaque-item"><div class="destaque-dot"></div><div class="destaque-text">Todos os sete planos superaram seus benchmarks em 2025</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ INSTITUCIONAL ══════════════════ -->
+<div id="institucional" style="padding-top:80px;margin-top:-80px"></div>
+
+<!-- ─── MENSAGEM DA DIRETORIA ─── -->
+<section class="section section--alt" id="mensagem">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Mensagem da Diretoria</div>
+      <h2 class="section-title">Palavras da Liderança</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="msg-dir-inner">
+      <div class="pending-block">
+        <div class="pending-block__icon">⏳</div>
+        <div class="pending-block__text">
+          <strong>⚠ Pendente de Validação</strong>
+          <p>O texto da Mensagem da Diretoria está em processo de validação e será disponibilizado após aprovação. Conteúdo indicado como pendente no documento consolidado (RAI 2025 CONSOLIDADO.docx).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RESUMO EXECUTIVO ─── -->
+<section class="section" id="resumo">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Resumo Executivo</div>
+      <h2 class="section-title">Previdência BRB em Números</h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">Principais indicadores de desempenho do exercício de 2025.</p>
+    </div>
+    <div class="resumo-kpis">
+      <div class="rk-card confirmed">
+        <div class="rk-val">7.619</div>
+        <div class="rk-lbl">Total de Participantes</div>
+        <div class="rk-note">+5,31% em relação a 2024</div>
+      </div>
+      <div class="rk-card pending">
+        <div class="rk-val">⚠ XX,XX%</div>
+        <div class="rk-lbl">Rentabilidade Média dos Planos em 2025 (ao ano)</div>
+        <div class="rk-note"><span class="awaiting-badge">⏳ Pendente</span> Dado não consolidado</div>
+      </div>
+      <div class="rk-card pending">
+        <div class="rk-val">⚠ XXª</div>
+        <div class="rk-lbl">No ranking de EFPC da ABRAPP</div>
+        <div class="rk-note"><span class="awaiting-badge">⏳ Pendente</span> Dado não consolidado</div>
+      </div>
+      <div class="rk-card confirmed">
+        <div class="rk-val">0,42%</div>
+        <div class="rk-lbl">Relação de Despesas / Ativo Total Administrado</div>
+        <div class="rk-note">Redução de 7,22% vs. 2024</div>
+      </div>
+      <div class="rk-card confirmed">
+        <div class="rk-val">R$ 210,3 mi</div>
+        <div class="rk-lbl">Contribuições Recebidas</div>
+        <div class="rk-note">Exercício de 2025</div>
+      </div>
+      <div class="rk-card confirmed">
+        <div class="rk-val">R$ 285,5 mi</div>
+        <div class="rk-lbl">Benefícios Pagos</div>
+        <div class="rk-note">Exercício de 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PERFIL CORPORATIVO ─── -->
+<section class="section section--alt" id="perfil">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Perfil Corporativo</div>
+      <h2 class="section-title">Quem somos</h2>
+      <div class="divider"></div>
+    </div>
+
+    <!-- 3.1 A Entidade -->
+    <h3 style="font-size:1.2rem;color:var(--blue-700);margin-bottom:16px">A Entidade</h3>
+    <div class="pending-block" style="margin-bottom:40px">
+      <div class="pending-block__icon">⏳</div>
+      <div class="pending-block__text">
+        <strong>⚠ Pendente de Validação</strong>
+        <p>O texto institucional sobre "A Entidade" está em processo de validação. Previsto para disponibilização conforme indicado no documento consolidado.</p>
+      </div>
+    </div>
+
+    <!-- 3.2 Patrocinadoras e 3.3 Instituidoras -->
+    <div class="patrocinadores-grid">
+      <div class="pat-list">
+        <h3>Patrocinadoras</h3>
+        <p style="font-size:.85rem;color:var(--gray-600);margin-bottom:16px;line-height:1.6">As Patrocinadoras são empresas que disponibilizam planos previdenciários mediante convênio, contribuindo conjuntamente com os participantes.</p>
+        <ol>
+          <li>Previdência BRB</li><li>Banco BRB</li><li>BRBCARD</li><li>Corretora Seguros BRB</li><li>Saúde BRB</li><li>Metrô-DF</li><li>Ceasa-DF</li><li>ANEABRB</li><li>Prefeitura Municipal de Maringá-PR</li><li>Câmara Municipal de Maringá-PR</li><li>Agência Maringaense de Regulação – AMR</li><li>Instituto Ambiental de Maringá – IAM</li><li>Instituto de Pesquisa e Planejamento Urbano de Maringá – IPPLAM</li><li>Maringá Previdência</li><li>Prefeitura de São Tomé-PR</li><li>Câmara Municipal de São Tomé-PR</li><li>Prefeitura de Cruzeiro do Sul-PR</li><li>Câmara Municipal de Cruzeiro do Sul-PR</li><li>Prefeitura de Querência do Norte-PR</li><li>Câmara Municipal de Querência do Norte-PR</li><li>Município de Cruzeiro do Oeste-PR</li><li>Cruzeiro do Oeste Câmara Municipal-PR</li>
+        </ol>
+      </div>
+      <div class="pat-list">
+        <h3>Instituidoras</h3>
+        <p style="font-size:.85rem;color:var(--gray-600);margin-bottom:16px;line-height:1.6">As Instituidoras são entidades representativas que disponibilizam planos a seus associados, com contribuições exclusivamente dos participantes.</p>
+        <ol>
+          <li>Previdência BRB</li><li>ANEABRB</li><li>AABR</li><li>COPEV-DF</li><li>ABRAPP</li><li>CRMV-DF / Bloco 244</li><li>GS3-Tecnologia</li><li>Colégio Biângulo</li><li>PPN Tecnologia</li><li>Colégio do Sol</li><li>Prime</li><li>Academia Ultra 1</li><li>Academia Ultra 2</li><li>Academia Ultra 3</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 3.4 Nossa Gente -->
+    <h3 style="font-size:1.2rem;color:var(--blue-700);margin:48px 0 16px">Nossa Gente — Público Interno</h3>
+    <p style="font-size:.95rem;color:var(--gray-600);max-width:700px;line-height:1.75;margin-bottom:24px">Em 2025, a Previdência BRB investiu na capacitação contínua de colaboradores e dirigentes, realizando treinamentos voltados ao desenvolvimento de competências alinhadas ao planejamento estratégico. No total, foram registradas 2.516 horas de treinamento, resultado 66,93% superior ao alcançado em 2024.</p>
+    <div class="nossa-gente">
+      <div class="ng-card">
+        <h4>🎓 Programa PREPARE-SE</h4>
+        <p>Voltado à preparação de membros dos órgãos estatutários e comitês para atuar nos colegiados. Incluiu todos os colaboradores e foi aberto a participantes e assistidos com interesse em atuar como dirigente ou conselheiro.</p>
+      </div>
+      <div class="ng-card">
+        <h4>🤝 2ª Semana de Integridade</h4>
+        <p>Reforçou o compromisso com ética, integridade e boas práticas de governança. Direcionado a colaboradores, dirigentes, conselheiros, prestadores de serviços e participantes.</p>
+      </div>
+      <div class="ng-card">
+        <h4>📚 Educação Continuada (PEC)</h4>
+        <p>Programas de Educação Financeira e Previdenciária, Gestão Baseada em Riscos, Experiência do Cliente e Prevenção à Lavagem de Dinheiro. 2.516 horas totais de treinamento (+66,93%).</p>
+      </div>
+      <div class="ng-card">
+        <h4>🏅 Certificações Profissionais</h4>
+        <p>Viabilizada a renovação de 11 certificações: 1 CEA, 8 CPA-20 e 2 ICSS, garantindo excelência técnica nos órgãos colegiados e comitês técnicos.</p>
+      </div>
+    </div>
+
+    <!-- 3.5 Nossos Números -->
+    <h3 style="font-size:1.2rem;color:var(--blue-700);margin:48px 0 24px">Nossos Números — Indicadores de Gestão 2025</h3>
+    <div class="indicadores-grid">
+      <div class="ind-card">
+        <h4>Patrimônio Consolidado</h4>
+        <div class="ind-val">R$ 4,33 bi</div>
+        <div class="ind-text">R$ 4.331.275.834 — aumento de +8,52% em relação a 2024 (era R$ 3,99 bi).</div>
+      </div>
+      <div class="ind-card">
+        <h4>Custo Administrativo / Ativo Total</h4>
+        <div class="ind-val">0,42%</div>
+        <div class="ind-text">Redução de 7,22% vs. 2024, evidenciando responsabilidade na gestão dos recursos.</div>
+        <div class="pending-block" style="margin-top:12px;padding:10px 14px"><div class="pending-block__icon" style="font-size:1rem">📊</div><div class="pending-block__text"><strong style="font-size:.72rem">Gráfico de barras</strong><p style="font-size:.78rem">Aguardando confirmação de dados para elaboração do gráfico.</p></div></div>
+      </div>
+      <div class="ind-card">
+        <h4>Custo Administrativo Per Capita</h4>
+        <div class="ind-val">R$ 2.395</div>
+        <div class="ind-text">Redução de 4,39% em relação a 2024. O aumento de participantes (+5,31%) contribuiu para a diluição do custo.</div>
+      </div>
+      <div class="ind-card">
+        <h4>Execução Orçamentária</h4>
+        <div class="ind-val">-4,14%</div>
+        <div class="ind-text">Despesas administrativas totais realizaram 4,14% abaixo do valor orçado. Meta alcançada.</div>
+        <div class="pending-block" style="margin-top:12px;padding:10px 14px"><div class="pending-block__icon" style="font-size:1rem">📊</div><div class="pending-block__text"><strong style="font-size:.72rem">Gráfico de barras</strong><p style="font-size:.78rem">Aguardando dados para elaboração.</p></div></div>
+      </div>
+      <div class="ind-card">
+        <h4>Indicador de Eficiência</h4>
+        <div class="ind-val">12/16</div>
+        <div class="ind-text">16 planos de ação criados no SGBR; 12 concluídos. 38 RNCs abertos, 26 concluídos. 10 Ações de Melhoria abertas, 12 finalizadas (incluindo saldo anterior).</div>
+      </div>
+      <div class="ind-card">
+        <h4>Índice de Maturidade Financeira</h4>
+        <div class="ind-pending">⚠ Dado não disponível no documento consolidado. Pendente de validação.</div>
+      </div>
+      <div class="ind-card">
+        <h4>Índice de Custeio Previdencial</h4>
+        <div class="ind-pending">⚠ Dado não disponível no documento consolidado. Pendente de validação.</div>
+      </div>
+      <div class="ind-card">
+        <h4>Crescimento de Participantes</h4>
+        <div class="ind-val">7.619</div>
+        <div class="ind-text">Crescimento de 5,31% em relação a dezembro de 2024, equivalente a +384 novos participantes.</div>
+      </div>
+      <div class="ind-card">
+        <h4>Custo/Custeio Administrativo</h4>
+        <div class="ind-text">O custo administrativo em 2025 foi menor que o custeio em 29,1%, provocando capitalização do PGA.</div>
+        <div class="pending-block" style="margin-top:12px;padding:10px 14px"><div class="pending-block__icon" style="font-size:1rem">⚠</div><div class="pending-block__text"><strong style="font-size:.72rem">Conferir Texto</strong><p style="font-size:.78rem">Marcação "CONFERIR TEXTO" no documento original.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GOVERNANÇA ─── -->
+<section class="section" id="governanca">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Governança</div>
+      <h2 class="section-title">Estrutura de Governança</h2>
+      <div class="divider"></div>
+    </div>
+
+    <!-- Planejamento Estratégico -->
+    <h3 style="font-size:1.1rem;color:var(--blue-700);margin-bottom:24px">Pensamento e Postura Estratégica</h3>
+    <div class="missao-grid">
+      <div class="missao-card">
+        <h4>Propósito (Missão)</h4>
+        <p>O futuro que você sonha está em nossos Planos.</p>
+      </div>
+      <div class="missao-card">
+        <h4>Proposta de Valor</h4>
+        <p>Entregar Planos de Previdência Complementar sustentáveis e seguros, proporcionando qualidade de vida e bem-estar.</p>
+      </div>
+      <div class="missao-card">
+        <h4>Visão</h4>
+        <p>Ser uma EFPC com portfólio inovador, rentabilidade acima do mercado, solidez nos controles, marca forte e crescimento consistente em todo o território nacional até 2030.</p>
+      </div>
+    </div>
+    <h4 style="font-size:1rem;font-weight:700;color:var(--blue-700);margin-bottom:16px">Valores Organizacionais</h4>
+    <div class="valores-grid" style="margin-bottom:48px">
+      <div class="valor-item"><div class="valor-dot"></div><div><strong>Respeito</strong><p>Respeitamos e valorizamos as pessoas.</p></div></div>
+      <div class="valor-item"><div class="valor-dot"></div><div><strong>Foco no Participante</strong><p>Reconhecemos no participante a razão de existir da Previdência BRB.</p></div></div>
+      <div class="valor-item"><div class="valor-dot"></div><div><strong>Relações Institucionais</strong><p>Zelamos pela qualidade e transparência nas relações.</p></div></div>
+      <div class="valor-item"><div class="valor-dot"></div><div><strong>Transparência</strong><p>Primamos pela clareza e tempestividade na prestação de informações.</p></div></div>
+      <div class="valor-item"><div class="valor-dot"></div><div><strong>Compromisso</strong><p>Comprometidos com a realização dos sonhos dos participantes.</p></div></div>
+      <div class="valor-item"><div class="valor-dot"></div><div><strong>Eficácia na Gestão</strong><p>Foco no resultado com transparência e responsabilidade socioambiental.</p></div></div>
+      <div class="valor-item"><div class="valor-dot"></div><div><strong>Segurança</strong><p>Prezamos pela segurança das informações e dos recursos investidos.</p></div></div>
+      <div class="valor-item"><div class="valor-dot"></div><div><strong>Espírito Empreendedor</strong><p>Pensamento inovador para agregar valor à experiência dos clientes.</p></div></div>
+      <div class="valor-item"><div class="valor-dot"></div><div><strong>Sustentabilidade</strong><p>Priorizamos a sustentabilidade dos planos e a perenidade da Entidade.</p></div></div>
+    </div>
+
+    <!-- Estrutura de Governança -->
+    <h3 style="font-size:1.1rem;color:var(--blue-700);margin-bottom:24px">Estrutura e Composição dos Órgãos</h3>
+    <div class="gov-grid" style="margin-bottom:32px">
+      <div class="gov-card">
+        <h3>Conselho Deliberativo (CONDE)</h3>
+        <p>Órgão máximo da Entidade, responsável pela definição da política geral de administração da Previdência BRB e de seus planos de benefícios, incluindo diretrizes e orientações estratégicas.</p>
+        <ul class="gov-roles">
+          <li>2 membros efetivos eleitos pelos Participantes</li>
+          <li>2 membros efetivos designados pelas Patrocinadoras</li>
+          <li>4 membros suplentes correspondentes</li>
+        </ul>
+      </div>
+      <div class="gov-card">
+        <h3>Conselho Fiscal (COFIS)</h3>
+        <p>Órgão de controle interno e fiscalização, assegurando o cumprimento de normas e a correta aplicação dos recursos da Entidade.</p>
+        <ul class="gov-roles">
+          <li>2 membros efetivos designados pelas Patrocinadoras</li>
+          <li>2 membros efetivos eleitos pelos Participantes</li>
+          <li>Presidência cabe a membro eleito</li>
+        </ul>
+      </div>
+      <div class="gov-card">
+        <h3>Diretoria Executiva</h3>
+        <p>Responsável pela administração geral, garantindo a observância das normas legais, estatutárias e regulamentares, alinhada aos objetivos institucionais.</p>
+        <ul class="gov-roles">
+          <li>Semíramis Rezende e Silva Magalhães Cezar — Diretora-Presidente</li>
+          <li>Sandro Soares de Souza — Diretor Financeiro</li>
+          <li>Laécio Barros Júnior — Diretor de Previdência</li>
+        </ul>
+      </div>
+      <div class="gov-card">
+        <h3>Auditoria Interna (AUDIN)</h3>
+        <p>Subordinada ao Conselho Deliberativo, estrutura-se como linha de defesa adicional da gestão de riscos, controles e conformidade.</p>
+        <ul class="gov-roles">
+          <li>Atuação independente e direta ao CONDE</li>
+          <li>Avaliação de controles internos</li>
+          <li>Suporte à gestão de riscos</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Composição -->
+    <h4 style="font-size:1rem;font-weight:700;color:var(--blue-700);margin-bottom:16px">Composição dos Órgãos Estatutários</h4>
+    <div class="orgaos-grid">
+      <div class="orgao-card">
+        <h4>Conselho Deliberativo</h4>
+        <div><span class="orgao-tag orgao-tag--efetivo">Membros Efetivos</span></div>
+        <ul>
+          <li class="pres">Cristiane Maria Lima Bukowitz | Presidente</li>
+          <li>Dario Oswaldo Garcia Júnior</li>
+          <li>Marcelo da Costa Bernardo</li>
+          <li>Eliomar dos Santos Lacerda</li>
+        </ul>
+        <div style="margin-top:10px"><span class="orgao-tag orgao-tag--suplente">Membros Suplentes</span></div>
+        <ul>
+          <li>Cynthia Judite Perciano Borges</li>
+          <li>Robério César Bonfim Mangueira</li>
+          <li>Luciano Henn Bernardi</li>
+          <li>José Cristóvão de Souza</li>
+        </ul>
+      </div>
+      <div class="orgao-card">
+        <h4>Conselho Fiscal</h4>
+        <div><span class="orgao-tag orgao-tag--efetivo">Membros Efetivos</span></div>
+        <ul>
+          <li class="pres">Wendell Feitosa Castro | Presidente</li>
+          <li>Carlos José Alves Costa</li>
+          <li>Gabriele Galheno Dias</li>
+          <li>Rodrigo Alves dos Santos</li>
+        </ul>
+        <div style="margin-top:10px"><span class="orgao-tag orgao-tag--suplente">Membros Suplentes</span></div>
+        <ul>
+          <li>Wesley de Araújo Medeiros</li>
+          <li>José Percy de Amorim e Silva Filho</li>
+          <li>Abner Luiz da Cruz Nascimento</li>
+          <li>Iure Cavalcante Oliveira</li>
+        </ul>
+      </div>
+      <div class="orgao-card">
+        <h4>Diretoria Executiva</h4>
+        <div><span class="orgao-tag orgao-tag--efetivo">Titulares</span></div>
+        <ul style="margin-top:8px">
+          <li class="pres">Semíramis Rezende e Silva Magalhães Cezar<br><small style="font-weight:400;color:var(--gray-500)">Diretora-Presidente</small></li>
+          <li style="margin-top:8px">Sandro Soares de Souza<br><small style="color:var(--gray-500)">Diretor Financeiro</small></li>
+          <li style="margin-top:8px">Laécio Barros Júnior<br><small style="color:var(--gray-500)">Diretor de Previdência</small></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Comitês -->
+    <h4 style="font-size:1rem;font-weight:700;color:var(--blue-700);margin:32px 0 16px">Comitês Estratégicos</h4>
+    <div class="comites-grid">
+      <div class="comite-card">
+        <h4>COMIN — Comitê de Investimentos</h4>
+        <p>Analisa e acompanha as estratégias de investimentos, incluindo operações com risco de crédito, moeda e derivativos. Orienta a execução da Política de Investimentos aprovada pelo CONDE.</p>
+      </div>
+      <div class="comite-card">
+        <h4>COPAT — Comitê de Patrocinadoras</h4>
+        <p>Acompanha o desempenho atuarial, financeiro e administrativo dos planos, podendo manifestar-se sobre propostas de alteração regulamentar, estatutária e de plano de custeio.</p>
+      </div>
+      <div class="comite-card">
+        <h4>CORIS — Comitê de Gestão de Riscos</h4>
+        <p>Missão de acompanhar a identificação, classificação, medição, controle e monitoramento dos riscos e controles internos da Entidade.</p>
+      </div>
+      <div class="comite-card">
+        <h4>COMCI — Comitê de Gerenciamento de Crise</h4>
+        <p>Órgão deliberativo responsável pela condução de processos de gerenciamento de crise e pela definição de ações para mitigação de riscos e preservação da imagem da Entidade.</p>
+      </div>
+      <div class="comite-card">
+        <h4>COMED — Comitê de Ética e Disciplina</h4>
+        <p>Atua na apuração, instauração, instrução e julgamento de processos éticos e disciplinares envolvendo empregados, membros de órgãos estatutários e terceiros relacionados à Previdência BRB.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DESTAQUES 2025 ─── -->
+<section class="section section--alt" id="destaques">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Destaques 2025</div>
+      <h2 class="section-title">Iniciativas que marcaram o ano</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="destaques-tabs">
+      <button class="dtab active" onclick="switchTab(this,'tab-asg')">ASG</button>
+      <button class="dtab" onclick="switchTab(this,'tab-inovacao')">Inovação Tecnológica</button>
+      <button class="dtab" onclick="switchTab(this,'tab-seginfo')">Segurança da Informação</button>
+      <button class="dtab" onclick="switchTab(this,'tab-compliance')">Compliance</button>
+    </div>
+
+    <!-- ASG -->
+    <div id="tab-asg" class="dtab-content active">
+      <div class="asg-grid">
+        <div class="asg-icon-box">
+          <div class="asg-icon">🌱</div>
+          <h3>Previdência BRB Integra Ações ASG</h3>
+          <p>Responsabilidade socioambiental integrada à atuação cotidiana, fundamentada em princípios de Governança, Sustentabilidade Ambiental e Responsabilidade Social.</p>
+        </div>
+        <div class="asg-content">
+          <h4>Sustentabilidade nos Investimentos</h4>
+          <p>Em 2025, a Entidade reconheceu e consolidou a relevância dos aspectos ASG (Ambiental, Social e Governança) no processo de investimentos, em linha com a Resolução PREVIC nº 26/2025. Critérios ASG foram progressivamente incorporados, incluindo alocação em estratégias com abordagem ASG específica.</p>
+          <h4>Projetos Sociais</h4>
+          <div class="asg-items">
+            <div class="asg-item">
+              <div class="asg-item-icon">🏫</div>
+              <div>
+                <strong>Feira de Profissões – CEM 01 Sobradinho (abril/2025)</strong>
+                <p>Segunda participação. Duas palestras sobre profissões demandadas e educação financeira para estudantes do Ensino Médio.</p>
+              </div>
+            </div>
+            <div class="asg-item">
+              <div class="asg-item-icon">📚</div>
+              <div>
+                <strong>Educação Financeira em Escolas Públicas</strong>
+                <p>Apresentações na Escola Classe 02 da Candangolândia (22/4) e Escola Classe 413 Sul (25/4) para turmas do 5º ano, além de sessão para pais e responsáveis (15/5).</p>
+              </div>
+            </div>
+            <div class="asg-item">
+              <div class="asg-item-icon">🎉</div>
+              <div>
+                <strong>Festa da Família – EC 03 Núcleo Bandeirante (30/5)</strong>
+                <p>Educação financeira e previdenciária para a comunidade escolar. Campanha de arrecadação de tampinhas plásticas para o projeto "Tampinhas do Bem BRB".</p>
+              </div>
+            </div>
+          </div>
+          <h4 style="margin-top:20px">Comunicação com Foco na Transparência</h4>
+          <p>Novo site institucional mais moderno e intuitivo lançado em 2024. Em 2025, mantido com conteúdo constantemente atualizado, incluindo o Previdência em Números (informativo mensal), o Comunica Previdência BRB (canal de compliance e ESG) e carteira de investimentos pública.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inovação -->
+    <div id="tab-inovacao" class="dtab-content">
+      <div class="innov-grid">
+        <div class="innov-card">
+          <div class="innov-icon">🤖</div>
+          <div>
+            <h4>VIVI — Assistente Virtual com IA</h4>
+            <p>Implantação da VIVI, assistente virtual baseada em inteligência artificial integrada ao WhatsApp. Trouxe mais agilidade, disponibilidade e qualidade no atendimento, com respostas rápidas e padronizadas.</p>
+          </div>
+        </div>
+        <div class="innov-card">
+          <div class="innov-icon">📱</div>
+          <div>
+            <h4>Novo Aplicativo Institucional</h4>
+            <p>Início da construção de aplicativo com foco em modernização, usabilidade e integração de serviços. Visa oferecer experiência digital completa, intuitiva e alinhada às necessidades dos participantes.</p>
+          </div>
+        </div>
+        <div class="innov-card">
+          <div class="innov-icon">🏆</div>
+          <div>
+            <h4>Plataforma de Prêmios</h4>
+            <p>Solução inovadora para fortalecer o engajamento dos participantes. Permite indicar novos participantes, acumular pontos e resgatar brindes — experiência gamificada e orientada à fidelização.</p>
+          </div>
+        </div>
+        <div class="innov-card">
+          <div class="innov-icon">🔒</div>
+          <div>
+            <h4>Governança e Segurança Digital</h4>
+            <p>Manutenção das certificações ISO 27001 e ISO 27701, reforçando o compromisso com proteção de dados sensíveis e privacidade das informações de participantes e patrocinadoras.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Segurança da Informação -->
+    <div id="tab-seginfo" class="dtab-content">
+      <div class="sec-grid">
+        <div class="sec-content">
+          <h4 style="font-size:1rem;font-weight:700;color:var(--blue-700);margin-bottom:12px">Terceiro Ciclo de Certificação ISO</h4>
+          <p>A Previdência BRB consolidou elevado grau de maturidade em segurança da informação, encontrando-se no terceiro ciclo de auditoria de certificação ISO/IEC 27001 e ISO/IEC 27701:2019.</p>
+          <p>Em 2025, realizou upgrade normativo da certificação ISO/IEC 27001 para a versão mais atual (ISO/IEC 27001:2022), representando adequação estrutural do modelo de gestão aos novos requisitos internacionais.</p>
+          <p>A auditoria externa contemplou controles organizacionais e técnicos: gestão de riscos, continuidade de negócios, segurança de acessos, proteção de dados, monitoramento de eventos, resposta a incidentes e conformidade regulatória.</p>
+          <div class="sec-tags">
+            <span class="sec-tag">ISO/IEC 27001:2022</span>
+            <span class="sec-tag">ISO/IEC 27701:2019</span>
+            <span class="sec-tag">MFA em ambientes críticos</span>
+            <span class="sec-tag">SOC aprimorado</span>
+            <span class="sec-tag">Pentests realizados</span>
+            <span class="sec-tag">Zero vulnerabilidades críticas</span>
+          </div>
+        </div>
+        <div class="sec-content">
+          <h4 style="font-size:1rem;font-weight:700;color:var(--blue-700);margin-bottom:12px">Avanços em Proteção de Dados</h4>
+          <p>Implementação de autenticação multifator (MFA) em ambientes críticos. Aprimoramento do Centro de Operações de Segurança (SOC) e dos mecanismos de correlação de eventos (SIEM).</p>
+          <p>Gestão de incidentes estruturada: registro formal, análise técnica, contenção e ações preventivas, em conformidade com a LGPD. Posicionamento proativo para adequação à ISO/IEC 27701:2025.</p>
+          <p>Evidências confirmam que não foram identificadas vulnerabilidades críticas de alto impacto nos pentests e avaliações periódicas de vulnerabilidades realizados ao longo do exercício.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Compliance -->
+    <div id="tab-compliance" class="dtab-content">
+      <div class="pending-block">
+        <div class="pending-block__icon">⏳</div>
+        <div class="pending-block__text">
+          <strong>⚠ Conteúdo Pendente</strong>
+          <p>O texto sobre Programa de Integridade e Compliance está indicado como "CONTEÚDO PENDENTE" no documento consolidado. Aguarda elaboração e validação pela equipe responsável.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RENTABILIDADE 2025 ─── -->
+<section class="section" id="rentabilidade">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Rentabilidade 2025</div>
+      <h2 class="section-title">Resultados Consolidados dos Planos</h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">A Previdência BRB encerrou 2025 com gestão de sete planos previdenciários e um Plano de Gestão Administrativa, atingindo R$ 4,3 bilhões de patrimônio consolidado.</p>
+    </div>
+    <div class="rent-plans">
+      <div class="rp-card">
+        <div class="rp-plano">BD-01</div>
+        <div class="rp-rent">11,23%</div>
+        <div class="rp-ref">Meta: 9,32% (IPCA+4,90%)</div>
+        <div class="rp-desemp">120,49% da meta</div>
+      </div>
+      <div class="rp-card">
+        <div class="rp-plano">CD-02</div>
+        <div class="rp-rent">12,82%</div>
+        <div class="rp-ref">Ref.: 8,43%</div>
+        <div class="rp-desemp">152,08% do ref.</div>
+      </div>
+      <div class="rp-card">
+        <div class="rp-plano">CV-03</div>
+        <div class="rp-rent">12,18%</div>
+        <div class="rp-ref">Meta: 8,43%</div>
+        <div class="rp-desemp">144,48% do ref.</div>
+      </div>
+      <div class="rp-card">
+        <div class="rp-plano">CD-Metrô-DF</div>
+        <div class="rp-rent">11,74%</div>
+        <div class="rp-ref">Ref.: 8,43%</div>
+        <div class="rp-desemp">139,26% do ref.</div>
+      </div>
+      <div class="rp-card">
+        <div class="rp-plano">CD-05</div>
+        <div class="rp-rent">12,28%</div>
+        <div class="rp-ref">Ref.: 8,43%</div>
+        <div class="rp-desemp">145,67% do ref.</div>
+      </div>
+      <div class="rp-card">
+        <div class="rp-plano">BrasíliaPrev</div>
+        <div class="rp-rent">12,70%</div>
+        <div class="rp-ref">Ref.: 8,43%</div>
+        <div class="rp-desemp">150,65% do ref.</div>
+      </div>
+      <div class="rp-card">
+        <div class="rp-plano">RegiusPrev</div>
+        <div class="rp-rent">12,37%</div>
+        <div class="rp-ref">Ref.: 8,43%</div>
+        <div class="rp-desemp">146,74% do ref.</div>
+      </div>
+      <div class="rp-card">
+        <div class="rp-plano">PGA</div>
+        <div class="rp-rent">11,51%</div>
+        <div class="rp-ref">Ref.: 8,43%</div>
+        <div class="rp-desemp">136,54% do ref.</div>
+      </div>
+    </div>
+    <div class="rent-chart-wrapper">
+      <h3>Rentabilidade vs. Benchmark — Todos os Planos (2025)</h3>
+      <canvas id="rentChart" height="200"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ NOSSOS PLANOS ══════════════════ -->
+<section class="section section--alt" id="planos">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Nossos Planos</div>
+      <h2 class="section-title">Resultados por Plano de Benefícios</h2>
+      <div class="divider"></div>
+    </div>
+    <!-- Tab navigation -->
+    <div class="plans-nav">
+      <button class="ptab active" onclick="switchPlan('bd01')">BD-01</button>
+      <button class="ptab" onclick="switchPlan('cd02')">CD-02</button>
+      <button class="ptab" onclick="switchPlan('cv03')">CV-03</button>
+      <button class="ptab" onclick="switchPlan('cdmetro')">CD-Metrô-DF</button>
+      <button class="ptab" onclick="switchPlan('cd05')">CD-05</button>
+      <button class="ptab" onclick="switchPlan('brasilia')">BrasíliaPrev</button>
+      <button class="ptab" onclick="switchPlan('regius')">RegiusPrev</button>
+      <button class="ptab" onclick="switchPlan('pga')">PGA</button>
+    </div>
+    <div class="plans-body">
+
+      <!-- ───── BD-01 ───── -->
+      <div id="plan-bd01" class="plan-content active">
+        <div class="plan-header">
+          <div class="plan-title-group">
+            <div class="plan-type">Benefício Definido</div>
+            <h2>Plano BD-01</h2>
+            <p style="font-size:.88rem;color:var(--gray-500);margin-top:4px">Fechado para novas adesões desde 2000 · Patrimônio: R$ 2,94 bi</p>
+          </div>
+          <span class="awaiting-badge">Parecer Atuarial · Falta arquivo</span>
+        </div>
+        <div class="plan-kpis">
+          <div class="pk highlight"><div class="pk-val">11,23%</div><div class="pk-lbl">Rentabilidade 2025</div></div>
+          <div class="pk"><div class="pk-val">9,32%</div><div class="pk-lbl">Meta Atuarial</div></div>
+          <div class="pk"><div class="pk-val">120,49%</div><div class="pk-lbl">Desempenho</div></div>
+          <div class="pk"><div class="pk-val">R$ 2,94 bi</div><div class="pk-lbl">Recurso do Plano</div></div>
+          <div class="pk"><div class="pk-val">1.781</div><div class="pk-lbl">Participantes (2025)</div></div>
+          <div class="pk"><div class="pk-val">-0,67%</div><div class="pk-lbl">Variação Part. (vs. 1.793)</div></div>
+        </div>
+
+        <div class="plan-chart-row">
+          <h3>Desempenho vs. Referência</h3>
+          <div class="bar-chart-horiz">
+            <div class="bchart-row">
+              <div class="bchart-label">Rentabilidade</div>
+              <div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--rent" style="width:80%">11,23%</div></div>
+              <div class="bchart-val">11,23%</div>
+            </div>
+            <div class="bchart-row">
+              <div class="bchart-label">Meta Atuarial</div>
+              <div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--ref" style="width:57%">9,32%</div></div>
+              <div class="bchart-val">9,32%</div>
+            </div>
+            <div class="bchart-row">
+              <div class="bchart-label">Mediana do Mercado</div>
+              <div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--pend" style="width:40%">⚠ Pendente</div></div>
+              <div class="bchart-val" style="color:var(--pending-text)">XX%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="plan-grid-2">
+          <div class="plan-box">
+            <h3>Quadro Populacional</h3>
+            <div class="pop-stats">
+              <div class="pop-stat"><div class="pop-stat-val">11,28%</div><div class="pop-stat-lbl">Ativos</div></div>
+              <div class="pop-stat"><div class="pop-stat-val">78,05%</div><div class="pop-stat-lbl">Assistidos</div></div>
+              <div class="pop-stat"><div class="pop-stat-val">10,67%</div><div class="pop-stat-lbl">Pensionistas</div></div>
+            </div>
+            <div class="pop-evolucao">
+              <span>2024: 1.793</span><span class="arrow">→</span><span>2025: 1.781</span><span class="evo-neg">-0,67%</span>
+            </div>
+            <div class="pending-block" style="margin-top:12px;padding:10px 14px">
+              <div class="pending-block__icon" style="font-size:.9rem">⚠</div>
+              <div class="pending-block__text"><strong style="font-size:.7rem">Pendentes</strong><p style="font-size:.78rem">% Feminino/Masculino, Média de Idade, Maturidade do Plano — não consolidados.</p></div>
+            </div>
+          </div>
+          <div class="plan-box">
+            <h3>Resultado Atuarial</h3>
+            <div class="atuarial-vals">
+              <div class="av"><strong>R$ 2.937.286.793,58</strong><span>Patrimônio de Cobertura</span></div>
+              <div class="av"><strong>R$ 2.846.145.502,31</strong><span>Provisões Matemáticas</span></div>
+              <div class="av"><strong>R$ 308.219.419,27</strong><span>Superávit Técnico Ajustado</span></div>
+              <div class="av"><strong>+19,13%</strong><span>Variação vs. 2024</span></div>
+            </div>
+            <p style="font-size:.83rem;color:var(--gray-600);margin-top:12px">O Plano BD-01 encontra-se superavitário. Não há necessidade de aplicação de novo plano de equacionamento.</p>
+          </div>
+        </div>
+
+        <div class="plan-box" style="margin-bottom:24px">
+          <h3>Arrecadação e Benefícios</h3>
+          <p>O Plano BD-01 paga mais benefícios do que recebe de contribuições, dada sua maturidade. O texto analítico comparativo 2025 vs. 2024 está indicado como <strong>"TEXTO DO ANO PASSADO"</strong> no documento consolidado.</p>
+          <div class="pending-block" style="margin-top:12px;padding:10px 14px">
+            <div class="pending-block__icon" style="font-size:.9rem">📊</div>
+            <div class="pending-block__text"><strong style="font-size:.7rem">Gráfico de Barras Pendente</strong><p style="font-size:.78rem">Dados de arrecadação e benefícios 2025 aguardam consolidação para geração do gráfico.</p></div>
+          </div>
+        </div>
+
+        <div class="reg-alt-box">
+          <h4>Alteração Regulamentar — Revisão 18</h4>
+          <p>Aprovada na 684ª reunião do CONDE (28/01/2025). Alteração no adiantamento do Abono de Natal: 30% em abril e 20% em julho, em colaboração com a AFABRB. Versão vigente em: <a href="https://previdenciabrb.org.br/beneficio-definido-bd-01/" target="_blank" style="color:var(--blue-600);font-weight:600">previdenciabrb.org.br</a></p>
+        </div>
+        <p style="margin-top:16px;font-size:.85rem;color:var(--gray-500)"><span class="awaiting-badge">⏳ Falta Arquivo</span> Parecer Atuarial do Plano BD-01 – aguardando envio do documento.</p>
+        <a href="#" class="plan-link">📄 Demonstrativo Analítico dos Investimentos – Dezembro/2025 (link a inserir)</a>
+      </div>
+
+      <!-- ───── CD-02 ───── -->
+      <div id="plan-cd02" class="plan-content">
+        <div class="plan-header">
+          <div class="plan-title-group">
+            <div class="plan-type">Contribuição Definida</div>
+            <h2>Plano CD-02</h2>
+            <p style="font-size:.88rem;color:var(--gray-500);margin-top:4px">Participantes: empregados ativos do BRB e Previdência BRB do Plano BD-01 · Patrimônio: R$ 1,00 bi</p>
+          </div>
+          <span class="awaiting-badge">Parecer Atuarial · Falta arquivo</span>
+        </div>
+        <div class="plan-kpis">
+          <div class="pk highlight"><div class="pk-val">12,82%</div><div class="pk-lbl">Rentabilidade 2025</div></div>
+          <div class="pk"><div class="pk-val">8,43%</div><div class="pk-lbl">Índice de Referência</div></div>
+          <div class="pk"><div class="pk-val">152,08%</div><div class="pk-lbl">Desempenho</div></div>
+          <div class="pk"><div class="pk-val">R$ 1,00 bi</div><div class="pk-lbl">Recurso do Plano</div></div>
+          <div class="pk"><div class="pk-val">221</div><div class="pk-lbl">Participantes (2025)</div></div>
+          <div class="pk"><div class="pk-val">-10,53%</div><div class="pk-lbl">Variação Part. (vs. 247)</div></div>
+        </div>
+        <div class="plan-chart-row">
+          <h3>Desempenho vs. Referência</h3>
+          <div class="bar-chart-horiz">
+            <div class="bchart-row"><div class="bchart-label">Rentabilidade</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--rent" style="width:90%">12,82%</div></div><div class="bchart-val">12,82%</div></div>
+            <div class="bchart-row"><div class="bchart-label">Índice de Referência</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--ref" style="width:50%">8,43%</div></div><div class="bchart-val">8,43%</div></div>
+            <div class="bchart-row"><div class="bchart-label">Mediana do Mercado</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--pend" style="width:40%">⚠ Pendente</div></div><div class="bchart-val" style="color:var(--pending-text)">XX%</div></div>
+          </div>
+        </div>
+        <div class="plan-grid-2">
+          <div class="plan-box">
+            <h3>Quadro Populacional</h3>
+            <div class="pop-stats">
+              <div class="pop-stat"><div class="pop-stat-val">67,42%</div><div class="pop-stat-lbl">Ativos</div></div>
+              <div class="pop-stat"><div class="pop-stat-val">32,58%</div><div class="pop-stat-lbl">Assistidos</div></div>
+              <div class="pop-stat"><div class="pop-stat-val">0,0%</div><div class="pop-stat-lbl">Pensionistas</div></div>
+            </div>
+            <div class="pop-evolucao"><span>2024: 247</span><span class="arrow">→</span><span>2025: 221</span><span class="evo-neg">-10,53%</span></div>
+          </div>
+          <div class="plan-box">
+            <h3>Resultado Atuarial</h3>
+            <div class="atuarial-vals">
+              <div class="av"><strong>R$ 69.958.449,64</strong><span>Patrimônio de Cobertura</span></div>
+              <div class="av"><strong>R$ 69.958.449,64</strong><span>Provisões Matemáticas</span></div>
+            </div>
+            <p style="font-size:.83rem;color:var(--gray-600);margin-top:12px">O Plano encerrou 2025 com Equilíbrio Técnico econômico e atuarial, registrando suficiência de cobertura e solvência.</p>
+          </div>
+        </div>
+        <div class="plan-box" style="margin-bottom:16px">
+          <h3>Arrecadação e Benefícios</h3>
+          <p>O texto analítico 2025 está indicado como <strong>"TEXTO DO ANO PASSADO"</strong> no documento consolidado. Gráfico de barras pendente de dados atualizados.</p>
+        </div>
+        <p style="font-size:.85rem;color:var(--gray-500)"><span class="awaiting-badge">⏳ Falta Arquivo</span> Parecer Atuarial do Plano CD-02</p>
+        <a href="#" class="plan-link">📄 Demonstrativo Analítico dos Investimentos – Dezembro/2025 (link a inserir)</a>
+      </div>
+
+      <!-- ───── CV-03 ───── -->
+      <div id="plan-cv03" class="plan-content">
+        <div class="plan-header">
+          <div class="plan-title-group">
+            <div class="plan-type">Contribuição Variável</div>
+            <h2>Plano CV-03</h2>
+            <p style="font-size:.88rem;color:var(--gray-500);margin-top:4px">Fechado para novas adesões desde 2023 · Patrimônio: R$ 964 mi</p>
+          </div>
+          <span class="awaiting-badge">Parecer Atuarial · Falta arquivo</span>
+        </div>
+        <div class="plan-kpis">
+          <div class="pk highlight"><div class="pk-val">12,18%</div><div class="pk-lbl">Rentabilidade 2025</div></div>
+          <div class="pk"><div class="pk-val">8,43%</div><div class="pk-lbl">Meta Atuarial</div></div>
+          <div class="pk"><div class="pk-val">144,48%</div><div class="pk-lbl">Desempenho</div></div>
+          <div class="pk"><div class="pk-val">R$ 71 mi</div><div class="pk-lbl">Recurso Garantidor</div></div>
+          <div class="pk"><div class="pk-val">2.351</div><div class="pk-lbl">Participantes (2025)</div></div>
+          <div class="pk"><div class="pk-val">-1,43%</div><div class="pk-lbl">Variação Part. (vs. 2.385)</div></div>
+        </div>
+        <div class="plan-chart-row">
+          <h3>Desempenho vs. Referência</h3>
+          <div class="bar-chart-horiz">
+            <div class="bchart-row"><div class="bchart-label">Rentabilidade</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--rent" style="width:85%">12,18%</div></div><div class="bchart-val">12,18%</div></div>
+            <div class="bchart-row"><div class="bchart-label">Meta Atuarial</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--ref" style="width:50%">8,43%</div></div><div class="bchart-val">8,43%</div></div>
+            <div class="bchart-row"><div class="bchart-label">Mediana do Mercado</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--pend" style="width:40%">⚠ Pendente</div></div><div class="bchart-val" style="color:var(--pending-text)">XX%</div></div>
+          </div>
+        </div>
+        <div class="plan-grid-2">
+          <div class="plan-box">
+            <h3>Quadro Populacional</h3>
+            <div class="pop-stats">
+              <div class="pop-stat"><div class="pop-stat-val">97,66%</div><div class="pop-stat-lbl">Ativos</div></div>
+              <div class="pop-stat"><div class="pop-stat-val">2,34%</div><div class="pop-stat-lbl">Assistidos</div></div>
+              <div class="pop-stat"><div class="pop-stat-val">0,0%</div><div class="pop-stat-lbl">Pensionistas</div></div>
+            </div>
+            <div class="pop-evolucao"><span>2024: 2.385</span><span class="arrow">→</span><span>2025: 2.351</span><span class="evo-neg">-1,43%</span></div>
+          </div>
+          <div class="plan-box">
+            <h3>Resultado Atuarial</h3>
+            <div class="atuarial-vals">
+              <div class="av"><strong>R$ 964.283.259,49</strong><span>Patrimônio de Cobertura</span></div>
+              <div class="av"><strong>R$ 956.067.945,97</strong><span>Provisões Matemáticas</span></div>
+              <div class="av"><strong>+51,43%</strong><span>Variação Superávit vs. 2024</span></div>
+              <div class="av"><strong>Superávit</strong><span>Suficiência de cobertura</span></div>
+            </div>
+            <p style="font-size:.83rem;color:var(--gray-600);margin-top:8px">Primeiro ano de apuração de Reserva Especial para Revisão de Plano.</p>
+          </div>
+        </div>
+        <div class="reg-alt-box">
+          <h4>Mudança no Custeio Previdencial</h4>
+          <p>No Plano CV-03, passou o desconto da contribuição de Risco da contribuição patronal para cobrança de uma alíquota de 0,189% durante a vigência do presente plano de custeio previdencial.</p>
+        </div>
+        <p style="margin-top:16px;font-size:.85rem;color:var(--gray-500)"><span class="awaiting-badge">⏳ Falta Arquivo</span> Parecer Atuarial do Plano CV-03</p>
+        <a href="#" class="plan-link">📄 Demonstrativo Analítico dos Investimentos – Dezembro/2025 (link a inserir)</a>
+      </div>
+
+      <!-- ───── CD-METRÔ-DF ───── -->
+      <div id="plan-cdmetro" class="plan-content">
+        <div class="plan-header">
+          <div class="plan-title-group">
+            <div class="plan-type">Contribuição Definida</div>
+            <h2>Plano CD-Metrô-DF</h2>
+            <p style="font-size:.88rem;color:var(--gray-500);margin-top:4px">Patrocinadora: Metrô-DF · Patrimônio: R$ 151 mi</p>
+          </div>
+          <span class="awaiting-badge">Parecer Atuarial · Falta arquivo</span>
+        </div>
+        <div class="plan-kpis">
+          <div class="pk highlight"><div class="pk-val">11,74%</div><div class="pk-lbl">Rentabilidade 2025</div></div>
+          <div class="pk"><div class="pk-val">8,43%</div><div class="pk-lbl">Índice de Referência</div></div>
+          <div class="pk"><div class="pk-val">139,26%</div><div class="pk-lbl">Desempenho</div></div>
+          <div class="pk"><div class="pk-val">R$ 151 mi</div><div class="pk-lbl">Recurso do Plano</div></div>
+          <div class="pk"><div class="pk-val">932</div><div class="pk-lbl">Participantes (2025)</div></div>
+          <div class="pk"><div class="pk-val">+4,02%</div><div class="pk-lbl">Variação Part. (vs. 896)</div></div>
+        </div>
+        <div class="plan-chart-row">
+          <h3>Desempenho vs. Referência</h3>
+          <div class="bar-chart-horiz">
+            <div class="bchart-row"><div class="bchart-label">Rentabilidade</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--rent" style="width:82%">11,74%</div></div><div class="bchart-val">11,74%</div></div>
+            <div class="bchart-row"><div class="bchart-label">Índice de Referência</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--ref" style="width:50%">8,43%</div></div><div class="bchart-val">8,43%</div></div>
+            <div class="bchart-row"><div class="bchart-label">Mediana do Mercado</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--pend" style="width:40%">⚠ Pendente</div></div><div class="bchart-val" style="color:var(--pending-text)">XX%</div></div>
+          </div>
+        </div>
+        <div class="plan-grid-2">
+          <div class="plan-box">
+            <h3>Quadro Populacional</h3>
+            <div class="pop-stats">
+              <div class="pop-stat"><div class="pop-stat-val">99,89%</div><div class="pop-stat-lbl">Ativos</div></div>
+              <div class="pop-stat"><div class="pop-stat-val">0,11%</div><div class="pop-stat-lbl">Assistidos</div></div>
+              <div class="pop-stat"><div class="pop-stat-val">0,0%</div><div class="pop-stat-lbl">Pensionistas</div></div>
+            </div>
+            <div class="pop-evolucao"><span>2024: 896</span><span class="arrow">→</span><span>2025: 932</span><span class="evo-pos">+4,02%</span></div>
+            <p style="font-size:.8rem;color:var(--gray-500);margin-top:8px">Podem aderir: todos os empregados do Metrô-DF, incluindo gerentes, diretores, conselheiros e dirigentes.</p>
+          </div>
+          <div class="plan-box">
+            <h3>Resultado Atuarial</h3>
+            <div class="atuarial-vals">
+              <div class="av"><strong>R$ 150.300.327,51</strong><span>Patrimônio de Cobertura</span></div>
+              <div class="av"><strong>R$ 150.300.327,51</strong><span>Provisões Matemáticas</span></div>
+            </div>
+            <p style="font-size:.83rem;color:var(--gray-600);margin-top:12px">Encerrou 2025 com Equilíbrio Técnico econômico e atuarial, com suficiência de cobertura e solvência.</p>
+          </div>
+        </div>
+        <p style="font-size:.85rem;color:var(--gray-500)"><span class="awaiting-badge">⏳ Falta Arquivo</span> Parecer Atuarial do Plano CD-Metrô-DF</p>
+        <a href="#" class="plan-link">📄 Demonstrativo Analítico dos Investimentos – Dezembro/2025 (link a inserir)</a>
+      </div>
+
+      <!-- ───── CD-05 ───── -->
+      <div id="plan-cd05" class="plan-content">
+        <div class="plan-header">
+          <div class="plan-title-group">
+            <div class="plan-type">Contribuição Definida · Com Perfis de Investimento</div>
+            <h2>Plano CD-05</h2>
+            <p style="font-size:.88rem;color:var(--gray-500);margin-top:4px">BRB, Saúde BRB, BRBCARD, Ceasa-DF, ANEABRB e Previdência BRB · Patrimônio: R$ 54 mi</p>
+          </div>
+          <span class="awaiting-badge">Parecer Atuarial · Falta arquivo</span>
+        </div>
+        <div class="plan-kpis">
+          <div class="pk highlight"><div class="pk-val">12,28%</div><div class="pk-lbl">Rentabilidade 2025</div></div>
+          <div class="pk"><div class="pk-val">8,43%</div><div class="pk-lbl">Índice de Referência</div></div>
+          <div class="pk"><div class="pk-val">145,67%</div><div class="pk-lbl">Desempenho</div></div>
+          <div class="pk"><div class="pk-val">R$ 54 mi</div><div class="pk-lbl">Recurso do Plano</div></div>
+          <div class="pk"><div class="pk-val">1.171</div><div class="pk-lbl">Participantes (2025)</div></div>
+          <div class="pk"><div class="pk-val">+30,26%</div><div class="pk-lbl">Variação Part. (vs. 899)</div></div>
+        </div>
+        <div class="plan-chart-row">
+          <h3>Desempenho vs. Referência</h3>
+          <div class="bar-chart-horiz">
+            <div class="bchart-row"><div class="bchart-label">Rentabilidade</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--rent" style="width:86%">12,28%</div></div><div class="bchart-val">12,28%</div></div>
+            <div class="bchart-row"><div class="bchart-label">Índice de Referência</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--ref" style="width:50%">8,43%</div></div><div class="bchart-val">8,43%</div></div>
+            <div class="bchart-row"><div class="bchart-label">Mediana do Mercado</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--pend" style="width:40%">⚠ Pendente</div></div><div class="bchart-val" style="color:var(--pending-text)">XX%</div></div>
+          </div>
+        </div>
+        <div class="plan-grid-2">
+          <div class="plan-box">
+            <h3>Quadro Populacional</h3>
+            <div class="pop-stats">
+              <div class="pop-stat"><div class="pop-stat-val">99,83%</div><div class="pop-stat-lbl">Ativos</div></div>
+              <div class="pop-stat"><div class="pop-stat-val">0,17%</div><div class="pop-stat-lbl">Assistidos</div></div>
+              <div class="pop-stat"><div class="pop-stat-val">0,0%</div><div class="pop-stat-lbl">Pensionistas</div></div>
+            </div>
+            <div class="pop-evolucao"><span>2024: 899</span><span class="arrow">→</span><span>2025: 1.171</span><span class="evo-pos">+30,26%</span></div>
+          </div>
+          <div class="plan-box">
+            <h3>Resultado Atuarial</h3>
+            <div class="atuarial-vals">
+              <div class="av"><strong>R$ 51.209.884,56</strong><span>Patrimônio de Cobertura</span></div>
+              <div class="av"><strong>R$ 51.209.884,56</strong><span>Provisões Matemáticas</span></div>
+            </div>
+            <p style="font-size:.83rem;color:var(--gray-600);margin-top:12px">Encerrou 2025 com Equilíbrio Técnico econômico e atuarial.</p>
+          </div>
+        </div>
+        <div class="plan-box" style="margin-bottom:16px">
+          <h3>Perfis de Investimento</h3>
+          <p style="font-size:.85rem;color:var(--gray-600)">O Plano CD-05 conta com Perfil de Investimentos incluído em 2025. Resultados por perfil (Conservador, Moderado e Arrojado) aguardam consolidação dos dados nas planilhas.</p>
+          <div class="perfil-tabs">
+            <span class="perfil-tab active">Consolidado</span>
+            <span class="perfil-tab">Conservador</span>
+            <span class="perfil-tab">Moderado</span>
+            <span class="perfil-tab">Arrojado</span>
+          </div>
+        </div>
+        <p style="font-size:.85rem;color:var(--gray-500)"><span class="awaiting-badge">⏳ Falta Arquivo</span> Parecer Atuarial do Plano CD-05</p>
+        <a href="#" class="plan-link">📄 Demonstrativo Analítico dos Investimentos – Dezembro/2025 (link a inserir)</a>
+      </div>
+
+      <!-- ───── BRASÍLIAPREV ───── -->
+      <div id="plan-brasilia" class="plan-content">
+        <div class="plan-header">
+          <div class="plan-title-group">
+            <div class="plan-type">Contribuição Definida Instituído · Com Perfis de Investimento</div>
+            <h2>BrasíliaPrev</h2>
+            <p style="font-size:.88rem;color:var(--gray-500);margin-top:4px">ANEABRB, AABR, COPEV-DF, ICIPE e associados · Patrimônio: R$ 9,5 mi</p>
+          </div>
+          <span class="awaiting-badge">Parecer Atuarial · Falta arquivo</span>
+        </div>
+        <div class="plan-kpis">
+          <div class="pk highlight"><div class="pk-val">12,70%</div><div class="pk-lbl">Rentabilidade 2025</div></div>
+          <div class="pk"><div class="pk-val">8,43%</div><div class="pk-lbl">Índice de Referência</div></div>
+          <div class="pk"><div class="pk-val">150,65%</div><div class="pk-lbl">Desempenho</div></div>
+          <div class="pk"><div class="pk-val">R$ 9,5 mi</div><div class="pk-lbl">Recurso do Plano</div></div>
+          <div class="pk"><div class="pk-val">1.098</div><div class="pk-lbl">Participantes (2025)</div></div>
+          <div class="pk"><div class="pk-val">+14,85%</div><div class="pk-lbl">Variação Part. (vs. 956)</div></div>
+        </div>
+        <div class="plan-chart-row">
+          <h3>Desempenho vs. Referência</h3>
+          <div class="bar-chart-horiz">
+            <div class="bchart-row"><div class="bchart-label">Rentabilidade</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--rent" style="width:89%">12,70%</div></div><div class="bchart-val">12,70%</div></div>
+            <div class="bchart-row"><div class="bchart-label">Índice de Referência</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--ref" style="width:50%">8,43%</div></div><div class="bchart-val">8,43%</div></div>
+            <div class="bchart-row"><div class="bchart-label">Mediana do Mercado</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--pend" style="width:40%">⚠ Pendente</div></div><div class="bchart-val" style="color:var(--pending-text)">XX%</div></div>
+          </div>
+        </div>
+        <div class="plan-grid-2">
+          <div class="plan-box">
+            <h3>Quadro Populacional</h3>
+            <div class="pop-stats">
+              <div class="pop-stat"><div class="pop-stat-val">99,54%</div><div class="pop-stat-lbl">Ativos</div></div>
+              <div class="pop-stat"><div class="pop-stat-val">0,46%</div><div class="pop-stat-lbl">Assistidos</div></div>
+              <div class="pop-stat"><div class="pop-stat-val">0,0%</div><div class="pop-stat-lbl">Pensionistas</div></div>
+            </div>
+            <div class="pop-evolucao"><span>2024: 956</span><span class="arrow">→</span><span>2025: 1.098</span><span class="evo-pos">+14,85%</span></div>
+            <p style="font-size:.78rem;color:var(--gray-500);margin-top:8px">🏆 Marco histórico: recebimento do 1º Assistido do Plano BrasíliaPrev em 2025.</p>
+          </div>
+          <div class="plan-box">
+            <h3>Resultado Atuarial</h3>
+            <div class="atuarial-vals">
+              <div class="av"><strong>R$ 9.478.766,93</strong><span>Patrimônio de Cobertura</span></div>
+              <div class="av"><strong>R$ 9.478.766,93</strong><span>Provisões Matemáticas</span></div>
+            </div>
+            <p style="font-size:.83rem;color:var(--gray-600);margin-top:12px">Encerrou 2025 com Equilíbrio Técnico econômico e atuarial.</p>
+          </div>
+        </div>
+        <div class="reg-alt-box">
+          <h4>Alteração Regulamentar — Revisão 18</h4>
+          <p>Aprovada na 697ª reunião do CONDE (06/08/2025). Justificativa: ajuste da mudança da marca de Regius para Previdência BRB e inclusão da previsão de perfil de investimentos. Versão vigente em: <a href="https://previdenciabrb.org.br/brasiliaprev-instituido-cd/" target="_blank" style="color:var(--blue-600);font-weight:600">previdenciabrb.org.br</a></p>
+        </div>
+        <p style="margin-top:16px;font-size:.85rem;color:var(--gray-500)"><span class="awaiting-badge">⏳ Falta Arquivo</span> Parecer Atuarial do Plano BrasíliaPrev</p>
+        <a href="#" class="plan-link">📄 Demonstrativo Analítico dos Investimentos – Dezembro/2025 (link a inserir)</a>
+      </div>
+
+      <!-- ───── REGIUSPREV ───── -->
+      <div id="plan-regius" class="plan-content">
+        <div class="plan-header">
+          <div class="plan-title-group">
+            <div class="plan-type">Contribuição Definida · Servidores Municipais</div>
+            <h2>RegiusPrev</h2>
+            <p style="font-size:.88rem;color:var(--gray-500);margin-top:4px">Maringá, Cruzeiro do Sul, Querência do Norte e São Tomé (PR) · Patrimônio: R$ 760 mil</p>
+          </div>
+          <span class="awaiting-badge">Parecer Atuarial · Falta arquivo</span>
+        </div>
+        <div class="plan-kpis">
+          <div class="pk highlight"><div class="pk-val">12,37%</div><div class="pk-lbl">Rentabilidade 2025</div></div>
+          <div class="pk"><div class="pk-val">8,43%</div><div class="pk-lbl">Índice de Referência</div></div>
+          <div class="pk"><div class="pk-val">146,74%</div><div class="pk-lbl">Desempenho</div></div>
+          <div class="pk"><div class="pk-val">R$ 760 mil</div><div class="pk-lbl">Recurso do Plano</div></div>
+          <div class="pk"><div class="pk-val">65</div><div class="pk-lbl">Participantes (2025)</div></div>
+          <div class="pk"><div class="pk-val">+10,17%</div><div class="pk-lbl">Variação Part. (vs. 59)</div></div>
+        </div>
+        <div class="plan-chart-row">
+          <h3>Desempenho vs. Referência</h3>
+          <div class="bar-chart-horiz">
+            <div class="bchart-row"><div class="bchart-label">Rentabilidade</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--rent" style="width:87%">12,37%</div></div><div class="bchart-val">12,37%</div></div>
+            <div class="bchart-row"><div class="bchart-label">Índice de Referência</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--ref" style="width:50%">8,43%</div></div><div class="bchart-val">8,43%</div></div>
+            <div class="bchart-row"><div class="bchart-label">Mediana do Mercado</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--pend" style="width:40%">⚠ Pendente</div></div><div class="bchart-val" style="color:var(--pending-text)">XX%</div></div>
+          </div>
+        </div>
+        <div class="plan-grid-2">
+          <div class="plan-box">
+            <h3>Quadro Populacional</h3>
+            <div class="pop-stats">
+              <div class="pop-stat"><div class="pop-stat-val">100%</div><div class="pop-stat-lbl">Ativos</div></div>
+              <div class="pop-stat"><div class="pop-stat-val">0,0%</div><div class="pop-stat-lbl">Assistidos</div></div>
+              <div class="pop-stat"><div class="pop-stat-val">0,0%</div><div class="pop-stat-lbl">Pensionistas</div></div>
+            </div>
+            <div class="pop-evolucao"><span>2024: 59</span><span class="arrow">→</span><span>2025: 65</span><span class="evo-pos">+10,17%</span></div>
+          </div>
+          <div class="plan-box">
+            <h3>Resultado Atuarial</h3>
+            <div class="atuarial-vals">
+              <div class="av"><strong>R$ 758.557,14</strong><span>Patrimônio de Cobertura</span></div>
+              <div class="av"><strong>R$ 758.557,14</strong><span>Provisões Matemáticas</span></div>
+            </div>
+            <p style="font-size:.83rem;color:var(--gray-600);margin-top:12px">Encerrou 2025 com Equilíbrio Técnico econômico e atuarial.</p>
+          </div>
+        </div>
+        <p style="font-size:.85rem;color:var(--gray-500)"><span class="awaiting-badge">⏳ Falta Arquivo</span> Parecer Atuarial do Plano RegiusPrev</p>
+        <a href="#" class="plan-link">📄 Demonstrativo Analítico dos Investimentos – Dezembro/2025 (link a inserir)</a>
+      </div>
+
+      <!-- ───── PGA ───── -->
+      <div id="plan-pga" class="plan-content">
+        <div class="plan-header">
+          <div class="plan-title-group">
+            <div class="plan-type">Plano de Gestão Administrativa</div>
+            <h2>PGA</h2>
+            <p style="font-size:.88rem;color:var(--gray-500);margin-top:4px">Patrimônio: R$ 94 mi · Custo com gestão dos planos previdenciais</p>
+          </div>
+        </div>
+        <div class="plan-kpis">
+          <div class="pk highlight"><div class="pk-val">11,51%</div><div class="pk-lbl">Rentabilidade 2025</div></div>
+          <div class="pk"><div class="pk-val">8,43%</div><div class="pk-lbl">Índice de Referência</div></div>
+          <div class="pk"><div class="pk-val">136,54%</div><div class="pk-lbl">Desempenho</div></div>
+          <div class="pk"><div class="pk-val">R$ 94 mi</div><div class="pk-lbl">Recurso do Plano</div></div>
+          <div class="pk"><div class="pk-val">R$ 8,66 mi</div><div class="pk-lbl">Total Custo Previdencial</div></div>
+          <div class="pk"><div class="pk-val">R$ 10,75 mi</div><div class="pk-lbl">Total Custo Investimentos</div></div>
+        </div>
+        <div class="plan-chart-row">
+          <h3>Desempenho vs. Referência</h3>
+          <div class="bar-chart-horiz">
+            <div class="bchart-row"><div class="bchart-label">Rentabilidade</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--rent" style="width:80%">11,51%</div></div><div class="bchart-val">11,51%</div></div>
+            <div class="bchart-row"><div class="bchart-label">Índice de Referência</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--ref" style="width:50%">8,43%</div></div><div class="bchart-val">8,43%</div></div>
+            <div class="bchart-row"><div class="bchart-label">Mediana do Mercado</div><div class="bchart-bar-wrap"><div class="bchart-bar bchart-bar--pend" style="width:40%">⚠ Pendente</div></div><div class="bchart-val" style="color:var(--pending-text)">XX%</div></div>
+          </div>
+        </div>
+        <div class="plan-box" style="margin-bottom:24px">
+          <h3>Rateio das Despesas — Custo Previdencial (R$ 8.663.190)</h3>
+          <div class="rateio-grid">
+            <div class="rateio-row"><span class="rateio-label">BD-01</span><div class="rateio-bar-wrap"><div class="rateio-bar" style="width:73%"><span class="rateio-pct">73,02%</span></div></div><span class="rateio-val">73,02%</span></div>
+            <div class="rateio-row"><span class="rateio-label">CV-03</span><div class="rateio-bar-wrap"><div class="rateio-bar" style="width:21%"><span class="rateio-pct">21,07%</span></div></div><span class="rateio-val">21,07%</span></div>
+            <div class="rateio-row"><span class="rateio-label">CD-Metrô-DF</span><div class="rateio-bar-wrap"><div class="rateio-bar" style="width:3%"></div></div><span class="rateio-val">3,11%</span></div>
+            <div class="rateio-row"><span class="rateio-label">CD-02</span><div class="rateio-bar-wrap"><div class="rateio-bar" style="width:1.8%"></div></div><span class="rateio-val">1,76%</span></div>
+            <div class="rateio-row"><span class="rateio-label">CD-05</span><div class="rateio-bar-wrap"><div class="rateio-bar" style="width:1%"></div></div><span class="rateio-val">0,92%</span></div>
+            <div class="rateio-row"><span class="rateio-label">BrasíliaPrev</span><div class="rateio-bar-wrap"><div class="rateio-bar" style="width:0.2%"></div></div><span class="rateio-val">0,10%</span></div>
+          </div>
+        </div>
+        <div class="plan-box">
+          <h3>Pendências Identificadas</h3>
+          <div class="pending-block" style="margin-bottom:12px;padding:10px 14px">
+            <div class="pending-block__icon" style="font-size:.9rem">⚠</div>
+            <div class="pending-block__text"><strong style="font-size:.7rem">Despesas de Fomento</strong><p style="font-size:.78rem">O valor consta como "R$ xxxxxxxxxxx" no documento consolidado. Pendente de lançamento.</p></div>
+          </div>
+          <div class="pending-block" style="padding:10px 14px">
+            <div class="pending-block__icon" style="font-size:.9rem">⚠</div>
+            <div class="pending-block__text"><strong style="font-size:.7rem">Custo de Administração</strong><p style="font-size:.78rem">Indicado como "OS DADOS NÃO FORAM LANÇADOS NA PLANILHA" no documento original. Itens 14.10–14.13 pendentes.</p></div>
+          </div>
+        </div>
+        <a href="#" class="plan-link">📄 Demonstrativo Analítico dos Investimentos – Dezembro/2025 (link a inserir)</a>
+      </div>
+
+    </div><!-- /plans-body -->
+  </div>
+</section>
+
+<!-- ══════════════════ DOCUMENTOS ══════════════════ -->
+<section class="section" id="documentos">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Documentos</div>
+      <h2 class="section-title">Demonstrações e Pareceres</h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">Os documentos abaixo estão aguardando envio dos materiais finais para publicação.</p>
+    </div>
+    <div class="pending-block" style="margin-bottom:32px">
+      <div class="pending-block__icon">⏳</div>
+      <div class="pending-block__text">
+        <strong>⚠ Todos os documentos abaixo aguardam material</strong>
+        <p>Os quatro documentos desta seção foram identificados como "AGUARDANDO MATERIAL" no documento consolidado. Nenhum arquivo foi recebido até o momento da consolidação do RAI 2025.</p>
+      </div>
+    </div>
+    <div class="docs-grid">
+      <div class="doc-card pending">
+        <div class="doc-icon">📊</div>
+        <div>
+          <h3>Demonstrações Contábeis e Notas Explicativas</h3>
+          <p>Exercício findo em 31/12/2025</p>
+          <div style="margin-top:8px"><span class="awaiting-badge">⏳ Aguardando Material</span></div>
+        </div>
+      </div>
+      <div class="doc-card pending">
+        <div class="doc-icon">🔍</div>
+        <div>
+          <h3>Relatório dos Auditores Independentes</h3>
+          <p>Referente às Demonstrações Contábeis de 2025</p>
+          <div style="margin-top:8px"><span class="awaiting-badge">⏳ Aguardando Material</span></div>
+        </div>
+      </div>
+      <div class="doc-card pending">
+        <div class="doc-icon">📋</div>
+        <div>
+          <h3>Parecer do Conselho Fiscal</h3>
+          <p>Referente ao exercício de 2025</p>
+          <div style="margin-top:8px"><span class="awaiting-badge">⏳ Aguardando Material</span></div>
+        </div>
+      </div>
+      <div class="doc-card pending">
+        <div class="doc-icon">📜</div>
+        <div>
+          <h3>Manifestação do Conselho Deliberativo</h3>
+          <p>Referente ao exercício de 2025</p>
+          <div style="margin-top:8px"><span class="awaiting-badge">⏳ Aguardando Material</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <svg viewBox="0 0 297.6 161.1" height="34" xmlns="http://www.w3.org/2000/svg" style="display:block;margin-bottom:16px">
+          <style>.fl0{fill:#004282;fill-rule:evenodd}.fl1{fill:#183a6e;fill-rule:evenodd}.fl2{fill:#00aeef;fill-rule:evenodd}</style>
+          <path class="fl2" d="M17.9,61.8l-1.2,7.7c17.2,3.5,32.4,12.1,44.2,24.2l17.6-11.5s2-1.4,3-.2c0,0,.9.9-.9,2.8l-14.5,15c10.2,12.7,16.8,28.3,18.3,45.4h8.2l13.1-83.3H17.9Z"/>
+          <path class="fl0" d="M34.8,121.1l-.8-1,18.9-21.1c-10.2-10-23.1-17.2-37.6-20.2l-7.7,49c-1.3,9.2.3,17.3,15.7,17.3h51.7c-1.4-14.4-7-27.7-15.5-38.6l-24.7,14.6Z"/>
+          <path class="fl0" d="M155.7,101.2h0c8-4.2,13-12.2,13-21.2s-1.7-9.7-4.9-13c-3.7-3.8-8.2-5.3-16.6-5.3h-27.5l-.3,1.7-10.7,67.8c-.8,5-.1,13.7,10.8,13.7h0s18.9,0,18.9,0c16.1,0,27.3-11.1,27.3-27.1s-3.8-13.8-10-16.7M145.8,130.1h0c-3,2.1-5,2.6-12.2,2.6h-11.3l3.7-23.9h11.9c11.5,0,13,5,13,10s-1.9,9.1-5.1,11.3ZM138.7,95.7h-10.5l3.5-21.6h11.9c6.8,0,8,.6,9.1,2.1.9,1.3,1.3,2.7,1.3,4.8,0,8.8-6.1,14.8-15.2,14.8Z"/>
+          <path class="fl1" d="M280.7,39.7h-8.6l5-9.6c.7-1.4,1.4-3.3,2-4.5h0c0,1.4.2,3.3.3,4.6l1.3,9.6ZM288.2,50.9l-4.3-30.6h-7.5l-15.8,30.6h6l3.3-6.5h11.3l.8,6.5h6.2ZM262.1,20.4h-5.8l-5.8,30.6h5.8l5.8-30.6Z"/>
+        </svg>
+        <p>Relatório Anual de Informações 2025. Previdência BRB — Entidade Fechada de Previdência Complementar administrando sete planos de benefícios e um Plano de Gestão Administrativa.</p>
+        <p style="margin-top:12px">CNPJ: aguardando dado · PREVIC supervisionada</p>
+      </div>
+      <div>
+        <div class="footer-title">Navegação</div>
+        <div class="footer-links">
+          <a href="#inicio">Início</a>
+          <a href="#institucional">Institucional</a>
+          <a href="#mensagem">Mensagem da Diretoria</a>
+          <a href="#resumo">Resumo Executivo</a>
+          <a href="#perfil">Perfil Corporativo</a>
+          <a href="#governanca">Governança</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Planos</div>
+        <div class="footer-links">
+          <a href="#planos" onclick="switchPlan('bd01')">BD-01</a>
+          <a href="#planos" onclick="switchPlan('cd02')">CD-02</a>
+          <a href="#planos" onclick="switchPlan('cv03')">CV-03</a>
+          <a href="#planos" onclick="switchPlan('cdmetro')">CD-Metrô-DF</a>
+          <a href="#planos" onclick="switchPlan('cd05')">CD-05</a>
+          <a href="#planos" onclick="switchPlan('brasilia')">BrasíliaPrev</a>
+          <a href="#planos" onclick="switchPlan('regius')">RegiusPrev</a>
+          <a href="#planos" onclick="switchPlan('pga')">PGA</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Contato</div>
+        <div class="contact-item">
+          <span>📍</span>
+          <span>SGAS Quadra 902, Ed. Athenas, Bloco A, Térreo, Brasília - DF, CEP: 70.390-020</span>
+        </div>
+        <div class="contact-item">
+          <span>📞</span>
+          <span>SAC: 0800 000 2977</span>
+        </div>
+        <div class="contact-item">
+          <span>💬</span>
+          <span>WhatsApp: (61) 99803-1922</span>
+        </div>
+        <div class="contact-item">
+          <span>✉️</span>
+          <span>relacionamento@previdenciabrb.org.br</span>
+        </div>
+        <div class="contact-item">
+          <span>🔒</span>
+          <span>encarregadodedados@previdenciabrb.org.br</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p style="color:rgba(255,255,255,.4)">© 2025 Previdência BRB · Todos os direitos reservados · RAI 2025</p>
+      <p style="color:rgba(255,255,255,.3)">Conecte-se conosco!</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════ SCRIPTS ══════════════════ -->
+<script>
+// ─── Navbar scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  // Active nav link
+  const sections = ['inicio','institucional','planos','documentos'];
+  let current = '';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 100) current = id;
+  });
+  document.querySelectorAll('.nav-link').forEach(l => {
+    l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+  });
+});
+
+// ─── Mobile menu
+function toggleMenu() {
+  document.getElementById('navMenu').classList.toggle('open');
+}
+
+// ─── Destaques tabs
+function switchTab(btn, tabId) {
+  document.querySelectorAll('.dtab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.dtab-content').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(tabId).classList.add('active');
+}
+
+// ─── Plan tabs
+function switchPlan(planId) {
+  document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.plan-content').forEach(t => t.classList.remove('active'));
+  document.getElementById('plan-' + planId).classList.add('active');
+  // Activate the corresponding tab button
+  const tabs = document.querySelectorAll('.ptab');
+  const planMap = {bd01:0, cd02:1, cv03:2, cdmetro:3, cd05:4, brasilia:5, regius:6, pga:7};
+  if (planMap[planId] !== undefined) tabs[planMap[planId]].classList.add('active');
+  // Scroll to plans section
+  document.getElementById('planos').scrollIntoView({behavior:'smooth'});
+}
+
+// ─── Rentabilidade chart
+const rentCtx = document.getElementById('rentChart').getContext('2d');
+new Chart(rentCtx, {
+  type: 'bar',
+  data: {
+    labels: ['BD-01', 'CD-02', 'CV-03', 'CD-Metrô-DF', 'CD-05', 'BrasíliaPrev', 'RegiusPrev', 'PGA'],
+    datasets: [
+      {
+        label: 'Rentabilidade 2025 (%)',
+        data: [11.23, 12.82, 12.18, 11.74, 12.28, 12.70, 12.37, 11.51],
+        backgroundColor: 'rgba(0,66,130,0.85)',
+        borderRadius: 6,
+        borderSkipped: false,
+      },
+      {
+        label: 'Benchmark / Meta (%)',
+        data: [9.32, 8.43, 8.43, 8.43, 8.43, 8.43, 8.43, 8.43],
+        backgroundColor: 'rgba(0,174,239,0.6)',
+        borderRadius: 6,
+        borderSkipped: false,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'top', labels: { font: { family: 'DM Sans', size: 12 }, boxWidth: 14 } },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)}%`
+        }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: false,
+        min: 7,
+        max: 15,
+        ticks: { callback: v => v + '%', font: { family: 'DM Sans', size: 11 } },
+        grid: { color: 'rgba(0,0,0,.05)' }
+      },
+      x: {
+        ticks: { font: { family: 'DM Sans', size: 11 } },
+        grid: { display: false }
+      }
+    }
+  }
+});
+
+// ─── Animate numbers on scroll (simple IntersectionObserver)
+const kpiCards = document.querySelectorAll('.kpi-card, .rk-card, .pk');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.style.opacity = '1'; });
+}, { threshold: 0.2 });
+kpiCards.forEach(c => { c.style.opacity = '0'; c.style.transition = 'opacity .5s'; observer.observe(c); });
+</script>
+</body>
+</html>
