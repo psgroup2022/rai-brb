@@ -848,20 +848,22 @@ function PlanoPGA() {
                                 </li>
                             </ol>
 
-                            <div className="plano-hero-meta">
-                                <div>
-                                    <div className="plano-hero-meta-label">Recurso do Plano</div>
-                                    <div className="plano-hero-meta-value">R$ 94,1 mi</div>
-                                </div>
-                                <div>
-                                    <div className="plano-hero-meta-label">Rentabilidade 2025</div>
-                                    <div className="plano-hero-meta-value">11,51%</div>
-                                </div>
-                                <div>
-                                    <div className="plano-hero-meta-label">Desempenho</div>
-                                    <div className="plano-hero-meta-value">136,54%</div>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+
+                    {/* Meta strip — full width */}
+                    <div className="plano-hero-meta">
+                        <div>
+                            <div className="plano-hero-meta-value">R$ 94,1 mi</div>
+                            <div className="plano-hero-meta-label">Recurso do Plano</div>
+                        </div>
+                        <div>
+                            <div className="plano-hero-meta-value">11,51%</div>
+                            <div className="plano-hero-meta-label">Rentabilidade 2025</div>
+                        </div>
+                        <div>
+                            <div className="plano-hero-meta-value">136,54%</div>
+                            <div className="plano-hero-meta-label">Desempenho</div>
                         </div>
                     </div>
                 </div>

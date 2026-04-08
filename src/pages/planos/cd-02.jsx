@@ -744,21 +744,22 @@ function PlanoCD02() {
                                 </li>
                             </ol>
 
-                            {/* Meta strip */}
-                            <div className="plano-hero-meta">
-                                <div>
-                                    <div className="plano-hero-meta-label">Rentabilidade 2025</div>
-                                    <div className="plano-hero-meta-value">12,82%</div>
-                                </div>
-                                <div>
-                                    <div className="plano-hero-meta-label">vs. Índice Referência</div>
-                                    <div className="plano-hero-meta-value">152%</div>
-                                </div>
-                                <div>
-                                    <div className="plano-hero-meta-label">Patrimônio</div>
-                                    <div className="plano-hero-meta-value">R$ 1,0 bi</div>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+
+                    {/* Meta strip — full width */}
+                    <div className="plano-hero-meta">
+                        <div>
+                            <div className="plano-hero-meta-value">12,82%</div>
+                            <div className="plano-hero-meta-label">Rentabilidade 2025</div>
+                        </div>
+                        <div>
+                            <div className="plano-hero-meta-value">152%</div>
+                            <div className="plano-hero-meta-label">vs. Índice Referência</div>
+                        </div>
+                        <div>
+                            <div className="plano-hero-meta-value">R$ 1,0 bi</div>
+                            <div className="plano-hero-meta-label">Patrimônio</div>
                         </div>
                     </div>
                 </div>

@@ -748,21 +748,22 @@ function PlanoBD01() {
                                 </li>
                             </ol>
 
-                            {/* Meta strip */}
-                            <div className="plano-hero-meta">
-                                <div>
-                                    <div className="plano-hero-meta-label">Rentabilidade 2025</div>
-                                    <div className="plano-hero-meta-value">11,23%</div>
-                                </div>
-                                <div>
-                                    <div className="plano-hero-meta-label">vs. Meta Atuarial</div>
-                                    <div className="plano-hero-meta-value">120%</div>
-                                </div>
-                                <div>
-                                    <div className="plano-hero-meta-label">Patrimônio</div>
-                                    <div className="plano-hero-meta-value">R$ 2,9 bi</div>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+
+                    {/* Meta strip — full width */}
+                    <div className="plano-hero-meta">
+                        <div>
+                            <div className="plano-hero-meta-value">11,23%</div>
+                            <div className="plano-hero-meta-label">Rentabilidade 2025</div>
+                        </div>
+                        <div>
+                            <div className="plano-hero-meta-value">120%</div>
+                            <div className="plano-hero-meta-label">vs. Meta Atuarial</div>
+                        </div>
+                        <div>
+                            <div className="plano-hero-meta-value">R$ 2,9 bi</div>
+                            <div className="plano-hero-meta-label">Patrimônio</div>
                         </div>
                     </div>
                 </div>

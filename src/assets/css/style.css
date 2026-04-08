@@ -5355,12 +5355,24 @@ ul.pagination li a:hover {
 }
 .rnt-plano-metrics {
     display: flex;
-    gap: 24px;
+    gap: 2px;
     margin-bottom: 24px;
+}
+.rnt-plano-metrics > div {
+    flex: 1;
+    position: relative;
+    padding: 24px 20px;
+    background: rgba(255,255,255,0.03);
+    border-top: 2px solid transparent;
+    transition: background 0.3s, border-color 0.3s;
+}
+.rnt-plano-metrics > div:hover {
+    background: rgba(0,174,239,0.06);
+    border-top-color: #00aeef;
 }
 .rnt-plano-metric-val {
     font-family: 'Sora', 'Poppins', sans-serif;
-    font-size: 1.9rem;
+    font-size: 1.5rem;
     font-weight: 800;
     color: #00aeef;
     line-height: 1;
@@ -5368,16 +5380,19 @@ ul.pagination li a:hover {
 }
 .rnt-plano-metric-ref {
     font-family: 'Sora', 'Poppins', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 800;
     color: #4ade80;
     line-height: 1;
+    letter-spacing: -0.02em;
 }
 .rnt-plano-metric-lbl {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     color: rgba(255,255,255,0.45);
     margin-top: 4px;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.3;
 }
 .rnt-bar-wrap { margin-top: 4px; }
 .rnt-bar-label {
@@ -5405,7 +5420,8 @@ ul.pagination li a:hover {
     .rnt-planos-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 520px) {
-    .rnt-plano-metrics { flex-direction: column; gap: 16px; }
+    .rnt-plano-metrics { flex-direction: column; gap: 2px; }
+    .rnt-plano-metrics > div { padding: 16px 18px; }
 }
 
 /* ── Seção Comparativo ── */
@@ -5500,29 +5516,47 @@ ul.pagination li a:hover {
 
 /* ── Hero meta strip (rodapé do hero) ── */
 .plano-hero-meta {
-    display: flex;
-    gap: 48px;
-    margin-top: 32px;
-    padding-top: 28px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 0;
 }
+.plano-hero-meta > div {
+    position: relative;
+    padding: 28px 32px;
+    background: rgba(255,255,255,0.03);
+    border-top: 2px solid transparent;
+    transition: background 0.3s, border-color 0.3s;
+}
+.plano-hero-meta > div:hover {
+    background: rgba(0,174,239,0.06);
+    border-top-color: #00aeef;
+}
+.plano-hero-meta > div:nth-child(1) { transition-delay: 0s; }
+.plano-hero-meta > div:nth-child(2) { transition-delay: 0.12s; }
+.plano-hero-meta > div:nth-child(3) { transition-delay: 0.24s; }
 .plano-hero-meta-label {
-    font-size: 0.7rem;
-    color: rgba(255,255,255,0.45);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 4px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    margin-top: 8px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-bottom: 0;
 }
 .plano-hero-meta-value {
     font-family: 'Sora', 'Poppins', sans-serif;
-    font-size: 1.5rem;
+    font-size: clamp(1.7rem, 3.2vw, 2.8rem);
     font-weight: 800;
     color: #00aeef;
     line-height: 1;
+    letter-spacing: -0.03em;
 }
-@media (max-width: 640px) {
-    .plano-hero-meta { gap: 24px; flex-direction: column; }
+@media (max-width: 960px) {
+    .plano-hero-meta { grid-template-columns: 1fr; }
+    .plano-hero-meta > div { padding: 20px 24px; }
 }
 
 /* ── Seções base ── */

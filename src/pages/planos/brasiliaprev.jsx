@@ -823,20 +823,22 @@ function PlanoBrasiliaPrev() {
                                 </li>
                             </ol>
 
-                            <div className="plano-hero-meta">
-                                <div>
-                                    <div className="plano-hero-meta-label">Rentabilidade 2025</div>
-                                    <div className="plano-hero-meta-value">12,70%</div>
-                                </div>
-                                <div>
-                                    <div className="plano-hero-meta-label">vs. Índice Referência</div>
-                                    <div className="plano-hero-meta-value">150%</div>
-                                </div>
-                                <div>
-                                    <div className="plano-hero-meta-label">Patrimônio</div>
-                                    <div className="plano-hero-meta-value">R$ 9,5 mi</div>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+
+                    {/* Meta strip — full width */}
+                    <div className="plano-hero-meta">
+                        <div>
+                            <div className="plano-hero-meta-value">12,70%</div>
+                            <div className="plano-hero-meta-label">Rentabilidade 2025</div>
+                        </div>
+                        <div>
+                            <div className="plano-hero-meta-value">150%</div>
+                            <div className="plano-hero-meta-label">vs. Índice Referência</div>
+                        </div>
+                        <div>
+                            <div className="plano-hero-meta-value">R$ 9,5 mi</div>
+                            <div className="plano-hero-meta-label">Patrimônio</div>
                         </div>
                     </div>
                 </div>
