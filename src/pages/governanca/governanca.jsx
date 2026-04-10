@@ -272,14 +272,8 @@ function Governanca() {
                         </div>
 
                         <div className="col-lg-5 d-none d-lg-flex justify-content-center">
-                            <div className="gov-hero-visual" aria-hidden="true">
-                                <div className="gov-hero-ring gov-hero-ring--outer" />
-                                <div className="gov-hero-ring gov-hero-ring--mid" />
-                                <div className="gov-hero-ring gov-hero-ring--inner" />
-                                <div className="gov-hero-center-badge">
-                                    <i className="fas fa-landmark" />
-                                    <span>Governança</span>
-                                </div>
+                            <div className="gov-hero-visual" aria-hidden="true" style={{ width: '100%', height: '400px', borderRadius: '30px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.3)' }}>
+                                <img src={IMAGES.brasiliaModernImg} alt="Brasília Architecture" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                             </div>
                         </div>
                     </div>
@@ -388,7 +382,9 @@ function Governanca() {
                                     </ul>
                                 </div>
                                 <div className="gov-info-box-img-wrap">
-                                    <div className="gov-info-box-img"><i className="fas fa-image" /><span>imagem</span></div>
+                                    <div className="gov-info-box-img">
+                                        <img src={IMAGES.boardroomMeet} alt="Governança" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    </div>
                                 </div>
                             </article>
 
@@ -415,7 +411,9 @@ function Governanca() {
                                     </ul>
                                 </div>
                                 <div className="gov-info-box-img-wrap">
-                                    <div className="gov-info-box-img"><i className="fas fa-image" /><span>imagem</span></div>
+                                    <div className="gov-info-box-img">
+                                        <img src={IMAGES.boardroomMeet} alt="Governança" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    </div>
                                 </div>
                             </article>
 
@@ -443,7 +441,9 @@ function Governanca() {
                                     </ul>
                                 </div>
                                 <div className="gov-info-box-img-wrap">
-                                    <div className="gov-info-box-img"><i className="fas fa-image" /><span>imagem</span></div>
+                                    <div className="gov-info-box-img">
+                                        <img src={IMAGES.boardroomMeet} alt="Governança" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    </div>
                                 </div>
                             </article>
 
@@ -465,7 +465,9 @@ function Governanca() {
                                     </p>
                                 </div>
                                 <div className="gov-info-box-img-wrap">
-                                    <div className="gov-info-box-img"><i className="fas fa-image" /><span>imagem</span></div>
+                                    <div className="gov-info-box-img">
+                                        <img src={IMAGES.instTrust} alt="Auditoria Interna" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    </div>
                                 </div>
                             </article>
 

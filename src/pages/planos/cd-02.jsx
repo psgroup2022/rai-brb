@@ -5,6 +5,7 @@ import Footer2 from "../../layout/footer2";
 import Header2 from "../../layout/header2";
 import ParticlesComponent from "../../components/ui/particles-bg";
 import headerCD02Video from "../../assets/img/cd-02.mp4";
+import { IMAGES } from "../../constant/theme";
 
 import {
     Chart as ChartJS,
@@ -76,10 +77,11 @@ function SecaoEconomia() {
                         </p>
                     </div>
                     <div>
-                        <div className="dstq-img-card">
+                        <div className="dstq-img-card" style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.1)' }}>
                             <img
-                                src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80"
-                                alt="Mercado financeiro global"
+                                src={IMAGES.youngProfPlanning}
+                                alt="Planejamento Jovem Profissional"
+                                style={{ width: '100%', height: 'auto', display: 'block' }}
                             />
                         </div>
                     </div>
@@ -518,10 +520,11 @@ function SecaoAtuarial() {
                         </p>
                     </div>
                     <div>
-                        <div className="plano-img-card">
+                        <div className="plano-img-card" style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.1)' }}>
                             <img
-                                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
-                                alt="Equilíbrio atuarial"
+                                src={IMAGES.execSumm}
+                                alt="Resumo Executivo e Atuarial"
+                                style={{ width: '100%', height: 'auto', display: 'block' }}
                             />
                         </div>
                     </div>

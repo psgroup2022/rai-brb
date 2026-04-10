@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IMAGES, SVGICONS } from "../constant/theme";
 import { menudata2 } from "../constant/alldata";
 import { useEffect, useState } from "react";
@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 function Header2() {
     const [show, setShow] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -59,15 +60,18 @@ function Header2() {
                                 <ul className="navbar-links">
                                     {menudata2.map((item, index) => {
                                         let menuClassName = item.classChange;
+                                        const isCurrentPath = location.pathname === item.link;
+                                        const isSubMenuActive = item.subMenu?.some(sub => location.pathname === sub.link);
+
                                         if (menuClassName === 'navbar-dropdown menu-item-children') {
                                             return (
                                                 <li key={index} className={menuClassName}>
-                                                    <Link to={item.link}>{item.title}</Link>
+                                                    <Link to={item.link} className={isCurrentPath || isSubMenuActive ? "active" : ""}>{item.title}</Link>
                                                     {item.subMenu && (
                                                         <ul className="sub-menu">
                                                             {item.subMenu.map((subItem, subIndex) => (
                                                                 <li key={subIndex}>
-                                                                    <Link to={subItem.link}>{subItem.title}</Link>
+                                                                    <Link to={subItem.link} className={location.pathname === subItem.link ? "active" : ""}>{subItem.title}</Link>
                                                                 </li>
                                                             ))}
                                                         </ul>
@@ -78,7 +82,7 @@ function Header2() {
                                         else {
                                             return (
                                                 <li key={index} className="navbar-dropdown">
-                                                    <Link to={item.link}>{item.title}</Link>
+                                                    <Link to={item.link} className={isCurrentPath ? "active" : ""}>{item.title}</Link>
                                                 </li>
                                             )
                                         }
@@ -103,14 +107,17 @@ function Header2() {
                         <ul>
                             {menudata2.map((item, i) => {
                                 let menuClassName = item.classChange2;
+                                const isCurrentPath = location.pathname === item.link;
+                                const isSubMenuActive = item.subMenu?.some(sub => location.pathname === sub.link);
+
                                 if (menuClassName === 'menu-item-has-children') {
                                     return (
-                                        <li key={i} className={`menu-item-has-children ${i == isActive ? 'active' : ''}`} onClick={() => menuHandler(i)}>
+                                        <li key={i} className={`menu-item-has-children ${i == isActive ? 'active' : ''} ${isCurrentPath || isSubMenuActive ? 'active-page' : ''}`} onClick={() => menuHandler(i)}>
                                             <Link to={item.link}>{item.title}</Link>
                                             {item.subMenu && (
                                                 <ul className="sub-menu">
                                                     {item.subMenu.map((subItem, subIndex) => (
-                                                        <li key={subIndex}>
+                                                        <li key={subIndex} className={location.pathname === subItem.link ? "active-page" : ""}>
                                                             <Link to={subItem.link}>{subItem.title}</Link>
                                                         </li>
                                                     ))}
@@ -121,7 +128,7 @@ function Header2() {
                                 }
                                 else {
                                     return (
-                                        <li key={i}>
+                                        <li key={i} className={isCurrentPath ? "active-page" : ""}>
                                             <Link to={item.link}>{item.title}</Link>
                                         </li>
                                     )

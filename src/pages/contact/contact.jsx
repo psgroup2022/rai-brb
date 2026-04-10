@@ -23,7 +23,7 @@ function Contact() {
     return (
         <>
             <Header />
-            <PageBanner title="contact us" image={IMAGES.bannrimg3}/>
+            <PageBanner title="Fale Conosco" image={IMAGES.brasiliaModernImg}/>
             <section className="gap blog-page">
                 <div className="container">
                     <div className="row">

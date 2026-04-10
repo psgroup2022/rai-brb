@@ -536,8 +536,12 @@ footer.footer-two .footer-link h5:before,
 /* Legacy card styles — kept for backwards compat if used elsewhere */
 .big-numbers-section {
   position: relative;
-  background: linear-gradient(160deg, #050d1f 0%, #0a2540 55%, #0d3060 100%);
-  background-image: none !important;
+  background: 
+    linear-gradient(rgba(5, 13, 31, 0.8), rgba(5, 13, 31, 0.8)),
+    url('../img/finance_section.png') !important;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   overflow: hidden;
 }
 

@@ -115,8 +115,8 @@ function MensagemLiderancas() {
             {/* Content Section */}
             <section className="gap" style={{ paddingTop: '80px', paddingBottom: '80px' }}>
                 <div className="container">
-                    <div className="row justify-content-center">
-                        <div className="col-lg-10">
+                    <div className="row">
+                        <div className="col-lg-7">
 
                             {/* Section label */}
                             <div style={{ marginBottom: '40px' }}>
@@ -236,8 +236,40 @@ function MensagemLiderancas() {
                             </div>
 
                         </div>
+                        <div className="col-lg-5 d-none d-lg-block">
+                            <div style={{
+                                position: 'sticky',
+                                top: '100px',
+                                borderRadius: '24px',
+                                overflow: 'hidden',
+                                boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                            }}>
+                                <img
+                                    src={IMAGES.corpLeadership}
+                                    alt="Liderança Previdência BRB"
+                                    style={{ width: '100%', height: 'auto', display: 'block' }}
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </section>
+
+            <section
+                style={{
+                    height: '400px',
+                    backgroundImage: `url(${IMAGES.execSummaryImg})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundAttachment: 'fixed',
+                    position: 'relative'
+                }}
+            >
+                <div style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%)'
+                }} />
             </section>
 
             {/* Resumo Executivo Section */}

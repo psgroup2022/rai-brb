@@ -34,91 +34,102 @@ import heroimage from '../assets/img/hero-img.png';
 import threeshapline from '../assets/img/three-shaps-line.png';
 import bghero from '../assets/img/bg-hero.png';
 import twoshap from '../assets/img/two-shap.png';
-import circleimage2 from '../assets/img/circle-image-2.png';
-import heroimg2 from '../assets/img/hero-img-2.png';
-import about1 from '../assets/img/about-1.jpg';
-import about2 from '../assets/img/about-2.jpg';
+// import circleimage2 from '../assets/img/circle-image-2.png';
+// import heroimg2 from '../assets/img/hero-img-2.png';
+// import about1 from '../assets/img/about-1.jpg';
+// import about2 from '../assets/img/about-2.jpg';
 import sign from '../assets/img/signature.png';
-import health1 from '../assets/img/health-img-1.png';
-import health2 from '../assets/img/health-img-2.png';
-import health3 from '../assets/img/health-img-3.png';
-import chooseus from '../assets/img/choose-us.jpg';
+// import health1 from '../assets/img/health-img-1.png';
+// import health2 from '../assets/img/health-img-2.png';
+// import health3 from '../assets/img/health-img-3.png';
+// import chooseus from '../assets/img/choose-us.jpg';
 import chooseuslogo from '../assets/img/choose-us-logo.png';
 import circleimage from '../assets/img/circle-image.png';
 import graph from '../assets/img/graph.png';
-import pricingshap from '../assets/img/pricing-plan-shap.png';
-import pricingshap1 from '../assets/img/pricing-plan-shap-1.png';
+// import pricingshap from '../assets/img/pricing-plan-shap.png';
+// import pricingshap1 from '../assets/img/pricing-plan-shap-1.png';
 import dotimage from '../assets/img/dots-img.png';
 import brandlogo1 from '../assets/img/brand-logo-1.png';
-import brandlogo2 from '../assets/img/brand-logo-2.png';
-import brandlogo3 from '../assets/img/brand-logo-3.png';
-import brandlogo4 from '../assets/img/brand-logo-4.png';
-import brandlogo5 from '../assets/img/brand-logo-5.png';
-import brandlogo6 from '../assets/img/brand-logo-6.png';
+// import brandlogo2 from '../assets/img/brand-logo-2.png';
+// import brandlogo3 from '../assets/img/brand-logo-3.png';
+// import brandlogo4 from '../assets/img/brand-logo-4.png';
+// import brandlogo5 from '../assets/img/brand-logo-5.png';
+// import brandlogo6 from '../assets/img/brand-logo-6.png';
 import blogone1 from '../assets/img/blog-one-1.jpg';
 import blogone2 from '../assets/img/blog-one-2.jpg';
 import blogone3 from '../assets/img/blog-one-3.jpg';
-import project1 from '../assets/img/portfolio-1.jpg';
-import project2 from '../assets/img/portfolio-2.jpg';
-import project3 from '../assets/img/portfolio-3.jpg';
-import project4 from '../assets/img/portfolio-4.jpg';
-import project5 from '../assets/img/portfolio-5.jpg';
-import project6 from '../assets/img/portfolio-6.jpg';
-import project7 from '../assets/img/portfolio-7.jpg';
-import project8 from '../assets/img/portfolio-8.jpg';
-import project9 from '../assets/img/portfolio-9.jpg';
-import project10 from '../assets/img/portfolio-10.jpg';
-import project11 from '../assets/img/portfolio-11.jpg';
-import project12 from '../assets/img/portfolio-12.jpg';
-import review from '../assets/img/review-img-1.jpg';
-import reviewimg2 from '../assets/img/review-img-2.jpg';
+// import project1 from '../assets/img/portfolio-1.jpg';
+// import project2 from '../assets/img/portfolio-2.jpg';
+// import project3 from '../assets/img/portfolio-3.jpg';
+// import project4 from '../assets/img/portfolio-4.jpg';
+// import project5 from '../assets/img/portfolio-5.jpg';
+// import project6 from '../assets/img/portfolio-6.jpg';
+// import project7 from '../assets/img/portfolio-7.jpg';
+// import project8 from '../assets/img/portfolio-8.jpg';
+// import project9 from '../assets/img/portfolio-9.jpg';
+// import project10 from '../assets/img/portfolio-10.jpg';
+// import project11 from '../assets/img/portfolio-11.jpg';
+// import project12 from '../assets/img/portfolio-12.jpg';
+// import review from '../assets/img/review-img-1.jpg';
+// import reviewimg2 from '../assets/img/review-img-2.jpg';
 import quotes from '../assets/img/quotes.png';
-import abouttwo from '../assets/img/about-two-img.jpg';
+// import abouttwo from '../assets/img/about-two-img.jpg';
 import video01 from '../assets/img/animate_video,_without_202604062238.mp4';
 import liderancaVideo from '../assets/img/lideranca.mp4';
-import portfolio1 from '../assets/img/portfolio-img-1.jpg';
-import portfolio2 from '../assets/img/portfolio-img-2.jpg';
-import portfolio3 from '../assets/img/portfolio-img-3.jpg';
+// import portfolio1 from '../assets/img/portfolio-img-1.jpg';
+// import portfolio2 from '../assets/img/portfolio-img-2.jpg';
+// import portfolio3 from '../assets/img/portfolio-img-3.jpg';
 import bgline2 from '../assets/img/bg-line-2.png';
-import appiontment from '../assets/img/appiontment.png';
-import teamimg1 from '../assets/img/team-img-1.jpg';
-import teamimg2 from '../assets/img/team-img-2.jpg';
-import teamimg3 from '../assets/img/team-img-3.jpg';
-import teamimg4 from '../assets/img/team-img-4.jpg';
+// import appiontment from '../assets/img/appiontment.png';
+// import teamimg1 from '../assets/img/team-img-1.jpg';
+// import teamimg2 from '../assets/img/team-img-2.jpg';
+// import teamimg3 from '../assets/img/team-img-3.jpg';
+// import teamimg4 from '../assets/img/team-img-4.jpg';
 import blogtwo1 from '../assets/img/blog-two-1.jpg';
 import blogtwo2 from '../assets/img/blog-two-2.jpg';
 import blogtwo3 from '../assets/img/blog-two-3.jpg';
-import review1 from '../assets/img/review-1.jpg';
-import review2 from '../assets/img/review-2.jpg';
-import review3 from '../assets/img/review-3.jpg';
+// import review1 from '../assets/img/review-1.jpg';
+// import review2 from '../assets/img/review-2.jpg';
+// import review3 from '../assets/img/review-3.jpg';
 import quote2 from '../assets/img/quote-2.png'
-import imageslider1 from '../assets/img/image-slider-1.jpg'
-import imageslider2 from '../assets/img/image-slider-2.jpg'
-import plus from '../assets/img/plus.png'
-import aboutthree from '../assets/img/about-three.png'
-import dentalproject1 from '../assets/img/dental-project-1.jpg'
-import dentalproject2 from '../assets/img/dental-project-2.jpg'
-import dentalproject3 from '../assets/img/dental-project-3.jpg'
+// import imageslider1 from '../assets/img/image-slider-1.jpg'
+// import imageslider2 from '../assets/img/image-slider-2.jpg'
+// import plus from '../assets/img/plus.png'
+// import aboutthree from '../assets/img/about-three.png'
+// import dentalproject1 from '../assets/img/dental-project-1.jpg'
+// import dentalproject2 from '../assets/img/dental-project-2.jpg'
+// import dentalproject3 from '../assets/img/dental-project-3.jpg'
 import workingprocess1 from '../assets/img/working-process-1.png'
 import workingprocess2 from '../assets/img/working-process-2.png'
 import workingprocessline from '../assets/img/working-process-line.png'
-import projectdetail1 from '../assets/img/portfolio-details-1.jpg'
-import projectdetail2 from '../assets/img/portfolio-details-2.jpg'
-import projectdetail3 from '../assets/img/portfolio-details-3.jpg'
-import projectdetail4 from '../assets/img/portfolio-details-4.jpg'
-import servicedetails from '../assets/img/services-details.jpg'
-import blogdetails1 from '../assets/img/blog-details-1.jpg'
-import blogdetails2 from '../assets/img/blog-details-2.jpg'
-import blogdetails3 from '../assets/img/blog-details-3.jpg'
+// import projectdetail1 from '../assets/img/portfolio-details-1.jpg'
+// import projectdetail2 from '../assets/img/portfolio-details-2.jpg'
+// import projectdetail3 from '../assets/img/portfolio-details-3.jpg'
+// import projectdetail4 from '../assets/img/portfolio-details-4.jpg'
+// import servicedetails from '../assets/img/services-details.jpg'
+// import blogdetails1 from '../assets/img/blog-details-1.jpg'
+// import blogdetails2 from '../assets/img/blog-details-2.jpg'
+// import blogdetails3 from '../assets/img/blog-details-3.jpg'
 import doublequote from '../assets/img/double-quotes.png'
-import johriislam from '../assets/img/Johari-lslam.jpg'
-import commnet1 from '../assets/img/comment-img-1.jpg'
-import commnet2 from '../assets/img/comment-img-2.jpg'
-import commnet3 from '../assets/img/comment-img-3.jpg'
+// import johriislam from '../assets/img/Johari-lslam.jpg'
+// import commnet1 from '../assets/img/comment-img-1.jpg'
+// import commnet2 from '../assets/img/comment-img-2.jpg'
+// import commnet3 from '../assets/img/comment-img-3.jpg'
 import bannrimg2 from '../assets/img/bannr-img-2.png'
 import bannrimg3 from '../assets/img/bannr-img-3.png'
 import bannrimg5 from '../assets/img/bannr-img-5.png'
 import bannrimg6 from '../assets/img/bannr-img-6.png'
+import corpLeadership from '../assets/img/corporate-leadership.png';
+import execSummaryImg from '../assets/img/executive-summary.png';
+import officeCollab from '../assets/img/office-collaboration.png';
+import instTrust from '../assets/img/institutional-trust.png';
+import boardroomMeet from '../assets/img/boardroom-meeting.png';
+import retirementJoyImg from '../assets/img/retirement-joy.png';
+import familyFutureImg from '../assets/img/family-future.png';
+import metroStaffImg from '../assets/img/metro-staff.png';
+import youngProfPlanning from '../assets/img/young-professional.png';
+import brasiliaModernImg from '../assets/img/brasilia-modern.png';
+import sustainableGrowthAsg from '../assets/img/sustainable-growth-asg.png';
 
 export const IMAGES = {
     logo: logo,
@@ -158,93 +169,104 @@ export const IMAGES = {
     threeshapline: threeshapline,
     bghero: bghero,
     twoshap: twoshap,
-    circleimage2: circleimage2,
-    heroimg2: heroimg2,
-    about1: about1,
-    about2: about2,
+    circleimage2: null,
+    heroimg2: null,
+    about1: null,
+    about2: null,
     sign: sign,
-    health1: health1,
-    health2: health2,
-    health3: health3,
-    chooseus: chooseus,
+    health1: null,
+    health2: null,
+    health3: null,
+    chooseus: null,
     chooseuslogo: chooseuslogo,
     circleimage: circleimage,
     graph: graph,
-    pricingshap: pricingshap,
-    pricingshap1: pricingshap1,
+    pricingshap: null,
+    pricingshap1: null,
     dotimage: dotimage,
     brandlogo1: brandlogo1,
-    brandlogo2: brandlogo2,
-    brandlogo3: brandlogo3,
-    brandlogo4: brandlogo4,
-    brandlogo5: brandlogo5,
-    brandlogo6: brandlogo6,
+    brandlogo2: null,
+    brandlogo3: null,
+    brandlogo4: null,
+    brandlogo5: null,
+    brandlogo6: null,
     blogone1: blogone1,
     blogone2: blogone2,
     blogone3: blogone3,
 
-    project1: project1,
-    project2: project2,
-    project3: project3,
-    project4: project4,
-    project5: project5,
-    project6: project6,
-    project7: project7,
-    project8: project8,
-    project9: project9,
-    project10: project10,
-    project11: project11,
-    project12: project12,
+    project1: null,
+    project2: null,
+    project3: null,
+    project4: null,
+    project5: null,
+    project6: null,
+    project7: null,
+    project8: null,
+    project9: null,
+    project10: null,
+    project11: null,
+    project12: null,
   
-    review: review,
-    reviewimg2: reviewimg2,
+    review: null,
+    reviewimg2: null,
     quotes: quotes,
-    abouttwo: abouttwo,
+    abouttwo: null,
     video01: video01,
     liderancaVideo: liderancaVideo,
-    portfolio1: portfolio1,
-    portfolio2: portfolio2,
-    portfolio3: portfolio3,
+    portfolio1: null,
+    portfolio2: null,
+    portfolio3: null,
     bgline2: bgline2,
-    appiontment: appiontment,
-    teamimg1: teamimg1,
-    teamimg2: teamimg2,
-    teamimg3: teamimg3,
-    teamimg4: teamimg4,
+    appiontment: null,
+    teamimg1: null,
+    teamimg2: null,
+    teamimg3: null,
+    teamimg4: null,
     blogtwo1: blogtwo1,
     blogtwo2: blogtwo2,
     blogtwo3: blogtwo3,
-    review1: review1,
-    review2: review2,
-    review3: review3,
+    review1: null,
+    review2: null,
+    review3: null,
     quote2: quote2,
-    imageslider1: imageslider1,
-    imageslider2: imageslider2,
-    plus: plus,
-    aboutthree: aboutthree,
-    dentalproject1: dentalproject1,
-    dentalproject2: dentalproject2,
-    dentalproject3: dentalproject3,
+    imageslider1: null,
+    imageslider2: null,
+    plus: null,
+    aboutthree: null,
+    dentalproject1: null,
+    dentalproject2: null,
+    dentalproject3: null,
     workingprocess1: workingprocess1,
     workingprocess2: workingprocess2,
     workingprocessline: workingprocessline,
-    projectdetail1: projectdetail1,
-    projectdetail2: projectdetail2,
-    projectdetail3: projectdetail3,
-    projectdetail4: projectdetail4,
-    servicedetails: servicedetails,
-    blogdetails1: blogdetails1,
-    blogdetails2: blogdetails2,
-    blogdetails3: blogdetails3,
+    projectdetail1: null,
+    projectdetail2: null,
+    projectdetail3: null,
+    projectdetail4: null,
+    servicedetails: null,
+    blogdetails1: null,
+    blogdetails2: null,
+    blogdetails3: null,
     doublequote: doublequote,
-    johriislam: johriislam,
-    commnet1: commnet1,
-    commnet2: commnet2,
-    commnet3: commnet3,
+    johriislam: null,
+    commnet1: null,
+    commnet2: null,
+    commnet3: null,
     bannrimg2:bannrimg2,
     bannrimg3:bannrimg3,
     bannrimg5:bannrimg5,
-    bannrimg6:bannrimg6
+    bannrimg6:bannrimg6,
+    corpLeadership: corpLeadership,
+    execSummaryImg: execSummaryImg,
+    officeCollab: officeCollab,
+    instTrust: instTrust,
+    boardroomMeet: boardroomMeet,
+    retirementJoyImg: retirementJoyImg,
+    familyFutureImg: familyFutureImg,
+    metroStaffImg: metroStaffImg,
+    youngProfPlanning: youngProfPlanning,
+    brasiliaModernImg: brasiliaModernImg,
+    sustainableGrowthAsg: sustainableGrowthAsg,
 }
 
 export const SVGICONS = {

@@ -7,6 +7,7 @@ import Footer2 from "../../layout/footer2";
 import ParticlesComponent from "../../components/ui/particles-bg";
 import { servicedata2 } from "../../constant/alldata";
 import headerDestaqueVideo from "../../assets/img/header_destaque.mp4";
+import { IMAGES } from "../../constant/theme";
 
 /* ─────────────────────────────────────────────
    Hook de reveal por IntersectionObserver
@@ -67,10 +68,11 @@ function SecaoASG() {
                         </p>
                     </div>
                     <div className="dstq-reveal dstq-reveal--d2">
-                        <div className="dstq-img-card">
+                        <div className="dstq-img-card" style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.1)' }}>
                             <img
-                                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80"
+                                src={IMAGES.sustainableGrowthAsg}
                                 alt="Sustentabilidade ASG"
+                                style={{ width: '100%', height: 'auto', display: 'block' }}
                             />
                             <div className="dstq-img-badge">Relatório ASG 2025</div>
                         </div>
@@ -134,10 +136,11 @@ function SecaoInvestimentos() {
                         </p>
                     </div>
                     <div className="dstq-reveal dstq-reveal--d2">
-                        <div className="dstq-img-card">
+                        <div className="dstq-img-card" style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.1)' }}>
                             <img
-                                src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80"
+                                src={IMAGES.corpLeadership}
                                 alt="Investimentos sustentáveis"
+                                style={{ width: '100%', height: 'auto', display: 'block' }}
                             />
                             <div className="dstq-img-badge">Resolução PREVIC nº 26/2025</div>
                         </div>
@@ -235,7 +238,7 @@ function FullImgComunicacao() {
     return (
         <div className="dstq-full-img">
             <img
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1600&q=80"
+                src={IMAGES.brasiliaModernImg}
                 alt="Comunicação digital"
             />
             <div className="dstq-full-img-content">
@@ -369,10 +372,11 @@ function SecaoSeguranca() {
                         </div>
                     </div>
                     <div className="dstq-reveal dstq-reveal--d2">
-                        <div className="dstq-img-card">
+                        <div className="dstq-img-card" style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.1)' }}>
                             <img
-                                src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80"
+                                src={IMAGES.boardroomMeet}
                                 alt="Segurança da informação"
+                                style={{ width: '100%', height: 'auto', display: 'block' }}
                             />
                             <div className="dstq-img-badge">3º Ciclo de Certificação</div>
                         </div>
@@ -448,10 +452,11 @@ function SecaoInovacao() {
                         </p>
                     </div>
                     <div className="dstq-reveal dstq-reveal--d2">
-                        <div className="dstq-img-card">
+                        <div className="dstq-img-card" style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.1)' }}>
                             <img
-                                src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80"
+                                src={IMAGES.youngProfPlanning}
                                 alt="Inovação tecnológica e IA"
+                                style={{ width: '100%', height: 'auto', display: 'block' }}
                             />
                             <div className="dstq-img-badge">GECAT · Inovação 2025</div>
                         </div>

@@ -6,6 +6,8 @@ import Header2 from "../../layout/header2";
 import ParticlesComponent from "../../components/ui/particles-bg";
 import chartVideo from "../../assets/img/chart.mp4";
 
+import { IMAGES } from "../../constant/theme";
+
 /* ─────────────────────────────────────────────
    Dados centralizados
 ───────────────────────────────────────────── */
@@ -120,6 +122,15 @@ function SecaoPatrimonio() {
                         Nas páginas específicas de cada plano, você pode conferir todos os resultados, análises e
                         outras informações relevantes.
                     </p>
+                    <div className="dstq-reveal dstq-reveal--d3" style={{ marginTop: '30px' }}>
+                        <div style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.2)' }}>
+                            <img 
+                                src={IMAGES.instTrust} 
+                                alt="Institutional Trust" 
+                                style={{ width: '100%', height: 'auto', display: 'block' }}
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

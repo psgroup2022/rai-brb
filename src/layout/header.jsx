@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IMAGES, SVGICONS } from "../constant/theme";
 import { menudata } from "../constant/alldata";
 import { useState, useEffect } from "react";
@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 function Header() {
     const [show, setShow] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -65,15 +66,18 @@ function Header() {
                             <ul className="navbar-links">
                                 {menudata.map((item, i) => {
                                     let menuClassName = item.classChange;
+                                    const isCurrentPath = location.pathname === item.link;
+                                    const isSubMenuActive = item.subMenu?.some(sub => location.pathname === sub.link);
+
                                     if (menuClassName === 'navbar-dropdown menu-item-children') {
                                         return (
                                             <li key={i} className={menuClassName}>
-                                                <Link to={item.link}>{item.title}</Link>
+                                                <Link to={item.link} className={isCurrentPath || isSubMenuActive ? "active" : ""}>{item.title}</Link>
                                                 {item.subMenu && (
                                                     <ul className="sub-menu">
                                                         {item.subMenu.map((subItem, subIndex) => (
                                                             <li key={subIndex}>
-                                                                <Link to={subItem.link}>{subItem.title}</Link>
+                                                                <Link to={subItem.link} className={location.pathname === subItem.link ? "active" : ""}>{subItem.title}</Link>
                                                             </li>
                                                         ))}
                                                     </ul>
@@ -84,7 +88,7 @@ function Header() {
                                     else {
                                         return (
                                             <li key={i} className="navbar-dropdown">
-                                                <Link to={item.link}>{item.title}</Link>
+                                                <Link to={item.link} className={isCurrentPath ? "active" : ""}>{item.title}</Link>
                                             </li>
                                         )
                                     }
@@ -110,14 +114,17 @@ function Header() {
                     <ul>
                         {menudata.map((item, i) => {
                             let menuClassName = item.classChange2;
+                            const isCurrentPath = location.pathname === item.link;
+                            const isSubMenuActive = item.subMenu?.some(sub => location.pathname === sub.link);
+
                             if (menuClassName === 'menu-item-has-children') {
                                 return (
-                                    <li key={i} className={`menu-item-has-children ${i == isActive ? 'active' : ''}`} onClick={() => menuHandler(i)}>
+                                    <li key={i} className={`menu-item-has-children ${i == isActive ? 'active' : ''} ${isCurrentPath || isSubMenuActive ? 'active-page' : ''}`} onClick={() => menuHandler(i)}>
                                         <Link to={item.link}>{item.title}</Link>
                                         {item.subMenu && (
                                             <ul className="sub-menu">
                                                 {item.subMenu.map((subItem, subIndex) => (
-                                                    <li key={subIndex}>
+                                                    <li key={subIndex} className={location.pathname === subItem.link ? "active-page" : ""}>
                                                         <Link to={subItem.link}>{subItem.title}</Link>
                                                     </li>
                                                 ))}
@@ -128,7 +135,7 @@ function Header() {
                             }
                             else {
                                 return (
-                                    <li key={i}>
+                                    <li key={i} className={isCurrentPath ? "active-page" : ""}>
                                         <Link to={item.link}>{item.title}</Link>
                                     </li>
                                 )
@@ -150,4 +157,4 @@ function Header() {
         </header>
     );
 }
-export default Header;
+export default Header;

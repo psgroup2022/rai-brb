@@ -6,6 +6,7 @@ import Header2 from "../../layout/header2";
 import ParticlesComponent from "../../components/ui/particles-bg";
 import iconPGA from "../../assets/img/pga.svg";
 import headerPGAVideo from "../../assets/img/pga.mp4";
+import { IMAGES } from "../../constant/theme";
 
 import {
     Chart as ChartJS,
@@ -88,10 +89,11 @@ function SecaoEconomia() {
                         </p>
                     </div>
                     <div>
-                        <div className="dstq-img-card">
+                        <div className="dstq-img-card" style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.1)' }}>
                             <img
-                                src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80"
+                                src={IMAGES.execSummaryImg}
                                 alt="Mercado financeiro global"
+                                style={{ width: '100%', height: 'auto', display: 'block' }}
                             />
                         </div>
                     </div>

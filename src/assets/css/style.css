@@ -278,8 +278,10 @@ header li.menu-item-children > a:before {
     width: 8px;
     height: 8px;
 }
-header .navbar-links li:hover > a {
+header .navbar-links li:hover > a,
+header .navbar-links li a.active {
     border-bottom: 5px solid var(--theme-colour);
+    color: var(--theme-colour);
 }
 header .navbar-links li > a {
     border-bottom: 5px solid transparent;
@@ -451,6 +453,10 @@ i#nav-icon4 {
     line-height: 26px;
     text-transform: capitalize;
     color: #000000;
+}
+.mobile-nav > ul li.active-page > a {
+    color: var(--theme-colour);
+    font-weight: 700;
 }
 .mobile-nav > ul > li > a {
 }

@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
@@ -71,7 +74,45 @@ function MissingTextFlag({ note = "Aguardando texto do cliente." }) {
     );
 }
 
+gsap.registerPlugin(ScrollTrigger);
+
 function PerfilCorporativo() {
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            const kpiCards = gsap.utils.toArray("#nossa-gente .perfil-kpi-card");
+            const highlightCards = gsap.utils.toArray("#nossa-gente .perfil-highlight-card");
+
+            gsap.set([...kpiCards, ...highlightCards], { autoAlpha: 0, y: 60 });
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: kpiCards[0],
+                    start: "top bottom",
+                    end: "top 30%",
+                    scrub: 1,
+                },
+            });
+
+            tl.to(kpiCards, {
+                autoAlpha: 1,
+                y: 0,
+                ease: "power2.out",
+                stagger: 0.25,
+            }).to(
+                highlightCards,
+                {
+                    autoAlpha: 1,
+                    y: 0,
+                    ease: "power2.out",
+                    stagger: 0.25,
+                },
+                "-=0.3"
+            );
+        });
+
+        return () => ctx.revert();
+    }, []);
+
     const downloadTablePdf = async (containerId, fileName) => {
         const target = document.getElementById(containerId);
         if (!target) return;
@@ -246,10 +287,21 @@ function PerfilCorporativo() {
             </section>
 
             {/* ── 3.1 A ENTIDADE ── */}
-            <Section id="a-entidade" eyebrow="# A Entidade" title="A Entidade">
-                <div className="perfil-pending-block">
-                    <div className="perfil-pending-icon">⏳</div>
-                    <p className="perfil-pending-text">Conteúdo em validação — disponibilização prevista para 20/03.</p>
+            <Section id="a-entidade" eyebrow="# Institucional" title="Sobre a Entidade">
+                <div className="row align-items-center g-5">
+                    <div className="col-lg-7">
+                        <p className="perfil-body-text">
+                            A Previdência BRB é uma Entidade Fechada de Previdência Complementar (EFPC), sem fins lucrativos, que tem como missão garantir a segurança financeira e o bem-estar de seus participantes e assistidos por meio de uma gestão sólida e transparente dos planos de benefícios.
+                        </p>
+                        <p className="perfil-body-text">
+                            Com décadas de atuação, nos consolidamos como uma das principais referências em previdência complementar no Centro-Oeste e no Brasil, pautando nossas ações pela ética, sustentabilidade e inovação constante para entregar valor real a quem confia o seu futuro em nossas mãos.
+                        </p>
+                    </div>
+                    <div className="col-lg-5">
+                        <div style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.1)' }}>
+                            <img src={IMAGES.instTrust} alt="Institucional" style={{ width: '100%', height: 'auto' }} />
+                        </div>
+                    </div>
                 </div>
             </Section>
 
@@ -386,9 +438,21 @@ function PerfilCorporativo() {
 
             {/* ── 3.4 NOSSA GENTE ── */}
             <Section id="nossa-gente" eyebrow="# Pessoas" title="Nossa Gente — Público Interno">
-                <p className="perfil-body-text">
-                    Em 2025, a Previdência BRB investiu na capacitação contínua de colaboradores e dirigentes, realizando treinamentos voltados ao desenvolvimento de competências alinhadas ao planejamento estratégico.
-                </p>
+                <div className="row align-items-center g-5 mb-4">
+                    <div className="col-lg-6">
+                        <p className="perfil-body-text">
+                            Em 2025, a Previdência BRB investiu na capacitação contínua de colaboradores e dirigentes, realizando treinamentos voltados ao desenvolvimento de competências alinhadas ao planejamento estratégico.
+                        </p>
+                        <p className="perfil-body-text">
+                            Nossa cultura organizacional valoriza o conhecimento e a atualização constante, garantindo que nossa equipe esteja preparada para os desafios do mercado financeiro e previdenciário.
+                        </p>
+                    </div>
+                    <div className="col-lg-6">
+                        <div style={{ borderRadius: '24px', overflow: 'hidden', border: '8px solid #fff', boxShadow: '0 10px 25px rgba(0,0,0,0.05)' }}>
+                            <img src={IMAGES.officeCollab} alt="Nossa Gente" style={{ width: '100%', height: 'auto' }} />
+                        </div>
+                    </div>
+                </div>
 
                 <div className="row g-4 mt-1">
                     <KpiCard value="2.516h" label="Total de horas de treinamento" />
