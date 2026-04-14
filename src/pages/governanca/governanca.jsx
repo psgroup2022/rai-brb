@@ -7,6 +7,12 @@ import Footer2 from "../../layout/footer2";
 import Header2 from "../../layout/header2";
 import { servicedata2 } from "../../constant/alldata";
 import ParticlesComponent from "../../components/ui/particles-bg";
+import heroGovVideo from "../../assets/img/hero_gov.mp4";
+import imgProposito from "../../assets/img/proposito.png";
+import imgProposta from "../../assets/img/proposta.png";
+import imgPosicionamento from "../../assets/img/posicionamento.png";
+import imgVisao from "../../assets/img/visao.png";
+import imgValores from "../../assets/img/valores.png";
 
 /* ─── helpers ─── */
 function GovSection({ id, eyebrow, title, children, className = "" }) {
@@ -96,35 +102,35 @@ const comites = [
     {
         sigla: "COMIN",
         nome: "Comitê de Investimentos",
-        desc: "Analisa e acompanha as estratégias de investimentos, incluindo risco de crédito, moeda e derivativos. Monitora o crescimento das reservas matemáticas em relação aos recursos necessários para garantir o pagamento dos benefícios.",
+        desc: "O COMIN tem como atribuição analisar e acompanhar as estratégias de investimentos, incluindo operações que envolvem risco de crédito, moeda e derivativos. Além disso, orienta a execução da Política de Investimentos aprovada pelo Conselho Deliberativo e monitora o crescimento das reservas matemáticas em relação aos recursos necessários para garantir o pagamento dos benefícios.",
         icon: "fa-chart-bar",
         color: "#0050a0",
     },
     {
         sigla: "COPAT",
         nome: "Comitê de Patrocinadoras",
-        desc: "Acompanha o desempenho atuarial, financeiro e administrativo dos planos de benefícios. Pode se manifestar sobre propostas de alteração regulamentar, estatutária e de plano de custeio.",
+        desc: "O COPAT é responsável por acompanhar o desempenho atuarial, financeiro e administrativo dos planos de benefícios, em consonância com o planejamento estratégico e políticas internas da Entidade. Também pode se manifestar sobre propostas de alteração regulamentar, estatutária e de plano de custeio.",
         icon: "fa-building",
         color: "#006aae",
     },
     {
         sigla: "COMCI",
         nome: "Comitê de Gerenciamento de Crise e Imagem",
-        desc: "Responsável pela condução de processos de gerenciamento de crise e pela definição de ações para mitigação de riscos e preservação da imagem e reputação da Previdência BRB.",
+        desc: "O Comitê de Gerenciamento de Crise e de Imagem é um órgão colegiado deliberativo, responsável pela condução de processos de gerenciamento de crise e pela definição de ações para mitigação de riscos e preservação da imagem e reputação da Previdência BRB.",
         icon: "fa-shield-alt",
         color: "#00aeef",
     },
     {
         sigla: "CORIS",
         nome: "Comitê de Gestão de Riscos",
-        desc: "Acompanha a identificação, classificação, medição, controle e monitoramento dos riscos e controles internos da Entidade, seguindo os critérios definidos em seu Regimento Interno.",
+        desc: "O CORIS tem como missão acompanhar a identificação, classificação, medição, controle e monitoramento dos riscos e controles internos da Entidade. Suas atividades seguem os critérios definidos no Regimento Interno e demais normativos aplicáveis.",
         icon: "fa-search",
         color: "#003c78",
     },
     {
         sigla: "COMED",
         nome: "Comitê de Ética e Disciplina",
-        desc: "Atua na apuração, instauração, instrução e julgamento de processos éticos e disciplinares envolvendo empregados, membros de órgãos estatutários e terceiros relacionados à Previdência BRB.",
+        desc: "O COMED atua na apuração, instauração, instrução e julgamento de processos éticos e disciplinares envolvendo empregados, membros de órgãos estatutários e terceiros relacionados à PREVIDÊNCIA BRB. Suas ações seguem o Regimento Interno, a legislação vigente, o Estatuto da Entidade e os normativos internos.",
         icon: "fa-balance-scale",
         color: "#011834",
     },
@@ -133,6 +139,51 @@ const comites = [
 /* ─── component ─── */
 function Governanca() {
     const [orgChartScale, setOrgChartScale] = useState(1);
+    const heroRef = useRef(null);
+    const heroVideoRef = useRef(null);
+
+    // Scroll scrub no vídeo do hero
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        const video = heroVideoRef.current;
+        if (!video || !heroRef.current) return;
+
+        const setupScrollVideo = () => {
+            const duration = video.duration || 0;
+            if (!duration) return;
+            
+            // Permite autoplay inicial por 2 segundos antes de ativar o scroll scrub
+            setTimeout(() => {
+                video.currentTime = 0;
+                video.pause();
+
+                const trigger = ScrollTrigger.create({
+                    trigger: heroRef.current,
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true,
+                    onUpdate: (self) => {
+                        const targetTime = self.progress * duration;
+                        video.currentTime = Math.min(Math.max(targetTime, 0), Math.max(duration - 0.01, 0));
+                    },
+                });
+
+                return () => trigger.kill();
+            }, 2000);
+        };
+
+        let cleanup;
+        if (video.readyState >= 1) {
+            cleanup = setupScrollVideo();
+        } else {
+            const handler = () => { cleanup = setupScrollVideo(); };
+            video.addEventListener("loadedmetadata", handler, { once: true });
+            return () => video.removeEventListener("loadedmetadata", handler);
+        }
+
+        return () => cleanup && cleanup();
+    }, []);
+
     useEffect(() => {
         const els = document.querySelectorAll("[data-reveal]");
 
@@ -191,8 +242,8 @@ function Governanca() {
             scrollTrigger: {
                 trigger: section,
                 start: "top top",
-                end: () => `+=${window.innerHeight * 3.2}`,
-                scrub: 0.7,
+                end: "bottom bottom",
+                scrub: 1.5,
             },
         });
 
@@ -243,10 +294,20 @@ function Governanca() {
             <Header2 />
 
             {/* ─── HERO ─── */}
-            <section className="gov-hero">
-                <div className="gov-hero-orb gov-hero-orb--1" aria-hidden="true" />
-                <div className="gov-hero-orb gov-hero-orb--2" aria-hidden="true" />
-                <div className="gov-hero-grid" aria-hidden="true" />
+            <section className="gov-hero" ref={heroRef}>
+                <div className="gov-hero-video-bg" aria-hidden="true">
+                    <video
+                        ref={heroVideoRef}
+                        className="gov-hero-video"
+                        src={heroGovVideo}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="auto"
+                    />
+                </div>
+                <div className="gov-hero-overlay" aria-hidden="true" />
 
                 <div className="container gov-hero-inner">
                     <div className="row align-items-center">
@@ -270,79 +331,16 @@ function Governanca() {
                                 </li>
                             </ol>
                         </div>
-
-                        <div className="col-lg-5 d-none d-lg-flex justify-content-center">
-                            <div className="gov-hero-visual" aria-hidden="true" style={{ width: '100%', height: '400px', borderRadius: '30px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.3)' }}>
-                                <img src={IMAGES.brasiliaModernImg} alt="Brasília Architecture" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                            </div>
-                        </div>
                     </div>
                 </div>
-
             </section>
 
             {/* ─── 4.1 ESTRATÉGIA ─── */}
             <GovSection id="estrategia" eyebrow="Planejamento Estratégico 2025" title="Pensamento e Postura Estratégica" className="gov-section--light">
 
-                {/* Pilares */}
-                <div className="row g-4 mb-5">
-                    <div className="col-lg-4" data-reveal style={{ transitionDelay: "0ms" }}>
-                        <div className="gov-pillar-card gov-pillar-card--purpose">
-                            <div className="gov-pillar-icon"><i className="fas fa-bullseye" /></div>
-                            <p className="gov-pillar-label">Propósito — Missão</p>
-                            <p className="gov-pillar-text">"O futuro que você sonha está em nossos Planos."</p>
-                        </div>
-                    </div>
-                    <div className="col-lg-4" data-reveal style={{ transitionDelay: "100ms" }}>
-                        <div className="gov-pillar-card gov-pillar-card--value">
-                            <div className="gov-pillar-icon"><i className="fas fa-gem" /></div>
-                            <p className="gov-pillar-label">Proposta de Valor</p>
-                            <p className="gov-pillar-text">Entregar Planos de Previdência Complementar sustentáveis e seguros, proporcionando qualidade de vida e bem-estar para você.</p>
-                        </div>
-                    </div>
-                    <div className="col-lg-4" data-reveal style={{ transitionDelay: "200ms" }}>
-                        <div className="gov-pillar-card gov-pillar-card--position">
-                            <div className="gov-pillar-icon"><i className="fas fa-layer-group" /></div>
-                            <p className="gov-pillar-label">Posicionamento Estratégico</p>
-                            <p className="gov-pillar-text">Crescimento sustentado na excelência operacional, relacionamento de qualidade, segurança e rentabilidade na gestão dos recursos e custos adequados.</p>
-                        </div>
-                    </div>
-                </div>
+                <StackedPanels />
 
-                {/* Visão 2030 */}
-                <div className="gov-vision-block" data-reveal>
-                    <div className="gov-vision-year" aria-hidden="true">2030</div>
-                    <div className="gov-vision-content">
-                        <span className="gov-vision-eyebrow">Visão</span>
-                        <p className="gov-vision-text">
-                            Ser uma entidade fechada de previdência complementar com portfólio de produtos inovadores
-                            e de qualidade, com rentabilidade acima do mercado, solidez nos controles internos, marca forte,
-                            com gradual e consistente crescimento no volume dos recursos administrados e no número de participantes,
-                            com atuação em todo o território nacional, até 2030.
-                        </p>
-                    </div>
-                </div>
 
-                {/* Valores */}
-                <div className="gov-values-intro mt-5 mb-4">
-                    <span className="gov-eyebrow">Cultura Organizacional</span>
-                    <h3 className="gov-subsection-title">Nossos Valores</h3>
-                </div>
-                <div className="row g-3">
-                    {values.map((v, i) => (
-                        <div className="col-lg-4 col-md-6" key={i} data-reveal style={{ transitionDelay: `${(i % 3) * 100}ms` }}>
-                            <div className="gov-value-card">
-                                <div className="gov-value-icon">
-                                    <i className={`fas ${v.icon}`} />
-                                </div>
-                                <div className="gov-value-body">
-                                    <h4 className="gov-value-title">{v.label}</h4>
-                                    <p className="gov-value-text">{v.desc}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
             </GovSection>
 
             {/* ─── SCROLL CARDS: Órgãos Estatutários ─── */}
@@ -372,13 +370,11 @@ function Governanca() {
                                     <h3 className="gov-scroll-card-title">Conselho Deliberativo</h3>
                                     <p className="gov-info-box-subtitle">Órgão máximo da Entidade</p>
                                     <p className="gov-scroll-card-desc">
-                                        Responsável pela definição da política geral de administração da PREVIDÊNCIA BRB e
-                                        de seus planos de benefícios. Estabelece diretrizes e orientações estratégicas que
-                                        norteiam a organização, a operação e a gestão da Entidade.
+                                        Órgão máximo da Entidade, o Conselho Deliberativo é responsável pela definição da política geral de administração da PREVIDÊNCIA BRB e de seus planos de benefícios. Suas atribuições incluem o estabelecimento de diretrizes e orientações estratégicas que norteiam a organização, a operação e a gestão da Entidade.
                                     </p>
-                                    <ul className="gov-org-bullets">
-                                        <li>2 membros efetivos eleitos por participantes ativos e assistidos</li>
-                                        <li>2 membros efetivos designados pelas Patrocinadoras ou Instituidoras</li>
+                                    <ul className="gov-scroll-card-desc">
+                                        <li>2 (dois) membros efetivos dentre Participantes Ativos e Assistidos e igual número de suplentes escolhidos em eleição direta pelos Participantes Ativos e Assistidos; </li>
+                                        <li>2 (dois) membros efetivos e igual número de suplentes designados pelas Patrocinadoras ou Instituidoras, desde que dentre os Participantes Ativos e Assistidos dos Planos de Benefícios administrados pela PREVIDÊNCIA BRB.</li>
                                     </ul>
                                 </div>
                                 <div className="gov-info-box-img-wrap">
@@ -401,13 +397,14 @@ function Governanca() {
                                     <h3 className="gov-scroll-card-title">Conselho Fiscal</h3>
                                     <p className="gov-info-box-subtitle">Controle e fiscalização interna</p>
                                     <p className="gov-scroll-card-desc">
-                                        Zela pela gestão da PREVIDÊNCIA BRB, assegurando o cumprimento de normas e a
-                                        correta aplicação dos recursos da Entidade. A presidência caberá a um dos
-                                        membros eleitos, escolhido por estes.
+                                        Órgão de controle interno e fiscalização, o Conselho Fiscal tem como principal função zelar pela gestão da PREVIDÊNCIA BRB, assegurando o cumprimento de normas e a correta aplicação dos recursos da Entidade.
+•	
+
                                     </p>
-                                    <ul className="gov-org-bullets">
-                                        <li>2 membros designados por Patrocinadoras e Instituidoras</li>
-                                        <li>2 membros eleitos pelos participantes ativos e assistidos</li>
+                                    <ul className="gov-scroll-card-desc">
+                                        <li>2 (dois) membros efetivos e igual número de suplentes designados por Patrocinadoras e Instituidoras, dentre os Participantes Ativos e Participantes Assistidos. </li>
+                                        <li>2 (dois) membros efetivos e igual número de suplentes escolhidos em eleição direta pelos Participantes Ativos e Assistidos.</li>
+                                        <li>A presidência do Conselho Fiscal caberá a um dos membros eleitos, escolhido por estes. </li>
                                     </ul>
                                 </div>
                                 <div className="gov-info-box-img-wrap">
@@ -430,14 +427,12 @@ function Governanca() {
                                     <h3 className="gov-scroll-card-title">Diretoria Executiva</h3>
                                     <p className="gov-info-box-subtitle">Administração geral</p>
                                     <p className="gov-scroll-card-desc">
-                                        Garante a observância das normas legais, estatutárias e regulamentares,
-                                        implementando as diretrizes estabelecidas pelo Conselho Deliberativo,
-                                        alinhadas aos objetivos institucionais.
+                                        Responsável pela administração geral da PREVIDÊNCIA BRB, cabe à Diretoria Executiva garantir a observância das normas legais, estatutárias e regulamentares, além de implementar as diretrizes estabelecidas pelo Conselho Deliberativo, alinhadas aos objetivos institucionais.
                                     </p>
-                                    <ul className="gov-org-bullets">
-                                        <li>Diretor-Presidente — definido por processo seletivo</li>
+                                    <ul className="gov-scroll-card-desc">
+                                        <li>Diretor-Presidente – definido por processo seletivo; </li>
                                         <li>Diretor Financeiro — definido por processo seletivo</li>
-                                        <li>Diretor de Previdência — eleito entre participantes</li>
+                                        <li>Diretor de Previdência – eleito dentre os Participantes Ativos e Assistidos.</li>
                                     </ul>
                                 </div>
                                 <div className="gov-info-box-img-wrap">
@@ -460,8 +455,7 @@ function Governanca() {
                                     <h3 className="gov-scroll-card-title">Auditoria Interna</h3>
                                     <p className="gov-info-box-subtitle">Linha de defesa da gestão de riscos</p>
                                     <p className="gov-scroll-card-desc">
-                                        Subordinada ao Conselho Deliberativo, a Auditoria Interna se estrutura como
-                                        mais uma linha de defesa da gestão de riscos, controles e conformidade da Entidade.
+                                       Subordinada ao Conselho Deliberativo, a Auditoria Interna, se estrutura como mais uma linha de defesa da gestão de riscos, controles e conformidade.
                                     </p>
                                 </div>
                                 <div className="gov-info-box-img-wrap">
@@ -482,9 +476,10 @@ function Governanca() {
                     <div className="gov-committees-intro mt-5 mb-4">
                         <span className="gov-eyebrow" style={{ color: "rgba(200,220,255,.55)" }}>Órgãos de Suporte</span>
                         <h3 className="gov-subsection-title" style={{ color: "#fff" }}>Comitês Estratégicos</h3>
-                        <p style={{ color: "rgba(200,220,255,.65)", fontSize: "16px", maxWidth: "680px", marginTop: "12px", lineHeight: "1.7" }}>
-                            Os órgãos estatutários da Previdência BRB contam com o suporte de cinco comitês especializados,
-                            garantindo profundidade técnica nas principais dimensões de gestão.
+                        <p style={{ color: "rgba(200,220,255,.65)", fontSize: "19px", maxWidth: "780px", marginTop: "12px", lineHeight: "1.7" }}>
+                            Os Órgãos Estatutários da Previdência BRB contam com o suporte de quatro comitês estratégicos: o Comitê de Investimentos (COMIN), o Comitê de Patrocinadoras (COPAT), o Comitê de Gerenciamento de Crise e Imagem (COMCI) e o Comitê de Gestão de Riscos (CORIS).
+Os comitês COMIN e COPAT são formados por membros indicados pelas Patrocinadoras e Instituidoras dos planos administrados pela Entidade. Já os comitês COMCI e CORIS são compostos por representantes das unidades organizacionais da Previdência BRB.
+
                         </p>
                         <div className="gov-divider" style={{ marginTop: "20px" }} />
                     </div>
@@ -825,3 +820,182 @@ function Governanca() {
 }
 
 export default Governanca;
+
+function StackedPanels() {
+    const containerRef = useRef(null);
+
+    const panels = [
+        {
+            bg: "#003566",
+            img: imgProposito,
+            eyebrow: "Propósito",
+            title: "Missão",
+            text: "O futuro que você sonha está em nossos Planos.",
+        },
+        {
+            bg: "#004e92",
+            img: imgProposta,
+            eyebrow: null,
+            title: "Proposta de Valor",
+            text: "Entregar Planos de Previdência Complementar sustentáveis e seguros, proporcionando qualidade de vida e bem-estar para você.",
+        },
+        {
+            bg: "#0077b6",
+            img: imgPosicionamento,
+            eyebrow: null,
+            title: "Posicionamento Estratégico da Organização",
+            text: "Crescimento sustentado na excelência operacional, relacionamento de qualidade, segurança e rentabilidade na gestão dos recursos e custos adequados.",
+        },
+        {
+            bg: "#00b4d8",
+            img: imgVisao,
+            eyebrow: null,
+            title: "Visão",
+            text: "Ser uma entidade fechada de previdência complementar com portfólio de produtos inovadores e de qualidade, com rentabilidade acima do mercado, solidez nos controles internos, marca forte, com gradual e consistente crescimento no volume dos recursos administrados e no número de participantes, com atuação em todo o território nacional, até 2030.",
+        },
+        {
+            bg: "#023e8a",
+            img: imgValores,
+            eyebrow: null,
+            title: "Valores",
+            values: [
+                { label: "Respeito", desc: "Respeitamos e valorizamos as pessoas." },
+                { label: "Foco no Participante", desc: "Reconhecemos no participante a razão de existir da Previdência BRB." },
+                { label: "Relações Institucionais", desc: "Zelamos pela qualidade e transparência nas relações." },
+                { label: "Transparência", desc: "Primamos pela clareza e tempestividade na prestação de informações." },
+                { label: "Compromisso", desc: "Somos comprometidos com a realização dos sonhos e qualidade de vida dos participantes e seus familiares." },
+                { label: "Eficácia na Gestão", desc: "Temos foco no resultado e agimos com transparência, integridade e responsabilidade socioambiental." },
+                { label: "Segurança", desc: "Prezamos pela segurança das informações, do dinheiro investido e pelo cumprimento das normas e regulamentos." },
+                { label: "Espírito Empreendedor", desc: "Agimos com pensamento inovador para agregar valor à experiência dos nossos clientes." },
+                { label: "Sustentabilidade", desc: "Priorizamos a sustentabilidade dos planos administrados e a perenidade da Previdência BRB." },
+            ],
+        },
+    ];
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            const items = gsap.utils.toArray(".stacked-panel", containerRef.current);
+
+            items.forEach((panel, index) => {
+                ScrollTrigger.create({
+                    trigger: panel,
+                    start: "top top",
+                    end: "+=100%",
+                    pin: true,
+                    pinSpacing: index === items.length - 1,
+                });
+            });
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    return (
+        <div ref={containerRef} style={{ margin: '0 calc(-50vw + 50%)', width: '100vw' }}>
+            {panels.map((p, i) => (
+                <div
+                    key={i}
+                    className="stacked-panel"
+                    style={{
+                        backgroundImage: `url(${p.img})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        height: '100vh',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: '60px 40px',
+                        position: 'relative',
+                        zIndex: i + 1,
+                    }}
+                >
+                    {/* overlay */}
+                    <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: `${p.bg}cc`,
+                    }} />
+                    <div style={{ position: 'relative', zIndex: 1, maxWidth: p.values ? '1100px' : '800px', textAlign: 'center' }}>
+                        <span style={{
+                            display: 'block',
+                            color: 'rgba(255,255,255,0.7)',
+                            fontSize: '14px',
+                            fontWeight: '700',
+                            letterSpacing: '3px',
+                            textTransform: 'uppercase',
+                            marginBottom: '24px',
+                        }}>
+                            {p.eyebrow}
+                        </span>
+                        {p.title && (
+                            <h2 style={{
+                                color: '#fff',
+                                fontSize: 'clamp(2rem, 5vw, 4rem)',
+                                fontWeight: '900',
+                                marginBottom: '28px',
+                                lineHeight: 1.1,
+                            }}>
+                                {p.title}
+                            </h2>
+                        )}
+                        {p.text && (
+                            <p style={{
+                                color: 'rgba(255,255,255,0.92)',
+                                fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)',
+                                lineHeight: '1.65',
+                                fontWeight: '400',
+                                margin: 0,
+                            }}>
+                                {p.text}
+                            </p>
+                        )}
+                        {p.values && (
+                            <div style={{
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(3, 1fr)',
+                                gap: '12px',
+                                textAlign: 'left',
+                            }}>
+                                {p.values.map((v, k) => (
+                                    <div key={k} style={{
+                                        background: 'rgba(255,255,255,0.1)',
+                                        borderRadius: '10px',
+                                        padding: '20px 22px',
+                                        backdropFilter: 'blur(4px)',
+                                    }}>
+                                        <span style={{ color: '#fff', fontWeight: '700', fontSize: 'clamp(0.75rem, 1.2vw, 0.95rem)', display: 'block', marginBottom: '4px' }}>
+                                            {v.label}
+                                        </span>
+                                        <span style={{ color: 'rgba(255,255,255,0.82)', fontSize: 'clamp(0.7rem, 1vw, 0.85rem)', lineHeight: '1.5' }}>
+                                            {v.desc}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                    {/* dots */}
+                    <div style={{
+                        position: 'absolute',
+                        bottom: '32px',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        display: 'flex',
+                        gap: '8px',
+                        zIndex: 1,
+                    }}>
+                        {panels.map((_, j) => (
+                            <div key={j} style={{
+                                width: j === i ? '28px' : '8px',
+                                height: '8px',
+                                borderRadius: '4px',
+                                background: j === i ? '#fff' : 'rgba(255,255,255,0.35)',
+                                transition: 'width 0.3s',
+                            }} />
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+}

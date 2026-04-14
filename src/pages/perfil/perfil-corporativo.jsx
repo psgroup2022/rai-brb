@@ -19,8 +19,14 @@ import {
     Tooltip,
     Legend,
 } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend, ChartDataLabels);
+
+// Fundo transparente para todos os gráficos
+ChartJS.defaults.backgroundColor = 'transparent';
+ChartJS.defaults.plugins.legend.labels.color = 'rgba(200,220,255,0.75)';
+ChartJS.defaults.color = 'rgba(200,220,255,0.75)';
 
 /* ── helpers ── */
 const fmt = (v) =>
@@ -28,7 +34,18 @@ const fmt = (v) =>
 
 const chartOpts = (yFmt) => ({
     responsive: true,
-    plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => yFmt(ctx.parsed.y) } } },
+    layout: { padding: { top: 28 } },
+    plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: (ctx) => yFmt(ctx.parsed.y) } },
+        datalabels: {
+            anchor: "end",
+            align: "end",
+            color: "rgba(200,225,255,0.9)",
+            font: { weight: "700", size: 11 },
+            formatter: (v) => yFmt(v),
+        },
+    },
     scales: {
         x: { ticks: { color: "rgba(200,220,255,.75)", font: { size: 13 } }, grid: { color: "rgba(255,255,255,.06)" } },
         y: { ticks: { color: "rgba(200,220,255,.75)", callback: yFmt, font: { size: 12 } }, grid: { color: "rgba(255,255,255,.08)" } },
@@ -37,6 +54,7 @@ const chartOpts = (yFmt) => ({
 
 const barColor = "rgba(0,174,239,0.85)";
 const barColor2 = "rgba(0,80,160,0.85)";
+const barColorGreen = "rgba(0,200,120,0.85)";
 
 /* ── section wrapper ── */
 function Section({ id, eyebrow, title, children, className = "" }) {
@@ -166,6 +184,52 @@ function PerfilCorporativo() {
         "Colégio do Sol", "Prime", "Academia Ultra 1", "Academia Ultra 2", "Academia Ultra 3",
     ];
 
+    /* ── Crescimento Patrimonial ── */
+    const crescimentoPatrimonialData = {
+        labels: ["Meta", "Alcançado"],
+        datasets: [{ label: "R$ bilhões", data: [4.36, 4.33], backgroundColor: [barColor2, barColor], borderRadius: 8 }],
+    };
+
+    /* ── Evolução da Rentabilidade ── */
+    const rentabilidadeData = {
+        labels: ["BD-01", "CD-02", "CV-03", "CD-Metrô", "CD-05", "BrasíliaPrev", "RegiusPrev"],
+        datasets: [
+            { label: "Referencial", data: [9.32, 8.44, 8.44, 8.44, 8.44, 8.44, 8.44], backgroundColor: barColorGreen, borderRadius: 6 },
+            { label: "Rentabilidade", data: [11.23, 12.82, 12.18, 11.74, 12.28, 12.70, 12.37], backgroundColor: barColor, borderRadius: 6 },
+        ],
+    };
+
+    /* ── Percentual em relação ao referencial ── */
+    const percentualReferencialData = {
+        labels: ["BD-01", "CD-02", "CV-03", "CD-Metrô", "CD-05", "BrasíliaPrev", "RegiusPrev"],
+        datasets: [
+            { label: "Referencial", data: [110, 110, 110, 110, 110, 110, 110], backgroundColor: "rgba(160,160,160,0.85)", borderRadius: 6 },
+            { label: "Rentabilidade", data: [120.49, 151.90, 144.31, 139.10, 145.50, 150.47, 146.56], backgroundColor: "rgba(230,180,0,0.9)", borderRadius: 6 },
+        ],
+    };
+
+    /* ── Custo Administrativo Meta x Alcançado ── */
+    const custoAdmMetaData = {
+        labels: ["Meta", "Alcançado"],
+        datasets: [{ label: "%", data: [0.74, 0.77], backgroundColor: [barColor2, barColor], borderRadius: 8 }],
+    };
+
+    /* ── Custo Adm / Ativo Total Meta x Alcançado ── */
+    const custoAtivoMetaData = {
+        labels: ["Meta", "Alcançado"],
+        datasets: [{ label: "%", data: [0.44, 0.42], backgroundColor: [barColor2, barColor], borderRadius: 8 }],
+    };
+
+    /* ── Execução Orçamentária Meta x Alcançado ── */
+    const execOrcMetaData = {
+        labels: ["Meta", "Alcançado"],
+        datasets: [{ label: "%", data: [100, 95.86], backgroundColor: [barColor2, barColor], borderRadius: 8 }],
+    };
+    const custoPerCapitaMetaData = {
+        labels: ["Meta", "Alcançado"],
+        datasets: [{ label: "R$", data: [2127.78, 2394.87], backgroundColor: [barColor2, barColor], borderRadius: 8 }],
+    };
+
     /* ── 3.5.3 Custo Administrativo ── */
     const custosData = {
         labels: ["Custo Administrativo", "Pis e Cofins", "Total Despesas", "Rec. Administrativa", "Rec. Investimentos", "Total Receitas"],
@@ -195,22 +259,44 @@ function PerfilCorporativo() {
         datasets: [{ label: "R$", data: [19412507, 20250833], backgroundColor: [barColor, barColor2], borderRadius: 8 }],
     };
 
-    /* ── 3.5.7 Eficiência ── */
-    const sgbrData = {
-        labels: ["SGBR Abertos", "SGBR Concluídos", "RNC Abertos", "RNC Concluídos", "AM Abertos", "AM Concluídos"],
-        datasets: [{ label: "Qtd.", data: [16, 12, 38, 26, 10, 12], backgroundColor: [barColor, barColor2, barColor, barColor2, barColor, barColor2], borderRadius: 6 }],
+    /* ── SGBR ── */
+    const sgbrPAData = {
+        labels: ["Planos de Ações Abertos", "Planos de Ações Concluídos"],
+        datasets: [{ label: "2025", data: [16, 12], backgroundColor: [barColor2, barColor], borderRadius: 6 }],
+    };
+    const sgbrRNCData = {
+        labels: ["RNC Abertos", "RNC Concluídos"],
+        datasets: [{ label: "2025", data: [38, 26], backgroundColor: [barColor2, barColor], borderRadius: 6 }],
+    };
+    const sgbrAMData = {
+        labels: ["AM não concluídas em 2024", "AM Abertas", "AM Concluídas"],
+        datasets: [{ label: "2025", data: [5, 10, 12], backgroundColor: [barColor2, barColor2, barColor], borderRadius: 6 }],
     };
 
-    /* ── 3.5.8 Maturidade ── */
+    /* ── SGBR Consolidado ── */
+    const sgbrConsolidadoData = {
+        labels: ["Abertos", "Concluídos", "Em andamento"],
+        datasets: [
+            { label: "Planos de Ação (SGBR)", data: [16, 12, 4], backgroundColor: barColor, borderRadius: 6 },
+            { label: "Ações de Melhoria", data: [15, 8, 7], backgroundColor: "rgba(230,120,0,0.85)", borderRadius: 6 },
+            { label: "Registros de não conformidades", data: [40, 26, 14], backgroundColor: "rgba(160,160,160,0.85)", borderRadius: 6 },
+        ],
+    };
+    /* ── Ações de Integridade ── */
+    const acoesIntegridadeData = {
+        labels: ["Previstas", "Realizadas"],
+        datasets: [{ label: "Qtd.", data: [17, 17], backgroundColor: [barColor2, barColor], borderRadius: 8 }],
+    };
+
     const maturidadeData = {
         labels: ["2024", "2025", "Meta"],
-        datasets: [{ label: "Índice", data: [1.36, 1.13, 1.36], backgroundColor: [barColor2, barColor, "rgba(0,200,120,0.75)"], borderRadius: 8 }],
+        datasets: [{ label: "Índice", data: [1.36, 1.29, 1.36], backgroundColor: [barColor2, barColor, barColorGreen], borderRadius: 8 }],
     };
 
     /* ── 3.5.9 Custeio ── */
     const custeioData = {
-        labels: ["2024", "2025", "Meta"],
-        datasets: [{ label: "Índice", data: [85.12, 87.59, 86.00], backgroundColor: [barColor2, barColor, "rgba(0,200,120,0.75)"], borderRadius: 8 }],
+        labels: ["2025", "Meta"],
+        datasets: [{ label: "Índice", data: [87.59, 86.00], backgroundColor: [barColor, barColorGreen], borderRadius: 8 }],
     };
 
     /* ── 3.6 Arrecadação ── */
@@ -231,7 +317,36 @@ function PerfilCorporativo() {
         },
     };
 
+    /* ── Instituidores ── */
+    const instituidoresData = {
+        labels: ["Meta", "Alcançado"],
+        datasets: [{ label: "Qtd.", data: [12, 13], backgroundColor: [barColor2, barColor], borderRadius: 8 }],
+    };
+
+    /* ── Equilíbrio Técnico ── */
+    const equilibrioTecnicoData = {
+        labels: ["Plano BD-01", "Plano CV-03"],
+        datasets: [
+            { label: "Meta", data: [100, 100], backgroundColor: barColor, borderRadius: 6 },
+            { label: "Alcançado", data: [103.20, 100.86], backgroundColor: "rgba(230,120,0,0.85)", borderRadius: 6 },
+        ],
+    };
+
+    /* ── Receita Previdencial Per Capita ── */
+    const receitaPerCapitaData = {
+        labels: ["BrasíliaPrev", "RegiusPrev", "CV-03", "CD-05", "CD-Metrô"],
+        datasets: [
+            { label: "Meta", data: [122.44, 334.13, 2330.46, 1076.29, 1328.84], backgroundColor: barColor, borderRadius: 6 },
+            { label: "Alcançado", data: [147.30, 447.03, 2555.19, 1078.06, 1401.85], backgroundColor: "rgba(230,120,0,0.85)", borderRadius: 6 },
+        ],
+    };
+
     /* ── 3.7 Participantes ── */
+    const qtdParticipantesMetaData = {
+        labels: ["Meta", "Alcançado"],
+        datasets: [{ label: "Participantes", data: [9500, 7619], backgroundColor: [barColor2, barColor], borderRadius: 8 }],
+    };
+
     const participantesData = {
         labels: ["BD-01", "CV-03", "CD-02", "CD Metrô", "CD 05", "BrasíliaPrev", "RegiusPrev"],
         datasets: [
@@ -291,10 +406,13 @@ function PerfilCorporativo() {
                 <div className="row align-items-center g-5">
                     <div className="col-lg-7">
                         <p className="perfil-body-text">
-                            A Previdência BRB é uma Entidade Fechada de Previdência Complementar (EFPC), sem fins lucrativos, que tem como missão garantir a segurança financeira e o bem-estar de seus participantes e assistidos por meio de uma gestão sólida e transparente dos planos de benefícios.
+                            Somos uma Entidade Fechada de Previdência Complementar, instituída como uma sociedade civil sem fins lucrativos. Desde 2023 adotamos o nome fantasia de Previdência BRB, em homenagem à Patrocinadora Fundadora, o BRB-Banco de Brasília S/A, onde tudo começou em 1985.
                         </p>
                         <p className="perfil-body-text">
-                            Com décadas de atuação, nos consolidamos como uma das principais referências em previdência complementar no Centro-Oeste e no Brasil, pautando nossas ações pela ética, sustentabilidade e inovação constante para entregar valor real a quem confia o seu futuro em nossas mãos.
+                            Administramos 7 Planos de Benefícios (BD-01, CD-02, CV-03, CD- Metrô-DF, CD-05, RegiusPrev – de entes federativos e o plano instituído BrasíliaPrev, além do PGA – Plano de Gestão Administrativa, que garante a sustentabilidade administrativa da Entidade.
+                        </p>
+                        <p className="perfil-body-text">
+                            Em 2025, a Previdência BRB consolidou avanços relevantes em sua estratégia de crescimento, fortalecimento institucional e aprimoramento da governança, com destaque para os seguintes resultados:
                         </p>
                     </div>
                     <div className="col-lg-5">
@@ -303,12 +421,127 @@ function PerfilCorporativo() {
                         </div>
                     </div>
                 </div>
+
+                {/* Destaques 2025 */}
+                <div className="row g-4 mt-4">
+
+                    <div className="col-lg-6">
+                        <div className="perfil-highlight-card">
+                            <div className="perfil-highlight-icon">🤝</div>
+                            <div>
+                                <h4>Expansão e Parcerias</h4>
+                                <ul className="perfil-highlight-list">
+                                    <li>Aprovação da distribuição do Plano BrasíliaPrev nos canais do BRB – Banco de Brasília S.A., incluindo a plataforma digital da BRB Investimentos e as agências físicas com o apoio da BRB Seguros.</li>
+                                    <li>Celebração de convênios com novos instituidores, com destaque para o Conselho Regional de Medicina Veterinária do Distrito Federal (CRMV-DF) formalização de parcerias com cinco novos filiados: Colégio Biângulo, PPN Tecnologia e Colégio do Sol.</li>
+                                    <li>Êxito nos processos seletivos para administração de planos de benefícios das estatais federais Telebrás S.A. e Infra S.A., aguardando aprovação na SEST.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-lg-6">
+                        <div className="perfil-highlight-card">
+                            <div className="perfil-highlight-icon">📈</div>
+                            <div>
+                                <h4>Crescimento e Desempenho</h4>
+                                <p>O patrimônio administrado atingiu R$ 4,35 bilhões, correspondendo a 99,7% da meta estabelecida.</p>
+                                <p>O Plano CV-03 alcançou a marca de R$ 1 bilhão em patrimônio.</p>
+                                <p>Todos os planos superaram suas metas de rentabilidade e os respectivos índices de referência.</p>
+                                <p>O Plano BD-01 apresentou superávit de R$ 91,141 milhões, e o CV-03, de R$ 8,215 milhões.</p>
+                                <p>A base de participantes atingiu 7.619 participantes, com crescimento anual de 5,31%.</p>
+                                <p>O Índice de Cobertura Previdencial (ICP) alcançou 87,59%.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-lg-6">
+                        <div className="perfil-highlight-card">
+                            <div className="perfil-highlight-icon">💰</div>
+                            <div>
+                                <h4>Eficiência e Gestão de Custos</h4>
+                                <p>Redução de 4,4% na despesa per capita, em relação a 2024.</p>
+                                <p>O custo administrativo correspondeu a 0,42% do patrimônio administrado, ficando 6,7% abaixo de 2024.</p>
+                                <p>As despesas administrativas ficaram 4,5% inferiores ao orçamento, representando economia de aproximadamente R$ 849 mil.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-lg-6">
+                        <div className="perfil-highlight-card">
+                            <div className="perfil-highlight-icon">📱</div>
+                            <div>
+                                <h4>Experiência do Participante e Canais Digitais</h4>
+                                <p>Índice de satisfação no atendimento de 96,73%.</p>
+                                <p>Registro de 73.173 acessos ao portal e aplicativo.</p>
+                                <p>Implantação de perfis de investimento nos Planos CD-05 e BrasíliaPrev.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-lg-6">
+                        <div className="perfil-highlight-card">
+                            <div className="perfil-highlight-icon">💡</div>
+                            <div>
+                                <h4>Produtos, Inovação e Expansão</h4>
+                                <p>Implantação do Projeto Correspondentes, com foco na ampliação da base de patrocinadores, instituidores e participantes, por meio de consultores credenciados.</p>
+                                <p>Lançamento do programa Indique e Ganhe, voltado à expansão da base de participantes do Plano BrasíliaPrev.</p>
+                                <p>Desenvolvimento da segunda edição do Projeto Eureka, estimulando ideias inovadoras entre os colaboradores.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-lg-6">
+                        <div className="perfil-highlight-card">
+                            <div className="perfil-highlight-icon">📚</div>
+                            <div>
+                                <h4>Educação Financeira e Previdenciária</h4>
+                                <p>A Previdência BRB dando continuidade às ações de educação financeira e previdenciária, em 2025, efetuou projetos em escolas públicas e privadas do Distrito Federal, com foco em alunos do ensino fundamental e médio. As iniciativas envolveram palestras, atividades práticas e ações educativas voltadas à conscientização sobre o uso responsável dos recursos financeiros. Esse projeto foi apresentado no Congresso da ABRAPP, reforçando o compromisso institucional com a agenda ESG.</p>
+                                <p>Além disso, a Entidade disponibiliza uma plataforma interativa de educação financeira, com conteúdos multimídia, jogos e testes, acessível em: <a href="https://educacao.previdenciabrb.org.br/" target="_blank" rel="noreferrer">educacao.previdenciabrb.org.br</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-lg-6">
+                        <div className="perfil-highlight-card">
+                            <div className="perfil-highlight-icon">🌱</div>
+                            <div>
+                                <h4>Sustentabilidade e Governança (ESG)</h4>
+                                <p>Implementação da nova Política de Responsabilidade Socioambiental (PRSA), incorporando diretrizes ASG para as áreas de investimentos e gestão de pessoas (DEI).</p>
+                                <p>Fortalecimento das práticas de governança, com a conquista do Selo de Autorregulação em Governança Corporativa (ABRAPP).</p>
+                                <p>Realização da Segunda Semana de Integridade.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-lg-6">
+                        <div className="perfil-highlight-card">
+                            <div className="perfil-highlight-icon">🔗</div>
+                            <div>
+                                <h4>Parcerias Estratégicas</h4>
+                                <p>Formalização de parceria com a ABRAPP como instituidora do Plano BrasíliaPrev, possibilitando a ampliação da base de instituidores e participantes por meio da adesão de novos afiliados.</p>
+                                <p>Formalização de parceria com a MAG Seguros S.A. para oferta de seguro de vida e invalidez aos participantes dos planos CD.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-lg-6">
+                        <div className="perfil-highlight-card">
+                            <div className="perfil-highlight-icon">👥</div>
+                            <div>
+                                <h4>Desenvolvimento de Pessoas</h4>
+                                <p>Realização de treinamentos voltadas ao desenvolvimento e capacitação dos colaboradores.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </Section>
 
             {/* ── 3.2 PATROCINADORAS ── */}
             <Section id="patrocinadoras" eyebrow="# Vínculos" title="Patrocinadoras">
                 <p className="perfil-body-text">
-                    As Patrocinadoras são representadas por empresas ou grupos que disponibilizam, mediante formalização de convênio com o fundo de pensão, um Plano de Benefícios previdenciários para os seus empregados. As contribuições são feitas conjuntamente pela empresa Patrocinadora e os participantes do Plano. Os Planos administrados pela Previdência BRB possuem <strong>22 Patrocinadoras</strong>, incluindo a própria Entidade.
+                    As Patrocinadoras são representadas por empresas ou grupos que disponibilizam, mediante formalização de convênio com o fundo de pensão, um Plano de Benefícios previdenciários para os seus empregados. Nessa situação, as contribuições vertidas ao Plano são feitas conjuntamente pela empresa Patrocinadora e pelos participantes do Plano. Desta categoria, que pressupõe a existência de vínculo empregatício entre as partes, os Planos administrados pela Previdência BRB possuem 22 (vinte e duas) Patrocinadoras, incluindo a própria Entidade.
                 </p>
                 <div className="row g-3 mt-2">
                     {patrocinadoras.map((p, i) => (
@@ -325,7 +558,7 @@ function PerfilCorporativo() {
             {/* ── 3.3 INSTITUIDORAS ── */}
             <Section id="instituidoras" eyebrow="# Vínculos" title="Instituidoras">
                 <p className="perfil-body-text">
-                    As Instituidoras são entidades representativas de caráter profissional, classista ou setorial, que disponibilizam Plano de Benefícios para seus associados. As contribuições são feitas exclusivamente pelos participantes. A Previdência BRB possui convênio com <strong>15 Instituidoras/filiadas</strong>, incluindo a própria Entidade.
+                    As Instituidoras são entidades representativas de caráter profissional, classista ou setorial, que disponibilizam, mediante formalização de convênio com o fundo de pensão, Plano de Benefícios previdenciários para os seus associados ou membros. Nessa situação, as contribuições vertidas ao Plano são feitas exclusivamente pelos participantes, ou seja, sem a obrigação de aportes da associação que os congrega. Atualmente, a Previdência BRB possui convênio com 15 (quinze) instituidoras/filiadas, incluindo a própria Entidade.
                 </p>
                 <div className="row g-3 mt-2">
                     {instituidoras.map((p, i) => (
@@ -441,10 +674,18 @@ function PerfilCorporativo() {
                 <div className="row align-items-center g-5 mb-4">
                     <div className="col-lg-6">
                         <p className="perfil-body-text">
-                            Em 2025, a Previdência BRB investiu na capacitação contínua de colaboradores e dirigentes, realizando treinamentos voltados ao desenvolvimento de competências alinhadas ao planejamento estratégico.
+                            Em 2025, a Previdência BRB investiu na capacitação contínua de colaboradores e dirigentes, realizando treinamentos voltados ao desenvolvimento de competências alinhadas ao planejamento estratégico. Os encontros mensais e as reuniões de líderes serviram como oportunidades de aprendizado, troca de experiências e fortalecimento do trabalho em equipe.
+                        </p>
+                        <p className="perfil-body-text">Entre os programas realizados, destacam-se:</p>
+                        <ul className="perfil-highlight-list">
+                            <li><strong>Programa PREPARE-SE:</strong> voltado à preparação de membros dos órgãos estatutários e comitês para atuar e tomar decisões nos colegiados. O programa incluiu todos os colaboradores da Entidade e foi aberto também para participantes e assistidos que tenham interesse em atuar futuramente como dirigente ou conselheiro, ou que queiram participar da governança da Previdência BRB.</li>
+                            <li><strong>Programa de Integridade:</strong> com ações estabelecidas para aprimoramento dos controles internos, mitigação dos riscos relacionados à integridade e reforço às boas práticas de governança, envolvendo a prevenção aos crimes de lavagem de dinheiro e financiamento ao terrorismo, divulgação do canal de ética e ouvidoria, ações para eliminação de conflitos de interesse e de outras situações que afrontem os princípios estabelecidos no Código de Conduta da Entidade. Em 2025, ocorreu a Segunda Semana de Integridade da Previdência BRB.</li>
+                        </ul>
+                        <p className="perfil-body-text">
+                            Também tiveram continuidade os programas de Educação Financeira e Previdenciária e de Gestão ASG, — todos integrantes do Programa de Educação Continuada (PEC) da Previdência BRB. No total, foram registradas 2.516 horas de treinamentos, resultado 66,93% superior ao alcançado em 2024.
                         </p>
                         <p className="perfil-body-text">
-                            Nossa cultura organizacional valoriza o conhecimento e a atualização constante, garantindo que nossa equipe esteja preparada para os desafios do mercado financeiro e previdenciário.
+                            Além disso, a Previdência BRB viabillizou a renovação de 11 certificações profissionais: 1 CEA, 8 CPA-20 e 2 ICSS, garantindo que a equipe atue com excelência técnica nos órgãos colegiados e comitês técnicos.
                         </p>
                     </div>
                     <div className="col-lg-6">
@@ -453,38 +694,6 @@ function PerfilCorporativo() {
                         </div>
                     </div>
                 </div>
-
-                <div className="row g-4 mt-1">
-                    <KpiCard value="2.516h" label="Total de horas de treinamento" />
-                    <KpiCard value="+66,93%" label="de crescimento em horas de treinamento vs. 2024" />
-                    <KpiCard value="11" label="Certificações profissionais renovadas" />
-                    <KpiCard value="1 CEA · 8 CPA-20 · 2 ICSS" label="Composição das certificações" />
-                </div>
-
-                <div className="row g-4 mt-2">
-                    <div className="col-lg-6">
-                        <div className="perfil-highlight-card">
-                            <div className="perfil-highlight-icon">🎓</div>
-                            <div>
-                                <h4>Programa PREPARE-SE</h4>
-                                <p>Voltado à preparação de membros dos órgãos estatutários e comitês para atuar e tomar decisões em suas respectivas áreas nos colegiados. Incluiu todos os colaboradores e foi aberto a participantes e assistidos com interesse em atuar como dirigente ou conselheiro.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-6">
-                        <div className="perfil-highlight-card">
-                            <div className="perfil-highlight-icon">🔒</div>
-                            <div>
-                                <h4>2ª Semana de Integridade</h4>
-                                <p>Reforçou o compromisso da Empresa com ética, integridade e boas práticas de governança. Direcionado a todos os colaboradores, dirigentes, conselheiros, prestadores de serviços, parceiros e participantes.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <p className="perfil-body-text mt-4">
-                    Tiveram continuidade os programas de <strong>Educação Financeira e Previdenciária</strong>, <strong>Gestão Baseada em Riscos</strong>, <strong>Experiência do Cliente</strong> e <strong>Prevenção à Lavagem de Dinheiro e ao Financiamento ao Terrorismo</strong> — todos integrantes do Programa de Educação Continuada (PEC) da Previdência BRB.
-                </p>
             </Section>
 
             {/* ── 3.5 NOSSOS NÚMEROS ── */}
@@ -497,63 +706,515 @@ function PerfilCorporativo() {
                     <div className="perfil-patrimonio-delta">▲ +8,52% em relação a 2024</div>
                 </div>
 
+                <div className="perfil-destaque-meta">
+                    A meta estabelecia alcançar o patrimônio de R$4,36 bilhões. Alcançamos R$4,33, correspondente a 99,31% do previsto. <strong>Meta não alcançada</strong>
+                </div>
+
+                <div className="perfil-chart-block mt-4" style={{ maxWidth: 480 }}>
+                    <h3 className="perfil-chart-title">Crescimento Patrimonial</h3>
+                    <Bar
+                        data={crescimentoPatrimonialData}
+                        options={{
+                            responsive: true,
+                            layout: { padding: { top: 30 } },
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { callbacks: { label: (ctx) => "R$ " + ctx.parsed.y.toFixed(2).replace(".", ",") + " bi" } },
+                                datalabels: {
+                                    anchor: "end",
+                                    align: "end",
+                                    color: "rgba(200,225,255,0.9)",
+                                    font: { weight: "700", size: 14 },
+                                    formatter: (v) => v.toFixed(2).replace(".", ","),
+                                },
+                            },
+                            scales: {
+                                x: { ticks: { color: "rgba(200,220,255,.75)", font: { size: 13 } }, grid: { color: "rgba(255,255,255,.06)" } },
+                                y: {
+                                    min: 4.20,
+                                    max: 4.50,
+                                    ticks: { color: "rgba(200,220,255,.75)", callback: (v) => "R$ " + v.toFixed(2).replace(".", ",") + " bi", font: { size: 12 } },
+                                    grid: { color: "rgba(255,255,255,.08)" },
+                                },
+                            },
+                        }}
+                    />
+                </div>
+
+                {/* Evolução da Rentabilidade */}
+                <div className="perfil-chart-block mt-5">
+                    <h3 className="perfil-chart-title">Evolução da Rentabilidade</h3>
+                    <p className="perfil-body-text">Rentabilidade alcançada, comparada ao referencial das Políticas de Investimento e ou Meta atuarial – Meta alcançada</p>
+                    <Bar
+                        data={rentabilidadeData}
+                        options={{
+                            responsive: true,
+                            layout: { padding: { top: 30 } },
+                            plugins: {
+                                legend: { labels: { color: "rgba(200,220,255,.75)", font: { size: 13 } } },
+                                tooltip: { callbacks: { label: (ctx) => ctx.dataset.label + ": " + ctx.parsed.y.toFixed(2).replace(".", ",") + "%" } },
+                                datalabels: {
+                                    anchor: "end",
+                                    align: "end",
+                                    color: "rgba(200,225,255,0.9)",
+                                    font: { weight: "700", size: 11 },
+                                    formatter: (v) => v.toFixed(2).replace(".", ",") + "%",
+                                },
+                            },
+                            scales: {
+                                x: { ticks: { color: "rgba(200,220,255,.75)", font: { size: 13 } }, grid: { color: "rgba(255,255,255,.06)" } },
+                                y: {
+                                    min: 0,
+                                    max: 16,
+                                    ticks: { color: "rgba(200,220,255,.75)", callback: (v) => v.toFixed(2).replace(".", ",") + "%", font: { size: 12 } },
+                                    grid: { color: "rgba(255,255,255,.08)" },
+                                },
+                            },
+                        }}
+                        height={100}
+                    />
+                </div>
+
+                {/* Percentual em relação ao referencial */}
+                <div className="perfil-chart-block mt-5">
+                    <h3 className="perfil-chart-title">Percentual em relação ao referencial</h3>
+                    <Bar
+                        data={percentualReferencialData}
+                        options={{
+                            responsive: true,
+                            layout: { padding: { top: 30 } },
+                            plugins: {
+                                legend: { labels: { color: "rgba(200,220,255,.75)", font: { size: 13 } } },
+                                tooltip: { callbacks: { label: (ctx) => ctx.dataset.label + ": " + ctx.parsed.y.toFixed(2).replace(".", ",") } },
+                                datalabels: {
+                                    anchor: "end",
+                                    align: "end",
+                                    color: "rgba(200,225,255,0.9)",
+                                    font: { weight: "700", size: 11 },
+                                    formatter: (v) => v.toFixed(2).replace(".", ","),
+                                },
+                            },
+                            scales: {
+                                x: { ticks: { color: "rgba(200,220,255,.75)", font: { size: 13 } }, grid: { color: "rgba(255,255,255,.06)" } },
+                                y: {
+                                    min: 0,
+                                    max: 170,
+                                    ticks: { color: "rgba(200,220,255,.75)", callback: (v) => v.toFixed(2).replace(".", ","), font: { size: 12 } },
+                                    grid: { color: "rgba(255,255,255,.08)" },
+                                },
+                            },
+                        }}
+                        height={100}
+                    />
+                </div>
+
                 {/* 3.5.3 Custo Administrativo */}
                 <div className="perfil-chart-block mt-5">
-                    <h3 className="perfil-chart-title">Custeio Administrativo 2025</h3>
-                    <p className="perfil-body-text">O custo administrativo em 2025 foi menor que o custeio em 29,1%, provocando capitalização do PGA. Esse resultado ocorreu devido à rentabilidade alcançada no ano.</p>
-                    <Bar data={custosData} options={chartOpts(fmt)} height={120} />
+                    <p className="perfil-eyebrow" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '12px', color: '#00aeef', marginBottom: '8px' }}>INDICADORES DA GESTÃO ADMINISTRATIVA</p>
+                    <h3 className="perfil-chart-title">Custo/Custeio Administrativo</h3>
+                    <p className="perfil-body-text">O custo administrativo em 2025 foi menor que o custeio em 29,1%, promovendo a capitalização do PGA. O custo total (despesas +provisão do PIS/COFINS) comparado ao custeio administrativo (receitas) correspondeu 0,77%, portanto, numa situação mais favorável comparada ao resultado de 2024, considerando, principalmente, os resultados positivos das receitas dos investimentos. <strong>Meta alcançada!</strong></p>
+                    <p className="perfil-destaque-meta">Despesa Administrativa da Previdência BRB / Receita Administrativa Total. (Cobertura da despesa administrativa)</p>
                 </div>
 
-                {/* 3.5.4 Custo / Ativo */}
-                <div className="row g-4 mt-3">
-                    <div className="col-lg-6">
-                        <div className="perfil-chart-block">
-                            <h3 className="perfil-chart-title">Custo Administrativo / Ativo Total (%)</h3>
-                            <p className="perfil-body-text">Em 2025, o custo administrativo fechou em <strong>0,42%</strong> do patrimônio total, uma redução de 7,22% — evidenciando a responsabilidade na gestão dos recursos.</p>
-                            <Bar data={custoAtivoData} options={chartOpts((v) => v + "%")} />
+                {/* Custo Administrativo Meta x Alcançado */}
+                <div className="perfil-chart-block mt-4" style={{ maxWidth: 480 }}>
+                    <h3 className="perfil-chart-title">Custo Administrativo</h3>
+                    <Bar
+                        data={custoAdmMetaData}
+                        options={{
+                            responsive: true,
+                            layout: { padding: { top: 30 } },
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { callbacks: { label: (ctx) => ctx.parsed.y.toFixed(2).replace(".", ",") + "%" } },
+                                datalabels: {
+                                    anchor: "end",
+                                    align: "end",
+                                    color: "rgba(200,225,255,0.9)",
+                                    font: { weight: "700", size: 14 },
+                                    formatter: (v) => v.toFixed(2).replace(".", ","),
+                                },
+                            },
+                            scales: {
+                                x: { ticks: { color: "rgba(200,220,255,.75)", font: { size: 13 } }, grid: { color: "rgba(255,255,255,.06)" } },
+                                y: {
+                                    min: 0,
+                                    max: 1.0,
+                                    ticks: { color: "rgba(200,220,255,.75)", callback: (v) => v.toFixed(2).replace(".", ","), font: { size: 12 } },
+                                    grid: { color: "rgba(255,255,255,.08)" },
+                                },
+                            },
+                        }}
+                    />
+                </div>
+
+                {/* Tabelas Despesas e Receitas */}
+                <div className="row g-4 mt-4">
+                    <div className="col-lg-4 col-md-6">
+                        <div className="perfil-table-wrapper">
+                            <table className="perfil-table">
+                                <thead>
+                                    <tr><th>Despesas Totais</th><th className="text-end">2025</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Custo Administrativo</td><td className="text-end">18.246.550</td></tr>
+                                    <tr><td>Pis e Cofins</td><td className="text-end">1.165.956</td></tr>
+                                    <tr><td><strong>Total</strong></td><td className="text-end"><strong>19.412.507</strong></td></tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div className="col-lg-6">
-                        <div className="perfil-chart-block">
-                            <h3 className="perfil-chart-title">Custo Administrativo Per Capita (R$)</h3>
-                            <p className="perfil-body-text">O custo per capita em 2025 foi de <strong>R$ 2.395</strong>, redução de 4,39% vs. 2024. O número de participantes cresceu 5,31%, refletindo ganho de escala.</p>
-                            <Bar data={perCapitaData} options={chartOpts((v) => "R$ " + v.toLocaleString("pt-BR"))} />
+                    <div className="col-lg-4 col-md-6">
+                        <div className="perfil-table-wrapper">
+                            <table className="perfil-table">
+                                <thead>
+                                    <tr><th>Receitas Totais</th><th className="text-end">2025</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Receita Administrativa</td><td className="text-end">15.171.763</td></tr>
+                                    <tr><td>Receitas dos Investimentos</td><td className="text-end">9.902.567</td></tr>
+                                    <tr><td><strong>Total</strong></td><td className="text-end"><strong>25.074.330</strong></td></tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
 
-                {/* 3.5.6 Execução Orçamentária */}
-                <div className="perfil-chart-block mt-4">
-                    <h3 className="perfil-chart-title">Execução Orçamentária 2025</h3>
-                    <p className="perfil-body-text">As despesas administrativas totais ficaram <strong>4,14% abaixo do valor orçado</strong>. A meta estabelecida para esse indicador foi alcançada.</p>
-                    <div style={{ maxWidth: 420 }}>
-                        <Bar data={orcamentoData} options={chartOpts(fmt)} />
+                {/* Custo Administrativo / Ativo Total */}
+                <div className="perfil-chart-block mt-5">
+                    <h3 className="perfil-chart-title">Custo Administrativo / Ativo Total</h3>
+                    <p className="perfil-body-text">A comparação das despesas administrativos com o ativo total (patrimônio) resultou em 0,42%, portanto, 6,67% menor que o resultado alcançado em 2024, de 0,45%. Quanto menor, melhor para os Participantes. <strong>Meta alcançada!</strong></p>
+                    <p className="perfil-body-text">Fato que evidencia a responsabilidade na gestão dos recursos administrativos. Previdência BRB.</p>
+                    <p className="perfil-destaque-meta">Custo Administrativo/Ativo Total.</p>
+                </div>
+
+                <div className="perfil-chart-block mt-4" style={{ maxWidth: 480 }}>
+                    <h3 className="perfil-chart-title">Custo Administrativo</h3>
+                    <Bar
+                        data={custoAtivoMetaData}
+                        options={{
+                            responsive: true,
+                            layout: { padding: { top: 30 } },
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { callbacks: { label: (ctx) => ctx.parsed.y.toFixed(2).replace(".", ",") } },
+                                datalabels: {
+                                    anchor: "end",
+                                    align: "end",
+                                    color: "rgba(200,225,255,0.9)",
+                                    font: { weight: "700", size: 14 },
+                                    formatter: (v) => v.toFixed(2).replace(".", ","),
+                                },
+                            },
+                            scales: {
+                                x: { ticks: { color: "rgba(200,220,255,.75)", font: { size: 13 } }, grid: { color: "rgba(255,255,255,.06)" } },
+                                y: {
+                                    min: 0,
+                                    max: 1.0,
+                                    ticks: { color: "rgba(200,220,255,.75)", callback: (v) => v.toFixed(2).replace(".", ","), font: { size: 12 } },
+                                    grid: { color: "rgba(255,255,255,.08)" },
+                                },
+                            },
+                        }}
+                    />
+                </div>
+
+                {/* Custo Administrativo Per Capita */}
+                <div className="perfil-chart-block mt-5">
+                    <h3 className="perfil-chart-title">Custo administrativo Per Capita</h3>
+                    <p className="perfil-body-text">O custo administrativo per capita apresentou uma redução de 4,39%, em 2025, em comparação com 2024. O número de participantes cresceu 5,31%, o que representa um acréscimo de 384 participantes. Em consequência desse crescimento, o custo administrativo per capita, em 2025, fechou em R$ 2.395. <strong>A meta estabelecida não alcançada, devido ao crescimento na quantidade de participantes ter ficado abaixo do planejado.</strong></p>
+                </div>
+
+                <div className="perfil-chart-block mt-4" style={{ maxWidth: 480 }}>
+                    <h3 className="perfil-chart-title">Custo per capita</h3>
+                    <Bar
+                        data={custoPerCapitaMetaData}
+                        options={{
+                            responsive: true,
+                            layout: { padding: { top: 30 } },
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { callbacks: { label: (ctx) => "R$ " + ctx.parsed.y.toLocaleString("pt-BR", { minimumFractionDigits: 2 }) } },
+                                datalabels: {
+                                    anchor: "end",
+                                    align: "end",
+                                    color: "rgba(200,225,255,0.9)",
+                                    font: { weight: "700", size: 13 },
+                                    formatter: (v) => v.toLocaleString("pt-BR", { minimumFractionDigits: 2 }),
+                                },
+                            },
+                            scales: {
+                                x: { ticks: { color: "rgba(200,220,255,.75)", font: { size: 13 } }, grid: { color: "rgba(255,255,255,.06)" } },
+                                y: {
+                                    min: 0,
+                                    max: 3000,
+                                    ticks: { color: "rgba(200,220,255,.75)", callback: (v) => v.toLocaleString("pt-BR", { minimumFractionDigits: 2 }), font: { size: 12 } },
+                                    grid: { color: "rgba(255,255,255,.08)" },
+                                },
+                            },
+                        }}
+                    />
+                </div>
+
+                {/* Execução Orçamentária */}
+                <div className="perfil-chart-block mt-5">
+                    <h3 className="perfil-chart-title">Execução Orçamentária</h3>
+                    <p className="perfil-body-text">No ano de 2025, as despesas administrativas totais apresentaram nível de realização de 4,14% abaixo do valor orçado. A meta estabelecida para esse indicador foi alcançada.</p>
+                    <div className="perfil-table-wrapper mt-3" style={{ maxWidth: 360 }}>
+                        <table className="perfil-table">
+                            <thead>
+                                <tr><th>Descrição</th><th className="text-end">2025</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Realizado</td><td className="text-end">19.412.507</td></tr>
+                                <tr><td>Orçado</td><td className="text-end">20.250.833</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p className="perfil-body-text mt-3">As despesas administrativas corresponderam a 95,86% do Orçamento. As sobras orçamentárias formam os recursos do PGA de cada plano. <strong>Meta alcançada!</strong></p>
+                </div>
+
+                <div className="perfil-chart-block mt-4" style={{ maxWidth: 480 }}>
+                    <h3 className="perfil-chart-title">Execução Orçamentária</h3>
+                    <Bar
+                        data={execOrcMetaData}
+                        options={{
+                            responsive: true,
+                            layout: { padding: { top: 30 } },
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { callbacks: { label: (ctx) => ctx.parsed.y.toFixed(2).replace(".", ",") + "%" } },
+                                datalabels: {
+                                    anchor: "end",
+                                    align: "end",
+                                    color: "rgba(200,225,255,0.9)",
+                                    font: { weight: "700", size: 14 },
+                                    formatter: (v) => v.toFixed(2).replace(".", ","),
+                                },
+                            },
+                            scales: {
+                                x: { ticks: { color: "rgba(200,220,255,.75)", font: { size: 13 } }, grid: { color: "rgba(255,255,255,.06)" } },
+                                y: {
+                                    min: 0,
+                                    max: 120,
+                                    ticks: { color: "rgba(200,220,255,.75)", callback: (v) => v.toFixed(2).replace(".", ","), font: { size: 12 } },
+                                    grid: { color: "rgba(255,255,255,.08)" },
+                                },
+                            },
+                        }}
+                    />
+                </div>
+
+                {/* INDICADOR DO SISTEMA DE INTEGRIDADE */}
+                <div className="perfil-chart-block mt-5">
+                    <p className="perfil-eyebrow" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '12px', color: '#00aeef', marginBottom: '8px' }}>INDICADOR DO SISTEMA DE INTEGRIDADE</p>
+                    <h3 className="perfil-chart-title">Controles do Registro no SGBR – Sistema de Gestão Baseada em Riscos</h3>
+                    <p className="perfil-body-text" style={{ fontStyle: 'italic', marginBottom: '8px' }}>Cumprimento de Plano de Ações (PA), dos Registro de Não Conformidade e Ações de Melhorias (AM).</p>
+                    <p className="perfil-body-text">No SGBR ficam registrados os instrumentos de aprimoramento da Gestão de Riscos, no âmbito da Previdência BRB. Em 2025, constata-se que foram concluídos 12 Planos de Ações, 26 Registros de Não Conformidade (RNC) e 12 Ações de Melhorias (AM). Esse processo é dinâmico e mostra que a melhoria nos processos operacionais é meta constante na Previdência BRB.</p>
+                </div>
+
+                <div className="row g-4 mt-2">
+                    {/* SGBR */}
+                    <div className="col-lg-4">
+                        <div className="perfil-chart-block">
+                            <h3 className="perfil-chart-title">SGBR - Sistema de Gestão Baseada em Riscos</h3>
+                            <div className="perfil-table-wrapper mb-3">
+                                <table className="perfil-table">
+                                    <thead><tr><th>Descrição</th><th className="text-end">2025</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Planos de Ações Abertos</td><td className="text-end">16</td></tr>
+                                        <tr><td>Planos de Ações Concluídos</td><td className="text-end">12</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <Bar data={sgbrPAData} options={chartOpts((v) => v)} />
+                        </div>
+                    </div>
+                    {/* RNC */}
+                    <div className="col-lg-4">
+                        <div className="perfil-chart-block">
+                            <h3 className="perfil-chart-title">RNC - Registros de não Conformidades</h3>
+                            <div className="perfil-table-wrapper mb-3">
+                                <table className="perfil-table">
+                                    <thead><tr><th>Descrição</th><th className="text-end">2025</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>RNC Abertos</td><td className="text-end">38</td></tr>
+                                        <tr><td>RNC Concluídos</td><td className="text-end">26</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <Bar data={sgbrRNCData} options={chartOpts((v) => v)} />
+                        </div>
+                    </div>
+                    {/* AM */}
+                    <div className="col-lg-4">
+                        <div className="perfil-chart-block">
+                            <h3 className="perfil-chart-title">AM - Ações de Melhorias</h3>
+                            <div className="perfil-table-wrapper mb-3">
+                                <table className="perfil-table">
+                                    <thead><tr><th>Descrição</th><th className="text-end">2025</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>AM não concluídas em 2024</td><td className="text-end">5</td></tr>
+                                        <tr><td>AM Abertas</td><td className="text-end">10</td></tr>
+                                        <tr><td>AM Concluídas</td><td className="text-end">12</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <Bar data={sgbrAMData} options={chartOpts((v) => v)} />
+                        </div>
                     </div>
                 </div>
 
-                {/* 3.5.7 Eficiência */}
-                <div className="perfil-chart-block mt-4">
-                    <h3 className="perfil-chart-title">Indicadores de Eficiência — SGBR · RNC · AM</h3>
-                    <p className="perfil-body-text">Em 2025 foram criados 16 planos de ação no SGBR (12 concluídos), abertos 38 RNCs (26 concluídos) e abertas 10 Ações de Melhoria (12 finalizadas, incluindo saldo de 2024).</p>
-                    <Bar data={sgbrData} options={chartOpts((v) => v)} />
+                {/* SGBR Consolidado */}
+                <div className="perfil-chart-block mt-5">
+                    <h3 className="perfil-chart-title">Planos de Ações/Ações de Melhoria e RNC</h3>
+                    <Bar
+                        data={sgbrConsolidadoData}
+                        options={{
+                            ...chartOpts((v) => v),
+                            layout: { padding: { top: 50 } },
+                            plugins: {
+                                legend: { position: 'top', labels: { color: "rgba(200,220,255,.75)", font: { size: 13 } } },
+                                tooltip: { callbacks: { label: (ctx) => ctx.dataset.label + ": " + ctx.parsed.y } },
+                                datalabels: {
+                                    anchor: "end",
+                                    align: "end",
+                                    color: "rgba(200,225,255,0.9)",
+                                    font: { weight: "700", size: 11 },
+                                    formatter: (v) => v,
+                                },
+                            },
+                            scales: {
+                                x: { ticks: { color: "rgba(200,220,255,.75)", font: { size: 13 } }, grid: { color: "rgba(255,255,255,.06)" } },
+                                y: { max: 55, ticks: { color: "rgba(200,220,255,.75)", font: { size: 12 } }, grid: { color: "rgba(255,255,255,.08)" } },
+                            },
+                        }}
+                        height={80}
+                    />
                 </div>
 
-                {/* 3.5.8 e 3.5.9 */}
-                <div className="row g-4 mt-3">
-                    <div className="col-lg-6">
-                        <div className="perfil-chart-block">
+                {/* Ações do Plano de Integridade */}
+                <div className="perfil-chart-block mt-5">
+                    <h3 className="perfil-chart-title">Ações dos Plano de Integridade – 2025 – 100% realizadas – Meta alcançada</h3>
+                    <p className="perfil-body-text">Ações Previstas: 17 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ações Realizadas: 17</p>
+                </div>
+                <div className="perfil-chart-block mt-3" style={{ maxWidth: 480 }}>
+                    <h3 className="perfil-chart-title">Ações de Integridade</h3>
+                    <Bar
+                        data={acoesIntegridadeData}
+                        options={{
+                            responsive: true,
+                            layout: { padding: { top: 30 } },
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { callbacks: { label: (ctx) => ctx.parsed.y } },
+                                datalabels: { anchor: "end", align: "end", color: "rgba(200,225,255,0.9)", font: { weight: "700", size: 14 }, formatter: (v) => v },
+                            },
+                            scales: {
+                                x: { ticks: { color: "rgba(200,220,255,.75)", font: { size: 13 } }, grid: { color: "rgba(255,255,255,.06)" } },
+                                y: { min: 0, max: 20, ticks: { color: "rgba(200,220,255,.75)", stepSize: 2, font: { size: 12 } }, grid: { color: "rgba(255,255,255,.08)" } },
+                            },
+                        }}
+                    />
+                </div>
+
+                {/* Canal de Ética e Ouvidoria */}
+                <div className="perfil-chart-block mt-5">
+                    <h3 className="perfil-chart-title">Registros solucionados nos canais de Ética e de Ouvidoria – 100% dos registros solucionados – Meta alcançada</h3>
+                    <div className="row g-3 mt-2">
+                        <div className="col-lg-4 col-md-6">
+                            <div className="perfil-table-wrapper">
+                                <table className="perfil-table">
+                                    <thead><tr><th colSpan="2">Canal de Ética</th></tr></thead>
+                                    <tbody>
+                                        <tr><td colSpan="2">Registros no canal de Ética – Não houve registro.</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6">
+                            <div className="perfil-table-wrapper">
+                                <table className="perfil-table">
+                                    <thead><tr><th>Canal de Ouvidoria</th><th className="text-end">Qtd.</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Registros realizados</td><td className="text-end">10</td></tr>
+                                        <tr><td>Registros Solucionados</td><td className="text-end">10</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Certificações */}
+                <div className="perfil-chart-block mt-5">
+                    <h3 className="perfil-chart-title">Certificações Renovadas em 2025 – 100% renovadas</h3>
+                    <div className="row g-3 mt-2">
+                        <div className="col-lg-4 col-md-6">
+                            <div className="perfil-table-wrapper">
+                                <table className="perfil-table">
+                                    <thead><tr><th>Certificações existentes</th><th className="text-end">Certificações renovadas</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>4</td><td className="text-end">4 – Meta alcançada</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6">
+                            <div className="perfil-table-wrapper">
+                                <table className="perfil-table">
+                                    <thead><tr><th>Nova certificação prevista</th><th className="text-end">Nova certificação alcançada</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>1</td><td className="text-end">1 – Meta alcançada</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* INDICADORES DA GESTÃO PREVIDENCIÁRIA */}
+                <div className="perfil-chart-block mt-5">
+                    <p className="perfil-eyebrow" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '12px', color: '#00aeef', marginBottom: '8px' }}>INDICADORES DA GESTÃO PREVIDENCIÁRIA</p>
+                </div>
+
+                <div className="row g-4 mt-2">
+                    <div className="col-lg-4">
+                        <div className="perfil-chart-block" style={{ height: '100%' }}>
                             <h3 className="perfil-chart-title">Índice de Maturidade Financeira</h3>
-                            <MissingTextFlag note="Inserir texto explicativo do indicador e leitura do resultado em 2025." />
-                            <p className="perfil-body-text">Meta: abaixo de 1,36. Em 2025 o índice atingiu <strong>1,13</strong>.</p>
-                            <Bar data={maturidadeData} options={chartOpts((v) => v.toFixed(2))} />
+                            <p className="perfil-body-text">O IMF é o resultado da comparação entre as receitas e despesas previdenciais. Constata-se que em 2025 esse indicador mostrou uma redução de 5,15%, portanto a meta foi alcançada.</p>
+                            <div className="perfil-table-wrapper mt-3">
+                                <table className="perfil-table">
+                                    <thead><tr><th>Ano</th><th className="text-end">Índice</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>2024</td><td className="text-end">1,36</td></tr>
+                                        <tr><td>2025</td><td className="text-end">1,29</td></tr>
+                                        <tr><td>Meta</td><td className="text-end">Menor que 1,36</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                    <div className="col-lg-6">
-                        <div className="perfil-chart-block">
-                            <h3 className="perfil-chart-title">Índice de Custeio Previdencial</h3>
-                            <MissingTextFlag note="Inserir texto explicativo do indicador, meta e interpretação do desempenho." />
-                            <p className="perfil-body-text">Meta: 86,00. Em 2025 o índice alcançou <strong>87,59</strong>.</p>
-                            <Bar data={custeioData} options={chartOpts((v) => v.toFixed(2))} />
+                    <div className="col-lg-8">
+                        <div className="perfil-chart-block" style={{ height: '100%' }}>
+                            <h3 className="perfil-chart-title">Índice de Cobertura Previdencial</h3>
+                            <p className="perfil-body-text">Mais participantes vinculados aos Planos de Benefícios – Meta alcançada</p>
+                            <div className="row align-items-center g-4 mt-1">
+                                <div className="col-md-4">
+                                    <div className="perfil-table-wrapper">
+                                        <table className="perfil-table">
+                                            <thead><tr><th>Indicador</th><th className="text-end">Valor</th></tr></thead>
+                                            <tbody>
+                                                <tr><td>Meta</td><td className="text-end">86%</td></tr>
+                                                <tr><td>Realizado</td><td className="text-end">87,59%</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div className="col-md-8">
+                                    <Bar data={custeioData} options={chartOpts((v) => v.toFixed(2).replace(".", ","))} />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -561,17 +1222,6 @@ function PerfilCorporativo() {
 
             {/* ── 3.6 ARRECADAÇÃO ── */}
             <Section id="arrecadacao" eyebrow="# Crescimento" title="Crescimento da Arrecadação">
-                <div className="row g-3 mb-4">
-                    <KpiCard value="R$ 210,3M" label="Total arrecadado em 2025" />
-                    <KpiCard value="+8,46%" label="Crescimento vs. 2024" />
-                    <KpiCard value="+318,59%" label="Crescimento BrasíliaPrev (maior alta)" />
-                    <KpiCard value="+46,21%" label="Crescimento RegiusPrev" />
-                </div>
-
-                <div className="perfil-chart-block perfil-chart-block--light">
-                    <h3 className="perfil-chart-title">Arrecadação por Plano — 2024 vs. 2025</h3>
-                    <Bar data={arrecadacaoData} options={arrecadacaoOpts} />
-                </div>
 
                 <div className="perfil-table-wrapper mt-4">
                     <div className="table-responsive" id="tabela-arrecadacao-planos">
@@ -616,16 +1266,63 @@ function PerfilCorporativo() {
 
             {/* ── 3.7 PARTICIPANTES ── */}
             <Section id="participantes" eyebrow="# Crescimento" title="Crescimento de Participantes">
+                <p className="perfil-body-text mb-4">O número de participantes no ano de 2025 dos Planos de Benefícios chegou a 7.619, um crescimento de 5,31% em relação a dezembro de 2024.</p>
+
                 <div className="row g-3 mb-4">
-                    <KpiCard value="7.619" label="Total de participantes em Dez/2025" />
-                    <KpiCard value="+5,31%" label="Crescimento vs. Dez/2024" />
-                    <KpiCard value="+384" label="Novos participantes em 2025" />
-                    <KpiCard value="+30,26%" label="Maior crescimento: CD-05" />
+                    <div className="col-lg-3 col-md-6">
+                        <div className="perfil-kpi-card">
+                            <p className="perfil-kpi-value">9.500</p>
+                            <p className="perfil-kpi-label">Meta</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6">
+                        <div className="perfil-kpi-card">
+                            <p className="perfil-kpi-value">7.619</p>
+                            <p className="perfil-kpi-label">Realizado</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6">
+                        <div className="perfil-kpi-card">
+                            <p className="perfil-kpi-value">5,31%</p>
+                            <p className="perfil-kpi-label">Crescimento</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6">
+                        <div className="perfil-kpi-card perfil-kpi-card--alert">
+                            <p className="perfil-kpi-value">Meta não alcançada</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div className="perfil-chart-block perfil-chart-block--light">
-                    <h3 className="perfil-chart-title">Participantes por Plano — Dez/2024 vs. Dez/2025</h3>
-                    <Bar data={participantesData} options={participantesOpts} />
+                <div className="perfil-chart-block perfil-chart-block--light mt-4" style={{ maxWidth: 480 }}>
+                    <h3 className="perfil-chart-title">Qtd Participantes</h3>
+                    <Bar
+                        data={qtdParticipantesMetaData}
+                        options={{
+                            responsive: true,
+                            layout: { padding: { top: 30 } },
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { callbacks: { label: (ctx) => ctx.parsed.y.toLocaleString("pt-BR") } },
+                                datalabels: {
+                                    anchor: "end",
+                                    align: "end",
+                                    color: "#0f172a",
+                                    font: { weight: "700", size: 14 },
+                                    formatter: (v) => v.toLocaleString("pt-BR"),
+                                },
+                            },
+                            scales: {
+                                x: { ticks: { color: "#475569", font: { size: 13 } }, grid: { color: "rgba(15,23,42,.08)" } },
+                                y: {
+                                    min: 0,
+                                    max: 11000,
+                                    ticks: { color: "#475569", callback: (v) => v.toLocaleString("pt-BR"), font: { size: 12 } },
+                                    grid: { color: "rgba(15,23,42,.08)" },
+                                },
+                            },
+                        }}
+                    />
                 </div>
 
                 <div className="perfil-table-wrapper mt-4">
@@ -667,6 +1364,101 @@ function PerfilCorporativo() {
                         </button>
                     </div>
                 </div>
+            </Section>
+
+            {/* ── EQUILÍBRIO TÉCNICO ── */}
+            <Section id="equilibrio-tecnico" eyebrow="# Desempenho" title="Equilíbrio Técnico dos Planos">
+
+                {/* BD-01 */}
+                <div className="row g-3 mb-3">
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '2rem', fontWeight: '900', textAlign: 'center' }}>Plano BD-01</p></div></div>
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Meta</p><p className="perfil-kpi-value">100%</p></div></div>
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Realizado</p><p className="perfil-kpi-value">103,20%</p><p className="perfil-kpi-label">R$ 91mi de superávit</p></div></div>
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', background: 'linear-gradient(145deg, #14532d, #166534)', borderColor: 'rgba(74,222,128,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '1.5rem', fontWeight: '900', color: '#bbf7d0' }}>Meta Alcançada</p></div></div>
+                </div>
+
+                {/* CV-03 */}
+                <div className="row g-3 mb-4">
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '2rem', fontWeight: '900', textAlign: 'center' }}>Plano CV-03</p></div></div>
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Meta</p><p className="perfil-kpi-value">100%</p></div></div>
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Realizado</p><p className="perfil-kpi-value">100,86%</p><p className="perfil-kpi-label">R$8,2mi de superávit</p></div></div>
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', background: 'linear-gradient(145deg, #14532d, #166534)', borderColor: 'rgba(74,222,128,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '1.5rem', fontWeight: '900', color: '#bbf7d0' }}>Meta Alcançada</p></div></div>
+                </div>
+
+                <div className="perfil-chart-block perfil-chart-block--light mt-2" style={{ maxWidth: 600 }}>
+                    <h3 className="perfil-chart-title" style={{ color: '#0f172a' }}>Equilíbrio Técnico</h3>
+                    <Bar data={equilibrioTecnicoData} options={{ responsive: true, layout: { padding: { top: 30 } }, plugins: { legend: { position: 'bottom', labels: { color: "#475569", font: { size: 13 } } }, tooltip: { callbacks: { label: (ctx) => ctx.dataset.label + ": " + ctx.parsed.y.toFixed(2).replace(".", ",") } }, datalabels: { anchor: "end", align: "end", color: "#0f172a", font: { weight: "700", size: 13 }, formatter: (v) => v.toFixed(2).replace(".", ",") } }, scales: { x: { ticks: { color: "#475569", font: { size: 13 } }, grid: { color: "rgba(15,23,42,.08)" } }, y: { min: 0, max: 120, ticks: { color: "#475569", callback: (v) => v.toFixed(2).replace(".", ","), font: { size: 12 } }, grid: { color: "rgba(15,23,42,.08)" } } } }} />
+                </div>
+
+                {/* Receita Previdencial Per Capita */}
+                <h3 className="perfil-section-title mt-5" style={{ fontSize: '1.3rem' }}>Receita Previdencial Per capita – de todos os planos</h3>
+                <div className="perfil-divider mb-4" />
+
+                {/* BrasíliaPrev */}
+                <div className="row g-3 mb-3">
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '2rem', fontWeight: '900', textAlign: 'center' }}>BrasíliaPrev</p></div></div>
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Meta</p><p className="perfil-kpi-value">R$122,44</p></div></div>
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Realizado</p><p className="perfil-kpi-value">R$147,30</p></div></div>
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', background: 'linear-gradient(145deg, #14532d, #166534)', borderColor: 'rgba(74,222,128,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '1.5rem', fontWeight: '900', color: '#bbf7d0' }}>Meta Alcançada</p></div></div>
+                </div>
+
+                {/* RegiusPrev */}
+                <div className="row g-3 mb-4">
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '2rem', fontWeight: '900', textAlign: 'center' }}>RegiusPrev</p></div></div>
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Meta</p><p className="perfil-kpi-value">R$334,13</p></div></div>
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Realizado</p><p className="perfil-kpi-value">R$447,03</p></div></div>
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', background: 'linear-gradient(145deg, #14532d, #166534)', borderColor: 'rgba(74,222,128,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '1.5rem', fontWeight: '900', color: '#bbf7d0' }}>Meta Alcançada</p></div></div>
+                </div>
+
+                {/* CV-03, CD-05, CD-Metrô */}
+                {[
+                    { plano: "CV-03",    meta: "R$2.330,46", realizado: "R$2.555,19" },
+                    { plano: "CD-05",    meta: "R$1.076,29", realizado: "R$1.078,06" },
+                    { plano: "CD-Metrô", meta: "R$1.328,84", realizado: "R$1.401,85" },
+                ].map((item, i) => (
+                    <div className="row g-3 mb-3" key={i}>
+                        <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '2rem', fontWeight: '900', textAlign: 'center' }}>{item.plano}</p></div></div>
+                        <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Meta</p><p className="perfil-kpi-value">{item.meta}</p></div></div>
+                        <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Realizado</p><p className="perfil-kpi-value">{item.realizado}</p></div></div>
+                        <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', background: 'linear-gradient(145deg, #14532d, #166534)', borderColor: 'rgba(74,222,128,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '1.5rem', fontWeight: '900', color: '#bbf7d0' }}>Meta Alcançada</p></div></div>
+                    </div>
+                ))}
+
+                <div className="perfil-chart-block perfil-chart-block--light mt-2">
+                    <h3 className="perfil-chart-title" style={{ color: '#0f172a' }}>Receita Previdencial Per Capita</h3>
+                    <Bar data={receitaPerCapitaData} options={{ responsive: true, layout: { padding: { top: 30 } }, plugins: { legend: { position: 'bottom', labels: { color: "#475569", font: { size: 13 } } }, tooltip: { callbacks: { label: (ctx) => ctx.dataset.label + ": R$ " + ctx.parsed.y.toLocaleString("pt-BR", { minimumFractionDigits: 2 }) } }, datalabels: { anchor: "end", align: "end", color: "#0f172a", font: { weight: "700", size: 11 }, formatter: (v) => v.toLocaleString("pt-BR", { minimumFractionDigits: 2 }) } }, scales: { x: { ticks: { color: "#475569", font: { size: 13 } }, grid: { color: "rgba(15,23,42,.08)" } }, y: { min: 0, ticks: { color: "#475569", callback: (v) => "R$ " + v.toLocaleString("pt-BR"), font: { size: 12 } }, grid: { color: "rgba(15,23,42,.08)" } } } }} height={80} />
+                </div>
+
+                {/* Número de Instituidores */}
+                <h3 className="perfil-section-title mt-5" style={{ fontSize: '1.3rem' }}>Número de Instituidores (vinculadas ao Plano BrasíliaPrev)</h3>
+                <div className="perfil-divider mb-4" />
+
+                <div className="row g-3 mb-4">
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Meta</p><p className="perfil-kpi-value">12</p></div></div>
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Realizado</p><p className="perfil-kpi-value">13</p></div></div>
+                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', background: 'linear-gradient(145deg, #14532d, #166534)', borderColor: 'rgba(74,222,128,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '1.5rem', fontWeight: '900', color: '#bbf7d0' }}>Meta Alcançada</p></div></div>
+                </div>
+
+                <div className="perfil-chart-block perfil-chart-block--light mt-2" style={{ maxWidth: 480 }}>
+                    <h3 className="perfil-chart-title" style={{ color: '#0f172a' }}>Instituidores</h3>
+                    <Bar
+                        data={instituidoresData}
+                        options={{
+                            responsive: true,
+                            layout: { padding: { top: 30 } },
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { callbacks: { label: (ctx) => ctx.parsed.y } },
+                                datalabels: { anchor: "end", align: "end", color: "#0f172a", font: { weight: "700", size: 14 }, formatter: (v) => v },
+                            },
+                            scales: {
+                                x: { ticks: { color: "#475569", font: { size: 13 } }, grid: { color: "rgba(15,23,42,.08)" } },
+                                y: { min: 0, max: 16, ticks: { color: "#475569", stepSize: 2, font: { size: 12 } }, grid: { color: "rgba(15,23,42,.08)" } },
+                            },
+                        }}
+                    />
+                </div>
+
             </Section>
 
             {/* ── ÍNDICE / DOBRA SERVIÇOS ── */}

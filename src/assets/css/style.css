@@ -4849,6 +4849,26 @@ ul.pagination li a:hover {
     margin-top: 16px;
 }
 
+/* ── CTA Button ── */
+.dstq-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, #00aeef, #0077b6);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(0, 174, 239, 0.35);
+}
+.dstq-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0, 174, 239, 0.5);
+    color: #fff;
+}
+
 /* ── Split layout ── */
 .dstq-split {
     display: grid;
@@ -5247,6 +5267,9 @@ ul.pagination li a:hover {
 }
 .rnt-patrimonio-value span {
     color: #00aeef;
+}
+.rnt-patrimonio-value span.rnt-decimal {
+    color: #ffffff;
 }
 .rnt-patrimonio-badge {
     display: inline-flex;

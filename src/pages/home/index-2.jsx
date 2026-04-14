@@ -10,12 +10,15 @@ import headerVideo from '../../assets/img/header.mp4';
 
 function Index2() {
     const grandesNumeros = [
-        { prefix: "+", value: 5.31, suffix: "%", title: "Crescimento de participantes", detail: "Atingimos 7.619", decimals: 2, icon: Users, gradient: true, shape: "" },
-        { prefix: "+", value: 8.46, suffix: "%", title: "Arrecadação total", detail: "Receitas previdenciárias", decimals: 2, icon: TrendingUp, gradient: true, shape: "card-shape-asym-a" },
-        { prefix: "", value: 103.20, suffix: "%", title: "Superávit BD-01", detail: "R$ 91,1 milhões", decimals: 2, icon: PieChart, gradient: false, shape: "card-shape-asym-b" },
-        { prefix: "", value: 100.86, suffix: "%", title: "Superávit CV-03", detail: "R$ 8,2 milhões", decimals: 2, icon: BarChart2, gradient: false, shape: "card-shape-asym-b" },
-        { prefix: "+", value: 8.52, suffix: "%", title: "Aumento de recursos dos planos", detail: "De R$ 3,99 bi em 2024 para R$ 4,33 bi em 2025", decimals: 2, icon: Wallet, gradient: true, shape: "card-shape-asym-a" },
-        { prefix: "-", value: 4.14, suffix: "%", title: "Redução das Despesas Adm.", detail: "Orçamento executado ficou abaixo do projetado", decimals: 2, icon: Settings, gradient: false, shape: "" },
+        { primary: "7.619", secondary: "Participantes", complementar: "Crescimento de 5,31%", icon: Users, shape: "" },
+        { primary: "4,36 bilhões", secondary: "de Patrimônio", complementar: "crescemos 9,27%", icon: TrendingUp, shape: "card-shape-asym-a" },
+        { primary: "ICP*: 87,59% de Adesão", secondary: null, complementar: "Indice de Cobertura Previdencial", icon: PieChart, shape: "card-shape-asym-b" },
+        { primary: "BD-01 - R$91,141 milhões", secondary: "Superávit do Plano", complementar: null, icon: BarChart2, shape: "card-shape-asym-b" },
+        { primary: "CV-03 - R$8,215 milhões", secondary: "Superávit do Plano", complementar: null, icon: Wallet, shape: "card-shape-asym-a" },
+        { primary: "4,4% de redução", secondary: "de Despesa administrativa per capita", complementar: null, icon: Settings, shape: "" },
+        { primary: "Redução de 6,7%", secondary: "Despesas administrativas X Patrimônio Administrado (– 0,42%)", complementar: null, icon: TrendingUp, shape: "card-shape-asym-a" },
+        { primary: "Redução de 4,5%", secondary: "Despesas Realizadas X Orçadas", complementar: "economia de R$849.000", icon: BarChart2, shape: "card-shape-asym-b" },
+        { primary: "Aumento de 8,46%", secondary: "Arrecadação total", complementar: null, icon: TrendingUp, shape: "" },
     ];
 
     return (
@@ -85,10 +88,11 @@ function Index2() {
                                 <span># Apresentação</span>
                                 <h2>Mensagem de Abertura</h2>
                                 <div className="presentation-text">
-                                    <p>Consolidar uma série de resultados positivos em um ano bastante desafiador nos motiva a buscar metas mais ousadas para os próximos exercícios. Neste Relatório Anual 2025, apresentamos um panorama dos principais resultados dos planos previdenciários, bem como das ações institucionais realizadas pela Previdência BRB. Conquistamos objetivos que reforçam ainda mais nosso compromisso com uma gestão responsável, sustentável e orientada para o longo prazo.</p>
-                                    <p>Ultrapassamos a marca de R$ 4 bilhões em patrimônio, conquista que reflete a solidez da Previdência BRB e a confiança de nossos participantes. Alcançamos retornos consistentes de rentabilidade nos sete planos, superando as metas atuariais e os índices de referência. Avançamos em iniciativas voltadas ao crescimento, à sustentabilidade dos planos de benefícios e à perenidade da Entidade. Inovamos nossos produtos, criando perfis de investimento para dois de nossos planos. Estabelecemos parcerias relevantes para o crescimento do BrasíliaPrev em número de participantes e novos instituidores.</p>
-                                    <p>Esses são alguns exemplos que demonstram o comprometimento da governança e dos colaboradores que trabalham alinhados e em sinergia para atingir os objetivos do Planejamento Estratégico. Convidamos você a conhecer, nas próximas páginas deste Relatório Anual, os principais destaques e conquistas que marcaram o ano de 2025.</p>
-                                    <p><strong>Boa leitura!</strong></p>
+                                    <p>A Previdência BRB apresenta no Relatório Anual de Informações, destacando as realizações e resultados alcançados, em 2025.</p>
+                                    <p>De fato, o ano de 2025 foi marcado por importantes avanços, tendo como foco estratégico a sustentabilidade dos 7 planos de benefícios administrados e do PGA e, por consequência, a perenidade da Previdência BRB.</p>
+                                    <p>O Relatório Anual, de fato, traduz o compromisso da Entidade com Participantes, Patrocinadores e Instituidores e a certeza de que os passos dados levarão a Previdência BRB a novos horizontes, pois muitas iniciativas estratégicas realizadas, se traduzirão em crescimento e fortalecimento da Previdência BRB.</p>
+                                    <p>A prestação de contas, a transparência, equidade e responsabilidade corporativa são pilares essenciais na governança corporativa. É com base nesses pilares que o RAI 2025 é apresentado, trazendo informações relevantes da gestão, indicadores, realizações e perspectivas.</p>
+                                    <p>Boa leitura!</p>
                                 </div>
                             </div>
                         </div>
@@ -107,28 +111,12 @@ function Index2() {
                             return (
                                 <div className="col-lg-4 col-md-6" key={i}>
                                     <div className={`big-number-card ${item.shape}`}>
-                                        <div className="metric-top">
-                                            <div className="metric-icon">
-                                                <Icon size={28} strokeWidth={1.5} />
-                                            </div>
-                                            <div className="metric-value">
-                                                <CountUp
-                                                    start={0}
-                                                    end={item.value}
-                                                    duration={2.5}
-                                                    decimals={item.decimals}
-                                                    decimal=","
-                                                    prefix={item.prefix}
-                                                    suffix={item.suffix}
-                                                    enableScrollSpy
-                                                    scrollSpyOnce
-                                                />
-                                            </div>
+                                        <div className="metric-icon">
+                                            <Icon size={24} strokeWidth={1.5} />
                                         </div>
-                                        <div className="metric-text">
-                                            <h4>{item.title}</h4>
-                                        </div>
-                                        <p className="metric-detail">{item.detail}</p>
+                                        <p className="metric-primary">{item.primary}</p>
+                                        {item.secondary && <p className="metric-secondary">{item.secondary}</p>}
+                                        {item.complementar && <p className="metric-complementar">{item.complementar}</p>}
                                     </div>
                                 </div>
                             );

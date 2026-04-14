@@ -47,25 +47,27 @@ function SecaoASG() {
                         </h2>
                         <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
                         <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
-                            A Previdência BRB entende que a responsabilidade socioambiental deve estar integrada à sua
-                            atuação cotidiana, indo além de iniciativas pontuais. Esse compromisso faz parte da cultura
-                            organizacional e orienta o relacionamento com participantes, colaboradores e a sociedade.
+                            A Previdência BRB entende que a responsabilidade socioambiental deve estar integrada à sua atuação cotidiana, indo além de iniciativas pontuais. Esse compromisso faz parte da cultura organizacional e orienta o relacionamento com participantes, colaboradores e a sociedade.
                         </p>
                         <p className="dstq-text-body dstq-reveal dstq-reveal--d3">
-                            Nossas práticas são fundamentadas em princípios de Governança Corporativa, Sustentabilidade
-                            Ambiental e Responsabilidade Social, conforme diretrizes estabelecidas na Política de
-                            Responsabilidade Socioambiental (PRSA).
+                            Nossas práticas são fundamentadas em princípios de Governança Corporativa, Sustentabilidade Ambiental e Responsabilidade Social, conforme diretrizes estabelecidas na Política de Responsabilidade Socioambiental (PRSA).
                         </p>
                         <p className="dstq-text-body dstq-reveal dstq-reveal--d3">
-                            Com o propósito de assegurar transparência às iniciativas desenvolvidas, divulgamos
-                            semestralmente o Relatório de Entregas ASG, no qual são apresentadas as ações realizadas em
-                            benefício do meio ambiente, do bem-estar coletivo e do fortalecimento da governança.
+                            Com o propósito de assegurar transparência às iniciativas desenvolvidas, divulgamos semestralmente o Relatório de Entregas ASG, no qual são apresentadas as ações realizadas em benefício do meio ambiente, do bem-estar coletivo e do fortalecimento da governança.
                         </p>
                         <p className="dstq-text-body dstq-reveal dstq-reveal--d4">
-                            Os relatórios contemplam iniciativas como programas de educação financeira e previdenciária,
-                            apoio a projetos sociais, promoção do uso consciente de recursos, incentivo ao voluntariado
-                            e adoção de práticas sustentáveis no ambiente corporativo.
+                            Os relatórios contemplam iniciativas como programas de educação financeira e previdenciária, apoio a projetos sociais, promoção do uso consciente de recursos, incentivo ao voluntariado e adoção de práticas sustentáveis no ambiente corporativo.
                         </p>
+                        <div className="dstq-reveal dstq-reveal--d4" style={{ marginTop: '28px' }}>
+                            <a
+                                href="https://previdenciabrb.org.br/esg/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="dstq-cta-btn"
+                            >
+                                Conheça o relatório completo de 2025 <span style={{ marginLeft: '8px' }}>→</span>
+                            </a>
+                        </div>
                     </div>
                     <div className="dstq-reveal dstq-reveal--d2">
                         <div className="dstq-img-card" style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.1)' }}>
@@ -114,25 +116,19 @@ function SecaoInvestimentos() {
                         </h2>
                         <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
                         <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
-                            No exercício de 2025, a Entidade reconheceu e consolidou a relevância dos aspectos
-                            relacionados à sustentabilidade econômica, ambiental, social e de governança (ASG) no
-                            processo de investimentos, em linha com as diretrizes da Resolução PREVIC nº 26/2025.
+                            No exercício de 2025, a Entidade reconheceu e consolidou a relevância dos aspectos relacionados à sustentabilidade econômica, ambiental, social e de governança (ASG) no processo de investimentos, em linha com as diretrizes da Resolução PREVIC nº 26/2025.
                         </p>
                         <p className="dstq-text-body dstq-reveal dstq-reveal--d3">
-                            A Entidade já incorpora, de forma progressiva, critérios ASG em suas práticas de
-                            investimentos, tanto por meio da análise qualitativa de riscos socioambientais e de
-                            governança nos ativos investidos, quanto pela alocação de parcela relevante dos recursos
-                            em estratégias com abordagem específica ASG.
+                            Nesse contexto, a Entidade incorpora, de forma progressiva, critérios ASG em suas práticas de investimentos, tanto por meio da análise qualitativa de riscos socioambientais e de governança nos ativos investidos, quanto pela alocação de parcela relevante dos recursos em estratégias com abordagem específica ASG, incluindo fundo dedicado com essa diretriz. Esses investimentos priorizam emissores e ativos que apresentam boas práticas de governança, uso responsável de recursos e contribuição para o desenvolvimento sustentável, além de adotarem processos estruturados de seleção, monitoramento e gestão de riscos.
                         </p>
                         <p className="dstq-text-body dstq-reveal dstq-reveal--d3">
-                            As diretrizes relacionadas à sustentabilidade encontram-se refletidas na Política de
-                            Investimentos, que contempla a avaliação de riscos associados a fatores ambientais, sociais
-                            e de governança no âmbito da gestão dos recursos garantidores.
+                            Adicionalmente, as diretrizes relacionadas à sustentabilidade foram formalmente previstas na Política de Investimentos, que contemplam a avaliação de riscos associados a fatores ambientais, sociais e de governança no âmbito da gestão dos recursos garantidores, reforçando a integração entre a gestão de riscos e as decisões de alocação.
                         </p>
                         <p className="dstq-text-body dstq-reveal dstq-reveal--d4">
-                            A Entidade reforça seu compromisso com o contínuo aperfeiçoamento das práticas ASG,
-                            incluindo a ampliação da integração sistemática desses fatores nos processos de
-                            investimento ao longo de 2026.
+                            Paralelamente, foram conduzidas análises internas e discussões técnicas com vistas ao desenvolvimento do <em>framework</em> de integração de fatores ASG às atividades da área de investimentos, com foco na evolução dos critérios de análise, identificação de materialidade, monitoramento e reporte.
+                        </p>
+                        <p className="dstq-text-body dstq-reveal dstq-reveal--d4">
+                            A Entidade reforça seu compromisso com o contínuo aperfeiçoamento das práticas ASG, incluindo a ampliação da integração sistemática desses fatores nos processos de investimento ao longo de 2026, visando o fortalecimento da gestão de riscos, a transparência e a geração de valor sustentável de longo prazo para participantes e assistidos.
                         </p>
                     </div>
                     <div className="dstq-reveal dstq-reveal--d2">
@@ -147,24 +143,6 @@ function SecaoInvestimentos() {
                     </div>
                 </div>
 
-                <div className="dstq-stats-row dstq-reveal dstq-reveal--d2">
-                    <div className="dstq-stat">
-                        <div className="dstq-stat-num">ASG</div>
-                        <div className="dstq-stat-lbl">Critérios integrados à Política de Investimentos</div>
-                    </div>
-                    <div className="dstq-stat">
-                        <div className="dstq-stat-num">2026</div>
-                        <div className="dstq-stat-lbl">Meta de ampliação sistemática dos fatores ASG</div>
-                    </div>
-                    <div className="dstq-stat">
-                        <div className="dstq-stat-num">3º</div>
-                        <div className="dstq-stat-lbl">Ciclo de evolução do framework de integração ASG</div>
-                    </div>
-                    <div className="dstq-stat">
-                        <div className="dstq-stat-num">100%</div>
-                        <div className="dstq-stat-lbl">Aderência às diretrizes da PREVIC</div>
-                    </div>
-                </div>
             </div>
         </section>
     );
@@ -183,7 +161,7 @@ function SecaoProjetos() {
         {
             data: "22/04/2025",
             titulo: "Escola Classe 02 da Candangolândia",
-            texto: "Duas apresentações para turmas do 5º ano no âmbito do Projeto de Educação Financeira e Previdenciária.",
+            texto: "Duas apresentações para turmas do 5º ano.",
         },
         {
             data: "25/04/2025",
@@ -198,7 +176,7 @@ function SecaoProjetos() {
         {
             data: "Campanha",
             titulo: "Tampinhas do Bem BRB",
-            texto: "Ao final das atividades nas escolas, foi realizada uma campanha de arrecadação de tampinhas plásticas, doadas ao projeto Tampinhas do Bem BRB.",
+            texto: "Ao final das atividades nas Escolas Classes 02 da Candangolândia e 413 Sul, foi realizada uma campanha de arrecadação de tampinhas plásticas, que foram doadas ao projeto Tampinhas do Bem BRB.",
         },
     ];
 
@@ -211,8 +189,13 @@ function SecaoProjetos() {
                 </h2>
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
                 <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
-                    A Previdência BRB participou de iniciativas sociais voltadas à educação de jovens e crianças em
-                    escolas públicas do Distrito Federal, levando educação financeira e previdenciária para a comunidade.
+                    A Previdência BRB participou de iniciativas sociais voltadas à educação de jovens e crianças em escolas públicas do Distrito Federal.
+                </p>
+                <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
+                    Em abril de 2025, pela segunda vez, a Empresa esteve presente na Feira de Profissões do Centro de Ensino Médio 01 de Sobradinho, onde foram realizadas duas palestras sobre as profissões mais demandadas pelo mercado e sobre educação financeira para os estudantes.
+                </p>
+                <p className="dstq-text-body dstq-reveal dstq-reveal--d3">
+                    No âmbito do Projeto de Educação Financeira e Previdenciária, foram realizadas apresentações em duas escolas públicas:
                 </p>
 
                 <div className="dstq-timeline dstq-reveal dstq-reveal--d3">

@@ -4,6 +4,11 @@ import Footer2 from "../../layout/footer2";
 import Header2 from "../../layout/header2";
 import ParticlesComponent from "../../components/ui/particles-bg";
 import { IMAGES } from "../../constant/theme";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function MensagemLiderancas() {
     const resumoCards = [
@@ -12,16 +17,17 @@ function MensagemLiderancas() {
             label: 'Total de Participantes',
         },
         {
-            value: 'XX,XX%',
+            value: '11,51%',
             label: 'Rentabilidade média dos Planos em 2025 (ao ano)',
         },
         {
-            value: 'XXª',
+            value: '53',
+            ordinal: 'ª',
             label: 'No ranking de xxx EFPC da ABRAPP',
         },
         {
             value: '0,42%',
-            label: 'Relação de despesas/ Ativo Total Administrado',
+            label: ['economia de 6,7%, na comparação com 2024', 'Relação de despesas/ Ativo Total Administrado'],
         },
         {
             value: '210,3',
@@ -151,7 +157,7 @@ function MensagemLiderancas() {
                                             fontWeight: '700',
                                             margin: 0,
                                         }}>
-                                            Mensagem da Diretoria Executiva
+                                            Mensagem da Diretoria
                                         </h2>
                                     </div>
                                 </div>
@@ -171,23 +177,39 @@ function MensagemLiderancas() {
                                 color: '#2d3748',
                             }}>
                                 <p style={{ marginBottom: '28px' }}>
-                                    O ano de 2024 foi marco de transformação para a Previdência BRB. Consolidamos nossa marca e estabelecemos uma parceria com ABRAPP – Associação Brasileira das Entidades Fechadas de Previdência Complementar para uma atuação mais efetiva em todo o território nacional. Atingimos o patrimônio de quase R$4 bilhões e mais de 7.200 participantes. Isso demonstra a confiança dos nossos públicos e reforça o compromisso com a sustentabilidade dos nossos planos e a entrega de valor a cada um dos nossos participantes.
+                                    O ano de 2025 foi especialmente significativo para a Previdência BRB. Celebramos 40 anos de atuação, dedicados a cuidar do futuro das pessoas, consolidando uma trajetória marcada pelo crescimento sustentável, pela responsabilidade na gestão e pelo fortalecimento contínuo da governança. Desde nossa criação, em 1985, evoluímos de forma consistente, ampliando a atuação, diversificando planos e fortalecendo nossa base de participantes, sempre guiados pelo compromisso de oferecer segurança financeira e tranquilidade no longo prazo.
                                 </p>
 
                                 <p style={{ marginBottom: '28px' }}>
-                                    Vivemos um período desafiador no cenário econômico, com forte oscilação na renda fixa, o que afetou temporariamente os resultados de alguns planos. Ainda assim, mantivemos a solidez dos planos e apresentamos superávit no Plano BD-01 e CV-03, consequentemente, reforçando a confiança da nossa comunidade previdenciária. Essa resiliência foi possível graças a uma gestão comprometida, orientada pela estratégia, numa visão de longo prazo e baseada em controles robustos e numa governança corporativa bem estruturada.
+                                    Encerramos este ciclo reafirmando nossa identidade institucional e reforçando a independência na gestão dos planos, com estruturas robustas de governança, controles e transparência. Hoje, contamos com mais de 7.300 participantes, e destinamos, em 2025, mais de R$ 270 milhões em pagamentos de benefícios, evidenciando o propósito que nos move: proteger participantes e beneficiários, por meio de uma gestão responsável e orientada para o longo prazo.
                                 </p>
 
                                 <p style={{ marginBottom: '28px' }}>
-                                    Investimos fortemente em inovação e tecnologia: novo site, modernização do canal 0800, migração dos sistemas de gestão, integração de novos serviços digitais e implementação do pagamento por cartão de crédito no plano BrasíliaPrev. Também evoluímos na segurança da informação, mantendo certificações relevantes como ISO 27001, 27701, e DSC 10000.
+                                    Os resultados alcançados refletem o compromisso da governança com a execução do Planejamento Estratégico e das diretrizes estabelecidas pelo Conselho Deliberativo. Entre os principais avanços da gestão, destacam-se a parceria firmada com a Seguros BRB para ampliação dos canais de distribuição do plano instituído BrasíliaPrev, com a disponibilização na plataforma digital da BRB Investimentos e nas agências do BRB.
                                 </p>
 
                                 <p style={{ marginBottom: '28px' }}>
-                                    Seguimos comprometidos com o desenvolvimento das pessoas. Em 2024, foram mais de 1.600 horas de treinamento, projetos sociais de impacto e ações contínuas de educação financeira e previdenciária.
+                                    Também vencemos o processo seletivo para novas patrocinadoras ao Plano CD-05, como INFRA S/A e TELEBRÁS. Implantamos perfis de investimentos para os Planos BrasíliaPrev e CD-05, ampliando a flexibilidade para os participantes. E firmamos parceria para oferta de seguro de vida e invalidez aos participantes dos planos da modalidade CD, reforçando a proteção previdenciária.
+                                </p>
+
+                                <p style={{ marginBottom: '28px' }}>
+                                    No campo dos investimentos, todos os planos superaram suas metas de rentabilidade e os índices de referência, contribuindo para a solidez dos planos administrados e para o crescimento do patrimônio administrado. Mantivemos o foco na eficiência administrativa, com controle de custos e gestão responsável dos recursos, ao mesmo tempo em que investimos na melhoria da experiência dos participantes, com novos canais de atendimento.
+                                </p>
+
+                                <p style={{ marginBottom: '28px' }}>
+                                    O desenvolvimento do time foi uma marca em 2025, com a realização de 1.417 horas de treinamento, e incentivamos a inovação, por meio do Programa Eureka, em que os colaboradores apresentaram projetos de melhoria nos processos internos e no atendimento ao Participante. Avançamos, ainda, na agenda de governança e integridade, com a obtenção e renovação de certificações relevantes, que atestam a qualidade dos processos, a segurança da informação e a solidez da gestão (ISO 27.7001 e 27.701, Certificações ABRAPP em Governança de Investimentos e Governança Corporativa e a DSC 10.000, que referendou o nosso Sistema de Integridade e Compliance).
+                                </p>
+
+                                <p style={{ marginBottom: '28px' }}>
+                                    Esses resultados demonstram o comprometimento dos Conselhos Deliberativo e Fiscal, da Diretoria Executiva, dos patrocinadores, instituidores, parceiros e, especialmente, dos colaboradores, que atuam em sinergia para fortalecer a Previdência BRB.
+                                </p>
+
+                                <p style={{ marginBottom: '28px' }}>
+                                    A partir do que foi realizado em 2025, a expectativa para 2026 seja ainda melhor!
                                 </p>
 
                                 <p style={{ marginBottom: '48px' }}>
-                                    A diretoria agradece a confiança dos participantes, patrocinadores, conselheiros e colaboradores. Em 2025, seguiremos trabalhando para fortalecer ainda mais nossa missão: garantir segurança financeira, entregar valor e transformar sonhos em proteção para o futuro.
+                                    A Diretoria Executiva agradece a confiança dos participantes, patrocinadores, instituidores, membros dos Conselhos Deliberativo e Fiscal e ao time de colaboradores da Previdência BRB, que se uniram num importante propósito de consolidar a Previdência BRB como uma Entidade séria, ética e comprometida com a realização dos sonhos dos Participantes de alcançarem um futuro feliz e sustentável! Que 2026, traga novos horizontes e mais realizações.
                                 </p>
 
                                 {/* Signature block */}
@@ -290,8 +312,16 @@ function MensagemLiderancas() {
                             <div className="col-lg-4 col-md-6" key={i}>
                                 <div className="resumo-card resumo-metric-card">
                                     <div className="resumo-card-body resumo-metric-body">
-                                        <p className="resumo-metric-value">{card.value}</p>
-                                        <p className="resumo-metric-label">{card.label}</p>
+                                        <p className="resumo-metric-value">
+                                            {card.value}{card.ordinal && <sup style={{ fontSize: '0.5em', verticalAlign: 'super', fontWeight: 'inherit' }}>{card.ordinal}</sup>}
+                                        </p>
+                                        <p className="resumo-metric-label">
+                                            {Array.isArray(card.label)
+                                                ? card.label.map((line, j) => (
+                                                    <span key={j} style={{ display: 'block' }}>{line}</span>
+                                                ))
+                                                : card.label}
+                                        </p>
                                     </div>
                                     <div className="resumo-card-accent" />
                                 </div>
@@ -300,6 +330,9 @@ function MensagemLiderancas() {
                     </div>
                 </div>
             </section>
+
+            {/* ASG Scroll Motion Section */}
+            <AsgScrollPhrase />
 
             {/* Services Index Section (dobra de serviços) */}
             <section className="gap services-index-section">
@@ -329,6 +362,75 @@ function MensagemLiderancas() {
 
             <Footer2 />
         </>
+    );
+}
+
+function AsgScrollPhrase() {
+    const sectionRef = useRef(null);
+    const trackRef = useRef(null);
+
+    useEffect(() => {
+        const section = sectionRef.current;
+        const track = trackRef.current;
+
+        const ctx = gsap.context(() => {
+            gsap.fromTo(track,
+                { x: section.offsetWidth },
+                {
+                    x: () => -track.scrollWidth,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: section,
+                        pin: true,
+                        start: "top top",
+                        end: () => `+=${track.scrollWidth + section.offsetWidth}`,
+                        scrub: 1,
+                        anticipatePin: 1,
+                        invalidateOnRefresh: true,
+                    },
+                }
+            );
+        });
+
+        return () => ctx.revert();
+    }, []);
+
+    const words = ["Somos", "ASG", "na", "essência!"];
+
+    return (
+        <div ref={sectionRef} style={{ background: '#000814', overflow: 'hidden', height: '100vh', display: 'flex', alignItems: 'center' }}>
+            <div
+                ref={trackRef}
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '1em',
+                    paddingLeft: '10vw',
+                    paddingRight: '10vw',
+                    whiteSpace: 'nowrap',
+                    willChange: 'transform',
+                }}
+            >
+                {words.map((word, i) => (
+                    <span
+                        key={i}
+                        style={{
+                            fontSize: 'clamp(5rem, 15vw, 14rem)',
+                            fontWeight: 900,
+                            lineHeight: 1,
+                            background: 'linear-gradient(135deg, #ffffff 0%, #00d9ff 100%)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
+                            display: 'inline-block',
+                            flexShrink: 0,
+                        }}
+                    >
+                        {word}
+                    </span>
+                ))}
+            </div>
+        </div>
     );
 }
 

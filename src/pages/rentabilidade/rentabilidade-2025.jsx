@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { servicedata2 } from "../../constant/alldata";
 import Footer2 from "../../layout/footer2";
 import Header2 from "../../layout/header2";
@@ -99,14 +101,52 @@ function KpiStrip() {
    Seção Patrimônio
 ───────────────────────────────────────────── */
 function SecaoPatrimonio() {
+    const sectionRef = useRef(null);
+    const integerRef = useRef(null);  // "4.331"
+    const decimalRef = useRef(null);  // "275.834"
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const counter1 = { val: 0 };
+        const counter2 = { val: 0 };
+
+        const tween1 = gsap.to(counter1, {
+            val: 4331,
+            duration: 2,
+            ease: "power2.out",
+            scrollTrigger: { trigger: sectionRef.current, start: "top 75%", once: true },
+            onUpdate: () => {
+                if (integerRef.current)
+                    integerRef.current.textContent = Math.round(counter1.val).toLocaleString("pt-BR");
+            },
+        });
+
+        const tween2 = gsap.to(counter2, {
+            val: 275834,
+            duration: 2.2,
+            ease: "power2.out",
+            scrollTrigger: { trigger: sectionRef.current, start: "top 75%", once: true },
+            onUpdate: () => {
+                if (decimalRef.current)
+                    decimalRef.current.textContent = Math.round(counter2.val).toLocaleString("pt-BR");
+            },
+        });
+
+        return () => {
+            tween1.kill();
+            tween2.kill();
+        };
+    }, []);
+
     return (
-        <section id="patrimonio" className="rnt-patrimonio">
+        <section id="patrimonio" className="rnt-patrimonio" ref={sectionRef}>
             <div className="rnt-patrimonio-inner">
                 <div>
                     <div className="dstq-section-label dstq-reveal">Patrimônio Acumulado 2025</div>
                     <div className="rnt-patrimonio-value">
-                        R$&nbsp;<span>4.331</span>
-                        <br />275.834
+                        R$&nbsp;<span ref={integerRef}>4.331</span>
+                        <br /><span className="rnt-decimal" ref={decimalRef}>275.834</span>
                     </div>
                     <div className="rnt-patrimonio-badge">Crescimento de 8,52% em relação ao ano anterior</div>
                 </div>
@@ -122,15 +162,6 @@ function SecaoPatrimonio() {
                         Nas páginas específicas de cada plano, você pode conferir todos os resultados, análises e
                         outras informações relevantes.
                     </p>
-                    <div className="dstq-reveal dstq-reveal--d3" style={{ marginTop: '30px' }}>
-                        <div style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.2)' }}>
-                            <img 
-                                src={IMAGES.instTrust} 
-                                alt="Institutional Trust" 
-                                style={{ width: '100%', height: 'auto', display: 'block' }}
-                            />
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
