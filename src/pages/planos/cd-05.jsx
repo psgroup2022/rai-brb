@@ -20,9 +20,11 @@ import {
     Tooltip,
     Legend,
 } from "chart.js";
-import { Bar, Doughnut, Pie } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend);
+
+import { motion, AnimatePresence } from "framer-motion";
 
 function useReveal() {
     useEffect(() => {
@@ -145,29 +147,6 @@ function Band({ quote }) {
 }
 
 function SecaoRentabilidade() {
-    const data = {
-        labels: ["Rentabilidade", "Índice de Referência", "Mediana Mercado"],
-        datasets: [
-            {
-                data: [12.28, 8.43, 7.8],
-                backgroundColor: ["#00aeef", "#0074c8", "#94a3b8"],
-                borderRadius: 6,
-            },
-        ],
-    };
-
-    const options = {
-        indexAxis: "y",
-        plugins: { legend: { display: false } },
-        scales: {
-            x: {
-                ticks: { callback: (v) => `${v}%`, color: LIGHT_CHART_OPTS.color },
-                grid: { color: LIGHT_CHART_OPTS.borderColor },
-            },
-            y: { ticks: { color: LIGHT_CHART_OPTS.color }, grid: { display: false } },
-        },
-    };
-
     return (
         <section id="rentabilidade" className="plano-section plano-section--light">
             <div className="container">
@@ -195,11 +174,6 @@ function SecaoRentabilidade() {
                         </li>
                     ))}
                 </ul>
-
-                <div className="plano-chart-box plano-chart-box--light">
-                    <div className="plano-chart-title">Rentabilidade vs. Índice de Referência</div>
-                    <Bar data={data} options={options} />
-                </div>
             </div>
         </section>
     );
@@ -232,16 +206,6 @@ function SecaoDesempenho() {
         },
     };
 
-    const popData = {
-        labels: ["Ativos (99,83%)", "Assistidos (0,17%)"],
-        datasets: [{ data: [99.83, 0.17], backgroundColor: ["#00aeef", "#0074c8"] }],
-    };
-    const popOptions = {
-        plugins: {
-            legend: { position: "bottom", labels: { color: DARK_CHART_OPTS.color } },
-            datalabels: { display: false },
-        },
-    };
 
     return (
         <section id="desempenho" className="plano-section plano-section--dark">
@@ -268,52 +232,91 @@ function SecaoDesempenho() {
                     <Bar data={compData} options={compOptions} />
                 </div>
 
-                {/* Quadro Populacional */}
-                <div style={{ marginTop: 60 }}>
-                    <h3 className="dstq-section-heading dstq-reveal" style={{ fontSize: "1.5rem" }}>
-                        Quadro Populacional
-                    </h3>
-
-                    <div className="plano-kpi-row dstq-reveal" style={{ marginTop: 24 }}>
-                        {[
-                            { label: "Total de Participantes", value: "1.171", sub: "2024: 899 · Aumento de 30,26%" },
-                            { label: "Ativos",                 value: "99,83%" },
-                            { label: "Assistidos",             value: "0,17%" },
-                            { label: "Pensionistas",           value: "0,0%" },
-                        ].map((k, i) => (
-                            <div className="plano-kpi-card" key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
-                                <div className="plano-kpi-label">{k.label}</div>
-                                <div className="plano-kpi-value">{k.value}</div>
-                                {k.sub && <div className="plano-kpi-sub">{k.sub}</div>}
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="plano-kpi-row dstq-reveal" style={{ marginTop: 16 }}>
-                        {[
-                            { label: "Feminino",                    value: "34,67%" },
-                            { label: "Masculino",                   value: "65,33%" },
-                            { label: "Média de Idade — Ativos",     value: "36,62 anos" },
-                            { label: "Média de Idade — Assistidos", value: "69,53 anos" },
-                            { label: "Maturidade do Plano",         value: "0,17%" },
-                        ].map((k, i) => (
-                            <div className="plano-kpi-card" key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
-                                <div className="plano-kpi-label">{k.label}</div>
-                                <div className="plano-kpi-value">{k.value}</div>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="dstq-split dstq-reveal" style={{ marginTop: 32, alignItems: 'start' }}>
+                {/* Quadro Populacional — pop- */}
+                <div className="pop-section dstq-reveal" style={{ marginTop: 60 }}>
+                    <div className="pop-hero">
                         <div>
-                            <p className="dstq-text-body">
-                                Todos os novos empregados do BRB, da Saúde BRB, da BRBCARD, da CEASA-DF, da ANEABRB e da própria Previdência BRB podem aderir ao Plano CD-05.
-                            </p>
+                            <div className="pop-section-label">Quadro Populacional</div>
+                            <div className="pop-total-num">1.171</div>
+                            <span className="pop-total-label">participantes em 2025</span>
+                            <div className="pop-total-delta">
+                                <span className="pop-delta-badge">▲ 30,26%</span>
+                                <span className="pop-delta-context">vs. 899 em 2024</span>
+                            </div>
                         </div>
-                        <div className="plano-chart-box" style={{ marginTop: 0 }}>
-                            <div className="plano-chart-title">Distribuição de Participantes</div>
-                            <Doughnut data={popData} options={popOptions} />
+                        <div className="pop-closed-tag" style={{ background: 'rgba(0,174,239,0.1)', borderColor: 'rgba(0,174,239,0.2)' }}>
+                            <span className="pop-closed-icon" style={{ background: '#00aeef' }}>✓</span>
+                            <div>
+                                <strong style={{ color: '#00aeef' }}>Plano aberto</strong>
+                                <span style={{ color: 'rgba(255,255,255,0.7)' }}>para novas adesões</span>
+                            </div>
                         </div>
+                    </div>
+
+                    <div className="pop-bar-wrap dstq-reveal dstq-reveal--d1">
+                        <div className="pop-bar-label">Composição do plano</div>
+                        <div className="pop-bar">
+                            <div className="pop-bar-seg pop-bar-seg--ativos" style={{ width: '99.83%' }}>
+                                <span>Ativos</span>
+                                <strong>99,83%</strong>
+                            </div>
+                            <div className="pop-bar-seg pop-bar-seg--assistidos" style={{ width: '0.17%' }}>
+                                <span>Assistidos</span>
+                                <strong>0,17%</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="pop-bottom-grid dstq-reveal dstq-reveal--d2">
+                        <div className="pop-card">
+                            <div className="pop-card-label">Distribuição por Gênero</div>
+                            <div className="pop-gender-bar">
+                                <div className="pop-gender-masc" style={{ width: '65.33%' }}>
+                                    <span>♂ Masculino</span>
+                                    <strong>65,33%</strong>
+                                </div>
+                                <div className="pop-gender-fem" style={{ width: '34.67%' }}>
+                                    <strong>34.67%</strong>
+                                    <span>Feminino ♀</span>
+                                </div>
+                            </div>
+                            <div className="pop-gender-legend">
+                                <span><i className="pop-dot pop-dot--masc" />Masculino — 65,33%</span>
+                                <span><i className="pop-dot pop-dot--fem" />Feminino — 34,67%</span>
+                            </div>
+                        </div>
+
+                        <div className="pop-card">
+                            <div className="pop-card-label">Média de Idade</div>
+                            <div className="pop-age-pair">
+                                <div className="pop-age-item">
+                                    <span className="pop-age-num">36,62</span>
+                                    <span className="pop-age-lbl">anos</span>
+                                    <span className="pop-age-tag">Ativos</span>
+                                </div>
+                                <div className="pop-age-divider" />
+                                <div className="pop-age-item">
+                                    <span className="pop-age-num">69,53</span>
+                                    <span className="pop-age-lbl">anos</span>
+                                    <span className="pop-age-tag">Assistidos</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="pop-card pop-card--maturity">
+                            <div className="pop-card-label">Maturidade do Plano</div>
+                            <div className="pop-maturity-num">0,17%</div>
+                            <div className="pop-maturity-bar">
+                                <div className="pop-maturity-fill" style={{ width: '0.17%' }} />
+                            </div>
+                            <span className="pop-maturity-sub">Predominância de participantes ativos</span>
+                        </div>
+                    </div>
+
+                    <div className="dstq-reveal" style={{ marginTop: 32 }}>
+                        <p className="dstq-text-body" style={{ opacity: 0.8, fontSize: '0.95rem' }}>
+                            Todos os novos empregados do BRB, da Saúde BRB, da BRBCARD, da CEASA-DF, da ANEABRB e da própria Previdência BRB podem aderir ao Plano CD-05.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -385,34 +388,43 @@ function SecaoInvestimentos() {
                     ))}
                 </div>
 
-                {/* Tabela política */}
-                <div className="plano-table-wrap dstq-reveal">
-                    <table className="plano-table plano-table--light">
-                        <thead>
-                            <tr>
-                                <th rowSpan={2} style={{ minWidth: '200px' }}>Segmento</th>
-                                <th className="num" colSpan={2}>Política de Investimento</th>
-                                <th className="num" rowSpan={2}>Resolução 4.994</th>
-                                <th className="num" rowSpan={2}>Alocação Objetivo 2026</th>
-                            </tr>
-                            <tr>
-                                <th className="num">2026</th>
-                                <th className="num">2025</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {tabelas[perfilAtivo].map(([seg, p26, p25, res, aloc], i) => (
-                                <tr key={i}>
-                                    <td>{seg}</td>
-                                    <td className="num">{p26}</td>
-                                    <td className="num">{p25}</td>
-                                    <td className="num">{res}</td>
-                                    <td className="num">{aloc}</td>
+                {/* Tabela política com animação */}
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={perfilAtivo}
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -15 }}
+                        transition={{ duration: 0.35, ease: "easeOut" }}
+                        className="plano-table-wrap dstq-reveal is-visible"
+                    >
+                        <table className="plano-table plano-table--light">
+                            <thead>
+                                <tr>
+                                    <th rowSpan={2} style={{ minWidth: '200px' }}>Segmento</th>
+                                    <th className="num" colSpan={2}>Política de Investimento</th>
+                                    <th className="num" rowSpan={2}>Resolução 4.994</th>
+                                    <th className="num" rowSpan={2}>Alocação Objetivo 2026</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                                <tr>
+                                    <th className="num">2026</th>
+                                    <th className="num">2025</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {tabelas[perfilAtivo].map(([seg, p26, p25, res, aloc], i) => (
+                                    <tr key={i}>
+                                        <td>{seg}</td>
+                                        <td className="num">{p26}</td>
+                                        <td className="num">{p25}</td>
+                                        <td className="num">{res}</td>
+                                        <td className="num">{aloc}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </motion.div>
+                </AnimatePresence>
 
                 {/* Tabela resultado */}
                 <div style={{ marginTop: 48 }}>
@@ -427,8 +439,8 @@ function SecaoInvestimentos() {
                                     <th className="num" colSpan={3}>Desempenho</th>
                                 </tr>
                                 <tr>
-                                    <th className="num">1SEM</th>
-                                    <th className="num">2SEM</th>
+                                    <th className="num">1º SEM</th>
+                                    <th className="num">2º SEM</th>
                                     <th className="num">2025</th>
                                 </tr>
                             </thead>
@@ -458,6 +470,75 @@ function SecaoInvestimentos() {
                             </tbody>
                         </table>
                     </div>
+
+                    {/* CTA Demonstrativo Analítico */}
+                    <motion.a
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="dstq-reveal"
+                        whileHover={{ y: -5, boxShadow: '0 12px 30px rgba(0,116,200,0.12)' }}
+                        whileTap={{ scale: 0.99 }}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '24px',
+                            marginTop: '32px',
+                            padding: '24px 32px',
+                            borderRadius: '16px',
+                            background: 'rgba(255,255,255,0.8)',
+                            backdropFilter: 'blur(10px)',
+                            border: '1px solid rgba(0, 116, 200, 0.15)',
+                            textDecoration: 'none',
+                            cursor: 'pointer',
+                            boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
+                        }}
+                    >
+                        <div style={{
+                            width: '56px',
+                            height: '56px',
+                            borderRadius: '14px',
+                            background: 'linear-gradient(135deg, #0074c8 0%, #00aeef 100%)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0,
+                            boxShadow: '0 6px 16px rgba(0, 116, 200, 0.25)'
+                        }}>
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </div>
+                        <div style={{ flex: 1 }}>
+                            <p style={{ 
+                                margin: 0, 
+                                color: '#0a1f3c', 
+                                fontSize: '1.05rem', 
+                                lineHeight: '1.5',
+                                fontWeight: '500'
+                            }}>
+                                <strong style={{ color: '#0074c8', fontWeight: '800' }}>CLIQUE AQUI</strong> para acessar o Demonstrativo Analítico dos Investimentos do Plano CD-05 – Dezembro/2025
+                            </p>
+                        </div>
+                        <div style={{
+                            width: '40px',
+                            height: '40px',
+                            borderRadius: '50%',
+                            background: 'rgba(0,116,200,0.05)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: '#0074c8',
+                            fontSize: '1.2rem',
+                            transition: 'all 0.3s ease'
+                        }}>
+                            →
+                        </div>
+                    </motion.a>
                 </div>
             </div>
         </section>
@@ -533,11 +614,6 @@ function SecaoArrecadacao() {
                     </table>
                 </div>
 
-                <div className="dstq-reveal" style={{ marginTop: '32px', textAlign: 'center' }}>
-                    <a href="#" className="dstq-cta-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
-                        <strong>CLIQUE AQUI</strong> para acessar o Demonstrativo Analítico dos Investimentos do Plano CD-05 – Dezembro/2025 <span>→</span>
-                    </a>
-                </div>
             </div>
         </section>
     );
@@ -621,7 +697,7 @@ function SecaoAtuarial() {
                     </table>
                 </div>
 
-                {/* Textos */}
+                {/* Textos Atuariais */}
                 <div className="dstq-reveal dstq-reveal--d2" style={{ marginTop: '32px' }}>
                     <p className="dstq-text-body dstq-text-body--on-light" style={{ marginBottom: '14px' }}>
                         As Provisões Matemáticas dimensionadas em 31 de dezembro de 2025, no montante de <strong style={{ color: '#0a1f3c' }}>R$ 51.209.884</strong>, comparativamente àquelas constantes de Avaliação Atuarial de 2024, que perfizeram <strong style={{ color: '#0a1f3c' }}>R$ 34.214.700,30</strong>, representaram uma variação de aproximadamente <strong style={{ color: '#0a1f3c' }}>49,67%</strong>.
@@ -634,11 +710,107 @@ function SecaoAtuarial() {
                     </p>
                 </div>
 
-                {/* CTA */}
-                <div className="dstq-reveal" style={{ marginTop: '32px', textAlign: 'center' }}>
-                    <a href="#" className="dstq-cta-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
-                        Clique aqui para acessar o Parecer Atuarial do Plano CD-05 <span>→</span>
-                    </a>
+                {/* CTA Parecer Atuarial */}
+                <motion.a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="dstq-reveal"
+                    whileHover={{ y: -5, boxShadow: '0 12px 30px rgba(0,116,200,0.12)' }}
+                    whileTap={{ scale: 0.99 }}
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '24px',
+                        marginTop: '32px',
+                        padding: '24px 32px',
+                        borderRadius: '16px',
+                        background: 'rgba(255,255,255,0.8)',
+                        backdropFilter: 'blur(10px)',
+                        border: '1px solid rgba(0, 116, 200, 0.15)',
+                        textDecoration: 'none',
+                        cursor: 'pointer',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
+                    }}
+                >
+                    <div style={{
+                        width: '56px',
+                        height: '56px',
+                        borderRadius: '14px',
+                        background: 'linear-gradient(135deg, #0074c8 0%, #00aeef 100%)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                        boxShadow: '0 6px 16px rgba(0, 116, 200, 0.25)'
+                    }}>
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <circle cx="12" cy="14" r="3"></circle>
+                            <path d="M12 11v3h3"></path>
+                        </svg>
+                    </div>
+                    <div style={{ flex: 1 }}>
+                        <p style={{ 
+                            margin: 0, 
+                            color: '#0a1f3c', 
+                            fontSize: '1.05rem', 
+                            lineHeight: '1.5',
+                            fontWeight: '500'
+                        }}>
+                            <strong style={{ color: '#0074c8', fontWeight: '800' }}>CLIQUE AQUI</strong> para acessar o Parecer Atuarial do Plano CD-05 Arquivo anexo
+                        </p>
+                    </div>
+                    <div style={{
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        background: 'rgba(0,116,200,0.05)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#0074c8',
+                        fontSize: '1.2rem',
+                        transition: 'all 0.3s ease'
+                    }}>
+                        →
+                    </div>
+                </motion.a>
+            </div>
+        </section>
+    );
+}
+function SecaoEquilibrio() {
+    return (
+        <section id="equilibrio" className="plano-section plano-section--dark">
+            <div className="container">
+                <div className="dstq-section-label dstq-reveal">Situação Financeira</div>
+                <h2 className="dstq-section-heading dstq-reveal dstq-reveal--d1">
+                    Equilíbrio <span className="dstq-accent">Técnico</span> do Plano
+                </h2>
+                <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
+
+                <div className="eq-grid dstq-reveal dstq-reveal--d2">
+
+                    <div className="eq-card eq-card--pat">
+                        <span className="eq-card-label">Patrimônio de Cobertura</span>
+                        <div className="eq-card-number">
+                            <span className="eq-currency">R$</span>
+                            <span className="eq-integer">51.209.884</span>
+                            <span className="eq-decimal">,56</span>
+                        </div>
+                    </div>
+
+                    <div className="eq-card eq-card--prov">
+                        <span className="eq-card-label">Provisões Matemáticas</span>
+                        <div className="eq-card-number">
+                            <span className="eq-currency">R$</span>
+                            <span className="eq-integer">51.209.884</span>
+                            <span className="eq-decimal">,56</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -655,18 +827,9 @@ function SecaoCustos() {
                 </h2>
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
-                {/* Equilíbrio Técnico */}
-                <div className="plano-kpi-row dstq-reveal" style={{ marginBottom: '40px' }}>
-                    {[
-                        { label: "Patrimônio de Cobertura", value: "R$ 51.209.884,56" },
-                        { label: "Provisões Matemáticas",   value: "R$ 51.209.884,56" },
-                    ].map((k, i) => (
-                        <div className="plano-kpi-card" key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
-                            <div className="plano-kpi-label">{k.label}</div>
-                            <div className="plano-kpi-value">{k.value}</div>
-                        </div>
-                    ))}
-                </div>
+                <p className="dstq-text-body dstq-reveal" style={{ marginBottom: '32px' }}>
+                    Em 2025, os custos com a administração do Plano de Benefícios CD-05, formados pelas despesas com a gestão previdencial e a gestão de investimentos do Plano, foram distribuídos conforme demonstrado a seguir:
+                </p>
 
                 {/* Tabela 1 — Despesas Gestão */}
                 <div className="plano-table-wrap dstq-reveal">
@@ -860,6 +1023,7 @@ function PlanoCD05() {
             <SecaoInvestimentos />
             <SecaoArrecadacao />
             <SecaoAtuarial />
+            <SecaoEquilibrio />
             <SecaoCustos />
             <Band quote={'"O Plano CD-05 encerrou 2025 com Equilíbrio Técnico atuarial, rentabilidade de 12,28% e crescimento expressivo de 30,26% no número de participantes, consolidando sua expansão."'} />
 
@@ -869,7 +1033,7 @@ function PlanoCD05() {
                     <div className="services-index-intro">
                         <span className="services-index-label"># Índice</span>
                         <h2 className="services-index-heading">
-                            Conheça os planos da <span className="services-index-accent">Previdência BRB</span> e
+                            Conheça os Planos da <span className="services-index-accent">Previdência BRB</span> e
                             descubra o que o seu plano oferece para o seu futuro.
                         </h2>
                     </div>
