@@ -68,7 +68,7 @@ function SecaoRentabilidade() {
         labels: ["Rentabilidade", "Índice de Referência", "Mediana Mercado (pendente)"],
         datasets: [
             {
-                data: [11.51, 8.43, 0],
+                data: [11.51, 8.44, 0],
                 backgroundColor: ["#00aeef", "#0074c8", "#94a3b8"],
                 borderRadius: 6,
             },
@@ -118,8 +118,8 @@ function SecaoRentabilidade() {
                 <div className="plano-kpi-row">
                     {[
                         { label: "Rentabilidade 2025", value: "11,51%", sub: "Desempenho atual do plano" },
-                        { label: "Índice de Referência", value: "8,43%", sub: "IPCA + 4% a.a." },
-                        { label: "Desempenho", value: "136,54%", sub: "Rentabilidade / Referencial" },
+                        { label: "Índice de Referência", value: "8,44%", sub: "IPCA + 4% a.a." },
+                        { label: "Desempenho", value: "136%", sub: "Rentabilidade / Referencial" },
                     ].map((k, i) => (
                         <div className="plano-kpi-card plano-kpi-card--light" key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
                             <div className="plano-kpi-label">{k.label}</div>
@@ -165,11 +165,11 @@ function SecaoCusteioAdministrativo() {
                         </thead>
                         <tbody>
                             {[
-                                ["BD-01", "2,20% a.m.", "-"],
-                                ["CD-02", "-", "0,30% a.a."],
+                                ["BD-01", "2,10% a.m.", "-"],
+                                ["CD-02", "-", "0,50% a.a."],
                                 ["CV-03", "-", "0,50% a.a."],
                                 ["CD-Metrô-DF", "-", "0,50% a.a."],
-                                ["CD-05", "3,00% a.m.", "-"],
+                                ["CD-05", "-", "0,40% a.a."],
                                 ["BrasíliaPrev", "-", "0,50% a.a."],
                                 ["RegiusPrev", "2,95% a.m.", "-"],
                             ].map(([plano, car, adm], i) => (
@@ -192,7 +192,7 @@ function SecaoDesempenhoPlano() {
         labels: ["Rentabilidade", "Índice de Referência", "Mediana Mercado (pendente)"],
         datasets: [
             {
-                data: [11.51, 8.43, 0],
+                data: [11.51, 8.44, 0],
                 backgroundColor: ["#00aeef", "#0074c8", "#94a3b8"],
                 borderRadius: 6,
             },
@@ -229,9 +229,10 @@ function SecaoDesempenhoPlano() {
                 <div className="plano-kpi-row">
                     {[
                         { label: "Recurso do Plano", value: "R$ 94.149.613" },
-                        { label: "Índice de Referência", value: "8,43%" },
+                        { label: "Índice de Referência", value: "8,44%" },
                         { label: "Rentabilidade", value: "11,51%" },
-                        { label: "Desempenho", value: "136,54%" },
+                        { label: "Desempenho", value: "136%" },
+                        { label: "Ganho Real", value: "6,95% a.a." },
                     ].map((k, i) => (
                         <div className="plano-kpi-card" key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
                             <div className="plano-kpi-label">{k.label}</div>
@@ -372,9 +373,12 @@ function SecaoRateioEInvestimentos() {
                     </div>
                 </div>
 
-                <p className="dstq-text-body dstq-text-body--on-light dstq-reveal" style={{ marginTop: 24 }}>
-                    Clique aqui para acessar o Demonstrativo Analítico dos Investimentos do Plano PGA – Dezembro/2025.
-                </p>
+                <div className="dstq-cta-wrap" style={{ marginTop: 24 }}>
+                    <a href="#" className="dstq-cta-btn"
+                       style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                        <strong>CLIQUE AQUI</strong> para acessar o Demonstrativo Analítico dos Investimentos do Plano PGA – Dezembro/2025 <span>→</span>
+                    </a>
+                </div>
             </div>
         </section>
     );
@@ -462,8 +466,8 @@ function SecaoExecucaoOrcamentaria() {
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
                 <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d2">
-                    As despesas totais realizadas ficaram 3,14% abaixo do valor orçado para 2024,
-                    representando uma economia de R$ 617.032 mil.
+                    As despesas totais realizadas ficaram 4,14% abaixo do valor orçado para 2025,
+                    representando uma economia de R$ 838.326 mil.
                 </p>
 
                 <div className="plano-chart-box plano-chart-box--light">
@@ -691,17 +695,17 @@ function SecaoCustosFinais() {
                                 ["Contingências (PIS e COFINS)", "749"],
                                 ["Sub-total (despesas adm)", "749"],
                                 ["Corretagens/emolumentos bolsa valores", "-"],
-                                ["Taxa adm/gestão fundos abertos", "-"],
-                                ["Taxa custódia/controladoria fundos abertos", "-"],
+                                ["Taxa adm/gestão fundos abertos", "8.832"],
+                                ["Taxa custódia/controladoria fundos abertos", "3.596"],
                                 ["Taxa performance fundos abertos", "-"],
-                                ["Outras despesas fundos abertos", "-"],
-                                ["Sub-total (despesas outras)", "-"],
+                                ["Outras despesas fundos abertos", "2.711"],
+                                ["Sub-total (despesas outras)", "15.139"],
                             ].map(([a, b], i) => (
                                 <tr key={i}><td>{a}</td><td className="num">{b}</td></tr>
                             ))}
                             <tr className="total">
                                 <td><strong>TOTAL</strong></td>
-                                <td className="num">749</td>
+                                <td className="num">15.888</td>
                             </tr>
                         </tbody>
                     </table>
