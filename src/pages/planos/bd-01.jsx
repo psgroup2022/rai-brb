@@ -367,8 +367,8 @@ function SecaoInvestimentos() {
                                     <th className="num" colSpan={3}>Desempenho</th>
                                 </tr>
                                 <tr>
-                                    <th className="num">1SEM</th>
-                                    <th className="num">2SEM</th>
+                                    <th className="num">1º SEM</th>
+                                    <th className="num">2º SEM</th>
                                     <th className="num">2025</th>
                                 </tr>
                             </thead>
@@ -1156,7 +1156,7 @@ function PlanoBD01() {
                     <div className="services-index-intro">
                         <span className="services-index-label"># Índice</span>
                         <h2 className="services-index-heading">
-                            Conheça os planos da <span className="services-index-accent">Previdência BRB</span>
+                            Conheça os Planos da <span className="services-index-accent">Previdência BRB</span>
                             {" "}e descubra o que o seu plano oferece para o seu futuro.
                         </h2>
                     </div>

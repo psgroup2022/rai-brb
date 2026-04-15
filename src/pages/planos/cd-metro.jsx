@@ -96,36 +96,17 @@ function SecaoRentabilidade() {
                 </h2>
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
-                <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d2">
-                    O Plano CD-Metro/DF registrou rentabilidade de <strong style={{ color: "#0a1f3c" }}>11,74%</strong> em 2025,
-                    representando <strong style={{ color: "#0a1f3c" }}>139,26% do indice de referencia (IPCA + 4% a.a.)</strong>.
-                    A Renda Fixa, que representa 96% da carteira, registrou 11,53%, com destaque para o Exterior
-                    (+18,94%) e Operacoes com Participantes (+14,46%).
-                </p>
+                <ul className="plano-bullets dstq-reveal dstq-reveal--d2">
+                    <li>O Plano CD-METRÔ/DF encerrou 2025 com rentabilidade de 11,74%, equivalente a 139% do seu índice de referência (IPCA + 4,00% a.a.).</li>
+                    <li>O resultado alcançado foi impulsionado por uma estrutura mais diversificada, combinando renda fixa, renda variável, multimercados, operações com participantes e investimentos no exterior.</li>
+                    <li>A Renda Fixa manteve papel central, com retorno de 11,53%, sustentada por LFT e NTN-B. Destaque-se ainda que 93% da carteira do Plano CD-Metrô/DF é composto por NTN-B, com taxa média de aquisição de 6,99% a.a., com predominância de marcação na curva.</li>
+                    <li>A Renda Variável, via fundo Guepardo, apresentou desempenho expressivo de 25,81%, contribuindo de forma relevante ao resultado consolidado.</li>
+                    <li>O segmento estruturado/multimercados também teve contribuição positiva de 13,52%, enquanto os investimentos no exterior destacaram-se com retorno de 18,94%, reforçando a diversificação geográfica.</li>
+                    <li>As operações com participantes mantiveram desempenho consistente de 14,46%, também superando o índice de referência do Plano.</li>
+                    <li>No conjunto, o plano apresentou equilíbrio entre retorno e diversificação, compatível com seu perfil e horizonte de longo prazo.</li>
+                </ul>
 
-                <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d3" style={{ marginTop: 16 }}>
-                    Nos ultimos dez anos, a rentabilidade acumulada do CD-Metro/DF atingiu 141,03% em termos nominais,
-                    compativel com a variacao da Taxa SELIC no periodo (142,10%).
-                </p>
 
-                <div className="plano-chart-box plano-chart-box--light">
-                    <div className="plano-chart-title">Rentabilidade vs. Indice de Referencia</div>
-                    <Bar data={data} options={options} />
-                </div>
-
-                <div className="plano-kpi-row">
-                    {[
-                        { label: "Rentabilidade Acumulada (10 anos)", value: "141,03%", sub: "Compativel com Selic (142,10%)" },
-                        { label: "Desempenho vs. Referencia", value: "139,26%", sub: "Recuperacao apos -0,59% em 2024" },
-                        { label: "Exterior", value: "+18,94%", sub: "Melhor segmento do portfolio" },
-                    ].map((k, i) => (
-                        <div className="plano-kpi-card plano-kpi-card--light" key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
-                            <div className="plano-kpi-label">{k.label}</div>
-                            <div className="plano-kpi-value">{k.value}</div>
-                            {k.sub && <div className="plano-kpi-sub">{k.sub}</div>}
-                        </div>
-                    ))}
-                </div>
             </div>
         </section>
     );
@@ -133,24 +114,47 @@ function SecaoRentabilidade() {
 
 function SecaoDesempenho() {
     const compData = {
-        labels: ["Rentabilidade", "Indice de Referencia", "Mediana Mercado"],
+        labels: ["Referencial", "Rentabilidade", "Ganho Real"],
         datasets: [
             {
-                data: [11.74, 8.43, 7.8],
-                backgroundColor: ["#00aeef", "#0074c8", "#94a3b8"],
+                data: [8.44, 11.74, 7.17],
+                backgroundColor: ["#0074c8", "#00aeef", "#004282"],
                 borderRadius: 6,
             },
         ],
     };
 
     const compOptions = {
+        indexAxis: "y",
         plugins: { legend: { display: false } },
         scales: {
-            y: {
+            x: {
                 ticks: { callback: (v) => `${v}%`, color: DARK_CHART_OPTS.color },
                 grid: { color: DARK_CHART_OPTS.borderColor },
             },
+            y: { ticks: { color: DARK_CHART_OPTS.color }, grid: { display: false } },
+        },
+    };
+
+    const popEvoData = {
+        labels: ["2024", "2025"],
+        datasets: [
+            {
+                data: [896, 932],
+                backgroundColor: ["rgba(0,174,239,0.3)", "#00aeef"],
+                borderRadius: 6,
+                barPercentage: 0.5,
+            },
+        ],
+    };
+
+    const popEvoOptions = {
+        plugins: {
+            legend: { display: false },
+        },
+        scales: {
             x: { ticks: { color: DARK_CHART_OPTS.color }, grid: { display: false } },
+            y: { ticks: { color: DARK_CHART_OPTS.color }, grid: { color: DARK_CHART_OPTS.borderColor } },
         },
     };
 
@@ -174,12 +178,19 @@ function SecaoDesempenho() {
                 </h2>
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
-                <div className="plano-kpi-row">
+                <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
+                    O Plano registrou uma rentabilidade acumulada de 11,74% em 2025, equivalente a 139% do seu índice de referência (IPCA+4,00% a.a.). Esse resultado representa um ganho real (acima da inflação) de 7,17%, incrementando os ganhos para a constituição da reserva de aposentadoria dos seus participantes.
+                </p>
+                <p className="dstq-text-body dstq-reveal dstq-reveal--d3" style={{ marginTop: 12 }}>
+                    O CD-Metrô/DF possui 93% do seu patrimônio total alocado em NTN-B, com taxa média ponderada de 6,99% a.a. + IPCA.
+                </p>
+
+                <div className="plano-kpi-row" style={{ marginTop: 32 }}>
                     {[
-                        { label: "Recurso do Plano", value: "R$ 151,3 mi" },
-                        { label: "Indice de Referencia", value: "8,43%" },
+                        { label: "Recurso do Plano", value: "R$ 151.337.404" },
+                        { label: "Referencial", value: "8,44%" },
                         { label: "Rentabilidade", value: "11,74%" },
-                        { label: "Desempenho", value: "139,26%" },
+                        { label: "Ganho Real (acima da inflação)", value: "7,17% a.a." },
                     ].map((k, i) => (
                         <div className="plano-kpi-card" key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
                             <div className="plano-kpi-label">{k.label}</div>
@@ -189,40 +200,108 @@ function SecaoDesempenho() {
                 </div>
 
                 <div className="plano-chart-box">
-                    <div className="plano-chart-title">Rentabilidade vs. Referencia vs. Mercado</div>
+                    <div className="plano-chart-title">Indicadores do Plano · Recurso: R$ 151.337.404</div>
                     <Bar data={compData} options={compOptions} />
                 </div>
 
-                <div style={{ marginTop: 60 }}>
-                    <h3 className="dstq-section-heading dstq-reveal" style={{ fontSize: "1.5rem" }}>
-                        Quadro Populacional
-                    </h3>
-                    <div className="dstq-split" style={{ marginTop: 24 }}>
+                {/* Quadro Populacional — pop- */}
+                <div className="pop-section dstq-reveal" style={{ marginTop: 60 }}>
+                    <div className="pop-hero">
                         <div>
-                            <div className="plano-kpi-row">
-                                {[
-                                    { label: "Total de Participantes", value: "932", sub: "Aumento de 4,02% vs. 2024" },
-                                    { label: "Ativos", value: "99,89%" },
-                                    { label: "Assistidos", value: "0,11%" },
-                                    { label: "Pensionistas", value: "0,0%" },
-                                ].map((k, i) => (
-                                    <div className="plano-kpi-card" key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
-                                        <div className="plano-kpi-label">{k.label}</div>
-                                        <div className="plano-kpi-value">{k.value}</div>
-                                        {k.sub && <div className="plano-kpi-sub">{k.sub}</div>}
-                                    </div>
-                                ))}
+                            <div className="pop-section-label">Quadro Populacional</div>
+                            <div className="pop-total-num">932</div>
+                            <span className="pop-total-label">participantes em 2025</span>
+                            <div className="pop-total-delta">
+                                <span className="pop-delta-badge" style={{ color: '#16a34a', background: 'rgba(22, 163, 74, 0.1)' }}>▲ 4,02%</span>
+                                <span className="pop-delta-context">vs. 2024</span>
                             </div>
-                            <p className="dstq-text-body dstq-reveal" style={{ marginTop: 28 }}>
-                                Podem aderir: todos os empregados da Companhia do Metropolitano do Distrito Federal,
-                                inclusive gerentes, diretores, conselheiros, ocupantes de cargo eletivo e outros
-                                dirigentes da Patrocinadora.
-                            </p>
                         </div>
-                        <div className="plano-chart-box" style={{ marginTop: 0 }}>
-                            <div className="plano-chart-title">Distribuicao de Participantes</div>
-                            <Doughnut data={popData} options={popOptions} />
+                        <div className="pop-closed-tag" style={{ background: "rgba(0,174,239,0.06)", border: "1px solid rgba(0,174,239,0.15)" }}>
+                            <span className="pop-closed-icon" style={{ background: "#00aeef", color: "#fff" }}>+</span>
+                            <div>
+                                <strong style={{ color: "rgba(255,255,255,0.9)" }}>Plano aberto</strong>
+                                <span style={{ color: "rgba(255,255,255,0.6)" }}>Podem aderir todos os empregados do Metrô-DF</span>
+                            </div>
                         </div>
+                    </div>
+
+                    <div className="pop-bar-wrap dstq-reveal dstq-reveal--d1">
+                        <div className="pop-bar-label">Composição do plano</div>
+                        <div className="pop-bar">
+                            <div className="pop-bar-seg pop-bar-seg--ativos" style={{ width: '99.9%' }}>
+                                <span>Ativos</span>
+                                <strong>99,9%</strong>
+                            </div>
+                            <div className="pop-bar-seg pop-bar-seg--assistidos" style={{ width: '0.1%' }}>
+                                <span>Assistidos</span>
+                                <strong>0,1%</strong>
+                            </div>
+                        </div>
+                        <div style={{ marginTop: 12, fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)' }}>
+                            * Pensionistas: 0,0%
+                        </div>
+                    </div>
+
+                    <div className="pop-bottom-grid dstq-reveal dstq-reveal--d2">
+                        <div className="pop-card">
+                            <div className="pop-card-label">Distribuição por Gênero</div>
+                            <div className="pop-gender-bar">
+                                <div className="pop-gender-masc" style={{ width: '75.43%' }}>
+                                    <span>♂ Masc</span>
+                                    <strong>75,43%</strong>
+                                </div>
+                                <div className="pop-gender-fem" style={{ width: '24.57%' }}>
+                                    <strong>24,57%</strong>
+                                    <span>Fem ♀</span>
+                                </div>
+                            </div>
+                            <div className="pop-gender-legend">
+                                <span><i className="pop-dot pop-dot--masc" />Masculino — 75,43%</span>
+                                <span><i className="pop-dot pop-dot--fem" />Feminino — 24,57%</span>
+                            </div>
+                        </div>
+
+                        <div className="pop-card">
+                            <div className="pop-card-label">Média de Idade</div>
+                            <div className="pop-age-pair">
+                                <div className="pop-age-item">
+                                    <span className="pop-age-num">47</span>
+                                    <span className="pop-age-lbl">anos</span>
+                                    <span className="pop-age-tag">Ativos</span>
+                                </div>
+                                <div className="pop-age-divider" />
+                                <div className="pop-age-item">
+                                    <span className="pop-age-num">67</span>
+                                    <span className="pop-age-lbl">anos</span>
+                                    <span className="pop-age-tag">Assistidos</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="pop-card pop-card--maturity">
+                            <div className="pop-card-label">Maturidade do Plano</div>
+                            <div className="pop-maturity-num">0,12%</div>
+                            <div className="pop-maturity-bar">
+                                <div className="pop-maturity-fill" style={{ width: '0.12%' }} />
+                            </div>
+                            <span className="pop-maturity-sub">Predominância de participantes ativos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="dstq-split" style={{ marginTop: 60, alignItems: "center" }}>
+                    <div>
+                        <h4 className="dstq-section-heading dstq-reveal" style={{ fontSize: "1.25rem", marginBottom: 16 }}>Adesão ao Plano</h4>
+                        <p className="dstq-text-body dstq-reveal">
+                            Todos os empregados da Companhia do Metropolitano do Distrito Federal – Metrô-DF podem aderir ao Plano, inclusive gerentes, diretores, conselheiros, ocupantes de cargo eletivo e outros dirigentes da Patrocinadora.
+                        </p>
+                        <p className="dstq-text-body dstq-reveal" style={{ marginTop: 16 }}>
+                            Aumento de <strong>4,02%</strong> no total de participantes em relação ao ano anterior.
+                        </p>
+                    </div>
+                    <div className="plano-chart-box dstq-reveal" style={{ marginTop: 0 }}>
+                        <div className="plano-chart-title">Evolução do Total de Participantes</div>
+                        <Bar data={popEvoData} options={popEvoOptions} />
                     </div>
                 </div>
             </div>
@@ -231,48 +310,43 @@ function SecaoDesempenho() {
 }
 
 function SecaoInvestimentos() {
-    const allocData = {
-        labels: ["Renda Fixa (96%)", "Renda Variavel (1%)", "Op. Participantes (2%)", "Exterior (1%)"],
-        datasets: [{ data: [96, 1, 2, 1], backgroundColor: ["#00aeef", "#0074c8", "#004282", "#94a3b8"] }],
-    };
-
-    const allocOptions = {
-        plugins: {
-            legend: { position: "bottom", labels: { color: LIGHT_CHART_OPTS.color } },
-        },
-    };
-
     return (
         <section id="investimentos" className="plano-section plano-section--light">
             <div className="container">
-                <div className="dstq-section-label dstq-section-label--light dstq-reveal">Alocacao de Recursos</div>
+                <div className="dstq-section-label dstq-section-label--light dstq-reveal">Alocação de Recursos</div>
                 <h2 className="dstq-section-heading dstq-section-heading--on-light dstq-reveal dstq-reveal--d1">
-                    Resultado da Politica de <span className="dstq-accent">Investimentos</span>
+                    Resultado da Política de <span className="dstq-accent">Investimentos</span>
                 </h2>
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
+                {/* Tabela — Política de Investimentos */}
                 <div className="plano-table-wrap">
                     <table className="plano-table plano-table--light">
                         <thead>
                             <tr>
-                                <th>Segmento</th>
-                                <th className="num">Politica Investimento</th>
-                                <th className="num">Resolucao 4.994</th>
-                                <th className="num">Alocacao 2025</th>
+                                <th rowSpan="2">Segmento</th>
+                                <th className="num" colSpan="2" style={{ textAlign: "center" }}>Política Investimento</th>
+                                <th className="num" rowSpan="2">Resolução 4.994</th>
+                                <th className="num" rowSpan="2">Alocação Objetivo 2026</th>
+                            </tr>
+                            <tr>
+                                <th className="num">2026</th>
+                                <th className="num">2025</th>
                             </tr>
                         </thead>
                         <tbody>
                             {[
-                                ["Renda Fixa", "100,00%", "100,00%", "96,00%"],
-                                ["Renda Variavel", "10,00%", "70,00%", "1,00%"],
-                                ["Estruturado", "10,00%", "20,00%", "-"],
-                                ["Imobiliario", "1,00%", "20,00%", "-"],
-                                ["Operacoes com Participantes", "5,00%", "15,00%", "2,00%"],
-                                ["Exterior", "5,00%", "10,00%", "1,00%"],
-                            ].map(([seg, pol, res, aloc], i) => (
+                                ["Renda Fixa", "100,00", "100,00", "100,00", "96,00"],
+                                ["Renda Variável", "10,00", "10,00", "70,00", "1,00"],
+                                ["Estruturado", "10,00", "10,00", "20,00", "-"],
+                                ["Imobiliário", "1,00", "1,00", "20,00", "-"],
+                                ["Operações com Participantes", "5,00", "5,00", "15,00", "2,00"],
+                                ["Exterior", "5,00", "5,00", "10,00", "1,00"],
+                            ].map(([seg, p1, p2, res, aloc], i) => (
                                 <tr key={i}>
                                     <td>{seg}</td>
-                                    <td className="num">{pol}</td>
+                                    <td className="num">{p1}</td>
+                                    <td className="num">{p2}</td>
                                     <td className="num">{res}</td>
                                     <td className="num">{aloc}</td>
                                 </tr>
@@ -281,54 +355,63 @@ function SecaoInvestimentos() {
                     </table>
                 </div>
 
+                {/* Tabela — Resultados dos Investimentos */}
                 <div style={{ marginTop: 48 }}>
                     <h3 className="dstq-section-heading dstq-section-heading--on-light dstq-reveal" style={{ fontSize: "1.4rem" }}>
-                        Resultado dos Investimentos
+                        Resultados dos Investimentos
                     </h3>
                     <div className="plano-table-wrap">
                         <table className="plano-table plano-table--light">
                             <thead>
                                 <tr>
-                                    <th>Segmento</th>
-                                    <th className="num">1o Sem</th>
-                                    <th className="num">2o Sem</th>
+                                    <th rowSpan="2">Segmento</th>
+                                    <th className="num" colSpan="3" style={{ textAlign: "center" }}>Desempenho</th>
+                                </tr>
+                                <tr>
+                                    <th className="num">1º SEM</th>
+                                    <th className="num">2º SEM</th>
                                     <th className="num">2025</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {[
-                                    ["Renda Fixa", "6,33%", "4,89%", "11,53%"],
-                                    ["Renda Variavel", "11,71%", "12,62%", "25,81%"],
-                                    ["Estruturado", "13,02%", "0,44%", "13,52%"],
-                                    ["Imobiliario", "-", "-", "-"],
-                                    ["Operacoes com Participantes", "6,67%", "7,30%", "14,46%"],
-                                    ["Exterior", "8,76%", "9,35%", "18,94%"],
+                                    ["Renda Fixa", "6,33", "4,89", "11,53"],
+                                    ["Renda Variável", "11,71", "12,62", "25,81"],
+                                    ["Estruturado", "13,02", "0,44", "13,52"],
+                                    ["Imobiliário", "-", "-", "-"],
+                                    ["Operações com Participantes", "6,67", "7,30", "14,46"],
+                                    ["Exterior", "8,76", "9,35", "18,94"],
                                 ].map(([seg, s1, s2, total], i) => (
-                                    <tr key={i}><td>{seg}</td><td className="num">{s1}</td><td className="num">{s2}</td><td className="num">{total}</td></tr>
+                                    <tr key={i}>
+                                        <td>{seg}</td>
+                                        <td className="num">{s1}</td>
+                                        <td className="num">{s2}</td>
+                                        <td className="num">{total}</td>
+                                    </tr>
                                 ))}
-                                <tr className="total">
-                                    <td><strong>PLANO</strong></td>
-                                    <td className="num">6,43%</td>
-                                    <td className="num">4,99%</td>
-                                    <td className="num">11,74%</td>
+                                <tr className="total" style={{ borderTop: "2px solid #cbd5e1" }}>
+                                    <td><strong>Plano</strong></td>
+                                    <td className="num">6,43</td>
+                                    <td className="num">4,99</td>
+                                    <td className="num">11,74</td>
                                 </tr>
                                 <tr style={{ background: "rgba(0,174,239,0.05)" }}>
-                                    <td><strong>INDICE DE REFERENCIA</strong></td>
-                                    <td className="num">5,03%</td>
-                                    <td className="num">3,24%</td>
-                                    <td className="num">8,43%</td>
+                                    <td><strong>Índice de Referência</strong></td>
+                                    <td className="num">5,03</td>
+                                    <td className="num">3,24</td>
+                                    <td className="num">8,43</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <div className="plano-chart-box plano-chart-box--light">
-                    <div className="plano-chart-title">Alocacao por Segmento</div>
-                    <div style={{ maxWidth: 380, margin: "0 auto" }}>
-                        <Pie data={allocData} options={allocOptions} />
-                    </div>
+                <div className="dstq-reveal" style={{ marginTop: 32, paddingBottom: 24 }}>
+                    <a href="#" className="plano-cta-link" style={{ fontSize: "1.1rem", color: "#0074c8", textDecoration: "none", fontWeight: 600, display: "inline-block", padding: "12px 24px", border: "2px solid #00aeef", borderRadius: "8px", transition: "all 0.2s" }} onMouseOver={e => { e.currentTarget.style.background = "#00aeef"; e.currentTarget.style.color="#fff"; }} onMouseOut={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color="#0074c8"; }}>
+                        CLIQUE AQUI para acessar o Demonstrativo Analítico dos Investimentos do Plano CD-METRÔ-DF – Dezembro/2025
+                    </a>
                 </div>
+
             </div>
         </section>
     );
@@ -364,9 +447,7 @@ function SecaoArrecadacao() {
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
                 <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
-                    Em 2025, houve aumento de 4,66% na arrecadacao das contribuicoes ao Plano CD-Metro/DF,
-                    movimento coerente com o crescimento do numero de participantes. O pagamento de beneficios e
-                    institutos aumentou 69,10% no comparativo com 2024, refletindo a maturacao gradual do plano.
+                    No ano, houve aumento de 4,66% na arrecadação das contribuições ao Plano CD-Metrô-DF, movimento coerente com o aumento do número de Participantes do Plano. Verifica-se aumento do pagamento de benefícios e/ou opção pelo resgate, que, em 2025, aumentou 69,11% no comparativo com o ano anterior.
                 </p>
 
                 <div className="plano-chart-box">
@@ -406,26 +487,6 @@ function SecaoArrecadacao() {
 }
 
 function SecaoAtuarial() {
-    const equilData = {
-        labels: ["Patrimonio de Cobertura", "Provisoes Matematicas"],
-        datasets: [{
-            data: [150.3, 150.3],
-            backgroundColor: ["#00aeef", "#0074c8"],
-            borderRadius: 6,
-        }],
-    };
-
-    const equilOptions = {
-        plugins: { legend: { display: false } },
-        scales: {
-            y: {
-                ticks: { callback: (v) => `R$ ${v}M`, color: LIGHT_CHART_OPTS.color },
-                grid: { color: LIGHT_CHART_OPTS.borderColor },
-            },
-            x: { ticks: { color: LIGHT_CHART_OPTS.color }, grid: { display: false } },
-        },
-    };
-
     return (
         <section id="atuarial" className="plano-section plano-section--light">
             <div className="container">
@@ -435,47 +496,7 @@ function SecaoAtuarial() {
                 </h2>
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
-                <div className="dstq-split">
-                    <div>
-                        <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d2">
-                            As Provisoes Matematicas dimensionadas em 31 de dezembro de 2025, no montante de
-                            <strong style={{ color: "#0a1f3c" }}> R$ 150.300.327,51</strong>, comparativamente
-                            aquelas de 2024 (R$ 121.887.029,16), representaram variacao de aproximadamente
-                            <strong style={{ color: "#0a1f3c" }}> 23,31%</strong>.
-                        </p>
-                        <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d3" style={{ marginTop: 16 }}>
-                            O Plano de Beneficios CD-METRO-DF encerrou o exercicio de 2025 com
-                            <strong style={{ color: "#0a1f3c" }}> Equilibrio Tecnico economico e atuarial</strong>,
-                            registrando suficiencia de cobertura e solvencia. A variacao e justificada pelo crescimento
-                            das contribuicoes e rentabilidade superior aos resgates do exercicio.
-                        </p>
-                    </div>
-                    <div>
-                        <div className="plano-img-card" style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.1)' }}>
-                            <img
-                                src={IMAGES.instTrust}
-                                alt="Segurança e Transparência"
-                                style={{ width: '100%', height: 'auto', display: 'block' }}
-                            />
-                        </div>
-                    </div>
-                </div>
-
-                <div className="plano-kpi-row">
-                    {[
-                        { label: "Patrimonio de Cobertura", value: "R$ 150,3 mi" },
-                        { label: "Provisoes Matematicas", value: "R$ 150,3 mi" },
-                        { label: "Variacao Provisoes", value: "+23,31%" },
-                        { label: "Situacao", value: "Equilibrio" },
-                    ].map((k, i) => (
-                        <div className="plano-kpi-card plano-kpi-card--light" key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
-                            <div className="plano-kpi-label">{k.label}</div>
-                            <div className="plano-kpi-value">{k.value}</div>
-                        </div>
-                    ))}
-                </div>
-
-                <div className="plano-table-wrap">
+                <div className="plano-table-wrap dstq-reveal">
                     <table className="plano-table plano-table--light">
                         <thead>
                             <tr><th>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
@@ -497,7 +518,7 @@ function SecaoAtuarial() {
                     </table>
                 </div>
 
-                <div className="plano-table-wrap">
+                <div className="plano-table-wrap dstq-reveal">
                     <table className="plano-table plano-table--light">
                         <thead>
                             <tr><th>Provisoes Matematicas</th><th className="num">2024</th><th className="num">2025</th></tr>
@@ -518,7 +539,7 @@ function SecaoAtuarial() {
                     </table>
                 </div>
 
-                <div className="plano-table-wrap">
+                <div className="plano-table-wrap dstq-reveal">
                     <table className="plano-table plano-table--light">
                         <thead>
                             <tr><th>Resultado Atuarial</th><th className="num">2024</th><th className="num">2025</th></tr>
@@ -536,9 +557,49 @@ function SecaoAtuarial() {
                     </table>
                 </div>
 
-                <div className="plano-chart-box plano-chart-box--light">
-                    <div className="plano-chart-title">Equilibrio Tecnico do Plano</div>
-                    <Bar data={equilData} options={equilOptions} />
+                <div className="atuarial-content" style={{ marginTop: 40 }}>
+                    <p className="dstq-text-body dstq-text-body--on-light dstq-reveal">
+                        As Provisões Matemáticas dimensionadas em 31 de dezembro de 2025, no montante de <strong>R$ 150.300.327,51</strong>, comparativamente àquelas constantes de Avaliação Atuarial de 2024, que perfizeram R$ 121.887.029,16, representaram uma variação de aproximadamente 23,31%.
+                    </p>
+                    <p className="dstq-text-body dstq-text-body--on-light dstq-reveal" style={{ marginTop: 20 }}>
+                        A variação registrada é justificada pela manutenção de contribuições de participantes, autopatrocinados e patrocinadores, acrescidas do estoque e respectiva rentabilidade auferida no período, superior aos montantes de resgates ocorridos no exercício.
+                    </p>
+                    <p className="dstq-text-body dstq-text-body--on-light dstq-reveal" style={{ marginTop: 20 }}>
+                        O Plano de Benefícios CD-METRÔ-DF encerrou o exercício de 2025 com <strong>Equilíbrio Técnico econômico e atuarial</strong>, registrando, portanto, suficiência de cobertura e solvência.
+                    </p>
+                </div>
+
+                <div className="dstq-reveal" style={{ marginTop: 40, paddingBottom: 24 }}>
+                    <a href="#" className="plano-cta-link" style={{ fontSize: "1.1rem", color: "#0074c8", textDecoration: "none", fontWeight: 600, display: "inline-block", padding: "12px 24px", border: "2px solid #00aeef", borderRadius: "8px", transition: "all 0.2s" }} onMouseOver={e => { e.currentTarget.style.background = "#00aeef"; e.currentTarget.style.color="#fff"; }} onMouseOut={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color="#0074c8"; }}>
+                        Clique aqui para acessar o Parecer Atuarial do Plano CD-METRÔ-DF – Arquivo anexo
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    );
+}
+
+function SecaoEquilibrio() {
+    return (
+        <section className="plano-section plano-section--dark">
+            <div className="container">
+                <div className="dstq-section-label dstq-reveal">Dashboard</div>
+                <h2 className="dstq-section-heading dstq-reveal dstq-reveal--d1">
+                    Equilíbrio Técnico <span className="dstq-accent">do Plano</span>
+                </h2>
+                <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
+
+                <div className="plano-kpi-row" style={{ marginTop: 40 }}>
+                    {[
+                        { label: "Patrimônio de Cobertura", value: "R$ 150.300.327,51" },
+                        { label: "Provisões Matemáticas", value: "R$ 150.300.327,51" }
+                    ].map((k, i) => (
+                        <div className="plano-kpi-card" key={i} style={{ flex: 1, minWidth: '300px' }}>
+                            <div className="plano-kpi-label">{k.label}</div>
+                            <div className="plano-kpi-value" style={{ fontSize: '1.8rem' }}>{k.value}</div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
@@ -546,81 +607,115 @@ function SecaoAtuarial() {
 }
 
 function SecaoCustos() {
-    const custosData = {
-        labels: ["Pessoal e Encargos", "Servicos de Terceiros", "Despesas de Consumo", "Contingencias", "Treinamento"],
-        datasets: [{
-            data: [391826, 138077, 40519, 45606, 3682],
-            backgroundColor: ["#00aeef", "#0074c8", "#004282", "#64748b", "#94a3b8"],
-        }],
-    };
-
-    const custosOptions = {
-        plugins: {
-            legend: { position: "bottom", labels: { color: DARK_CHART_OPTS.color } },
-        },
-    };
-
     return (
-        <section className="plano-section">
+        <section id="custos" className="plano-section plano-section--light">
             <div className="container">
-                <div className="dstq-section-label dstq-reveal">Despesas Administrativas</div>
-                <h2 className="dstq-section-heading dstq-reveal dstq-reveal--d1">
-                    Custos com a <span className="dstq-accent">Administracao</span>
+                <div className="dstq-section-label dstq-section-label--light dstq-reveal">Despesas Administrativas</div>
+                <h2 className="dstq-section-heading dstq-section-heading--on-light dstq-reveal dstq-reveal--d1">
+                    Custos com a <span className="dstq-accent">Administração</span>
                 </h2>
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
-                <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
-                    Em 2025, os custos com a administracao do Plano de Beneficios CD-METRO-DF, formados pelas
-                    despesas com a gestao previdencial e a gestao de investimentos do Plano, foram distribuidos
-                    conforme demonstrado a seguir:
+                <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d2">
+                    Em 2025, os custos com a administração do Plano de Benefícios CD-METRÔ-DF, formados pelas despesas com a gestão previdencial e a gestão de investimentos do Plano, foram distribuídos conforme demonstrado a seguir:
                 </p>
 
-                <div className="plano-table-wrap">
-                    <table className="plano-table">
-                        <thead>
+                <div className="plano-table-wrap dstq-reveal" style={{ marginTop: 40 }}>
+                    <table className="plano-table plano-table--light">
+                        <thead style={{ backgroundColor: "#0074c8", color: "#fff" }}>
                             <tr>
-                                <th>Despesas (R$)</th>
-                                <th className="num">Gestao Previdencial</th>
-                                <th className="num">Gestao de Investimentos</th>
-                                <th className="num">Total</th>
+                                <th colSpan="4" style={{ textAlign: "center", backgroundColor: "#3b82f6", color: "#fff", padding: "12px", fontSize: "1.1rem", borderBottom: "2px solid #fff" }}>
+                                    DESPESAS (R$)
+                                </th>
+                            </tr>
+                            <tr style={{ backgroundColor: "#3b82f6" }}>
+                                <th style={{ color: "#fff", fontWeight: "700" }}>GESTÃO PRÓPRIA</th>
+                                <th className="num" style={{ color: "#fff", fontWeight: "700", textAlign: "center" }}>GESTÃO PREVIDENCIAL</th>
+                                <th className="num" style={{ color: "#fff", fontWeight: "700", textAlign: "center" }}>GESTÃO DE INVESTIMENTOS</th>
+                                <th className="num" style={{ color: "#fff", fontWeight: "700", textAlign: "center" }}>TOTAL</th>
                             </tr>
                         </thead>
                         <tbody>
                             {[
                                 ["Pessoal e Encargos", "184.158", "207.668", "391.826"],
                                 ["Treinamento e Viagens", "1.730", "1.951", "3.682"],
-                                ["Servicos de Terceiros", "64.896", "73.181", "138.077"],
-                                ["Despesas de Consumo, Depreciacoes, Tafic etc", "19.044", "21.475", "40.519"],
-                                ["Contingencias (PIS e COFINS)", "294", "45.576", "45.606"],
+                                ["Serviços de Terceiros", "64.896", "73.181", "138.077"],
+                                ["Despesas de Consumo, Depreciações, Tafic etc", "19.044", "21.475", "40.519"],
+                                ["Contingências (PIS e COFINS)", "30", "45.576", "45.606"],
                             ].map(([desc, prev, inv, tot], i) => (
                                 <tr key={i}>
-                                    <td>{desc}</td>
+                                    <td style={{ fontWeight: i === 0 ? "600" : "400" }}>{desc}</td>
                                     <td className="num">{prev}</td>
                                     <td className="num">{inv}</td>
                                     <td className="num">{tot}</td>
                                 </tr>
                             ))}
-                            <tr className="total">
-                                <td><strong>TOTAIS</strong></td>
-                                <td className="num">269.858</td>
-                                <td className="num">349.851</td>
-                                <td className="num">619.710</td>
+                            <tr className="total" style={{ backgroundColor: "rgba(59, 130, 246, 0.1)" }}>
+                                <td style={{ backgroundColor: "#3b82f6", color: "#fff", fontWeight: "700" }}>TOTAIS</td>
+                                <td className="num" style={{ fontWeight: "700", backgroundColor: "rgba(59, 130, 246, 0.05)" }}>269.858</td>
+                                <td className="num" style={{ fontWeight: "700", backgroundColor: "rgba(59, 130, 246, 0.05)" }}>349.851</td>
+                                <td className="num" style={{ fontWeight: "700", backgroundColor: "rgba(59, 130, 246, 0.05)" }}>619.710</td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
-
-                <div className="plano-chart-box">
-                    <div className="plano-chart-title">Distribuicao de Custos Administrativos</div>
-                    <div style={{ maxWidth: 420, margin: "0 auto" }}>
-                        <Doughnut data={custosData} options={custosOptions} />
-                    </div>
                 </div>
             </div>
         </section>
     );
 }
 
+function SecaoCustosGestao() {
+    return (
+        <section className="plano-section plano-section--light" style={{ paddingTop: 0 }}>
+            <div className="container">
+                <h3 className="dstq-reveal" style={{ fontSize: "1.4rem", fontWeight: "700", marginBottom: "24px", color: "#0074c8", textTransform: "uppercase" }}>
+                    Custos com a Gestão de Planos Previdenciais
+                </h3>
+                
+                <div className="plano-table-wrap dstq-reveal">
+                    <table className="plano-table plano-table--light">
+                        <thead style={{ backgroundColor: "#0074c8", color: "#fff" }}>
+                            <tr>
+                                <th style={{ color: "#fff", padding: "12px 20px", textAlign: "left", fontWeight: "700" }}>DESCRIÇÃO</th>
+                                <th style={{ color: "#fff", padding: "12px 20px", textAlign: "right", width: "200px", fontWeight: "700" }}>CD METRÔ-DF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {[
+                                ["DESPESAS DE FOMENTO", "-"],
+                                ["PESSOAL E ENCARGOS", "391.826", true],
+                                ["TREINAMENTOS/VIAGENS", "3.682"],
+                                ["SERVIÇOS DE TERCEIROS", "138.077"],
+                                ["DESPESAS DE CONSUMO, DEPRECIAÇÃO, TAFIC, ETC)", "40.519"],
+                                ["CONTINGÊNCIAS (PIS e COFINS)", "45.606"],
+                                ["TOTAL", "619.710", false, true],
+                                ["CORRETAGENS/EMOLUMENTOS BOLSA VALORES", "-"],
+                                ["TAXA ADM/GESTÃO FUNDOS ABERTOS", "20.243"],
+                                ["TAXA CUSTODIA/CONTROLADORIA FUNDOS ABERTOS", "2.737"],
+                                ["TAXA PERFORMACE FUNDOS ABERTOS", "7.006"],
+                                ["OUTRAS DESPESAS FUNDOS ABERTOS", "2.855"],
+                                ["SUB-TOTAL (DESPESAS OUTRAS)", "32.841", true, true],
+                                ["TOTAL", "652.550", false, true],
+                            ].map(([desc, val, underline, isTotal], i) => (
+                                <tr key={i} className={isTotal ? "total" : ""}>
+                                    <td style={{ 
+                                        textDecoration: underline ? "underline" : "none",
+                                        fontWeight: isTotal ? "700" : "400"
+                                    }}>
+                                        {desc}
+                                    </td>
+                                    <td className="num" style={{ fontWeight: isTotal ? "700" : "400" }}>
+                                        {val}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    );
+}
 function PlanoCDMetro() {
     useReveal();
 
@@ -720,7 +815,9 @@ function PlanoCDMetro() {
             <SecaoInvestimentos />
             <SecaoArrecadacao />
             <SecaoAtuarial />
+            <SecaoEquilibrio />
             <SecaoCustos />
+            <SecaoCustosGestao />
             <Band quote={'"O Plano CD-Metro/DF encerrou 2025 com Equilibrio Tecnico economico e atuarial, rentabilidade de 11,74% e crescimento de 4,02% no numero de participantes."'} />
 
             <section className="gap services-index-section">
@@ -729,7 +826,7 @@ function PlanoCDMetro() {
                     <div className="services-index-intro">
                         <span className="services-index-label"># Indice</span>
                         <h2 className="services-index-heading">
-                            Conheca os planos da <span className="services-index-accent">Previdencia BRB</span> e
+                            Conheça os Planos da <span className="services-index-accent">Previdência BRB</span> e
                             descubra o que o seu plano oferece para o seu futuro.
                         </h2>
                     </div>

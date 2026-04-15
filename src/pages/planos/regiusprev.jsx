@@ -385,8 +385,8 @@ function SecaoInvestimentos() {
                             <thead>
                                 <tr>
                                     <th>Segmento</th>
-                                    <th className="num">1º Sem</th>
-                                    <th className="num">2º Sem</th>
+                                    <th className="num">1º SEM</th>
+                                    <th className="num">2º SEM</th>
                                     <th className="num">2025</th>
                                 </tr>
                             </thead>
@@ -811,7 +811,7 @@ function PlanoRegiusPrev() {
                     <div className="services-index-intro">
                         <span className="services-index-label"># Índice</span>
                         <h2 className="services-index-heading">
-                            Conheça os planos da <span className="services-index-accent">Previdência BRB</span> e
+                            Conheça os Planos da <span className="services-index-accent">Previdência BRB</span> e
                             descubra o que o seu plano oferece para o seu futuro.
                         </h2>
                     </div>

@@ -47,14 +47,13 @@ export const menudata2 = [
             { title: "Plano CD METRÔ-DF", link: "/plano-cd-metro" },
             { title: "Plano CD-05", link: "/plano-cd-05" },
             { title: "BrasíliaPrev", link: "/brasiliaprev" },
-            { title: "BrasíliaPrev 2025", link: "/brasiliaprev-2025" },
             { title: "RegiusPrev", link: "/regiusprev" },
             { title: "PGA", link: "/pga" },
         ],
     },
     {
         title: "Anexos",
-        link: "#",
+        link: "/anexos",
     },
 ];
 export const footerdata = [
