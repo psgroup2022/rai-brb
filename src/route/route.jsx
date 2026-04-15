@@ -16,6 +16,7 @@ import PlanoBrasiliaPrev from "../pages/planos/brasiliaprev";
 
 import PlanoRegiusPrev from "../pages/planos/regiusprev";
 import PlanoPGA from "../pages/planos/pga";
+import Anexos from "../pages/anexos";
 import Index3 from "../pages/home/index-3";
 import About from "../pages/about/about";
 import Portfolio from "../pages/rearch/portfolio";
@@ -48,6 +49,7 @@ const rootdata = [
 
     { path: "/regiusprev", element: <PlanoRegiusPrev /> },
     { path: "/pga", element: <PlanoPGA /> },
+    { path: "/anexos", element: <Anexos /> },
     { path: "/about", element: <About /> },
     { path: "/portfolio", element: <Portfolio /> },
     { path: "/portfolio-details", element: <PortfolioDetails /> },

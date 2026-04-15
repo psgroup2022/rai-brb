@@ -53,7 +53,7 @@ export const menudata2 = [
     },
     {
         title: "Anexos",
-        link: "#",
+        link: "/anexos",
     },
 ];
 export const footerdata = [
