@@ -1,6 +1,6 @@
 # Como implementar uma nova página de plano
 
-Guia baseado na implementação do Plano CD-02 (`src/pages/planos/cd-02.jsx`).
+Guia baseado na implementação dos Planos CD-02 (`src/pages/planos/cd-02.jsx`) e RegiusPrev (`src/pages/planos/regiusprev.jsx`).
 
 ---
 
@@ -114,6 +114,106 @@ Redigir uma frase de destaque sobre o plano com base em `8.2 Desempenho do Plano
 | Delta (▲/▼ %) | `Redução/Aumento de XX,XX%` |
 | Texto "Podem aderir" | Parágrafo de elegibilidade |
 
+#### Quadro Populacional — padrão `pop-`
+
+O bloco de quadro populacional usa classes `pop-*` (não `plano-kpi-card`). A referência canônica é `bd-01.jsx`. Estrutura obrigatória:
+
+```jsx
+<div className="pop-section dstq-reveal" style={{ marginTop: 60 }}>
+
+  {/* Hero stat */}
+  <div className="pop-hero">
+    <div>
+      <div className="pop-section-label">Quadro Populacional</div>
+      <div className="pop-total-num">{totalParticipantes}</div>
+      <span className="pop-total-label">participantes em 2025</span>
+      <div className="pop-total-delta">
+        <span className="pop-delta-badge">▲/▼ XX,XX%</span>
+        <span className="pop-delta-context">vs. XXX em 2024</span>
+      </div>
+    </div>
+    <div className="pop-closed-tag">
+      <span className="pop-closed-icon">⊘ ou ✓</span>
+      <div>
+        <strong>Plano fechado / Podem aderir</strong>
+        <span>texto de elegibilidade</span>
+      </div>
+    </div>
+  </div>
+
+  {/* Barra proporcional */}
+  <div className="pop-bar-wrap dstq-reveal dstq-reveal--d1">
+    <div className="pop-bar-label">Composição do plano</div>
+    <div className="pop-bar">
+      {/* Um segmento por categoria presente. Usar flex: XX em vez de width: XX%
+          para que os segmentos preencham 100% mesmo que os valores do fonte
+          não somem exatamente 100 (artefato de arredondamento do docling). */}
+      <div className="pop-bar-seg pop-bar-seg--pensionistas" style={{ flex: 78 }}>
+        <span>Pensionistas</span><strong>78,0%</strong>
+      </div>
+      <div className="pop-bar-seg pop-bar-seg--ativos" style={{ flex: 11.28 }}>
+        <span>Ativos</span><strong>11,28%</strong>
+      </div>
+      <div className="pop-bar-seg pop-bar-seg--assistidos" style={{ flex: 10.72 }}>
+        <span>Assist.</span><strong>10,7%</strong>
+      </div>
+    </div>
+  </div>
+
+  {/* Grid inferior: Gênero | Idades | Maturidade */}
+  <div className="pop-bottom-grid dstq-reveal dstq-reveal--d2">
+
+    <div className="pop-card">
+      <div className="pop-card-label">Distribuição por Gênero</div>
+      <div className="pop-gender-bar">
+        {/* Usar flex: XX — nunca width — para evitar gap quando valores não somam 100 */}
+        <div className="pop-gender-masc" style={{ flex: 62.72 }}>
+          <span>♂ Masculino</span><strong>62,72%</strong>
+        </div>
+        <div className="pop-gender-fem" style={{ flex: 37.28 }}>
+          <strong>37,28%</strong><span>Feminino ♀</span>
+        </div>
+      </div>
+      <div className="pop-gender-legend">
+        <span><i className="pop-dot pop-dot--masc" />Masculino — 62,72%</span>
+        <span><i className="pop-dot pop-dot--fem" />Feminino — 37,28%</span>
+      </div>
+    </div>
+
+    <div className="pop-card">
+      <div className="pop-card-label">Média de Idade</div>
+      <div className="pop-age-pair">
+        <div className="pop-age-item">
+          <span className="pop-age-num">XX,XX</span>
+          <span className="pop-age-lbl">anos</span>
+          <span className="pop-age-tag">Ativos</span>
+        </div>
+        <div className="pop-age-divider" />
+        <div className="pop-age-item">
+          {/* Se não houver assistidos, exibir "—" como valor */}
+          <span className="pop-age-num">XX,XX ou —</span>
+          <span className="pop-age-lbl">anos</span>
+          <span className="pop-age-tag">Assistidos</span>
+        </div>
+      </div>
+    </div>
+
+    <div className="pop-card pop-card--maturity">
+      <div className="pop-card-label">Maturidade do Plano</div>
+      <div className="pop-maturity-num">XX,XX%</div>
+      <div className="pop-maturity-bar">
+        <div className="pop-maturity-fill" style={{ width: 'XX%' }} />
+      </div>
+      {/* Se não houver assistidos: "Plano em fase de acumulação — sem assistidos" */}
+      <span className="pop-maturity-sub">texto descritivo</span>
+    </div>
+
+  </div>
+</div>
+```
+
+> **Nunca usar `plano-kpi-card` para o quadro populacional.** O padrão `pop-` é o único correto e está definido no CSS de `style.css`.
+
 ### `SecaoInvestimentos`
 
 **Tabela Política de Investimentos** — extrair de `Resultados da Política de Investimentos`:
@@ -134,6 +234,19 @@ Redigir uma frase de destaque sobre o plano com base em `8.2 Desempenho do Plano
 | 2025 | Coluna `2025` |
 
 Linhas fixas: Renda Fixa, Renda Variável, Estruturado, Imobiliário, Operações com Participantes, Exterior, **PLANO** (total), **ÍNDICE DE REFERÊNCIA**.
+
+#### CTA — Demonstrativo Analítico dos Investimentos
+
+Após a tabela "Resultado dos Investimentos" (antes do gráfico de alocação), adicionar:
+
+```jsx
+<div className="dstq-cta-wrap" style={{ marginTop: 24 }}>
+  <a href="#" className="dstq-cta-btn"
+     style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+    <strong>CLIQUE AQUI</strong> para acessar o Demonstrativo Analítico dos Investimentos do Plano <NomePlano> – Dezembro/2025 <span>→</span>
+  </a>
+</div>
+```
 
 ### `SecaoArrecadacao`
 
@@ -175,7 +288,18 @@ Três tabelas extraídas de `8.6 Resultado Atuarial`:
 | Fundo Previdencial | `Fundo Previdencial` (negativo) |
 | **Resultado** | `Resultado Atuarial` |
 
-Os dois parágrafos narrativos e o CTA "Clique aqui para acessar o Parecer Atuarial" ficam abaixo das tabelas.
+Os dois parágrafos narrativos ficam abaixo das tabelas. Ao final da seção, após o gráfico de equilíbrio, adicionar o CTA do Parecer Atuarial:
+
+```jsx
+<div className="dstq-cta-wrap" style={{ marginTop: 40 }}>
+  <a href="#" className="dstq-cta-btn dstq-cta-btn--light"
+     style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+    Clique aqui para acessar o Parecer Atuarial do Plano <NomePlano> <span>→</span>
+  </a>
+</div>
+```
+
+Note a diferença de estilo: o CTA do Demonstrativo usa `dstq-cta-btn` (escuro, em seção light), e o do Parecer usa `dstq-cta-btn--light` (claro, em seção light).
 
 ### `SecaoEquilibrio`
 
@@ -226,8 +350,11 @@ Em `src/constant/alldata.jsx`, dentro de `menudata2` → submenu "Nossos Planos"
 - [ ] Todos os valores numéricos conferidos contra `PLANOS.md`
 - [ ] Gráfico de barras Rentabilidade vs. Índice de Referência renderiza corretamente
 - [ ] Gráfico de barras Arrecadação vs. Benefícios renderiza corretamente
-- [ ] Quadro populacional: percentuais somam 100% por categoria
+- [ ] Quadro populacional usa classes `pop-*` (nunca `plano-kpi-card`)
+- [ ] Barra de gênero usa `flex: XX` (não `width: XX%`) para preencher 100% mesmo com arredondamentos
 - [ ] Tabela de investimentos: linha PLANO bate com o total informado
+- [ ] CTA "CLIQUE AQUI — Demonstrativo Analítico" presente em `SecaoInvestimentos` após a tabela de resultados
+- [ ] CTA "Clique aqui — Parecer Atuarial" presente ao final de `SecaoAtuarial` com classe `dstq-cta-btn--light`
 - [ ] Tabela atuarial: Resultado Atuarial = 0,00 (equilíbrio)
 - [ ] `SecaoEquilibrio`: os dois valores são iguais (por definição do equilíbrio técnico)
 - [ ] Rota acessível em `http://localhost:5173/plano-<novo-plano>`
