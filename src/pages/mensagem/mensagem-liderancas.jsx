@@ -349,9 +349,10 @@ function MensagemLiderancas() {
                     <div className="row row-two g-4">
                         {servicedata2.map((data, i) => (
                             <div className="col-lg-3 col-md-6" key={i}>
-                                <div className="services-two">
+                                <div className="services-two" style={{ position: 'relative' }}>
+                                    <Link to={data.link || "#"} style={{ position: 'absolute', inset: 0, zIndex: 10 }} aria-label={data.title} />
                                     <i>{data.icon}</i>
-                                    <h3><Link to={data.link || "#"}> {data.title} </Link></h3>
+                                    <h3>{data.title}</h3>
                                     <span>{data.number}</span>
                                 </div>
                             </div>
