@@ -408,6 +408,16 @@ function SecaoInvestimentos() {
                     </div>
                 </div>
 
+                <div className="dstq-cta-wrap" style={{ marginTop: 24 }}>
+                    <a
+                        href="#"
+                        className="dstq-cta-btn"
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}
+                    >
+                        <strong>CLIQUE AQUI</strong> para acessar o Demonstrativo Analítico dos Investimentos do Plano RegiusPrev – Dezembro/2025 <span>→</span>
+                    </a>
+                </div>
+
                 <div className="plano-chart-box plano-chart-box--light">
                     <div className="plano-chart-title">Alocação por Segmento</div>
                     <div style={{ maxWidth: 420, margin: "0 auto" }}>
@@ -579,6 +589,16 @@ function SecaoAtuarial() {
                 <div className="plano-chart-box plano-chart-box--light">
                     <div className="plano-chart-title">Equilíbrio Técnico do Plano</div>
                     <Bar data={equilData} options={equilOptions} />
+                </div>
+
+                <div className="dstq-cta-wrap" style={{ marginTop: 40 }}>
+                    <a
+                        href="#"
+                        className="dstq-cta-btn dstq-cta-btn--light"
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}
+                    >
+                        Clique aqui para acessar o Parecer Atuarial do Plano RegiusPrev <span>→</span>
+                    </a>
                 </div>
             </div>
         </section>
