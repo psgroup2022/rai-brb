@@ -86,14 +86,14 @@ export const servicesliderdata = [
     { icon: SVGICONS.preventiv, title: "Preventive Care", columnstand: "two", },
 ]
 export const servicedata2 = [
-    { icon: <img src={iconBD01} alt="Plano BD" />, title: "Plano BD", number: '01', },
-    { icon: <img src={iconCD02} alt="CD-02" />, title: "CD-02", number: '02', },
-    { icon: <img src={iconCV03} alt="CV-03" />, title: "CV-03", number: '03', },
-    { icon: <img src={iconCDMetro} alt="CD-METRÔ-DF" />, title: "CD-METRÔ-DF", number: '04', },
-    { icon: <img src={iconCD05} alt="CD-05" />, title: "CD-05", number: '05', },
-    { icon: <img src={iconBrasiliaprev} alt="BRASÍLIAPREV" />, title: "BRASÍLIAPREV", number: '06', },
-    { icon: <img src={iconRegiusprev} alt="REGIUSPREV" />, title: "REGIUSPREV", number: '07', },
-    { icon: <img src={iconPGA} alt="PGA" />, title: "PGA", number: '08', },
+    { icon: <img src={iconBD01} alt="Plano BD" />, title: "Plano BD", number: '01', link: "/plano-bd-01", },
+    { icon: <img src={iconCD02} alt="CD-02" />, title: "CD-02", number: '02', link: "/plano-cd-02", },
+    { icon: <img src={iconCV03} alt="CV-03" />, title: "CV-03", number: '03', link: "/plano-cv-03", },
+    { icon: <img src={iconCDMetro} alt="CD-METRÔ-DF" />, title: "CD-METRÔ-DF", number: '04', link: "/plano-cd-metro", },
+    { icon: <img src={iconCD05} alt="CD-05" />, title: "CD-05", number: '05', link: "/plano-cd-05", },
+    { icon: <img src={iconBrasiliaprev} alt="BRASÍLIAPREV" />, title: "BRASÍLIAPREV", number: '06', link: "/brasiliaprev", },
+    { icon: <img src={iconRegiusprev} alt="REGIUSPREV" />, title: "REGIUSPREV", number: '07', link: "/regiusprev", },
+    { icon: <img src={iconPGA} alt="PGA" />, title: "PGA", number: '08', link: "/pga", },
 ]
 export const portfoliodata = [
     { image: IMAGES.portfolio1, title: "Dr. Robert Lee", span: "Chief Surgron", },

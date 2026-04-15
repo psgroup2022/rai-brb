@@ -368,7 +368,7 @@ function Rentabilidade2025() {
                             <div className="col-lg-3 col-md-6" key={i}>
                                 <div className="services-two">
                                     <i>{data.icon}</i>
-                                    <h3><Link to="#">{data.title}</Link></h3>
+                                    <h3><Link to={data.link || "#"}>{data.title}</Link></h3>
                                     <span>{data.number}</span>
                                 </div>
                             </div>

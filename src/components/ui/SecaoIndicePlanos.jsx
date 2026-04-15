@@ -21,7 +21,7 @@ export default function SecaoIndicePlanos({ particlesId }) {
                             <div className="services-two">
                                 <i>{data.icon}</i>
                                 <h3>
-                                    <Link to="#">{data.title}</Link>
+                                    <Link to={data.link || "#"}>{data.title}</Link>
                                 </h3>
                                 <span>{data.number}</span>
                             </div>
