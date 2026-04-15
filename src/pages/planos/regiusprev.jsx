@@ -68,7 +68,7 @@ function SecaoRentabilidade() {
         labels: ["Rentabilidade", "Índice de Referência", "Mediana Mercado"],
         datasets: [
             {
-                data: [12.37, 8.43, 7.8],
+                data: [12.37, 8.44, 7.8],
                 backgroundColor: ["#00aeef", "#0074c8", "#94a3b8"],
                 borderRadius: 6,
             },
@@ -99,7 +99,7 @@ function SecaoRentabilidade() {
                 <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d2">
                     O Plano RegiusPrev registrou rentabilidade de <strong style={{ color: "#0a1f3c" }}>12,37%</strong>{" "}
                     em 2025, representando{" "}
-                    <strong style={{ color: "#0a1f3c" }}>146,74% do índice de referência (IPCA + 4% a.a.)</strong>.
+                    <strong style={{ color: "#0a1f3c" }}>147% do índice de referência (IPCA + 4% a.a.)</strong>.
                     Toda a carteira está alocada em Renda Fixa, com estratégia concentrada em Títulos Públicos
                     Federais atrelados à Selic (94% do portfólio).
                 </p>
@@ -118,7 +118,7 @@ function SecaoRentabilidade() {
                 <div className="plano-kpi-row">
                     <div className="plano-kpi-card plano-kpi-card--light">
                         <div className="plano-kpi-label">Desempenho vs. Referência</div>
-                        <div className="plano-kpi-value">146,74%</div>
+                        <div className="plano-kpi-value">147%</div>
                         <div className="plano-kpi-sub">Acima de 118% registrado em 2024</div>
                     </div>
                     <div className="plano-kpi-card plano-kpi-card--light">
@@ -142,7 +142,7 @@ function SecaoDesempenho() {
         labels: ["Rentabilidade", "Índice de Referência", "Mediana Mercado"],
         datasets: [
             {
-                data: [12.37, 8.43, 7.8],
+                data: [12.37, 8.44, 7.8],
                 backgroundColor: ["#00aeef", "#0074c8", "#94a3b8"],
                 borderRadius: 6,
             },
@@ -157,17 +157,6 @@ function SecaoDesempenho() {
                 grid: { color: DARK_CHART_OPTS.borderColor },
             },
             x: { ticks: { color: DARK_CHART_OPTS.color }, grid: { display: false } },
-        },
-    };
-
-    const popData = {
-        labels: ["Ativos (100%)"],
-        datasets: [{ data: [100], backgroundColor: ["#00aeef"] }],
-    };
-
-    const popOptions = {
-        plugins: {
-            legend: { position: "bottom", labels: { color: DARK_CHART_OPTS.color } },
         },
     };
 
@@ -187,7 +176,7 @@ function SecaoDesempenho() {
                     </div>
                     <div className="plano-kpi-card">
                         <div className="plano-kpi-label">Índice de Referência</div>
-                        <div className="plano-kpi-value">8,43%</div>
+                        <div className="plano-kpi-value">8,44%</div>
                     </div>
                     <div className="plano-kpi-card">
                         <div className="plano-kpi-label">Rentabilidade</div>
@@ -195,7 +184,12 @@ function SecaoDesempenho() {
                     </div>
                     <div className="plano-kpi-card">
                         <div className="plano-kpi-label">Desempenho</div>
-                        <div className="plano-kpi-value">146,74%</div>
+                        <div className="plano-kpi-value">147%</div>
+                    </div>
+                    <div className="plano-kpi-card">
+                        <div className="plano-kpi-label">Ganho Real</div>
+                        <div className="plano-kpi-value">7,78%</div>
+                        <div className="plano-kpi-sub">Acima da inflação (a.a.)</div>
                     </div>
                 </div>
 
@@ -248,40 +242,90 @@ function SecaoDesempenho() {
                     </div>
                 </div>
 
-                <div style={{ marginTop: 60 }}>
-                    <h3 className="dstq-section-heading dstq-reveal" style={{ fontSize: "1.5rem" }}>
-                        Quadro Populacional
-                    </h3>
-                    <div className="dstq-split" style={{ marginTop: 24 }}>
+                {/* Quadro Populacional — redesign pop- */}
+                <div className="pop-section dstq-reveal" style={{ marginTop: 60 }}>
+
+                    {/* ── Cabeçalho + hero stat ── */}
+                    <div className="pop-hero">
                         <div>
-                            <div className="plano-kpi-row">
-                                <div className="plano-kpi-card">
-                                    <div className="plano-kpi-label">Total de Participantes</div>
-                                    <div className="plano-kpi-value">65</div>
-                                    <div className="plano-kpi-sub">Aumento de 10,17% vs. 2024</div>
+                            <div className="pop-section-label">Quadro Populacional</div>
+                            <div className="pop-total-num">65</div>
+                            <span className="pop-total-label">participantes em 2025</span>
+                            <div className="pop-total-delta">
+                                <span className="pop-delta-badge">▲ 10,17%</span>
+                                <span className="pop-delta-context">vs. 59 em 2024</span>
+                            </div>
+                        </div>
+                        <div className="pop-closed-tag">
+                            <span className="pop-closed-icon">✓</span>
+                            <div>
+                                <strong>Plano aberto</strong>
+                                <span>para servidores municipais de municípios patrocinadores do Paraná</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* ── Barra proporcional de composição ── */}
+                    <div className="pop-bar-wrap dstq-reveal dstq-reveal--d1">
+                        <div className="pop-bar-label">Composição do plano</div>
+                        <div className="pop-bar">
+                            <div className="pop-bar-seg pop-bar-seg--ativos" style={{ width: '100%' }}>
+                                <span>Ativos</span>
+                                <strong>100%</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* ── Grid: Gênero | Idades | Maturidade ── */}
+                    <div className="pop-bottom-grid dstq-reveal dstq-reveal--d2">
+
+                        {/* Gênero */}
+                        <div className="pop-card">
+                            <div className="pop-card-label">Distribuição por Gênero</div>
+                            <div className="pop-gender-bar">
+                                <div className="pop-gender-masc" style={{ width: '56.92%' }}>
+                                    <span>♂ Masculino</span>
+                                    <strong>56,92%</strong>
                                 </div>
-                                <div className="plano-kpi-card">
-                                    <div className="plano-kpi-label">Ativos</div>
-                                    <div className="plano-kpi-value">100%</div>
-                                </div>
-                                <div className="plano-kpi-card">
-                                    <div className="plano-kpi-label">Assistidos</div>
-                                    <div className="plano-kpi-value">0,0%</div>
-                                </div>
-                                <div className="plano-kpi-card">
-                                    <div className="plano-kpi-label">Pensionistas</div>
-                                    <div className="plano-kpi-value">0,0%</div>
+                                <div className="pop-gender-fem" style={{ width: '43.08%' }}>
+                                    <strong>43,08%</strong>
+                                    <span>Feminino ♀</span>
                                 </div>
                             </div>
-                            <p className="dstq-text-body dstq-reveal" style={{ marginTop: 28 }}>
-                                Plano em plena fase de acumulação, com 100% dos participantes ativos. Em 2024 havia 59
-                                participantes; em 2025, 65, representando crescimento de 10,17%.
-                            </p>
+                            <div className="pop-gender-legend">
+                                <span><i className="pop-dot pop-dot--masc" />Masculino — 56,92%</span>
+                                <span><i className="pop-dot pop-dot--fem" />Feminino — 43,08%</span>
+                            </div>
                         </div>
-                        <div className="plano-chart-box" style={{ marginTop: 0 }}>
-                            <div className="plano-chart-title">Distribuição de Participantes</div>
-                            <Doughnut data={popData} options={popOptions} />
+
+                        {/* Médias de Idade */}
+                        <div className="pop-card">
+                            <div className="pop-card-label">Média de Idade</div>
+                            <div className="pop-age-pair">
+                                <div className="pop-age-item">
+                                    <span className="pop-age-num">41,11</span>
+                                    <span className="pop-age-lbl">anos</span>
+                                    <span className="pop-age-tag">Ativos</span>
+                                </div>
+                                <div className="pop-age-divider" />
+                                <div className="pop-age-item">
+                                    <span className="pop-age-num">—</span>
+                                    <span className="pop-age-lbl" />
+                                    <span className="pop-age-tag">Assistidos</span>
+                                </div>
+                            </div>
                         </div>
+
+                        {/* Maturidade */}
+                        <div className="pop-card pop-card--maturity">
+                            <div className="pop-card-label">Maturidade do Plano</div>
+                            <div className="pop-maturity-num">0%</div>
+                            <div className="pop-maturity-bar">
+                                <div className="pop-maturity-fill" style={{ width: '0%' }} />
+                            </div>
+                            <span className="pop-maturity-sub">Plano em fase de acumulação — sem assistidos</span>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -315,18 +359,19 @@ function SecaoInvestimentos() {
                         <thead>
                             <tr>
                                 <th>Segmento</th>
-                                <th className="num">Política Investimento</th>
+                                <th className="num">Política 2026</th>
+                                <th className="num">Política 2025</th>
                                 <th className="num">Resolução 4.994</th>
-                                <th className="num">Alocação 2025</th>
+                                <th className="num">Alocação Obj. 2026</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>Renda Fixa</td><td className="num">100,00%</td><td className="num">100,00%</td><td className="num">94,00%</td></tr>
-                            <tr><td>Renda Variável</td><td className="num">5,00%</td><td className="num">70,00%</td><td className="num">1,00%</td></tr>
-                            <tr><td>Estruturado</td><td className="num">5,00%</td><td className="num">20,00%</td><td className="num">-</td></tr>
-                            <tr><td>Imobiliário</td><td className="num">1,00%</td><td className="num">20,00%</td><td className="num">-</td></tr>
-                            <tr><td>Operações com Participantes</td><td className="num">15,00%</td><td className="num">15,00%</td><td className="num">5,00%</td></tr>
-                            <tr><td>Exterior</td><td className="num">10,00%</td><td className="num">10,00%</td><td className="num">-</td></tr>
+                            <tr><td>Renda Fixa</td><td className="num">100,00%</td><td className="num">100,00%</td><td className="num">100,00%</td><td className="num">94,00%</td></tr>
+                            <tr><td>Renda Variável</td><td className="num">5,00%</td><td className="num">5,00%</td><td className="num">70,00%</td><td className="num">1,00%</td></tr>
+                            <tr><td>Estruturado</td><td className="num">5,00%</td><td className="num">5,00%</td><td className="num">20,00%</td><td className="num">-</td></tr>
+                            <tr><td>Imobiliário</td><td className="num">1,00%</td><td className="num">1,00%</td><td className="num">20,00%</td><td className="num">-</td></tr>
+                            <tr><td>Operações com Participantes</td><td className="num">15,00%</td><td className="num">-</td><td className="num">15,00%</td><td className="num">5,00%</td></tr>
+                            <tr><td>Exterior</td><td className="num">10,00%</td><td className="num">10,00%</td><td className="num">10,00%</td><td className="num">-</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -402,8 +447,8 @@ function SecaoArrecadacao() {
 
                 <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
                     Em fevereiro de 2023 foram vertidas as primeiras contribuições ao Plano RegiusPrev. Em 2025, a
-                    arrecadação cresceu 46,19% em relação a 2024, reflexo do crescimento no número de participantes.
-                    O pagamento de benefícios e institutos reduziu 24,46%.
+                    arrecadação cresceu 46,21% em relação a 2024, reflexo do crescimento no número de participantes.
+                    O pagamento de benefícios e institutos reduziu 24,47%.
                 </p>
 
                 <div className="plano-chart-box">
@@ -594,6 +639,44 @@ function SecaoCustos() {
                         <Doughnut data={custosData} options={custosOptions} />
                     </div>
                 </div>
+
+                <div style={{ marginTop: 48 }}>
+                    <h3 className="dstq-section-heading dstq-reveal" style={{ fontSize: "1.4rem" }}>
+                        Custos com a Gestão dos Planos Previdenciais
+                    </h3>
+                    <div className="plano-table-wrap">
+                        <table className="plano-table">
+                            <thead>
+                                <tr>
+                                    <th>Descrição</th>
+                                    <th className="num">RegiusPrev (R$)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Despesas de Fomento</td><td className="num">-</td></tr>
+                                <tr><td>Pessoal e Encargos</td><td className="num">1.117</td></tr>
+                                <tr><td>Treinamentos/Viagens</td><td className="num">10</td></tr>
+                                <tr><td>Serviços de Terceiros</td><td className="num">394</td></tr>
+                                <tr><td>Despesas de Consumo, Depreciação, Tafic etc</td><td className="num">130</td></tr>
+                                <tr><td>Contingências (PIS e COFINS)</td><td className="num">614</td></tr>
+                                <tr className="total">
+                                    <td><strong>TOTAL</strong></td><td className="num">2.265</td>
+                                </tr>
+                                <tr><td>Corretagens/Emolumentos Bolsa Valores</td><td className="num">-</td></tr>
+                                <tr><td>Taxa Adm/Gestão Fundos Abertos</td><td className="num">195</td></tr>
+                                <tr><td>Taxa Custódia/Controladoria Fundos Abertos</td><td className="num">70</td></tr>
+                                <tr><td>Taxa Performance Fundos Abertos</td><td className="num">-</td></tr>
+                                <tr><td>Outras Despesas Fundos Abertos</td><td className="num">52</td></tr>
+                                <tr className="total">
+                                    <td><strong>Sub-total (Despesas Outras)</strong></td><td className="num">317</td>
+                                </tr>
+                                <tr className="total">
+                                    <td><strong>TOTAL GERAL</strong></td><td className="num">2.582</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </section>
     );
@@ -681,7 +764,7 @@ function PlanoRegiusPrev() {
                             <div className="plano-hero-meta-label">Rentabilidade 2025</div>
                         </div>
                         <div>
-                            <div className="plano-hero-meta-value">146%</div>
+                            <div className="plano-hero-meta-value">147%</div>
                             <div className="plano-hero-meta-label">vs. Índice Referência</div>
                         </div>
                         <div>
