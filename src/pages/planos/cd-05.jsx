@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Globe, TrendingUp, Landmark } from "lucide-react";
 import { useEffect, useState } from "react";
 import { servicedata2 } from "../../constant/alldata";
 import Footer2 from "../../layout/footer2";
@@ -6,6 +7,7 @@ import Header2 from "../../layout/header2";
 import ParticlesComponent from "../../components/ui/particles-bg";
 import iconCD05 from "../../assets/img/cd05.svg";
 import headerCD05Video from "../../assets/img/cd-05.mp4";
+import globalImg from "../../assets/img/global.jpg";
 import { IMAGES } from "../../constant/theme";
 
 import {
@@ -54,65 +56,83 @@ function SecaoEconomia() {
     return (
         <section id="economia" className="plano-section">
             <div className="container">
+
+                {/* ── Cabeçalho ── */}
                 <div className="dstq-section-label dstq-reveal">Contexto Macroeconômico</div>
                 <h2 className="dstq-section-heading dstq-reveal dstq-reveal--d1">
-                    A Economia global em <span className="dstq-accent">2025</span>
+                    Comportamento da Economia global em <span className="dstq-accent">2025</span>
                 </h2>
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
-                <div className="dstq-split dstq-reveal dstq-reveal--d2">
-                    <div>
-                        <p className="dstq-text-body">
-                            O ano de 2025 foi marcado por um ambiente macroeconômico global ainda desafiador,
-                            caracterizado pela transição do ciclo de aperto monetário nas principais economias e pela
-                            manutenção de níveis elevados de incerteza.
-                        </p>
-                        <p className="dstq-text-body" style={{ marginTop: 16 }}>
-                            Nos Estados Unidos, o Federal Reserve adotou postura cautelosa ao longo do período,
-                            mantendo taxas de juros em patamares restritivos diante de uma inflação que, embora em
-                            desaceleração, permaneceu acima da meta.
-                        </p>
-                        <p className="dstq-text-body" style={{ marginTop: 16 }}>
-                            No Brasil, a atividade econômica manteve-se resiliente ao longo do ano, sustentada
-                            principalmente pelo desempenho do setor agropecuário e pela solidez do mercado de
-                            trabalho. O Banco Central elevou a taxa Selic para patamares próximos de 15,00%.
-                        </p>
-                    </div>
-                    <div>
-                        <div className="dstq-img-card" style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.1)' }}>
-                            <img
-                                src={IMAGES.execSummaryImg}
-                                alt="Mercado financeiro global"
-                                style={{ width: '100%', height: 'auto', display: 'block' }}
-                            />
-                        </div>
-                    </div>
+                {/* ── Hero da imagem ── */}
+                <div className="macro-eco-hero dstq-reveal dstq-reveal--d2">
+                    <img src={globalImg} alt="Economia Global 2025" />
+                    <div className="macro-eco-hero-overlay" />
                 </div>
 
-                <div className="plano-kpi-row">
-                    {[
-                        { label: "Taxa Selic (Brasil)", value: "~15%", sub: "Patamar restritivo mantido" },
-                        { label: "Cenário Fiscal", value: "Risco", sub: "Principal vetor doméstico" },
-                        { label: "Renda Fixa", value: "Prêmios", sub: "Oportunidades em ativos" },
-                    ].map((k, i) => (
-                        <div className="plano-kpi-card" key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
-                            <div className="plano-kpi-label">{k.label}</div>
-                            <div className="plano-kpi-value">{k.value}</div>
-                            {k.sub && <div className="plano-kpi-sub">{k.sub}</div>}
+                {/* ── Grade 2×2 de cartões ── */}
+                <div className="macro-eco-sections-grid">
+
+                    {/* Cenário Global */}
+                    <div className="macro-eco-section-card dstq-reveal">
+                        <div className="macro-eco-section-label">
+                            <Globe size={15} strokeWidth={2} />
+                            Cenário Global
                         </div>
-                    ))}
+                        <p className="macro-eco-card-text">O ano de 2025 foi marcado por um ambiente macroeconômico global ainda desafiador, caracterizado pela transição do ciclo de aperto monetário nas principais economias e pela manutenção de níveis elevados de incerteza.</p>
+                        <p className="macro-eco-card-text">Nos Estados Unidos, o Federal Reserve adotou postura cautelosa ao longo do período, mantendo taxas de juros em patamares restritivos diante de uma inflação que, embora em desaceleração, permaneceu acima da meta. A economia norte-americana demonstrou resiliência, porém com sinais de moderação, levando os mercados a postergarem as expectativas de início de flexibilização monetária.</p>
+                        <p className="macro-eco-card-text">Adicionalmente, o ambiente internacional foi impactado por tensões comerciais relevantes, especialmente associadas à política tarifária dos Estados Unidos, elevando a volatilidade e os riscos sobre crescimento e inflação globais. Na Europa, observou-se tendência de flexibilização gradual da política monetária, enquanto a China apresentou crescimento mais moderado, com estímulos menos intensos, reforçando um cenário global de desaceleração controlada.</p>
+                    </div>
+
+                    {/* Brasil */}
+                    <div className="macro-eco-section-card macro-eco-section-card--brasil dstq-reveal dstq-reveal--d1">
+                        <div className="macro-eco-section-label">
+                            <span style={{ fontSize: '0.95rem', lineHeight: 1 }}>🇧🇷</span>
+                            Brasil
+                        </div>
+                        <div className="macro-eco-selic-badge">
+                            <span className="macro-eco-selic-val">15,00%</span>
+                            <span className="macro-eco-selic-lbl">Taxa Selic a.a.</span>
+                        </div>
+                        <p className="macro-eco-card-text">No Brasil, a atividade econômica manteve-se resiliente ao longo do ano, sustentada principalmente pelo desempenho do setor agropecuário e pela solidez do mercado de trabalho. Contudo, a inflação, apesar de apresentar trajetória de moderação, permaneceu pressionada em seus componentes mais persistentes, exigindo a manutenção de uma política monetária restritiva. Nesse contexto, o Banco Central elevou a taxa Selic para patamares próximos de 15,00%, sinalizando o encerramento do ciclo de alta, com perspectiva de manutenção em nível elevado por período prolongado.</p>
+                        <p className="macro-eco-card-text">O cenário fiscal seguiu como principal vetor de risco doméstico, influenciando diretamente a dinâmica das curvas de juros e a percepção de risco dos investidores. As discussões sobre equilíbrio das contas públicas e medidas de ajuste fiscal contribuíram para a manutenção de prêmios elevados nos ativos locais.</p>
+                    </div>
+
+                    {/* Mercados Financeiros */}
+                    <div className="macro-eco-section-card dstq-reveal dstq-reveal--d1">
+                        <div className="macro-eco-section-label">
+                            <TrendingUp size={15} strokeWidth={2} />
+                            Mercados Financeiros
+                        </div>
+                        <p className="macro-eco-card-text">Nos mercados financeiros, a renda fixa refletiu a volatilidade das expectativas macroeconômicas, com oscilações relevantes nas curvas de juros ao longo do ano. O ambiente de taxas elevadas proporcionou oportunidades em ativos com prêmios atrativos, ainda que demandando maior seletividade. No crédito privado, observou-se manutenção da demanda e compressão gradual de spreads, reforçando a importância de alocação criteriosa.</p>
+                        <p className="macro-eco-card-text">A renda variável apresentou comportamento volátil no cenário global, alternando períodos de recuperação e ajuste, em função das incertezas relacionadas à política monetária e ao crescimento econômico. No Brasil, o desempenho da bolsa foi parcialmente sustentado por fluxos externos, mas limitado pelas incertezas fiscais e pelo nível elevado de juros. No mercado de câmbio, o real apresentou oscilações ao longo do ano, influenciado pelo diferencial de juros e pelo ambiente de risco global e doméstico.</p>
+                        <p className="macro-eco-card-text">No campo estrutural, destacaram-se os avanços relacionados à inteligência artificial, com impactos relevantes sobre produtividade e demanda por energia, além de evoluções no ambiente regulatório do mercado de capitais brasileiro, com foco em aprimoramento de governança.</p>
+                    </div>
+
+                    {/* Gestão dos Planos */}
+                    <div className="macro-eco-section-card dstq-reveal dstq-reveal--d2">
+                        <div className="macro-eco-section-label">
+                            <Landmark size={15} strokeWidth={2} />
+                            Gestão dos Planos
+                        </div>
+                        <p className="macro-eco-card-text">No âmbito institucional, os planos administrados apresentaram desempenho consistente ao longo do exercício, refletindo a estratégia de alocação adotada em um ambiente de juros elevados e elevada volatilidade. A predominância de ativos de renda fixa, combinada com gestão ativa e seletiva, contribuiu para a captura de prêmios relevantes, especialmente em títulos indexados à inflação e instrumentos de crédito privado. A exposição à renda variável foi conduzida de forma prudente, considerando o cenário de incertezas, enquanto as posições em ativos internacionais e câmbio contribuíram para diversificação e mitigação de riscos.</p>
+                        <p className="macro-eco-card-text">Os indicadores consolidados demonstram evolução patrimonial dos planos, com manutenção do equilíbrio atuarial e aderência às metas estabelecidas nas políticas de investimento. Observa-se, ainda, adequada gestão de liquidez e controle de riscos, alinhados às diretrizes regulatórias e à estratégia institucional.</p>
+                    </div>
+
                 </div>
 
-                <p className="dstq-text-body dstq-reveal" style={{ marginTop: 40 }}>
-                    O cenário fiscal seguiu como principal vetor de risco doméstico, influenciando diretamente a
-                    dinâmica das curvas de juros e a percepção de risco dos investidores. Nos mercados financeiros,
-                    a renda fixa refletiu a volatilidade das expectativas macroeconômicas, com oscilações relevantes
-                    nas curvas de juros ao longo do ano.
-                </p>
+                {/* ── Síntese — pull-quote editorial ── */}
+                <div className="macro-eco-pullquote dstq-reveal dstq-reveal--d3">
+                    <div className="macro-eco-pullquote-mark">"</div>
+                    <p>Em síntese, 2025 consolidou um ambiente de transição, no qual a convergência inflacionária, a condução das políticas monetárias e a sustentabilidade fiscal permaneceram como principais condicionantes da dinâmica dos mercados. Esse contexto exigiu abordagem cautelosa e seletiva na alocação de recursos, ao mesmo tempo em que proporcionou oportunidades relevantes em função dos níveis elevados de prêmio de risco observados ao longo do período, refletindo-se de forma positiva na gestão dos recursos dos planos.</p>
+                    <span className="macro-eco-pullquote-label">Síntese Macroeconômica 2025</span>
+                </div>
+
             </div>
         </section>
     );
 }
+
 
 function Band({ quote }) {
     return (
@@ -157,35 +177,28 @@ function SecaoRentabilidade() {
                 </h2>
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
-                <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d2">
-                    O Plano CD-05 registrou rentabilidade de <strong style={{ color: "#0a1f3c" }}>12,28%</strong> em 2025,
-                    representando <strong style={{ color: "#0a1f3c" }}>145,67% do índice de referência (IPCA + 4% a.a.)</strong>.
-                    A Renda Fixa, que representa 91,78% da carteira consolidada, registrou 11,97%, com destaque para
-                    Operações com Participantes (+17,01%) e Renda Variável (+28,54%).
+                <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d2" style={{ marginBottom: '20px' }}>
+                    O Plano CD-05 encerrou 2025 com rentabilidade de <strong style={{ color: '#0a1f3c' }}>12,28%</strong>, superando com folga o índice de referência de <strong style={{ color: '#0a1f3c' }}>8,44%</strong> (IPCA + 4,00% a.a.), o que evidencia desempenho consistente ao longo do exercício.
                 </p>
 
-                <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d3" style={{ marginTop: 16 }}>
-                    O plano é multiperfilado, oferecendo aos participantes os perfis Conservador, Moderado e Arrojado,
-                    com diferentes alocações entre os segmentos de investimento.
-                </p>
+                <ul className="dstq-reveal dstq-reveal--d3" style={{ listStyle: 'none', padding: 0, margin: '0 0 28px 0', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                    {[
+                        "A Renda Fixa manteve papel estruturante da carteira, com retorno de 11,97%, impulsionada por LFTs (+14,38%), NTN-B (+11,56%) e fundos de renda fixa com desempenho superior ao CDI.",
+                        "Já as Letras Financeiras Perpétuas (LFSC) emitidas pelo BRB, que representam 1,24% do patrimônio total do CD-05, sofreram desvalorização expressiva no mês de dezembro (-1,96%), em decorrência do rebaixamento do rating do Banco. Não obstante, no acumulado de 12 meses, as LFSC do BRB tiveram uma valorização de 12,93%, o que representa 153% em relação ao índice de referência do Plano.",
+                        "A Renda Variável teve contribuição relevante, acumulando 28,54%, com destaque para os fundos AZ Quest Small Mid Caps (+31,09%) e Guepardo (+25,81%), refletindo maior exposição ao ciclo econômico doméstico.",
+                        "O segmento estruturado/multimercados apresentou retorno consistente de 13,64%, enquanto as operações com participantes se destacaram com 17,01%, bem acima do benchmark.",
+                        "No consolidado, o CD-05 combinou diversificação, retorno elevado e aderência ao perfil do plano, com resultado ajustado ao risco favorável aos participantes.",
+                    ].map((item, i) => (
+                        <li key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                            <span style={{ color: '#00aeef', fontWeight: 700, fontSize: '1.1rem', lineHeight: 1.4, flexShrink: 0 }}>•</span>
+                            <p className="dstq-text-body dstq-text-body--on-light" style={{ margin: 0 }}>{item}</p>
+                        </li>
+                    ))}
+                </ul>
 
                 <div className="plano-chart-box plano-chart-box--light">
                     <div className="plano-chart-title">Rentabilidade vs. Índice de Referência</div>
                     <Bar data={data} options={options} />
-                </div>
-
-                <div className="plano-kpi-row">
-                    {[
-                        { label: "Desempenho vs. Referência", value: "145,67%", sub: "Recuperação após 0,33% em 2024" },
-                        { label: "Op. com Participantes", value: "+17,01%", sub: "Melhor segmento do portfólio" },
-                        { label: "Renda Variável", value: "+28,54%", sub: "Contribuição relevante" },
-                    ].map((k, i) => (
-                        <div className="plano-kpi-card plano-kpi-card--light" key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
-                            <div className="plano-kpi-label">{k.label}</div>
-                            <div className="plano-kpi-value">{k.value}</div>
-                            {k.sub && <div className="plano-kpi-sub">{k.sub}</div>}
-                        </div>
-                    ))}
                 </div>
             </div>
         </section>
@@ -194,24 +207,28 @@ function SecaoRentabilidade() {
 
 function SecaoDesempenho() {
     const compData = {
-        labels: ["Rentabilidade", "Índice de Referência", "Mediana Mercado"],
-        datasets: [
-            {
-                data: [12.28, 8.43, 7.8],
-                backgroundColor: ["#00aeef", "#0074c8", "#94a3b8"],
-                borderRadius: 6,
-            },
-        ],
+        labels: ["Referencial", "Rentabilidade", "Ganho Real"],
+        datasets: [{
+            label: "%",
+            data: [8.44, 12.28, 7.69],
+            backgroundColor: ["rgba(0,116,200,0.85)", "rgba(0,174,239,0.9)", "rgba(72,199,142,0.9)"],
+            borderRadius: 6,
+        }],
     };
-
     const compOptions = {
-        plugins: { legend: { display: false } },
+        indexAxis: "y",
+        plugins: {
+            legend: { display: false },
+            datalabels: { display: false },
+            tooltip: { enabled: true },
+        },
         scales: {
-            y: {
-                ticks: { callback: (v) => `${v}%`, color: DARK_CHART_OPTS.color },
+            x: {
+                ticks: { callback: (v) => v + "%", color: DARK_CHART_OPTS.color },
                 grid: { color: DARK_CHART_OPTS.borderColor },
+                max: 15,
             },
-            x: { ticks: { color: DARK_CHART_OPTS.color }, grid: { display: false } },
+            y: { ticks: { color: DARK_CHART_OPTS.color }, grid: { display: false } },
         },
     };
 
@@ -219,10 +236,10 @@ function SecaoDesempenho() {
         labels: ["Ativos (99,83%)", "Assistidos (0,17%)"],
         datasets: [{ data: [99.83, 0.17], backgroundColor: ["#00aeef", "#0074c8"] }],
     };
-
     const popOptions = {
         plugins: {
             legend: { position: "bottom", labels: { color: DARK_CHART_OPTS.color } },
+            datalabels: { display: false },
         },
     };
 
@@ -235,49 +252,62 @@ function SecaoDesempenho() {
                 </h2>
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
-                <div className="plano-kpi-row">
-                    {[
-                        { label: "Recurso do Plano", value: "R$ 53,9 mi" },
-                        { label: "Índice de Referência", value: "8,43%" },
-                        { label: "Rentabilidade", value: "12,28%" },
-                        { label: "Desempenho", value: "145,67%" },
-                    ].map((k, i) => (
-                        <div className="plano-kpi-card" key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
-                            <div className="plano-kpi-label">{k.label}</div>
-                            <div className="plano-kpi-value">{k.value}</div>
-                        </div>
-                    ))}
+                {/* Textos */}
+                <div className="dstq-reveal dstq-reveal--d2" style={{ marginBottom: '32px' }}>
+                    <p className="dstq-text-body" style={{ marginBottom: '12px' }}>
+                        O Plano registrou uma rentabilidade acumulada de <strong style={{ color: '#00aeef' }}>12,28%</strong> em 2025, equivalente a <strong style={{ color: '#00aeef' }}>145%</strong> do seu índice de referência (IPCA+4,00% a.a.). Esse resultado representa um ganho real (acima da inflação) de <strong style={{ color: '#00aeef' }}>7,69%</strong>, incrementando os ganhos para a constituição da reserva de aposentadoria dos seus participantes.
+                    </p>
+                    <p className="dstq-text-body">
+                        O CD-05 possui <strong style={{ color: '#00aeef' }}>78%</strong> do seu patrimônio total alocado em NTN-B, com taxa média ponderada de <strong style={{ color: '#00aeef' }}>7,15% a.a. + IPCA</strong>.
+                    </p>
                 </div>
 
+                {/* Gráfico horizontal */}
                 <div className="plano-chart-box">
-                    <div className="plano-chart-title">Rentabilidade vs. Referência vs. Mercado</div>
+                    <div className="plano-chart-title">Indicadores do Plano · Recurso: R$ 53.938.255</div>
                     <Bar data={compData} options={compOptions} />
                 </div>
 
+                {/* Quadro Populacional */}
                 <div style={{ marginTop: 60 }}>
                     <h3 className="dstq-section-heading dstq-reveal" style={{ fontSize: "1.5rem" }}>
                         Quadro Populacional
                     </h3>
-                    <div className="dstq-split" style={{ marginTop: 24 }}>
-                        <div>
-                            <div className="plano-kpi-row">
-                                {[
-                                    { label: "Total de Participantes", value: "1.171", sub: "Aumento de 30,26% vs. 2024" },
-                                    { label: "Ativos", value: "99,83%" },
-                                    { label: "Assistidos", value: "0,17%" },
-                                    { label: "Pensionistas", value: "0,0%" },
-                                ].map((k, i) => (
-                                    <div className="plano-kpi-card" key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
-                                        <div className="plano-kpi-label">{k.label}</div>
-                                        <div className="plano-kpi-value">{k.value}</div>
-                                        {k.sub && <div className="plano-kpi-sub">{k.sub}</div>}
-                                    </div>
-                                ))}
+
+                    <div className="plano-kpi-row dstq-reveal" style={{ marginTop: 24 }}>
+                        {[
+                            { label: "Total de Participantes", value: "1.171", sub: "2024: 899 · Aumento de 30,26%" },
+                            { label: "Ativos",                 value: "99,83%" },
+                            { label: "Assistidos",             value: "0,17%" },
+                            { label: "Pensionistas",           value: "0,0%" },
+                        ].map((k, i) => (
+                            <div className="plano-kpi-card" key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
+                                <div className="plano-kpi-label">{k.label}</div>
+                                <div className="plano-kpi-value">{k.value}</div>
+                                {k.sub && <div className="plano-kpi-sub">{k.sub}</div>}
                             </div>
-                            <p className="dstq-text-body dstq-reveal" style={{ marginTop: 28 }}>
-                                Podem aderir: todos os empregados do BRB, da Saúde BRB, da BRBCARD, da CEASA-DF,
-                                da ANEABRB e da própria Previdência BRB. Em 2024 havia 899 participantes; em 2025,
-                                1.171 — crescimento expressivo de 30,26%.
+                        ))}
+                    </div>
+
+                    <div className="plano-kpi-row dstq-reveal" style={{ marginTop: 16 }}>
+                        {[
+                            { label: "Feminino",                    value: "34,67%" },
+                            { label: "Masculino",                   value: "65,33%" },
+                            { label: "Média de Idade — Ativos",     value: "36,62 anos" },
+                            { label: "Média de Idade — Assistidos", value: "69,53 anos" },
+                            { label: "Maturidade do Plano",         value: "0,17%" },
+                        ].map((k, i) => (
+                            <div className="plano-kpi-card" key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
+                                <div className="plano-kpi-label">{k.label}</div>
+                                <div className="plano-kpi-value">{k.value}</div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="dstq-split dstq-reveal" style={{ marginTop: 32, alignItems: 'start' }}>
+                        <div>
+                            <p className="dstq-text-body">
+                                Todos os novos empregados do BRB, da Saúde BRB, da BRBCARD, da CEASA-DF, da ANEABRB e da própria Previdência BRB podem aderir ao Plano CD-05.
                             </p>
                         </div>
                         <div className="plano-chart-box" style={{ marginTop: 0 }}>
@@ -296,55 +326,37 @@ function SecaoInvestimentos() {
 
     const tabelas = {
         consolidado: [
-            ["Renda Fixa", "100,00%", "100,00%", "91,78%"],
-            ["Renda Variável", "10,00%", "70,00%", "1,65%"],
-            ["Estruturado", "10,00%", "20,00%", "1,13%"],
-            ["Imobiliário", "5,00%", "20,00%", "0,38%"],
-            ["Operações com Participantes", "10,00%", "15,00%", "4,25%"],
-            ["Exterior", "10,00%", "10,00%", "0,83%"],
+            ["Renda Fixa",                  "100,00", "100,00", "100,00", "91,78"],
+            ["Renda Variável",              "10,00",  "30,00",  "70,00",  "1,65"],
+            ["Estruturado",                 "10,00",  "20,00",  "20,00",  "1,13"],
+            ["Imobiliário",                 "5,00",   "2,00",   "20,00",  "0,38"],
+            ["Operações com Participantes", "10,00",  "10,00",  "15,00",  "4,25"],
+            ["Exterior",                    "10,00",  "10,00",  "10,00",  "0,83"],
         ],
         conservador: [
-            ["Renda Fixa", "100,00%", "100,00%", "95,00%"],
-            ["Renda Variável", "5,00%", "70,00%", "-"],
-            ["Estruturado", "5,00%", "20,00%", "-"],
-            ["Imobiliário", "2,00%", "20,00%", "-"],
-            ["Operações com Participantes", "10,00%", "15,00%", "5,00%"],
-            ["Exterior", "4,00%", "10,00%", "-"],
+            ["Renda Fixa",                  "100,00", "100,00", "100,00", "95,00"],
+            ["Renda Variável",              "5,00",   "5,00",   "70,00",  "-"],
+            ["Estruturado",                 "5,00",   "5,00",   "20,00",  "-"],
+            ["Imobiliário",                 "2,00",   "2,00",   "20,00",  "-"],
+            ["Operações com Participantes", "10,00",  "10,00",  "15,00",  "5,00"],
+            ["Exterior",                    "4,00",   "4,00",   "10,00",  "-"],
         ],
         moderado: [
-            ["Renda Fixa", "100,00%", "100,00%", "87,00%"],
-            ["Renda Variável", "10,00%", "70,00%", "2,00%"],
-            ["Estruturado", "10,00%", "20,00%", "5,00%"],
-            ["Imobiliário", "5,00%", "20,00%", "2,00%"],
-            ["Operações com Participantes", "10,00%", "15,00%", "-"],
-            ["Exterior", "10,00%", "10,00%", "4,00%"],
+            ["Renda Fixa",                  "100,00", "100,00", "100,00", "87,00"],
+            ["Renda Variável",              "10,00",  "10,00",  "70,00",  "2,00"],
+            ["Estruturado",                 "10,00",  "10,00",  "20,00",  "5,00"],
+            ["Imobiliário",                 "5,00",   "2,00",   "20,00",  "2,00"],
+            ["Operações com Participantes", "10,00",  "-",      "15,00",  "-"],
+            ["Exterior",                    "10,00",  "10,00",  "10,00",  "4,00"],
         ],
         arrojado: [
-            ["Renda Fixa", "100,00%", "100,00%", "60,00%"],
-            ["Renda Variável", "30,00%", "70,00%", "20,00%"],
-            ["Estruturado", "15,00%", "20,00%", "10,00%"],
-            ["Imobiliário", "10,00%", "20,00%", "3,00%"],
-            ["Operações com Participantes", "5,00%", "15,00%", "-"],
-            ["Exterior", "10,00%", "10,00%", "7,00%"],
+            ["Renda Fixa",                  "100,00", "100,00", "100,00", "60,00"],
+            ["Renda Variável",              "30,00",  "30,00",  "70,00",  "20,00"],
+            ["Estruturado",                 "15,00",  "20,00",  "20,00",  "10,00"],
+            ["Imobiliário",                 "10,00",  "10,00",  "20,00",  "3,00"],
+            ["Operações com Participantes", "5,00",   "5,00",   "15,00",  "-"],
+            ["Exterior",                    "10,00",  "10,00",  "10,00",  "7,00"],
         ],
-    };
-
-    const allocData = {
-        labels: [
-            "Renda Fixa (91,78%)",
-            "Renda Variável (1,65%)",
-            "Estruturado (1,13%)",
-            "Imobiliário (0,38%)",
-            "Op. Participantes (4,25%)",
-            "Exterior (0,83%)",
-        ],
-        datasets: [{ data: [91.78, 1.65, 1.13, 0.38, 4.25, 0.83], backgroundColor: ["#00aeef", "#0074c8", "#004282", "#64748b", "#1d4ed8", "#94a3b8"] }],
-    };
-
-    const allocOptions = {
-        plugins: {
-            legend: { position: "bottom", labels: { color: LIGHT_CHART_OPTS.color } },
-        },
     };
 
     return (
@@ -356,48 +368,44 @@ function SecaoInvestimentos() {
                 </h2>
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
-                <div className="plano-profile-tabs dstq-reveal" style={{ marginBottom: 24, display: "flex", gap: 8, flexWrap: "wrap" }}>
+                {/* Abas de perfil */}
+                <div className="dstq-reveal" style={{ marginBottom: 24, display: "flex", gap: 8, flexWrap: "wrap" }}>
                     {[
-                        ["consolidado", "Consolidado"],
-                        ["conservador", "Conservador"],
-                        ["moderado", "Moderado"],
-                        ["arrojado", "Arrojado"],
+                        ["consolidado", "Plano Consolidado"],
+                        ["conservador", "Perfil Conservador"],
+                        ["moderado",    "Perfil Moderado"],
+                        ["arrojado",    "Perfil Arrojado"],
                     ].map(([key, label]) => (
-                        <button
-                            key={key}
-                            type="button"
-                            onClick={() => setPerfilAtivo(key)}
-                            style={{
-                                padding: "8px 16px",
-                                borderRadius: 8,
-                                border: perfilAtivo === key ? "1px solid #0074c8" : "1px solid #dbe3ee",
-                                background: perfilAtivo === key ? "#0074c8" : "#fff",
-                                color: perfilAtivo === key ? "#fff" : "#0a1f3c",
-                                fontWeight: 600,
-                                fontSize: "0.82rem",
-                                cursor: "pointer",
-                            }}
-                        >
-                            {label}
-                        </button>
+                        <button key={key} type="button" onClick={() => setPerfilAtivo(key)} style={{
+                            padding: "8px 16px", borderRadius: 8, fontWeight: 600, fontSize: "0.82rem", cursor: "pointer",
+                            border: perfilAtivo === key ? "1px solid #0074c8" : "1px solid #dbe3ee",
+                            background: perfilAtivo === key ? "#0074c8" : "#fff",
+                            color: perfilAtivo === key ? "#fff" : "#0a1f3c",
+                        }}>{label}</button>
                     ))}
                 </div>
 
-                <div className="plano-table-wrap">
+                {/* Tabela política */}
+                <div className="plano-table-wrap dstq-reveal">
                     <table className="plano-table plano-table--light">
                         <thead>
                             <tr>
-                                <th>Segmento</th>
-                                <th className="num">Política Investimento</th>
-                                <th className="num">Resolução 4.994</th>
-                                <th className="num">Alocação 2025</th>
+                                <th rowSpan={2} style={{ minWidth: '200px' }}>Segmento</th>
+                                <th className="num" colSpan={2}>Política de Investimento</th>
+                                <th className="num" rowSpan={2}>Resolução 4.994</th>
+                                <th className="num" rowSpan={2}>Alocação Objetivo 2026</th>
+                            </tr>
+                            <tr>
+                                <th className="num">2026</th>
+                                <th className="num">2025</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {tabelas[perfilAtivo].map(([seg, pol, res, aloc], i) => (
+                            {tabelas[perfilAtivo].map(([seg, p26, p25, res, aloc], i) => (
                                 <tr key={i}>
                                     <td>{seg}</td>
-                                    <td className="num">{pol}</td>
+                                    <td className="num">{p26}</td>
+                                    <td className="num">{p25}</td>
                                     <td className="num">{res}</td>
                                     <td className="num">{aloc}</td>
                                 </tr>
@@ -406,52 +414,49 @@ function SecaoInvestimentos() {
                     </table>
                 </div>
 
+                {/* Tabela resultado */}
                 <div style={{ marginTop: 48 }}>
                     <h3 className="dstq-section-heading dstq-section-heading--on-light dstq-reveal" style={{ fontSize: "1.4rem" }}>
                         Resultado dos Investimentos
                     </h3>
-                    <div className="plano-table-wrap">
+                    <div className="plano-table-wrap dstq-reveal">
                         <table className="plano-table plano-table--light">
                             <thead>
                                 <tr>
-                                    <th>Segmento</th>
-                                    <th className="num">1º Sem</th>
-                                    <th className="num">2º Sem</th>
+                                    <th rowSpan={2} style={{ minWidth: '200px' }}>Segmento</th>
+                                    <th className="num" colSpan={3}>Desempenho</th>
+                                </tr>
+                                <tr>
+                                    <th className="num">1SEM</th>
+                                    <th className="num">2SEM</th>
                                     <th className="num">2025</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {[
-                                    ["Renda Fixa", "6,39%", "5,25%", "11,97%"],
-                                    ["Renda Variável", "15,93%", "10,87%", "28,54%"],
-                                    ["Estruturado", "6,91%", "6,30%", "13,64%"],
-                                    ["Imobiliário", "-", "-", "-"],
-                                    ["Operações com Participantes", "10,01%", "6,36%", "17,01%"],
-                                    ["Exterior", "-", "-", "-"],
+                                    ["Renda Fixa",                  "6,39",  "5,25", "11,97"],
+                                    ["Renda Variável",              "15,93", "10,87","28,54"],
+                                    ["Estruturado",                 "6,91",  "6,30", "13,64"],
+                                    ["Imobiliário",                 "-",     "-",    "-"],
+                                    ["Operações com Participantes", "10,01", "6,36", "17,01"],
+                                    ["Exterior",                    "-",     "-",    "-"],
                                 ].map(([seg, s1, s2, total], i) => (
                                     <tr key={i}><td>{seg}</td><td className="num">{s1}</td><td className="num">{s2}</td><td className="num">{total}</td></tr>
                                 ))}
                                 <tr className="total">
-                                    <td><strong>PLANO</strong></td>
-                                    <td className="num">6,58%</td>
-                                    <td className="num">5,35%</td>
-                                    <td className="num">12,28%</td>
+                                    <td><strong>Plano</strong></td>
+                                    <td className="num">6,58</td>
+                                    <td className="num">5,35</td>
+                                    <td className="num">12,28</td>
                                 </tr>
-                                <tr style={{ background: "rgba(0,174,239,0.05)" }}>
-                                    <td><strong>ÍNDICE DE REFERÊNCIA</strong></td>
-                                    <td className="num">5,03%</td>
-                                    <td className="num">3,24%</td>
-                                    <td className="num">8,43%</td>
+                                <tr style={{ background: "rgba(0,174,239,0.07)" }}>
+                                    <td><strong>Índice de Referência</strong></td>
+                                    <td className="num">5,03</td>
+                                    <td className="num">3,24</td>
+                                    <td className="num">8,44</td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-
-                <div className="plano-chart-box plano-chart-box--light">
-                    <div className="plano-chart-title">Alocação por Segmento (Consolidado)</div>
-                    <div style={{ maxWidth: 420, margin: "0 auto" }}>
-                        <Pie data={allocData} options={allocOptions} />
                     </div>
                 </div>
             </div>
@@ -463,16 +468,20 @@ function SecaoArrecadacao() {
     const fluxData = {
         labels: ["2023", "2024", "2025"],
         datasets: [
-            { label: "Arrecadação", data: [9.065, 11.977, 15.117], backgroundColor: "#00aeef", borderRadius: 4 },
-            { label: "Benefícios/Institutos", data: [1.895, 1.23, 2.324], backgroundColor: "#0074c8", borderRadius: 4 },
+            { label: "Arrecadação",          data: [9065015, 11976829, 15117462], backgroundColor: "#00aeef", borderRadius: 4 },
+            { label: "Benefícios/Institutos", data: [1895446, 1229946,  2323791],  backgroundColor: "#0074c8", borderRadius: 4 },
         ],
     };
 
     const fluxOptions = {
-        plugins: { legend: { position: "top", labels: { color: DARK_CHART_OPTS.color } } },
+        plugins: {
+            legend: { position: "top", labels: { color: DARK_CHART_OPTS.color } },
+            tooltip: { callbacks: { label: (ctx) => ` ${ctx.dataset.label}: R$ ${ctx.raw.toLocaleString("pt-BR")}` } },
+            datalabels: { display: false },
+        },
         scales: {
             y: {
-                ticks: { callback: (v) => `R$ ${v}M`, color: DARK_CHART_OPTS.color },
+                ticks: { callback: (v) => "R$ " + (v / 1000000).toFixed(1) + "M", color: DARK_CHART_OPTS.color },
                 grid: { color: DARK_CHART_OPTS.borderColor },
             },
             x: { ticks: { color: DARK_CHART_OPTS.color }, grid: { display: false } },
@@ -489,21 +498,19 @@ function SecaoArrecadacao() {
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
                 <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
-                    Em 2025, houve elevação de 26,22% na arrecadação das contribuições ao Plano CD-05,
-                    reflexo do crescimento expressivo de 30,26% no número de participantes. O pagamento de
-                    benefícios e institutos aumentou 88,93% no comparativo com 2024.
+                    Em 2025, houve elevação de <strong style={{ color: '#00aeef' }}>26,22%</strong> na arrecadação das contribuições ao Plano CD-05. O pagamento de Benefícios e/ou opção pelo resgate aumentou <strong style={{ color: '#00aeef' }}>88,93%</strong> no comparativo com o ano anterior.
                 </p>
 
                 <div className="plano-chart-box">
-                    <div className="plano-chart-title">Evolução Arrecadação vs. Benefícios (R$ milhões)</div>
+                    <div className="plano-chart-title">Evolução Arrecadação vs. Benefícios/Institutos</div>
                     <Bar data={fluxData} options={fluxOptions} />
                 </div>
 
-                <div className="plano-table-wrap">
+                <div className="plano-table-wrap dstq-reveal">
                     <table className="plano-table">
                         <thead>
                             <tr>
-                                <th>Rubrica</th>
+                                <th style={{ minWidth: '180px' }}></th>
                                 <th className="num">2023</th>
                                 <th className="num">2024</th>
                                 <th className="num">2025</th>
@@ -512,18 +519,24 @@ function SecaoArrecadacao() {
                         <tbody>
                             <tr>
                                 <td>Arrecadação</td>
-                                <td className="num">R$ 9.065.015</td>
-                                <td className="num">R$ 11.976.829</td>
-                                <td className="num">R$ 15.117.462</td>
+                                <td className="num">9.065.015</td>
+                                <td className="num">11.976.829</td>
+                                <td className="num">15.117.462</td>
                             </tr>
                             <tr>
                                 <td>Benefícios/Institutos</td>
-                                <td className="num">R$ 1.895.446</td>
-                                <td className="num">R$ 1.229.946</td>
-                                <td className="num">R$ 2.323.791</td>
+                                <td className="num">1.895.446</td>
+                                <td className="num">1.229.946</td>
+                                <td className="num">2.323.791</td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+
+                <div className="dstq-reveal" style={{ marginTop: '32px', textAlign: 'center' }}>
+                    <a href="#" className="dstq-cta-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                        <strong>CLIQUE AQUI</strong> para acessar o Demonstrativo Analítico dos Investimentos do Plano CD-05 – Dezembro/2025 <span>→</span>
+                    </a>
                 </div>
             </div>
         </section>

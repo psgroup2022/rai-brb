@@ -14,25 +14,25 @@ import { IMAGES } from "../../constant/theme";
    Dados centralizados
 ───────────────────────────────────────────── */
 const PLANOS = [
-    { tipo: "Benefício Definido",    nome: "Plano BD-01",        desc: "Consistência da estratégia e preservação do equilíbrio atuarial, com superação da meta atuarial.",            rent: "11,23%", ref: "120%", refLbl: "da meta atuarial",        pct: 78  },
-    { tipo: "Contribuição Definida", nome: "Plano CD-02",        desc: "Predominância da renda fixa e captura de prêmios elevados, com maior superação do portfólio.",               rent: "12,82%", ref: "152%", refLbl: "do índice de referência", pct: 100 },
-    { tipo: "Contribuição Variável", nome: "Plano CV-03",        desc: "Recuperação relevante frente ao exercício anterior, com desempenho acima do índice de referência.",           rent: "12,18%", ref: "144%", refLbl: "do índice de referência", pct: 92  },
-    { tipo: "Contribuição Definida", nome: "Plano CD-Metrô/DF",  desc: "Desempenho consistente ao longo do exercício, com superação expressiva do índice de referência.",             rent: "11,74%", ref: "139%", refLbl: "do índice de referência", pct: 85  },
-    { tipo: "Contribuição Definida", nome: "Plano CD-05",        desc: "Contribuição equilibrada de renda fixa e variável, com resultado acima do índice de referência.",             rent: "12,28%", ref: "145%", refLbl: "do índice de referência", pct: 93  },
-    { tipo: "Plano Aberto",          nome: "Plano BrasíliaPrev", desc: "Consistência evidenciada ao longo do exercício, com resultado próximo ao melhor do portfólio.",               rent: "12,70%", ref: "150%", refLbl: "do índice de referência", pct: 98  },
-    { tipo: "Plano Aberto",          nome: "Plano RegiusPrev",   desc: "Encerrou o ano com resultado sólido, acima do índice de referência, reforçando a consistência da gestão.",    rent: "12,37%", ref: "147%", refLbl: "do índice de referência", pct: 95  },
-    { tipo: "Gestão Administrativa", nome: "PGA",                desc: "Perfil conservador com resultado consistente, superando o índice de referência com segurança.",               rent: "11,51%", ref: "136%", refLbl: "do índice de referência", pct: 82  },
+    { tipo: "Benefício Definido",    nome: "Plano BD-01",        desc: "O Plano BD-01 encerrou 2025 com rentabilidade de 11,23%, equivalente a 120% da meta atuarial, evidenciando consistência da estratégia e preservação do equilíbrio atuarial.",            rent: "11,23%", ref: "120%", refLbl: "da meta atuarial",        pct: 78  },
+    { tipo: "Contribuição Definida", nome: "Plano CD-02",        desc: "O Plano CD-02 apresentou rentabilidade de 12,82%, equivalente a 152% do índice de referência, refletindo a predominância da renda fixa e captura de prêmios elevados.",               rent: "12,82%", ref: "152%", refLbl: "do índice de referência", pct: 100 },
+    { tipo: "Contribuição Variável", nome: "Plano CV-03",        desc: "O Plano CV-03 registrou rentabilidade de 12,18%, equivalente a 144% do índice de referência, com recuperação relevante frente ao exercício anterior.",           rent: "12,18%", ref: "144%", refLbl: "do índice de referência", pct: 92  },
+    { tipo: "Contribuição Definida", nome: "Plano CD-Metrô/DF",  desc: "O Plano CD-Metrô/DF apresentou rentabilidade de 11,74%, equivalente a 139% do índice de referência, com desempenho consistente.",             rent: "11,74%", ref: "139%", refLbl: "do índice de referência", pct: 85  },
+    { tipo: "Contribuição Definida", nome: "Plano CD-05",        desc: "O Plano CD-05 registrou rentabilidade de 12,28%, equivalente a 145% do índice de referência, com contribuição de renda fixa e variável.",             rent: "12,28%", ref: "145%", refLbl: "do índice de referência", pct: 93  },
+    { tipo: "Plano Aberto",          nome: "Plano BrasíliaPrev", desc: "O Plano BrasíliaPrev apresentou rentabilidade de 12,70%, equivalente a 150% do índice de referência, evidenciando consistência.",               rent: "12,70%", ref: "150%", refLbl: "do índice de referência", pct: 98  },
+    { tipo: "Plano Aberto",          nome: "Plano RegiusPrev",   desc: "O Plano RegiusPrev encerrou o ano com rentabilidade de 12,37%, equivalente a 147% do índice de referência.",    rent: "12,37%", ref: "147%", refLbl: "do índice de referência", pct: 95  },
+    { tipo: "Gestão Administrativa", nome: "PGA",                desc: "O PGA apresentou rentabilidade de 11,51%, equivalente a 136% do índice de referência, com perfil conservador.",               rent: "11,51%", ref: "136%", refLbl: "do índice de referência", pct: 82  },
 ];
 
 const CHART_DATA = [
-    { nome: "BD-01",        rent: 11.23 },
-    { nome: "CD-02",        rent: 12.82 },
-    { nome: "CV-03",        rent: 12.18 },
-    { nome: "CD-Metrô/DF",  rent: 11.74 },
-    { nome: "CD-05",        rent: 12.28 },
-    { nome: "BrasíliaPrev", rent: 12.70 },
-    { nome: "RegiusPrev",   rent: 12.37 },
-    { nome: "PGA",          rent: 11.51 },
+    { nome: "BD-01",        rent: 11.23, meta: 9.32  },
+    { nome: "CD-02",        rent: 12.82, meta: 8.44  },
+    { nome: "CV-03",        rent: 12.18, meta: 8.44  },
+    { nome: "CD-Metrô",     rent: 11.74, meta: 8.44  },
+    { nome: "CD-05",        rent: 12.28, meta: 8.44  },
+    { nome: "BrasíliaPrev", rent: 12.70, meta: 8.44  },
+    { nome: "RegiusPREV",   rent: 12.37, meta: 8.44  },
+    { nome: "PGA",          rent: 11.51, meta: 8.44  },
 ];
 
 /* ─────────────────────────────────────────────
@@ -56,131 +56,52 @@ function useReveal(selector = ".dstq-reveal") {
 }
 
 /* ─────────────────────────────────────────────
-   KPI Strip — dentro do hero
-───────────────────────────────────────────── */
-function KpiStrip() {
-    const stripRef = useRef(null);
-
-    useEffect(() => {
-        const blocks = stripRef.current?.querySelectorAll(".rnt-kpi-block");
-        if (!blocks) return;
-        const observer = new IntersectionObserver(
-            (entries) => entries.forEach((e) => {
-                if (e.isIntersecting) {
-                    e.target.classList.add("is-visible");
-                    observer.unobserve(e.target);
-                }
-            }),
-            { threshold: 0.1 }
-        );
-        blocks.forEach((b) => observer.observe(b));
-        return () => observer.disconnect();
-    }, []);
-
-    return (
-        <div className="rnt-kpi-strip" ref={stripRef}>
-            <div className="rnt-kpi-block">
-                <div className="rnt-kpi-num">R$ 4,3 bi</div>
-                <div className="rnt-kpi-label">Patrimônio total consolidado em 2025</div>
-                <div className="rnt-kpi-growth">8,52% vs. ano anterior</div>
-            </div>
-            <div className="rnt-kpi-block">
-                <div className="rnt-kpi-num">8 planos</div>
-                <div className="rnt-kpi-label">7 Planos Previdenciários + 1 Plano de Gestão Administrativa</div>
-            </div>
-            <div className="rnt-kpi-block">
-                <div className="rnt-kpi-num">152%</div>
-                <div className="rnt-kpi-label">Maior superação do índice de referência (Plano CD-02)</div>
-                <div className="rnt-kpi-growth">Melhor desempenho do portfólio</div>
-            </div>
-        </div>
-    );
-}
-
-/* ─────────────────────────────────────────────
    Seção Patrimônio
 ───────────────────────────────────────────── */
 function SecaoPatrimonio() {
     const sectionRef = useRef(null);
-    const integerRef = useRef(null);  // "4.331"
-    const decimalRef = useRef(null);  // "275.834"
+    const valueRef = useRef(null);
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
-        const counter1 = { val: 0 };
-        const counter2 = { val: 0 };
+        const counter = { val: 0 };
 
-        const tween1 = gsap.to(counter1, {
-            val: 4331,
-            duration: 2,
+        const tween = gsap.to(counter, {
+            val: 4331275834,
+            duration: 2.5,
             ease: "power2.out",
             scrollTrigger: { trigger: sectionRef.current, start: "top 75%", once: true },
             onUpdate: () => {
-                if (integerRef.current)
-                    integerRef.current.textContent = Math.round(counter1.val).toLocaleString("pt-BR");
+                if (valueRef.current)
+                    valueRef.current.textContent = "R$ " + Math.round(counter.val).toLocaleString("pt-BR");
             },
         });
 
-        const tween2 = gsap.to(counter2, {
-            val: 275834,
-            duration: 2.2,
-            ease: "power2.out",
-            scrollTrigger: { trigger: sectionRef.current, start: "top 75%", once: true },
-            onUpdate: () => {
-                if (decimalRef.current)
-                    decimalRef.current.textContent = Math.round(counter2.val).toLocaleString("pt-BR");
-            },
-        });
-
-        return () => {
-            tween1.kill();
-            tween2.kill();
-        };
+        return () => { tween.kill(); };
     }, []);
 
     return (
         <section id="patrimonio" className="rnt-patrimonio" ref={sectionRef}>
             <div className="rnt-patrimonio-inner">
-                <div>
-                    <div className="dstq-section-label dstq-reveal">Patrimônio Acumulado 2025</div>
-                    <div className="rnt-patrimonio-value">
-                        R$&nbsp;<span ref={integerRef}>4.331</span>
-                        <br /><span className="rnt-decimal" ref={decimalRef}>275.834</span>
+                <div style={{ textAlign: 'center', width: '100%' }}>
+                    <div className="dstq-section-label dstq-reveal" style={{ textAlign: 'center' }}>Patrimônio Acumulado 2025</div>
+                    <div className="rnt-patrimonio-value" ref={valueRef} style={{ textAlign: 'center' }}>
+                        R$ 0
                     </div>
-                    <div className="rnt-patrimonio-badge">Crescimento de 8,52% em relação ao ano anterior</div>
+                    <div className="rnt-patrimonio-badge" style={{ margin: '0 auto' }}>Crescimento de 8,52% em relação ao ano anterior</div>
                 </div>
                 <div>
                     <p className="rnt-patrimonio-desc dstq-reveal dstq-reveal--d1">
-                        A Previdência BRB encerrou o ano com a gestão de sete Planos Previdenciários e um Plano de
-                        Gestão Administrativa, os quais, de forma consolidada, atingiram{" "}
-                        <strong style={{ color: "#fff" }}>R$ 4,3 bilhões de patrimônio</strong>, distribuído em
-                        diversos ativos, em consonância às respectivas políticas de investimentos, legislação de
-                        regência e as características de cada plano.
+                        A Previdência BRB encerrou o ano com a gestão de sete Planos Previdenciários e um Plano de Gestão Administrativa, os quais, de forma consolidada, atingiram{" "}
+                        <strong style={{ color: "#fff" }}>R$ 4,3 bilhões de patrimônio</strong>, distribuído em diversos ativos, em consonância às respectivas políticas de investimentos, legislação de regência e as características de cada plano.
                     </p>
                     <p className="rnt-patrimonio-note dstq-reveal dstq-reveal--d2">
-                        Nas páginas específicas de cada plano, você pode conferir todos os resultados, análises e
-                        outras informações relevantes.
+                        Confira um resumo dos resultados de cada plano!
                     </p>
                 </div>
             </div>
         </section>
-    );
-}
-
-/* ─────────────────────────────────────────────
-   Band — Citação
-───────────────────────────────────────────── */
-function Band() {
-    return (
-        <div className="dstq-band">
-            <div className="dstq-band-inner">
-                <p className="dstq-band-quote dstq-reveal">
-                    "Todos os planos superaram seus respectivos índices de referência em 2025, com destaque para o
-                    Plano CD-02, que atingiu 152% do benchmark, refletindo a consistência da estratégia de gestão."
-                </p>
-            </div>
-        </div>
     );
 }
 
@@ -249,15 +170,6 @@ function SecaoPlanos() {
                                     <div className="rnt-plano-metric-lbl">{p.refLbl}</div>
                                 </div>
                             </div>
-                            <div className="rnt-bar-wrap">
-                                <div className="rnt-bar-label">
-                                    <span>Desempenho vs. referência</span>
-                                    <span>{p.ref}</span>
-                                </div>
-                                <div className="rnt-bar-track">
-                                    <div className="rnt-bar-fill" data-pct={p.pct} />
-                                </div>
-                            </div>
                         </div>
                     ))}
                 </div>
@@ -302,7 +214,7 @@ function SecaoComparativo() {
             <div className="container">
                 <div className="dstq-section-label dstq-reveal">Visão Consolidada</div>
                 <h2 className="dstq-section-heading dstq-reveal dstq-reveal--d1">
-                    Comparativo de <span className="dstq-accent">rentabilidade</span>
+                    Rentabilidade dos Planos de Benefícios em <span className="dstq-accent">2025</span>
                 </h2>
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
                 <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
@@ -313,16 +225,26 @@ function SecaoComparativo() {
                 <div className="rnt-chart-wrap" ref={chartRef}>
                     <div className="rnt-chart-bars">
                         {CHART_DATA.map((p, i) => {
-                            const heightPct = ((p.rent / maxRent) * 100).toFixed(1);
+                            const rentPct = ((p.rent / maxRent) * 100).toFixed(1);
+                            const metaPct = ((p.meta / maxRent) * 100).toFixed(1);
                             return (
                                 <div className="rnt-chart-bar-group" key={i}>
                                     <div className="rnt-chart-bar-outer">
                                         <div
                                             className="rnt-chart-bar-fill"
-                                            data-height={heightPct}
+                                            data-height={rentPct}
                                             style={{ transitionDelay: `${i * 0.07}s` }}
                                         >
                                             <span className="rnt-chart-bar-val">{p.rent.toFixed(2)}%</span>
+                                        </div>
+                                    </div>
+                                    <div className="rnt-chart-bar-outer">
+                                        <div
+                                            className="rnt-chart-bar-fill rnt-chart-bar-fill--meta"
+                                            data-height={metaPct}
+                                            style={{ transitionDelay: `${i * 0.07 + 0.05}s` }}
+                                        >
+                                            <span className="rnt-chart-bar-val">{p.meta.toFixed(2)}%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -333,6 +255,17 @@ function SecaoComparativo() {
                         {CHART_DATA.map((p, i) => (
                             <div className="rnt-chart-label" key={i}>{p.nome}</div>
                         ))}
+                    </div>
+                    {/* legenda */}
+                    <div style={{ display: 'flex', gap: '24px', justifyContent: 'center', marginTop: '24px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <div style={{ width: '16px', height: '16px', borderRadius: '3px', background: '#00aeef' }} />
+                            <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem' }}>Rentabilidade</span>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <div style={{ width: '16px', height: '16px', borderRadius: '3px', background: '#22c55e' }} />
+                            <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem' }}>Meta/Benchmark</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -399,35 +332,28 @@ function Rentabilidade2025() {
                             <h1 style={{ color: "#fff", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: "700", lineHeight: "1.2", marginBottom: "16px" }}>
                                 RENTABILIDADE <span style={{ color: "#00aeef" }}>2025</span>
                             </h1>
-                            <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px", maxWidth: "700px" }}>
-                                Resultados consolidados dos planos de benefícios. A Previdência BRB encerrou o ano com
-                                R$ 4,3 bilhões de patrimônio, distribuído em consonância às respectivas políticas de
-                                investimentos.
+                            <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "24px", maxWidth: "700px" }}>
+                                Resultados consolidados dos planos de benefícios.
                             </p>
-                            <ol className="breadcrumb" style={{ marginBottom: "40px", padding: 0, background: "transparent" }}>
-                                <li className="breadcrumb-item">
-                                    <Link to="/" style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none" }}>Home</Link>
-                                </li>
-                                <li className="breadcrumb-item active" aria-current="page" style={{ color: "#00aeef" }}>
-                                    Rentabilidade 2025
-                                </li>
-                            </ol>
+                            <a
+                                href="#indices"
+                                style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "linear-gradient(135deg, #00aeef, #0077b6)", color: "#fff", fontSize: "1rem", fontWeight: 700, padding: "14px 28px", borderRadius: "50px", textDecoration: "none", boxShadow: "0 4px 20px rgba(0,174,239,0.35)", marginBottom: "40px" }}
+                            >
+                                Nas páginas específicas de cada plano, você pode conferir<br />todos os resultados, análises e outras informações relevantes <span style={{ marginLeft: "6px" }}>→</span>
+                            </a>
                         </div>
                     </div>
 
-                    {/* KPI Strip full-width abaixo do texto */}
-                    <KpiStrip />
                 </div>
             </section>
 
             {/* ── Seções de conteúdo ── */}
             <SecaoPatrimonio />
-            <Band />
             <SecaoPlanos />
             <SecaoComparativo />
 
             {/* ── Índice de planos ── */}
-            <section className="gap services-index-section">
+            <section id="indices" className="gap services-index-section">
                 <ParticlesComponent id="services-particles-rentabilidade" className="services-particles-bg" />
                 <div className="container">
                     <div className="services-index-intro">

@@ -2392,7 +2392,7 @@ header.two {
     border-radius: 0;
 } 
 .progress-bar {
-    background: #011833;
+    background: #1b3266;
 }
 .progressbar-active{
     animation-name: progress;
@@ -4604,7 +4604,7 @@ ul.pagination li a:hover {
 
 /* 85. destaques 2025 v2 */
 .destaques-hero-fold-v2 {
-    background: #06162a;
+    background: #1b3266;
     min-height: 1080px;
     display: flex;
     align-items: center;
@@ -4779,11 +4779,11 @@ ul.pagination li a:hover {
 /* ── Seção base (dark navy) ── */
 .dstq-section {
     position: relative;
-    background: #0a1f3c;
+    background: #1b3266;
     padding: 80px 48px;
 }
 .dstq-section--dark {
-    background: #071529;
+    background: #0f2347;
 }
 .dstq-section--light {
     background: #f5f9ff;
@@ -4874,7 +4874,7 @@ ul.pagination li a:hover {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
-    align-items: center;
+    align-items: start;
 }
 .dstq-split--rev {
     direction: rtl;
@@ -4984,7 +4984,7 @@ ul.pagination li a:hover {
 
 /* ── Band (citação) ── */
 .dstq-band {
-    background: linear-gradient(135deg, #004282 0%, #0a1f3c 100%);
+    background: linear-gradient(135deg, #004282 0%, #1b3266 100%);
     padding: 60px 48px;
     position: relative;
     overflow: hidden;
@@ -5136,7 +5136,7 @@ ul.pagination li a:hover {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #0a1f3c 30%, rgba(10,31,60,0.7) 100%);
+    background: linear-gradient(135deg, #1b3266 30%, rgba(27,50,102,0.7) 100%);
 }
 .dstq-full-img-content {
     position: relative;
@@ -5233,7 +5233,7 @@ ul.pagination li a:hover {
 
 /* ── Seção Patrimônio ── */
 .rnt-patrimonio {
-    background: linear-gradient(135deg, #004282 0%, #0a1f3c 100%);
+    background: linear-gradient(135deg, #004282 0%, #1b3266 100%);
     position: relative;
     overflow: hidden;
 }
@@ -5252,10 +5252,11 @@ ul.pagination li a:hover {
     max-width: 1240px;
     margin: 0 auto;
     padding: 80px 48px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 40px;
+    text-align: center;
 }
 .rnt-patrimonio-value {
     font-family: 'Sora', 'Poppins', sans-serif;
@@ -5307,7 +5308,7 @@ ul.pagination li a:hover {
 
 /* ── Planos Grid ── */
 .rnt-section-planos {
-    background: #0a1f3c;
+    background: #1b3266;
     padding: 80px 48px;
 }
 .rnt-planos-grid {
@@ -5455,7 +5456,7 @@ ul.pagination li a:hover {
 
 /* ── Seção Comparativo ── */
 .rnt-section-comparativo {
-    background: #071529;
+    background: #0f2347;
     padding: 80px 48px;
 }
 .rnt-chart-wrap {
@@ -5466,23 +5467,27 @@ ul.pagination li a:hover {
     display: flex;
     align-items: flex-end;
     gap: 16px;
-    height: 280px;
+    height: 320px;
     padding-bottom: 40px;
+    padding-top: 32px;
     border-bottom: 1px solid rgba(255,255,255,0.08);
     position: relative;
 }
 .rnt-chart-bar-group {
     flex: 1;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 6px;
     position: relative;
     height: 100%;
 }
 .rnt-chart-bar-outer {
-    width: 100%;
+    width: 36px;
+    flex-shrink: 0;
     background: rgba(255,255,255,0.05);
-    border-radius: 6px 6px 0 0;
+    border-radius: 4px 4px 0 0;
     position: relative;
     overflow: visible;
     cursor: pointer;
@@ -5504,10 +5509,10 @@ ul.pagination li a:hover {
 }
 .rnt-chart-bar-val {
     position: absolute;
-    top: -26px;
+    top: -22px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 700;
     color: #00aeef;
     white-space: nowrap;
@@ -5517,6 +5522,9 @@ ul.pagination li a:hover {
 }
 .rnt-chart-bar-fill.is-visible .rnt-chart-bar-val {
     opacity: 1;
+}
+.rnt-chart-bar-fill--meta {
+    background: linear-gradient(to top, #16a34a, #22c55e);
 }
 .rnt-chart-labels {
     display: flex;
@@ -5591,11 +5599,11 @@ ul.pagination li a:hover {
 /* ── Seções base ── */
 .plano-section {
     padding: 80px 48px;
-    background: #0a1f3c;
+    background: #1b3266;
     position: relative;
 }
 .plano-section--light { background: #f5f9ff; }
-.plano-section--dark  { background: #071529; }
+.plano-section--dark  { background: #0f2347; }
 @media (max-width: 960px) {
     .plano-section { padding: 60px 24px; }
 }
@@ -5762,3 +5770,1100 @@ ul.pagination li a:hover {
     box-shadow: 0 16px 48px rgba(0,0,0,0.3);
 }
 .plano-img-card img { width: 100%; height: auto; display: block; }
+
+
+/* ══════════════════════════════════════════════════════
+   MACRO ECONÔMICO — redesign editorial (macro-eco-)
+══════════════════════════════════════════════════════ */
+
+/* ── Strip de Indicadores Macro ── */
+.macro-eco-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 32px 0 44px;
+}
+@media (max-width: 900px) {
+    .macro-eco-strip { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+    .macro-eco-strip { grid-template-columns: 1fr; }
+}
+
+.macro-eco-pill {
+    background: rgba(0, 174, 239, 0.06);
+    border: 1px solid rgba(0, 174, 239, 0.18);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    cursor: default;
+}
+.macro-eco-pill:hover {
+    background: rgba(0, 174, 239, 0.12);
+    border-color: rgba(0, 174, 239, 0.38);
+    transform: translateY(-2px);
+}
+.macro-eco-pill-value {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #00aeef;
+    line-height: 1.1;
+}
+.macro-eco-pill-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, 0.88);
+}
+.macro-eco-pill-desc {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.42);
+    line-height: 1.4;
+}
+
+/* ── Grid principal (Global + Brasil) ── */
+.macro-eco-grid {
+    display: grid;
+    grid-template-columns: 1.65fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+    align-items: stretch;
+}
+@media (max-width: 900px) {
+    .macro-eco-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Cards base ── */
+.macro-eco-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.025);
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease;
+}
+.macro-eco-card:hover {
+    border-color: rgba(255, 255, 255, 0.13);
+}
+
+/* Card com imagem (Cenário Global) */
+.macro-eco-card--feature { position: relative; }
+
+.macro-eco-card-img {
+    position: relative;
+    height: 195px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.macro-eco-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.65) brightness(0.75);
+    transition: transform 0.65s ease, filter 0.65s ease;
+    display: block;
+}
+.macro-eco-card--feature:hover .macro-eco-card-img img {
+    transform: scale(1.05);
+    filter: saturate(0.8) brightness(0.85);
+}
+.macro-eco-card-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+        rgba(10, 31, 60, 0.05) 0%,
+        rgba(10, 31, 60, 0.92) 100%
+    );
+}
+
+/* Card Brasil */
+.macro-eco-card--brasil {
+    background: linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(0,174,239,0.04) 100%);
+    border-color: rgba(0, 174, 239, 0.12);
+}
+
+/* Card body */
+.macro-eco-card-body {
+    padding: 28px 30px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.macro-eco-card-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #00aeef;
+    margin-bottom: 14px;
+}
+
+.macro-eco-card-text {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.58);
+}
+
+/* Selic badge no card Brasil */
+.macro-eco-selic-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: linear-gradient(135deg, rgba(0, 174, 239, 0.14), rgba(0, 116, 200, 0.1));
+    border: 1px solid rgba(0, 174, 239, 0.28);
+    border-radius: 12px;
+    padding: 14px 22px;
+    margin-bottom: 20px;
+    width: fit-content;
+}
+.macro-eco-selic-val {
+    font-family: 'Sora', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #00aeef;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+.macro-eco-selic-lbl {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: rgba(255, 255, 255, 0.45);
+    margin-top: 5px;
+}
+
+/* Tag de risco fiscal no card Brasil */
+.macro-eco-brasil-tag {
+    margin-top: auto;
+    padding-top: 18px;
+    padding: 12px 16px;
+    margin-top: 20px;
+    background: rgba(255, 180, 0, 0.06);
+    border: 1px solid rgba(255, 180, 0, 0.18);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: rgba(255, 220, 100, 0.75);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+}
+.macro-eco-brasil-tag span {
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+/* Mini row dentro do card Global */
+.macro-eco-mini-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 18px;
+}
+@media (max-width: 600px) {
+    .macro-eco-mini-row { grid-template-columns: 1fr; }
+}
+.macro-eco-mini {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 14px 16px;
+}
+.macro-eco-mini strong {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: 7px;
+    font-family: 'Sora', sans-serif;
+}
+.macro-eco-mini p {
+    font-size: 0.8rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.48);
+    margin: 0;
+}
+
+/* ── Mercados Financeiros ── */
+.macro-eco-markets {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    padding: 30px 32px;
+    margin-bottom: 16px;
+    transition: border-color 0.3s ease;
+}
+.macro-eco-markets:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+.macro-eco-markets-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #00aeef;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.macro-eco-markets-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+@media (max-width: 768px) {
+    .macro-eco-markets-grid { grid-template-columns: 1fr; gap: 20px; }
+}
+.macro-eco-market-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+.macro-eco-market-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    font-family: 'Sora', sans-serif;
+}
+.macro-eco-market-icon--rf {
+    background: rgba(0, 174, 239, 0.13);
+    color: #00aeef;
+    border: 1px solid rgba(0, 174, 239, 0.25);
+}
+.macro-eco-market-icon--rv {
+    background: rgba(0, 116, 200, 0.13);
+    color: #4da8f0;
+    border: 1px solid rgba(0, 116, 200, 0.25);
+}
+.macro-eco-market-icon--fx {
+    background: rgba(148, 163, 184, 0.1);
+    color: #94a3b8;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+.macro-eco-market-item strong {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: 7px;
+    font-family: 'Sora', sans-serif;
+}
+.macro-eco-market-item p {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.48);
+    margin: 0;
+}
+
+/* ── Gestão dos Planos ── */
+.macro-eco-gestao {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-left: 3px solid #00aeef;
+    border-radius: 0 16px 16px 0;
+    padding: 30px 34px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+}
+.macro-eco-gestao-icon {
+    width: 46px;
+    height: 46px;
+    background: rgba(0, 174, 239, 0.1);
+    border: 1px solid rgba(0, 174, 239, 0.22);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00aeef;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.macro-eco-gestao-body { flex: 1; }
+.macro-eco-gestao-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+    letter-spacing: 0.01em;
+}
+.macro-eco-gestao-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+@media (max-width: 768px) {
+    .macro-eco-gestao { flex-direction: column; }
+    .macro-eco-gestao-cols { grid-template-columns: 1fr; }
+}
+
+/* ── Pull-quote Síntese ── */
+.macro-eco-pullquote {
+    position: relative;
+    border-radius: 16px;
+    background: linear-gradient(135deg,
+        rgba(0, 174, 239, 0.07) 0%,
+        rgba(0, 116, 200, 0.04) 60%,
+        rgba(10, 31, 60, 0) 100%
+    );
+    border: 1px solid rgba(0, 174, 239, 0.16);
+    padding: 44px 52px 40px;
+    overflow: hidden;
+}
+.macro-eco-pullquote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, #00aeef, transparent);
+    border-radius: 2px;
+}
+.macro-eco-pullquote-mark {
+    position: absolute;
+    top: -16px;
+    left: 36px;
+    font-family: 'Sora', Georgia, serif;
+    font-size: 9rem;
+    font-weight: 900;
+    line-height: 1;
+    color: rgba(0, 174, 239, 0.1);
+    pointer-events: none;
+    user-select: none;
+}
+.macro-eco-pullquote p {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(0.95rem, 1.6vw, 1.12rem);
+    font-weight: 500;
+    line-height: 1.78;
+    color: rgba(255, 255, 255, 0.78);
+    max-width: 820px;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+.macro-eco-pullquote-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 22px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #00aeef;
+    position: relative;
+    z-index: 1;
+}
+.macro-eco-pullquote-label::before {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: #00aeef;
+}
+
+
+
+/* ══════════════════════════════════════════════════════
+   MACRO ECO — complemento v2 (hero + grade de seções)
+══════════════════════════════════════════════════════ */
+
+/* ── Hero imagem ── */
+.macro-eco-hero {
+    position: relative;
+    height: 210px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+.macro-eco-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.6) brightness(0.65);
+    display: block;
+    transition: transform 0.8s ease, filter 0.8s ease;
+}
+.macro-eco-hero:hover img {
+    transform: scale(1.03);
+    filter: saturate(0.75) brightness(0.75);
+}
+.macro-eco-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(10, 31, 60, 0.72) 0%,
+        rgba(0, 174, 239, 0.12) 60%,
+        rgba(10, 31, 60, 0.5) 100%
+    );
+}
+
+/* ── Grade 2×2 de cartões ── */
+.macro-eco-sections-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+@media (max-width: 900px) {
+    .macro-eco-sections-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Cartão de seção ── */
+.macro-eco-section-card {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    padding: 26px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+.macro-eco-section-card:hover {
+    border-color: rgba(255, 255, 255, 0.13);
+    background: rgba(255, 255, 255, 0.035);
+}
+.macro-eco-section-card--brasil {
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.03) 0%,
+        rgba(0, 174, 239, 0.04) 100%
+    );
+    border-color: rgba(0, 174, 239, 0.12);
+}
+.macro-eco-section-card--brasil:hover {
+    border-color: rgba(0, 174, 239, 0.22);
+}
+
+/* ── Label interno do cartão ── */
+.macro-eco-section-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.66rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #00aeef;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.065);
+    flex-shrink: 0;
+}
+
+
+
+/* ══════════════════════════════════════════════════════
+   QUADRO POPULACIONAL (pop-)
+══════════════════════════════════════════════════════ */
+
+/* ── Hero ── */
+.pop-section { }
+
+.pop-hero {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.pop-section-label {
+    font-size: 0.66rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #00aeef;
+    margin-bottom: 12px;
+}
+
+.pop-total-num {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(3rem, 6vw, 4.2rem);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.pop-total-label {
+    display: block;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.42);
+    margin-top: 6px;
+}
+
+.pop-total-delta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.pop-delta-badge {
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.28);
+    color: #f87171;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.pop-delta-context {
+    font-size: 0.76rem;
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.pop-closed-tag {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 20px;
+    max-width: 260px;
+}
+
+.pop-closed-icon {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.25);
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.pop-closed-tag strong {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Sora', sans-serif;
+}
+
+.pop-closed-tag span {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.38);
+    line-height: 1.4;
+}
+
+/* ── Barra proporcional ── */
+.pop-bar-wrap {
+    margin-bottom: 20px;
+}
+
+.pop-bar-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.32);
+    margin-bottom: 8px;
+}
+
+.pop-bar {
+    display: flex;
+    height: 56px;
+    border-radius: 12px;
+    overflow: hidden;
+    gap: 3px;
+}
+
+.pop-bar-seg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    cursor: default;
+    overflow: hidden;
+    transition: filter 0.25s ease;
+    min-width: 0;
+}
+
+.pop-bar-seg:hover {
+    filter: brightness(1.18);
+}
+
+.pop-bar-seg span {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+}
+
+.pop-bar-seg strong {
+    font-family: 'Sora', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.pop-bar-seg--pensionistas {
+    background: linear-gradient(135deg, #00aeef 0%, #0074c8 100%);
+}
+
+.pop-bar-seg--ativos {
+    background: linear-gradient(135deg, #004f9e 0%, #003978 100%);
+}
+
+.pop-bar-seg--assistidos {
+    background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+}
+
+/* ── Grid inferior ── */
+.pop-bottom-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 0.9fr;
+    gap: 14px;
+}
+
+@media (max-width: 900px) {
+    .pop-bottom-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Cards ── */
+.pop-card {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.pop-card--maturity {
+    background: linear-gradient(145deg,
+        rgba(0, 174, 239, 0.07) 0%,
+        rgba(0, 116, 200, 0.04) 100%
+    );
+    border-color: rgba(0, 174, 239, 0.15);
+}
+
+.pop-card-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Gênero ── */
+.pop-gender-bar {
+    display: flex;
+    height: 44px;
+    border-radius: 9px;
+    overflow: hidden;
+    gap: 2px;
+}
+
+.pop-gender-masc,
+.pop-gender-fem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    gap: 6px;
+    overflow: hidden;
+    transition: filter 0.25s;
+}
+
+.pop-gender-masc:hover,
+.pop-gender-fem:hover {
+    filter: brightness(1.15);
+}
+
+.pop-gender-masc {
+    background: linear-gradient(135deg, #0074c8, #005fa3);
+}
+
+.pop-gender-fem {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+}
+
+.pop-gender-masc span,
+.pop-gender-fem span {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.72);
+    white-space: nowrap;
+}
+
+.pop-gender-masc strong,
+.pop-gender-fem strong {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.pop-gender-legend {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.pop-gender-legend span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.pop-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    font-style: normal;
+}
+
+.pop-dot--masc { background: #0074c8; }
+.pop-dot--fem  { background: #7c3aed; }
+
+/* ── Idades ── */
+.pop-age-pair {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.pop-age-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    flex: 1;
+}
+
+.pop-age-num {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.pop-age-lbl {
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.pop-age-tag {
+    margin-top: 4px;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #00aeef;
+}
+
+.pop-age-divider {
+    width: 1px;
+    height: 52px;
+    background: rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+}
+
+/* ── Maturidade ── */
+.pop-maturity-num {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 900;
+    color: #00aeef;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.pop-maturity-bar {
+    height: 5px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.pop-maturity-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00aeef, #0074c8);
+    border-radius: 3px;
+}
+
+.pop-maturity-sub {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.38);
+    line-height: 1.5;
+}
+
+
+
+/* ══════════════════════════════════════════════════════
+   EQUILÍBRIO TÉCNICO (eq-)
+══════════════════════════════════════════════════════ */
+
+/* ── Grid dos dois cartões + relação ── */
+.eq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+    margin: 48px 0 0;
+}
+
+@media (max-width: 860px) {
+    .eq-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+/* ── Cartões ── */
+.eq-card {
+    border-radius: 20px;
+    padding: 36px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.eq-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+}
+
+.eq-card--pat {
+    background: linear-gradient(145deg, rgba(0,174,239,0.1) 0%, rgba(0,116,200,0.06) 100%);
+    border: 1px solid rgba(0,174,239,0.22);
+}
+
+.eq-card--pat::before {
+    background: linear-gradient(90deg, #00aeef, #0074c8);
+}
+
+.eq-card--prov {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.eq-card--prov::before {
+    background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+}
+
+.eq-card-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.4);
+}
+
+.eq-card--pat .eq-card-label {
+    color: #00aeef;
+}
+
+/* ── Número ── */
+.eq-card-number {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    flex-wrap: wrap;
+    line-height: 1;
+}
+
+.eq-currency {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    align-self: flex-start;
+    margin-top: 6px;
+}
+
+.eq-integer {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.eq-card--pat .eq-integer {
+    color: #00aeef;
+}
+
+.eq-decimal {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 700;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: -0.02em;
+    align-self: flex-end;
+    padding-bottom: 4px;
+}
+
+.eq-card--pat .eq-decimal {
+    color: rgba(0,174,239,0.6);
+}
+
+.eq-card-sub {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.5;
+    max-width: 280px;
+}
+
+/* ── Relação central ── */
+.eq-vs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.eq-vs-sign {
+    font-family: 'Sora', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: rgba(0,174,239,0.35);
+    line-height: 1;
+}
+
+.eq-vs-superavit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: rgba(0,174,239,0.08);
+    border: 1px solid rgba(0,174,239,0.18);
+    border-radius: 12px;
+    padding: 12px 18px;
+    text-align: center;
+}
+
+.eq-vs-sup-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #00aeef;
+}
+
+.eq-vs-sup-value {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.8);
+    white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+    .eq-vs {
+        flex-direction: row;
+        justify-content: center;
+        padding: 8px 0;
+    }
+    .eq-vs-sign { font-size: 1.6rem; }
+}
+
+/* ── Barras comparativas ── */
+.eq-compare {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 28px 32px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+}
+
+.eq-compare-row {
+    display: grid;
+    grid-template-columns: 220px 1fr 100px;
+    align-items: center;
+    gap: 16px;
+}
+
+@media (max-width: 700px) {
+    .eq-compare-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+}
+
+.eq-compare-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+    white-space: nowrap;
+}
+
+.eq-compare-track {
+    height: 8px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.eq-compare-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease;
+}
+
+.eq-compare-fill--pat {
+    background: linear-gradient(90deg, #00aeef, #0074c8);
+}
+
+.eq-compare-fill--prov {
+    background: rgba(255,255,255,0.25);
+}
+
+.eq-compare-val {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    text-align: right;
+    white-space: nowrap;
+}
+
