@@ -101,8 +101,14 @@ export default function ParticlesComponent({
 
     return () => {
       observer?.disconnect();
+      if (window.pJSDom?.length > 0) {
+        window.pJSDom.forEach((p) => p?.pJS?.fn?.vendors?.destroypJS?.());
+        window.pJSDom = [];
+      }
+      const host = document.getElementById(id);
+      if (host) host.innerHTML = "";
     };
-  }, [initParticles]);
+  }, [id, initParticles]);
 
   return <div id={id} className={className} />;
 }

@@ -3,24 +3,11 @@ import { IMAGES } from "../../constant/theme";
 import { servicedata2 } from "../../constant/alldata";
 import Footer2 from "../../layout/footer2";
 import Header2 from "../../layout/header2";
-import CountUp from "react-countup";
-import { Users, TrendingUp, PieChart, BarChart2, Wallet, Settings } from "lucide-react";
 import ParticlesComponent from "../../components/ui/particles-bg";
+import LuxuryDashboard from "../../componenet/luxurydashboard";
 import headerVideo from '../../assets/img/header.mp4';
 
 function Index2() {
-    const grandesNumeros = [
-        { primary: "7.619", secondary: "Participantes", complementar: "Crescimento de 5,31%", icon: Users, shape: "" },
-        { primary: "4,36 bilhões", secondary: "de Patrimônio", complementar: "crescemos 9,27%", icon: TrendingUp, shape: "card-shape-asym-a" },
-        { primary: "ICP*: 87,59% de Adesão", secondary: null, complementar: "Indice de Cobertura Previdencial", icon: PieChart, shape: "card-shape-asym-b" },
-        { primary: "BD-01 - R$91,141 milhões", secondary: "Superávit do Plano", complementar: null, icon: BarChart2, shape: "card-shape-asym-b" },
-        { primary: "CV-03 - R$8,215 milhões", secondary: "Superávit do Plano", complementar: null, icon: Wallet, shape: "card-shape-asym-a" },
-        { primary: "4,4% de redução", secondary: "de Despesa administrativa per capita", complementar: null, icon: Settings, shape: "" },
-        { primary: "Redução de 6,7%", secondary: "Despesas administrativas X Patrimônio Administrado (– 0,42%)", complementar: null, icon: TrendingUp, shape: "card-shape-asym-a" },
-        { primary: "Redução de 4,5%", secondary: "Despesas Realizadas X Orçadas", complementar: "economia de R$849.000", icon: BarChart2, shape: "card-shape-asym-b" },
-        { primary: "Aumento de 8,46%", secondary: "Arrecadação total", complementar: null, icon: TrendingUp, shape: "" },
-    ];
-
     return (
         <>
             <Header2 />
@@ -47,7 +34,7 @@ function Index2() {
                     <div className="row align-items-center">
                         <div className="col-lg-12">
                             <div className="hero-text" style={{ marginTop: '0' }}>
-                                <h1>Um ano de <br />solidez e <br />crescimento <br /><span className="title-accent">sustentado</span></h1>
+                                <h1><span>Um ano de </span><br /><span>solidez e </span><br /><span>crescimento </span><br /><span className="title-accent">sustentado</span></h1>
                                 <p>BEM-VINDO AO RELATÓRIO ANUAL DA PREVIDÊNCIA BRB</p>
                                 
                             </div>
@@ -99,40 +86,16 @@ function Index2() {
                     </div>
                 </div>
             </section>
-            <section className="gap big-numbers-section">
-                <div className="container">
-                    <div className="big-numbers-header">
-                        <span className="big-numbers-eyebrow"># Desempenho</span>
-                        <h2>Grandes <span>Números</span></h2>
-                    </div>
-                    <div className="row g-4">
-                        {grandesNumeros.map((item, i) => {
-                            const Icon = item.icon;
-                            return (
-                                <div className="col-lg-4 col-md-6" key={i}>
-                                    <div className={`big-number-card ${item.shape}`}>
-                                        <div className="metric-icon">
-                                            <Icon size={24} strokeWidth={1.5} />
-                                        </div>
-                                        <p className="metric-primary">{item.primary}</p>
-                                        {item.secondary && <p className="metric-secondary">{item.secondary}</p>}
-                                        {item.complementar && <p className="metric-complementar">{item.complementar}</p>}
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </section>
+            <LuxuryDashboard />
             <section className="gap services-index-section">
                 <ParticlesComponent id="services-particles" className="services-particles-bg" />
                 <div className="container">
                     <div className="services-index-intro">
                         <span className="services-index-label"># Índice</span>
                         <h2 className="services-index-heading">
-                            Conheça os planos da{" "}
+                            <span>Conheça os planos da </span>
                             <span className="services-index-accent">Previdência BRB</span>{" "}
-                            e descubra o que o seu plano oferece para o seu futuro.
+                            <span>e descubra o que o seu plano oferece para o seu futuro.</span>
                         </h2>
                     </div>
                     <div className="row row-two g-4">

@@ -13,6 +13,7 @@ import PlanoCV03 from "../pages/planos/cv-03";
 import PlanoCDMetro from "../pages/planos/cd-metro";
 import PlanoCD05 from "../pages/planos/cd-05";
 import PlanoBrasiliaPrev from "../pages/planos/brasiliaprev";
+import PlanoBrasiliaPrev2025 from "../pages/planos/brasiliaprev-2025";
 import PlanoRegiusPrev from "../pages/planos/regiusprev";
 import PlanoPGA from "../pages/planos/pga";
 import Index3 from "../pages/home/index-3";
@@ -44,6 +45,7 @@ const rootdata = [
     { path: "/plano-cd-metro", element: <PlanoCDMetro /> },
     { path: "/plano-cd-05", element: <PlanoCD05 /> },
     { path: "/brasiliaprev", element: <PlanoBrasiliaPrev /> },
+    { path: "/brasiliaprev-2025", element: <PlanoBrasiliaPrev2025 /> },
     { path: "/regiusprev", element: <PlanoRegiusPrev /> },
     { path: "/pga", element: <PlanoPGA /> },
     { path: "/about", element: <About /> },

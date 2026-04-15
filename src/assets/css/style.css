@@ -5132,12 +5132,6 @@ ul.pagination li a:hover {
     opacity: 0.18;
     filter: saturate(0.4);
 }
-.dstq-full-img::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #1b3266 30%, rgba(27,50,102,0.7) 100%);
-}
 .dstq-full-img-content {
     position: relative;
     z-index: 2;
@@ -5165,6 +5159,78 @@ ul.pagination li a:hover {
 .dstq-reveal--d2 { transition-delay: 0.2s; }
 .dstq-reveal--d3 { transition-delay: 0.3s; }
 .dstq-reveal--d4 { transition-delay: 0.4s; }
+
+/* ── Editorial (integridade/compliance) ── */
+.dstq-editorial {
+    background:
+        radial-gradient(circle at 12% 8%, rgba(0, 174, 239, 0.08), transparent 28%),
+        radial-gradient(circle at 85% 0%, rgba(255, 255, 255, 0.06), transparent 20%),
+        #0b1d3f;
+}
+.dstq-editorial-shell {
+    max-width: 980px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 22px;
+    border: 1px solid #dce6f6;
+    box-shadow: 0 20px 60px rgba(4, 19, 42, 0.28);
+    padding: 52px 56px;
+}
+.dstq-editorial-shell .dstq-section-label {
+    color: #0c5ad9;
+}
+.dstq-editorial-shell .dstq-section-label::before {
+    background: #0c5ad9;
+}
+.dstq-editorial-title {
+    font-family: 'Sora', 'Poppins', sans-serif;
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: #091c3a;
+    margin: 0;
+}
+.dstq-editorial-shell .dstq-divider {
+    margin-bottom: 26px;
+}
+.dstq-editorial-subtitle {
+    font-family: 'Sora', 'Poppins', sans-serif;
+    font-size: clamp(1.1rem, 1.9vw, 1.45rem);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: #0f2b58;
+    margin: 36px 0 14px;
+    padding-top: 22px;
+    border-top: 1px solid #e5ecf9;
+}
+.dstq-editorial-paragraph {
+    margin: 0;
+    font-size: 1.02rem;
+    line-height: 1.95;
+    color: #334155;
+}
+.dstq-editorial-paragraph + .dstq-editorial-paragraph {
+    margin-top: 16px;
+}
+.dstq-editorial-paragraph.is-lead {
+    font-size: 1.08rem;
+    line-height: 1.9;
+    color: #12284d;
+    background: linear-gradient(180deg, #edf4ff 0%, rgba(237, 244, 255, 0) 100%);
+    border-left: 4px solid #0c5ad9;
+    border-radius: 10px;
+    padding: 20px 22px;
+}
+@media (max-width: 960px) {
+    .dstq-editorial-shell {
+        padding: 34px 24px;
+        border-radius: 16px;
+    }
+    .dstq-editorial-subtitle {
+        margin-top: 30px;
+        padding-top: 18px;
+    }
+}
 
 /* 87. rentabilidade 2025 — dobras de conteúdo ricas */
 /* prefixo rnt- para isolamento de escopo */
@@ -6866,4 +6932,3 @@ ul.pagination li a:hover {
     text-align: right;
     white-space: nowrap;
 }
-
