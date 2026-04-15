@@ -1006,6 +1006,7 @@ function PlanoBrasiliaPrev() {
             <SecaoInvestimentos />
             <SecaoArrecadacao />
             <SecaoAtuarial />
+            <SecaoEquilibrio />
             <SecaoCustos />
             <SecaoRegulamentar />
 
