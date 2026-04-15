@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import SecaoEconomia from "../../components/ui/SecaoEconomia";
+import SecaoIndicePlanos from "../../components/ui/SecaoIndicePlanos";
 import { useEffect } from "react";
-import { servicedata2 } from "../../constant/alldata";
 import Footer2 from "../../layout/footer2";
 import Header2 from "../../layout/header2";
-import ParticlesComponent from "../../components/ui/particles-bg";
 import iconCDMetro from "../../assets/img/cdmetro.svg";
 import headerCDMetroVideo from "../../assets/img/cd-metro.mp4";
 import { IMAGES } from "../../constant/theme";
@@ -820,31 +819,7 @@ function PlanoCDMetro() {
             <SecaoCustosGestao />
             <Band quote={'"O Plano CD-Metro/DF encerrou 2025 com Equilibrio Tecnico economico e atuarial, rentabilidade de 11,74% e crescimento de 4,02% no numero de participantes."'} />
 
-            <section className="gap services-index-section">
-                <ParticlesComponent id="services-particles-cdmetro" className="services-particles-bg" />
-                <div className="container">
-                    <div className="services-index-intro">
-                        <span className="services-index-label"># Indice</span>
-                        <h2 className="services-index-heading">
-                            Conheça os Planos da <span className="services-index-accent">Previdência BRB</span> e
-                            descubra o que o seu plano oferece para o seu futuro.
-                        </h2>
-                    </div>
-                    <div className="row row-two g-4">
-                        {servicedata2.map((data, i) => (
-                            <div className="col-lg-3 col-md-6" key={i}>
-                                <div className="services-two">
-                                    <i>{data.icon}</i>
-                                    <h3>
-                                        <Link to="#">{data.title}</Link>
-                                    </h3>
-                                    <span>{data.number}</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <SecaoIndicePlanos particlesId="services-particles-cdmetro" />
 
             <Footer2 />
         </>

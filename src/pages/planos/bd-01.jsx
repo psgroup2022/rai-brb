@@ -3,10 +3,9 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SecaoEconomia from "../../components/ui/SecaoEconomia";
-import { servicedata2 } from "../../constant/alldata";
+import SecaoIndicePlanos from "../../components/ui/SecaoIndicePlanos";
 import Footer2 from "../../layout/footer2";
 import Header2 from "../../layout/header2";
-import ParticlesComponent from "../../components/ui/particles-bg";
 import iconBD01 from "../../assets/img/bd01.svg";
 import headerBD01Video from "../../assets/img/bd-01.mp4";
 import { IMAGES } from "../../constant/theme";
@@ -1149,30 +1148,7 @@ function PlanoBD01() {
             <SecaoRegulamentar />
             <Band quote='"O Plano BD-01 encerrou 2025 com Superávit Técnico Ajustado de R$ 308,2 milhões, representando uma variação favorável de 19,13% em relação a 2024, justificada principalmente pela redução do passivo atuarial."' />
 
-            {/* ── Índice de planos ── */}
-            <section className="gap services-index-section">
-                <ParticlesComponent id="services-particles-bd01" className="services-particles-bg" />
-                <div className="container">
-                    <div className="services-index-intro">
-                        <span className="services-index-label"># Índice</span>
-                        <h2 className="services-index-heading">
-                            Conheça os Planos da <span className="services-index-accent">Previdência BRB</span>
-                            {" "}e descubra o que o seu plano oferece para o seu futuro.
-                        </h2>
-                    </div>
-                    <div className="row row-two g-4">
-                        {servicedata2.map((data, i) => (
-                            <div className="col-lg-3 col-md-6" key={i}>
-                                <div className="services-two">
-                                    <i>{data.icon}</i>
-                                    <h3><Link to="#">{data.title}</Link></h3>
-                                    <span>{data.number}</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <SecaoIndicePlanos particlesId="services-particles-bd01" />
 
             <Footer2 />
         </>

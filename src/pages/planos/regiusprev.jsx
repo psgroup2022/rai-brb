@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import SecaoEconomia from "../../components/ui/SecaoEconomia";
+import SecaoIndicePlanos from "../../components/ui/SecaoIndicePlanos";
 import { useEffect } from "react";
-import { servicedata2 } from "../../constant/alldata";
 import Footer2 from "../../layout/footer2";
 import Header2 from "../../layout/header2";
-import ParticlesComponent from "../../components/ui/particles-bg";
 import iconRegiusprev from "../../assets/img/regiusprev.svg";
 import headerRegiusprevVideo from "../../assets/img/regiusprev.mp4";
 import { IMAGES } from "../../constant/theme";
@@ -19,7 +18,7 @@ import {
     Tooltip,
     Legend,
 } from "chart.js";
-import { Bar, Doughnut, Pie } from "react-chartjs-2";
+import { Bar, Doughnut } from "react-chartjs-2";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend);
 
@@ -334,17 +333,6 @@ function SecaoDesempenho() {
 }
 
 function SecaoInvestimentos() {
-    const allocData = {
-        labels: ["Renda Fixa (94%)", "Operações com Participantes (5%)", "Renda Variável (1%)"],
-        datasets: [{ data: [94, 5, 1], backgroundColor: ["#00aeef", "#0074c8", "#64748b"] }],
-    };
-
-    const allocOptions = {
-        plugins: {
-            legend: { position: "bottom", labels: { color: LIGHT_CHART_OPTS.color } },
-        },
-    };
-
     return (
         <section id="investimentos" className="plano-section plano-section--light">
             <div className="container">
@@ -416,13 +404,6 @@ function SecaoInvestimentos() {
                     >
                         <strong>CLIQUE AQUI</strong> para acessar o Demonstrativo Analítico dos Investimentos do Plano RegiusPrev – Dezembro/2025 <span>→</span>
                     </a>
-                </div>
-
-                <div className="plano-chart-box plano-chart-box--light">
-                    <div className="plano-chart-title">Alocação por Segmento</div>
-                    <div style={{ maxWidth: 420, margin: "0 auto" }}>
-                        <Pie data={allocData} options={allocOptions} />
-                    </div>
                 </div>
             </div>
         </section>
@@ -805,31 +786,7 @@ function PlanoRegiusPrev() {
             <SecaoCustos />
             <Band quote={'"O Plano RegiusPrev encerrou 2025 com Equilíbrio Técnico atuarial, rentabilidade de 12,37% e patrimônio 117% maior, consolidando o RPC para servidores municipais do Paraná."'} />
 
-            <section className="gap services-index-section">
-                <ParticlesComponent id="services-particles-regiusprev" className="services-particles-bg" />
-                <div className="container">
-                    <div className="services-index-intro">
-                        <span className="services-index-label"># Índice</span>
-                        <h2 className="services-index-heading">
-                            Conheça os Planos da <span className="services-index-accent">Previdência BRB</span> e
-                            descubra o que o seu plano oferece para o seu futuro.
-                        </h2>
-                    </div>
-                    <div className="row row-two g-4">
-                        {servicedata2.map((data, i) => (
-                            <div className="col-lg-3 col-md-6" key={i}>
-                                <div className="services-two">
-                                    <i>{data.icon}</i>
-                                    <h3>
-                                        <Link to="#">{data.title}</Link>
-                                    </h3>
-                                    <span>{data.number}</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <SecaoIndicePlanos particlesId="services-particles-regiusprev" />
 
             <Footer2 />
         </>

@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import SecaoEconomia from "../../components/ui/SecaoEconomia";
+import SecaoIndicePlanos from "../../components/ui/SecaoIndicePlanos";
 import { useEffect, useState } from "react";
-import { servicedata2 } from "../../constant/alldata";
 import Footer2 from "../../layout/footer2";
 import Header2 from "../../layout/header2";
-import ParticlesComponent from "../../components/ui/particles-bg";
 import iconCD05 from "../../assets/img/cd05.svg";
 import headerCD05Video from "../../assets/img/cd-05.mp4";
 import { IMAGES } from "../../constant/theme";
@@ -946,31 +945,7 @@ function PlanoCD05() {
             <SecaoCustos />
             <Band quote={'"O Plano CD-05 encerrou 2025 com Equilíbrio Técnico atuarial, rentabilidade de 12,28% e crescimento expressivo de 30,26% no número de participantes, consolidando sua expansão."'} />
 
-            <section className="gap services-index-section">
-                <ParticlesComponent id="services-particles-cd05" className="services-particles-bg" />
-                <div className="container">
-                    <div className="services-index-intro">
-                        <span className="services-index-label"># Índice</span>
-                        <h2 className="services-index-heading">
-                            Conheça os Planos da <span className="services-index-accent">Previdência BRB</span> e
-                            descubra o que o seu plano oferece para o seu futuro.
-                        </h2>
-                    </div>
-                    <div className="row row-two g-4">
-                        {servicedata2.map((data, i) => (
-                            <div className="col-lg-3 col-md-6" key={i}>
-                                <div className="services-two">
-                                    <i>{data.icon}</i>
-                                    <h3>
-                                        <Link to="#">{data.title}</Link>
-                                    </h3>
-                                    <span>{data.number}</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <SecaoIndicePlanos particlesId="services-particles-cd05" />
 
             <Footer2 />
         </>
