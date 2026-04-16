@@ -402,8 +402,8 @@ function PerfilCorporativo() {
             </section>
 
             {/* ── 3.1 A ENTIDADE ── */}
-            <Section id="a-entidade" eyebrow="# Institucional" title="Sobre a Entidade">
-                <div className="row align-items-center g-5">
+            <Section id="a-entidade" eyebrow="# Institucional" title="Sobre a Entidade" className="perfil-section--dark">
+                <div className="row align-items-center g-5" style={{ marginBottom: '0' }}>
                     <div className="col-lg-7">
                         <p className="perfil-body-text">
                             Somos uma Entidade Fechada de Previdência Complementar, instituída como uma sociedade civil sem fins lucrativos. Desde 2023 adotamos o nome fantasia de Previdência BRB, em homenagem à Patrocinadora Fundadora, o BRB-Banco de Brasília S/A, onde tudo começou em 1985.
@@ -416,59 +416,81 @@ function PerfilCorporativo() {
                         </p>
                     </div>
                     <div className="col-lg-5">
-                        <div style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.1)' }}>
-                            <img src={IMAGES.instTrust} alt="Institucional" style={{ width: '100%', height: 'auto' }} />
+                        <div style={{ borderRadius: '18px', overflow: 'hidden', boxShadow: '0 15px 40px rgba(0,0,0,0.35)' }}>
+                            <img src={IMAGES.instTrust} alt="Institucional" style={{ width: '100%', height: 'auto', display: 'block' }} />
                         </div>
                     </div>
                 </div>
 
-                {/* Destaques 2025 */}
+                {/* Bento Grid — Destaques 2025 */}
                 <div className="destaques-grid">
 
-                    <div className="destaques-item destaques-item--featured">
-                        <div className="destaque-card">
+                    <div className="destaques-item">
+                        <div className="destaque-card destaque-card--featured">
+                            <div className="destaque-card__img-wrap">
+                                <img src={IMAGES.officeCollab} alt="Expansão e Parcerias" />
+                            </div>
                             <div className="destaque-card__icon">🤝</div>
                             <h4 className="destaque-card__title">Expansão e Parcerias</h4>
-                            <ul className="destque-card__list">
+                            <ul className="destaque-card__list">
                                 <li>Aprovação da distribuição do Plano BrasíliaPrev nos canais do BRB – Banco de Brasília S.A., incluindo a plataforma digital da BRB Investimentos e as agências físicas com o apoio da BRB Seguros.</li>
-                                <li>Celebração de convênios com novos instituidores, com destaque para o Conselho Regional de Medicina Veterinária do Distrito Federal (CRMV-DF) formalização de parcerias com cinco novos filiados: Colégio Biângulo, PPN Tecnologia e Colégio do Sol.</li>
+                                <li>Celebração de convênios com novos instituidores, com destaque para o CRMV-DF e formalização de parcerias com cinco novos filiados: Colégio Biângulo, PPN Tecnologia e Colégio do Sol.</li>
                                 <li>Êxito nos processos seletivos para administração de planos de benefícios das estatais federais Telebrás S.A. e Infra S.A., aguardando aprovação na SEST.</li>
                             </ul>
                         </div>
                     </div>
 
                     <div className="destaques-item">
-                        <div className="destque-card destque-card--growth">
-                            <div className="destque-card__icon">📈</div>
-                            <h4 className="destque-card__title">Crescimento e Desempenho</h4>
-                            <ul className="destque-card__list">
-                                <li>O patrimônio administrado atingiu <strong>R$ 4,35 bilhões</strong>, correspondendo a <strong>99,7%</strong> da meta estabelecida.</li>
+                        <div className="destaque-card destaque-card--growth">
+                            <div className="destaque-card__icon">📈</div>
+                            <h4 className="destaque-card__title">Crescimento e Desempenho</h4>
+                            <ul className="destaque-card__list">
+                                <li>O patrimônio administrado atingiu <strong>R$ 4,35 bilhões</strong>, correspondendo a <strong>99,7%</strong> da meta.</li>
                                 <li>O <strong>Plano CV-03</strong> alcançou a marca de <strong>R$ 1 bilhão</strong> em patrimônio.</li>
                                 <li>Todos os planos superaram suas metas de rentabilidade e os respectivos índices de referência.</li>
                                 <li>O Plano BD-01 apresentou superávit de <strong>R$ 91,141 milhões</strong>, e o CV-03, de <strong>R$ 8,215 milhões</strong>.</li>
                                 <li>A base de participantes atingiu <strong>7.619 participantes</strong>, com crescimento anual de <strong>5,31%</strong>.</li>
-                                <li>O Índice de Cobertura Previdencial (ICP) alcançou <strong>87,59%</strong>.</li>
+                                <li>O ICP alcançou <strong>87,59%</strong>.</li>
                             </ul>
                         </div>
                     </div>
 
                     <div className="destaques-item">
-                        <div className="destque-card">
-                            <div className="destque-card__icon">💰</div>
-                            <h4 className="destque-card__title">Eficiência e Gestão de Custos</h4>
-                            <ul className="destque-card__list">
-                                <li>Redução de <strong>4,4%</strong> na despesa per capita, em relação a 2024.</li>
+                        <div className="destaque-card">
+                            <div className="destaque-card__icon">💰</div>
+                            <h4 className="destaque-card__title">Eficiência e Gestão de Custos</h4>
+                            <ul className="destaque-card__list">
+                                <li>Redução de <strong>4,4%</strong> na despesa per capita em relação a 2024.</li>
                                 <li>O custo administrativo correspondeu a <strong>0,42%</strong> do patrimônio administrado, ficando <strong>6,7% abaixo</strong> de 2024.</li>
-                                <li>As despesas administrativas ficaram <strong>4,5% inferiores</strong> ao orçamento, representando economia de aproximadamente <strong>R$ 849 mil</strong>.</li>
+                                <li>As despesas ficaram <strong>4,5% inferiores</strong> ao orçamento, representando economia de aproximadamente <strong>R$ 849 mil</strong>.</li>
                             </ul>
+                        </div>
+                        <div className="destaque-card destaque-card--image" style={{ marginTop: '10px' }}>
+                            <img
+                                src={IMAGES.brasiliaModernImg}
+                                alt="Brasília"
+                                style={{ height: 'auto', minHeight: 'unset', objectFit: 'contain' }}
+                            />
                         </div>
                     </div>
 
                     <div className="destaques-item">
-                        <div className="destque-card">
-                            <div className="destque-card__icon">📱</div>
-                            <h4 className="destque-card__title">Experiência do Participante e Canais Digitais</h4>
-                            <ul className="destque-card__list">
+                        <div className="destaque-card destaque-card--image">
+                            <img src={IMAGES.retirementJoyImg} alt="Previdência" style={{ minHeight: '140px' }} />
+                        </div>
+                    </div>
+
+                    <div className="destaques-item">
+                        <div className="destaque-card destaque-card--image">
+                            <img src={IMAGES.youngProfPlanning} alt="Participantes" />
+                        </div>
+                    </div>
+
+                    <div className="destaques-item">
+                        <div className="destaque-card">
+                            <div className="destaque-card__icon">📱</div>
+                            <h4 className="destaque-card__title">Experiência do Participante e Canais Digitais</h4>
+                            <ul className="destaque-card__list">
                                 <li>Índice de satisfação no atendimento de <strong>96,73%</strong>.</li>
                                 <li>Registro de <strong>73.173 acessos</strong> ao portal e aplicativo.</li>
                                 <li>Implantação de perfis de investimento nos Planos <strong>CD-05</strong> e <strong>BrasíliaPrev</strong>.</li>
@@ -477,11 +499,11 @@ function PerfilCorporativo() {
                     </div>
 
                     <div className="destaques-item">
-                        <div className="destque-card">
-                            <div className="destque-card__icon">💡</div>
-                            <h4 className="destque-card__title">Produtos, Inovação e Expansão</h4>
-                            <ul className="destque-card__list">
-                                <li>Implantação do <strong>Projeto Correspondentes</strong>, com foco na ampliação da base de patrocinadores, instituidores e participantes, por meio de consultores credenciados.</li>
+                        <div className="destaque-card">
+                            <div className="destaque-card__icon">💡</div>
+                            <h4 className="destaque-card__title">Produtos, Inovação e Expansão</h4>
+                            <ul className="destaque-card__list">
+                                <li>Implantação do <strong>Projeto Correspondentes</strong>, com foco na ampliação da base de patrocinadores, instituidores e participantes.</li>
                                 <li>Lançamento do programa <strong>Indique e Ganhe</strong>, voltado à expansão da base de participantes do Plano BrasíliaPrev.</li>
                                 <li>Desenvolvimento da segunda edição do <strong>Projeto Eureka</strong>, estimulando ideias inovadoras entre os colaboradores.</li>
                             </ul>
@@ -489,44 +511,59 @@ function PerfilCorporativo() {
                     </div>
 
                     <div className="destaques-item">
-                        <div className="destque-card">
-                            <div className="destque-card__icon">📚</div>
-                            <h4 className="destque-card__title">Educação Financeira e Previdenciária</h4>
-                            <p className="destque-card__text">A Previdência BRB dando continuidade às ações de educação financeira e previdenciária, em 2025, efetuou projetos em escolas públicas e privadas do Distrito Federal, com foco em alunos do ensino fundamental e médio. As iniciativas envolveram palestras, atividades práticas e ações educativas voltadas à conscientização sobre o uso responsável dos recursos financeiros. Esse projeto foi apresentado no <strong>Congresso da ABRAPP</strong>, reforçando o compromisso institucional com a agenda <strong>ESG</strong>.</p>
-                            <p className="destque-card__text">Além disso, a Entidade disponibiliza uma plataforma interativa de educação financeira, com conteúdos multimídia, jogos e testes, acessível em: <a href="https://educacao.previdenciabrb.org.br/" target="_blank" rel="noreferrer">educacao.previdenciabrb.org.br</a></p>
+                        <div className="destaque-card">
+                            <div className="destaque-card__icon">📚</div>
+                            <h4 className="destaque-card__title">Educação Financeira e Previdenciária</h4>
+                            <p className="destaque-card__text">Projetos em escolas públicas e privadas do DF, com foco em alunos do ensino fundamental e médio — palestras, atividades práticas e ações educativas voltadas ao uso responsável dos recursos financeiros. Apresentado no <strong>Congresso da ABRAPP</strong>, reforçando o compromisso com a agenda <strong>ESG</strong>.</p>
+                            <p className="destaque-card__text">Plataforma interativa disponível em: <a href="https://educacao.previdenciabrb.org.br/" target="_blank" rel="noreferrer">educacao.previdenciabrb.org.br</a></p>
                         </div>
                     </div>
 
                     <div className="destaques-item">
-                        <div className="destque-card destque-card--esg">
-                            <div className="destque-card__icon">🌱</div>
-                            <h4 className="destque-card__title">Sustentabilidade e Governança (ESG)</h4>
-                            <ul className="destque-card__list">
-                                <li>Implementação da nova <strong>Política de Responsabilidade Socioambiental (PRSA)</strong>, incorporando diretrizes ASG para as áreas de investimentos e gestão de pessoas (DEI).</li>
-                                <li>Fortalecimento das práticas de governança, com a conquista do <strong>Selo de Autorregulação em Governança Corporativa (ABRAPP)</strong>.</li>
-                                <li>Realização da <strong>Segunda Semana de Integridade</strong>.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div className="destaques-item">
-                        <div className="destque-card">
-                            <div className="destque-card__icon">🔗</div>
-                            <h4 className="destque-card__title">Parcerias Estratégicas</h4>
-                            <ul className="destque-card__list">
-                                <li>Formalização de parceria com a <strong>ABRAPP</strong> como instituidora do Plano BrasíliaPrev, possibilitando a ampliação da base de instituidores e participantes por meio da adesão de novos afiliados.</li>
+                        <div className="destaque-card">
+                            <div className="destaque-card__icon">🔗</div>
+                            <h4 className="destaque-card__title">Parcerias Estratégicas</h4>
+                            <ul className="destaque-card__list">
+                                <li>Formalização de parceria com a <strong>ABRAPP</strong> como instituidora do Plano BrasíliaPrev.</li>
                                 <li>Formalização de parceria com a <strong>MAG Seguros S.A.</strong> para oferta de seguro de vida e invalidez aos participantes dos planos CD.</li>
                             </ul>
                         </div>
                     </div>
 
                     <div className="destaques-item">
-                        <div className="destque-card">
-                            <div className="destque-card__icon">👥</div>
-                            <h4 className="destque-card__title">Desenvolvimento de Pessoas</h4>
-                            <ul className="destque-card__list">
-                                <li>Realização de treinamentos voltadas ao desenvolvimento e capacitação dos colaboradores.</li>
+                        <div className="destaque-card destaque-card--esg">
+                            <div className="destaque-card__icon">🌱</div>
+                            <h4 className="destaque-card__title">Sustentabilidade e Governança (ESG)</h4>
+                            <ul className="destaque-card__list">
+                                <li>Implementação da nova <strong>Política de Responsabilidade Socioambiental (PRSA)</strong>, incorporando diretrizes ASG para investimentos e gestão de pessoas (DEI).</li>
+                                <li>Conquista do <strong>Selo de Autorregulação em Governança Corporativa (ABRAPP)</strong>.</li>
+                                <li>Realização da <strong>Segunda Semana de Integridade</strong>.</li>
                             </ul>
+                        </div>
+                    </div>
+
+                    <div className="destaques-item">
+                        <div className="destaque-card destaque-card--image">
+                            <img src={IMAGES.sustainableGrowthAsg} alt="Sustentabilidade" />
+                        </div>
+                    </div>
+
+                    <div className="destaques-item">
+                        <div className="destaque-card">
+                            <div className="destaque-card__img-wrap">
+                                <img src={IMAGES.boardroomMeet} alt="Desenvolvimento de Pessoas" />
+                            </div>
+                            <div className="destaque-card__icon">👥</div>
+                            <h4 className="destaque-card__title">Desenvolvimento de Pessoas</h4>
+                            <ul className="destaque-card__list">
+                                <li>Realização de treinamentos voltados ao desenvolvimento e capacitação dos colaboradores.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div className="destaques-item">
+                        <div className="destaque-card destaque-card--image">
+                            <img src={IMAGES.familyFutureImg} alt="Futuro das famílias" />
                         </div>
                     </div>
 

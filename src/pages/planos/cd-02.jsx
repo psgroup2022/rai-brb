@@ -440,16 +440,13 @@ function SecaoAtuarial() {
 
         <div className="dstq-reveal dstq-reveal--d2" style={{ marginBottom: '32px' }}>
           <p className="dstq-text-body dstq-text-body--on-light" style={{ marginBottom: '14px' }}>
-            Cotejando o Patrimônio de Cobertura do Plano em 31 de dezembro de 2025, no montante de <strong style={{ color: '#0a1f3c' }}>R$ 70.809.127,92</strong>, com as Provisões Matemáticas, no mesmo período, de <strong style={{ color: '#0a1f3c' }}>R$ 69.958.449,64</strong>, o Plano CD-02 registrou <strong style={{ color: '#0a1f3c' }}>Resultado Atuarial de R$ 0,00</strong>, com equilíbrio técnico pleno.
-          </p>
-          <p className="dstq-text-body dstq-text-body--on-light" style={{ marginBottom: '14px' }}>
-            As Provisões Matemáticas dimensionadas em 31 de dezembro de 2025, no montante de <strong style={{ color: '#0a1f3c' }}>R$ 69.958.449,64</strong>, comparativamente àquelas constantes da Avaliação Atuarial de 2024, que perfizeram <strong style={{ color: '#0a1f3c' }}>R$ 68.656.354,01</strong>, representaram um aumento de aproximadamente <strong style={{ color: '#0a1f3c' }}>1,90%</strong>.
+            As Provisões Matemáticas dimensionadas em 31 de dezembro de 2025, no montante de R$ 69.958.449,64, comparativamente àquelas constantes de Avaliação Atuarial de 2024, que perfizeram R$ 68.656.354,01, representaram um aumento de aproximadamente 1,90%.
           </p>
           <p className="dstq-text-body dstq-text-body--on-light" style={{ marginBottom: '14px' }}>
             A variação registrada é justificada pela manutenção de contribuições de participantes e patrocinadores, acrescidas do estoque e respectiva rentabilidade auferida no período, inferior aos montantes de resgate, portabilidade e concessões ocorridas no exercício.
           </p>
           <p className="dstq-text-body dstq-text-body--on-light">
-            O Plano de Benefícios CD-02 encontra-se em <strong style={{ color: '#0a1f3c' }}>Equilíbrio Técnico</strong> e, portanto, não há necessidade de aplicação de plano de equacionamento.
+            O Plano de Benefícios CD-02 encerrou o exercício de 2025 com Equilíbrio Técnico econômico e atuarial, registrando, portanto, suficiência de cobertura e solvência.
           </p>
         </div>
 

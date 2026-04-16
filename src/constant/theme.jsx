@@ -124,11 +124,11 @@ import execSummaryImg from '../assets/img/executive-summary.png';
 import officeCollab from '../assets/img/office-collaboration.png';
 import instTrust from '../assets/img/institutional-trust.png';
 import boardroomMeet from '../assets/img/boardroom-meeting.png';
-import retirementJoyImg from '../assets/img/retirement-joy.png';
-import familyFutureImg from '../assets/img/family-future.png';
+import retirementJoyImg from '../assets/img/img_03.jpg';
+import familyFutureImg from '../assets/img/img_05.jpg';
 import metroStaffImg from '../assets/img/metro-staff.png';
-import youngProfPlanning from '../assets/img/young-professional.png';
-import brasiliaModernImg from '../assets/img/brasilia-modern.png';
+import youngProfPlanning from '../assets/img/img_02.jpg';
+import brasiliaModernImg from '../assets/img/img_04.jpg';
 import sustainableGrowthAsg from '../assets/img/sustainable-growth-asg.png';
 
 export const IMAGES = {
