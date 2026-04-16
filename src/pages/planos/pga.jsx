@@ -597,6 +597,9 @@ function SecaoEvolucoes() {
         </h2>
         <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
+        <h3 className="dstq-section-heading dstq-section-heading--on-light dstq-reveal" style={{ fontSize: "1.2rem", marginBottom: 12 }}>
+          Evolução das Despesas Administrativas
+        </h3>
         <div className="plano-table-wrap">
           <table className="plano-table plano-table--light">
             <thead>
@@ -619,7 +622,35 @@ function SecaoEvolucoes() {
           </table>
         </div>
 
-        <div className="plano-table-wrap" style={{ marginTop: 32 }}>
+        <h3 className="dstq-section-heading dstq-section-heading--on-light dstq-reveal" style={{ fontSize: "1.2rem", marginBottom: 12, marginTop: 40 }}>
+          Evolução do Custo Administrativo
+        </h3>
+        <div className="plano-table-wrap">
+          <table className="plano-table plano-table--light">
+            <thead>
+              <tr><th>Ano</th><th className="num">Ativo Total</th><th className="num">Despesas</th><th className="num">Despesa / Ativo Total (%)</th></tr>
+            </thead>
+            <tbody>
+              {[
+                ["2018", "2.569.827.878", "11.667.906", "0,45"],
+                ["2019", "2.821.691.382", "13.273.179", "0,47"],
+                ["2020", "3.028.933.524", "13.933.048", "0,46"],
+                ["2021", "3.261.700.790", "14.942.400", "0,46"],
+                ["2022", "3.528.084.182", "16.558.589", "0,47"],
+                ["2023", "3.884.720.164", "17.280.497", "0,44"],
+                ["2024", "4.010.627.285", "18.122.922", "0,45"],
+                ["2025", "4.352.202.578", "18.246.550", "0,42"],
+              ].map(([a, b, c, d], i) => (
+                <tr key={i}><td>{a}</td><td className="num">{b}</td><td className="num">{c}</td><td className="num">{d}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h3 className="dstq-section-heading dstq-section-heading--on-light dstq-reveal" style={{ fontSize: "1.2rem", marginBottom: 12, marginTop: 40 }}>
+          Evolução da Despesa sobre a Receita
+        </h3>
+        <div className="plano-table-wrap">
           <table className="plano-table plano-table--light">
             <thead>
               <tr><th>Ano</th><th className="num">Despesa</th><th className="num">Receitas de Custeio</th><th className="num">Despesa / Receita de Custeio</th></tr>
@@ -641,7 +672,10 @@ function SecaoEvolucoes() {
           </table>
         </div>
 
-        <div className="plano-table-wrap" style={{ marginTop: 32 }}>
+        <h3 className="dstq-section-heading dstq-section-heading--on-light dstq-reveal" style={{ fontSize: "1.2rem", marginBottom: 12, marginTop: 40 }}>
+          Evolução da Receita Per Capita
+        </h3>
+        <div className="plano-table-wrap">
           <table className="plano-table plano-table--light">
             <thead>
               <tr><th>Ano</th><th className="num">Receita</th><th className="num">Nº Participantes</th><th className="num">Receita Per Capita</th></tr>
@@ -667,21 +701,28 @@ function SecaoEvolucoes() {
   );
 }
 
+function SecaoCustoAdministracao() {
+  return (
+    <section className="plano-section plano-section--light">
+      <div className="container">
+        <h2 className="dstq-section-heading dstq-section-heading--on-light dstq-reveal dstq-reveal--d1">
+          Custo de <span className="dstq-accent">Administração</span>
+        </h2>
+        <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
+      </div>
+    </section>
+  );
+}
+
 function SecaoCustosFinais() {
   return (
     <section className="plano-section">
       <div className="container">
 
         <h2 className="dstq-section-heading dstq-reveal dstq-reveal--d1">
-          Custos de Administração e Gestão <span className="dstq-accent">Previdencial</span>
+          Custo com a Gestão dos Planos <span className="dstq-accent">Previdenciais</span>
         </h2>
         <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
-
-        <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
-          Dados não lançados na planilha para os itens: corretagens sobre operações em bolsa, taxa de
-          administração/gestão de fundos abertos, taxa de custódia/controladoria, taxa de performance e
-          outras despesas de fundos abertos.
-        </p>
 
         <div className="plano-table-wrap">
           <table className="plano-table">
@@ -712,20 +753,6 @@ function SecaoCustosFinais() {
               </tr>
             </tbody>
           </table>
-        </div>
-
-        <div className="plano-kpi-row">
-          {[
-            { label: "Demonstrações Contábeis e Notas", value: "Aguardando Material" },
-            { label: "Relatório dos Auditores", value: "Aguardando Material" },
-            { label: "Parecer do Conselho Fiscal", value: "Aguardando Material" },
-            { label: "Manifestação do Conselho Deliberativo", value: "Aguardando Material" },
-          ].map((k, i) => (
-            <div className="plano-kpi-card" key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
-              <div className="plano-kpi-label">{k.label}</div>
-              <div className="plano-kpi-value" style={{ fontSize: "1.2rem" }}>{k.value}</div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
@@ -862,6 +889,7 @@ function PlanoPGA() {
       <SecaoExecucaoOrcamentaria />
       <SecaoAcompanhamentoDespesas />
       <SecaoEvolucoes />
+      <SecaoCustoAdministracao />
       <SecaoCustosFinais />
       <Band quote={'"O PGA registrou evolução em 2025, com rentabilidade de 11,51% e desempenho de 136,54% do índice de referência, mantendo foco em eficiência administrativa e governança de custos."'} />
 
