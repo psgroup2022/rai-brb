@@ -294,39 +294,92 @@ function Governanca() {
             <Header2 />
 
             {/* ─── HERO ─── */}
-            <section className="gov-hero" ref={heroRef}>
-                <div className="gov-hero-video-bg" aria-hidden="true">
-                    <video
-                        ref={heroVideoRef}
-                        className="gov-hero-video"
-                        src={heroGovVideo}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="auto"
-                    />
-                </div>
-                <div className="gov-hero-overlay" aria-hidden="true" />
+            <section
+                className="hero-section hero-style-two"
+                ref={heroRef}
+                style={{
+                    position: "relative",
+                    overflow: "hidden",
+                    display: "flex",
+                    alignItems: "center",
+                }}
+            >
+                <video
+                    ref={heroVideoRef}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        zIndex: 0,
+                    }}
+                >
+                    <source src={heroGovVideo} type="video/mp4" />
+                </video>
 
-                <div className="container gov-hero-inner">
+                <div
+                    style={{
+                        position: "absolute",
+                        inset: 0,
+                        background: "rgba(1, 24, 52, 0.65)",
+                        zIndex: 1,
+                    }}
+                />
+
+                <div
+                    className="container"
+                    style={{
+                        position: "relative",
+                        zIndex: 2,
+                        paddingTop: "100px",
+                        paddingBottom: "40px",
+                    }}
+                >
                     <div className="row align-items-center">
-                        <div className="col-lg-7">
-                            <span className="gov-hero-eyebrow"># Institucional</span>
-                            <h1 className="gov-hero-title">
-                                Governança<br />
-                                <span className="gov-hero-accent">Corporativa</span>
+                        <div className="col-lg-8">
+                            <div style={{ marginBottom: "12px" }}>
+                                <span
+                                    style={{
+                                        color: "#00aeef",
+                                        fontSize: "13px",
+                                        fontWeight: "600",
+                                        letterSpacing: "2px",
+                                        textTransform: "uppercase",
+                                    }}
+                                >
+                                    # Institucional
+                                </span>
+                            </div>
+
+                            <h1
+                                style={{
+                                    color: "#fff",
+                                    fontSize: "clamp(2rem, 4vw, 3rem)",
+                                    fontWeight: "700",
+                                    lineHeight: "1.2",
+                                    marginBottom: "16px",
+                                }}
+                            >
+                                <span>Governança </span>
+                                <span style={{ color: "#00aeef" }}>Corporativa</span>
                             </h1>
-                            <p className="gov-hero-lead">
-                                Estrutura, transparência e comprometimento com os participantes.
-                                A Previdência BRB opera com um modelo robusto de governança alinhado
-                                às melhores práticas do setor.
-                            </p>
-                            <ol className="breadcrumb gov-breadcrumb">
+
+                            <ol className="breadcrumb" style={{ marginBottom: 0, padding: 0, background: "transparent" }}>
                                 <li className="breadcrumb-item">
-                                    <Link to="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Home</Link>
+                                    <Link to="/" style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none" }}>Home</Link>
                                 </li>
-                                <li className="breadcrumb-item active" aria-current="page" style={{ color: "#00aeef" }}>
+                                <li
+                                    className="breadcrumb-item active"
+                                    aria-current="page"
+                                    style={{ color: "#00aeef" }}
+                                >
                                     Governança
                                 </li>
                             </ol>

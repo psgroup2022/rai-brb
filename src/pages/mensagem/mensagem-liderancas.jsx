@@ -314,7 +314,7 @@ function MensagemLiderancas() {
                                 <div className="resumo-card resumo-metric-card">
                                     <div className="resumo-card-body resumo-metric-body">
                                         <p className="resumo-metric-value">
-                                            {card.value}{card.ordinal && <sup style={{ fontSize: '0.5em', verticalAlign: 'super', fontWeight: 'inherit' }}>{card.ordinal}</sup>}
+                                            {card.value}{card.ordinal && <sup style={{ fontSize: '0.5em', verticalAlign: 'super', fontWeight: 'inherit', color: '#8ce4ff', WebkitTextFillColor: '#8ce4ff' }}>{card.ordinal}</sup>}
                                         </p>
                                         <p className="resumo-metric-label">
                                             {Array.isArray(card.label)
