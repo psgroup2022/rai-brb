@@ -530,6 +530,11 @@ function SecaoAtuarial() {
                 {/* Tabela 1 — Ativo Líquido */}
                 <div className="plano-table-wrap dstq-reveal">
                     <table className="plano-table plano-table--light">
+                        <colgroup>
+                            <col style={{ width: '56%' }} />
+                            <col style={{ width: '22%' }} />
+                            <col style={{ width: '22%' }} />
+                        </colgroup>
                         <thead>
                             <tr><th>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
                         </thead>
@@ -554,6 +559,11 @@ function SecaoAtuarial() {
                 {/* Tabela 2 — Provisões Matemáticas */}
                 <div className="plano-table-wrap dstq-reveal" style={{ marginTop: '24px' }}>
                     <table className="plano-table plano-table--light">
+                        <colgroup>
+                            <col style={{ width: '56%' }} />
+                            <col style={{ width: '22%' }} />
+                            <col style={{ width: '22%' }} />
+                        </colgroup>
                         <thead>
                             <tr><th>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
                         </thead>
@@ -577,6 +587,11 @@ function SecaoAtuarial() {
                 {/* Tabela 3 — Déficit/Superávit */}
                 <div className="plano-table-wrap dstq-reveal" style={{ marginTop: '24px' }}>
                     <table className="plano-table plano-table--light">
+                        <colgroup>
+                            <col style={{ width: '56%' }} />
+                            <col style={{ width: '22%' }} />
+                            <col style={{ width: '22%' }} />
+                        </colgroup>
                         <thead>
                             <tr><th>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
                         </thead>

@@ -5814,6 +5814,15 @@ ul.pagination li a:hover {
     border-bottom: 1px solid rgba(255,255,255,0.08);
     white-space: normal;
 }
+.plano-table th.num {
+    text-align: right !important;
+    vertical-align: bottom !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    padding-bottom: 6px !important;
+    padding-top: 18px !important;
+    font-family: 'Sora', 'Poppins', sans-serif;
+}
 .plano-table--light th {
     color: #004282;
     border-bottom-color: #e6e6e6;
@@ -5836,7 +5845,7 @@ ul.pagination li a:hover {
     font-family: 'Sora', 'Poppins', sans-serif;
     font-weight: 700;
     color: #00aeef;
-    text-align: right;
+    text-align: right !important;
     white-space: nowrap;
     letter-spacing: 0;
 }
