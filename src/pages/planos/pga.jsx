@@ -488,7 +488,7 @@ function SecaoAcompanhamentoDespesas() {
       <div className="container">
 
         <h2 className="dstq-section-heading dstq-reveal dstq-reveal--d1">
-          Acompanhamento das Despesas <span className="dstq-accent">X Orçamento</span>
+          Acompanhamento das Despesas <span className="dstq-accent">vs Orçamento</span>
         </h2>
         <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
