@@ -5139,8 +5139,8 @@ ul.pagination li a:hover {
     position: relative;
     z-index: 2;
     padding: 80px 48px;
-    max-width: 1240px;
-    margin: 0 auto;
+    max-width: 52%;
+    margin: 0 0 0 4%;
     width: 100%;
 }
 @media (max-width: 960px) {

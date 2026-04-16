@@ -119,7 +119,7 @@ import bannrimg2 from '../assets/img/bannr-img-2.png'
 import bannrimg3 from '../assets/img/bannr-img-3.png'
 import bannrimg5 from '../assets/img/bannr-img-5.png'
 import bannrimg6 from '../assets/img/bannr-img-6.png'
-import corpLeadership from '../assets/img/corporate-leadership.png';
+import corpLeadership from '../assets/img/img_08.jpg';
 import execSummaryImg from '../assets/img/executive-summary.png';
 import officeCollab from '../assets/img/img_06.jpg';
 import instTrust from '../assets/img/institutional-trust.png';
@@ -129,7 +129,7 @@ import familyFutureImg from '../assets/img/img_05.jpg';
 import metroStaffImg from '../assets/img/metro-staff.png';
 import youngProfPlanning from '../assets/img/img_02.jpg';
 import brasiliaModernImg from '../assets/img/img_04.jpg';
-import sustainableGrowthAsg from '../assets/img/sustainable-growth-asg.png';
+import sustainableGrowthAsg from '../assets/img/img_07.jpg';
 
 export const IMAGES = {
     logo: logo,

@@ -8,6 +8,13 @@ import ParticlesComponent from "../../components/ui/particles-bg";
 import { servicedata2 } from "../../constant/alldata";
 import headerDestaqueVideo from "../../assets/img/header_destaque.mp4";
 import viviBannerVideo from "../../assets/img/vivi_banner.mp4";
+import integridadeImg10 from "../../assets/img/img_10.jpg";
+import integridadeImg11 from "../../assets/img/img_11.jpg";
+import integridadeImg12 from "../../assets/img/img_12.jpg";
+import integridadeImg13 from "../../assets/img/img_13.jpg";
+import integridadeImg14 from "../../assets/img/img_14.jpg";
+import integridadeImg15 from "../../assets/img/img_15.jpg";
+import integridadeImg17 from "../../assets/img/img_17.jpg";
 import { IMAGES } from "../../constant/theme";
 
 /* ─────────────────────────────────────────────
@@ -213,7 +220,7 @@ function FullImgComunicacao() {
             />
             <div className="dstq-full-img-content">
                 <div className="dstq-section-label dstq-reveal" style={{ color: '#00aeef' }}>Transparência Ativa</div>
-                <h2 className="dstq-section-heading dstq-reveal dstq-reveal--d1" style={{ maxWidth: 700, color: '#0a1f3c', marginBottom: '1.5rem' }}>
+                <h2 className="dstq-section-heading dstq-reveal dstq-reveal--d1" style={{ color: '#0a1f3c', marginBottom: '1.5rem' }}>
                     <span>Comunicação com foco na </span><span className="dstq-accent">transparência</span>
                 </h2>
                 <p className="dstq-reveal dstq-reveal--d2" style={{ color: '#314e7a', fontSize: '1.25rem', lineHeight: '1.6', fontWeight: 500 }}>
@@ -260,57 +267,95 @@ function SecaoComunicacao() {
    Seção 5 — Integridade e Compliance
 ───────────────────────────────────────────── */
 function SecaoIntegridade() {
+    const blocosIntegridade = [
+        {
+            titulo: "Atuação da alta administração",
+            texto:
+                "A alta administração manteve atuação próxima e preventiva, com realização das reuniões de análise crítica do Sistema de Integridade. Foram realizadas comunicações e manifestações formais da Diretoria Executiva, reforçando o compromisso com a ética, a transparência, a governança e o cumprimento do dever fiduciário, sempre vinculando a integridade à gestão responsável dos recursos dos participantes.",
+            imagem: integridadeImg10,
+        },
+        {
+            titulo: "Manutenção e fortalecimento do sistema de compliance",
+            texto:
+                "Em 2025, o Plano de Integridade concentrou-se na mitigação de riscos de compliance, no aprimoramento de processos e na atualização de normativos internos, em alinhamento ao Programa de Integridade e Compliance da Previdência BRB. A entidade manteve a certificação DSC 10.000, entendida como um marco relevante para a gestão e um selo que referenda todas as medidas adotadas para o monitoramento e aperfeiçoamento contínuo dos controles internos e da cultura de integridade, no âmbito da atuação institucional.",
+            imagem: integridadeImg11,
+        },
+        {
+            titulo: "Comunicações e Minuto Compliance",
+            texto:
+                "A comunicação interna e externa sobre integridade foi aprimorada e intensificada, com divulgação de conteúdos em diferentes canais para conscientizar e evidenciar as medidas implementadas, reforçando o uso dos canais de ética e de ouvidoria e promovendo o aculturamento organizacional.",
+            imagem: integridadeImg12,
+        },
+        {
+            titulo: "Canal de Ética e Ouvidoria",
+            texto:
+                "O Canal de Ética permaneceu amplamente divulgado no site da entidade nos comunicados de compliance, com informações claras sobre quando e como utilizá-lo, assegurando confidencialidade, independência e tratamento de eventuais relatos. Em complemento, a Ouvidoria continuou a atuar como canal estruturado para manifestações não solucionadas no primeiro atendimento, fortalecendo a transparência, o acolhimento e a melhoria contínua dos serviços prestados.",
+            imagem: integridadeImg14,
+        },
+        {
+            titulo: "Treinamentos e Semana de Integridade",
+            texto:
+                "Ao longo de 2025, o time participou de treinamentos em temas de integridade, compliance, em linha com o Programa de Integridade e Compliance. Foi realizada a Segunda Semana de Integridade, com programação voltada à importância do Sistema de Integridade e Compliance, à prevenção de crimes de lavagem de dinheiro, à ética e ao uso do canal de denúncia, reforçando o papel de cada colaborador na sustentação do sistema de integridade. A semana contou com a participação de palestrantes externos da CGU, do Banco Central e do presidente do Conselho Fiscal da Previdência BRB.",
+            imagem: integridadeImg13,
+        },
+        {
+            titulo: "Cultura de integridade e dever fiduciário",
+            texto:
+                "Em todas essas ações, a Previdência BRB reforçou a mensagem de que a integridade é a base para o desenvolvimento dos processos internos e para a gestão responsável dos recursos previdenciários administrados. O dever fiduciário foi continuamente associado à conduta ética e à conformidade normativa, evidenciando que decisões responsáveis e coerentes são essenciais para garantir um futuro sustentável e a confiança de participantes, patrocinadores e órgãos de controle.",
+            imagem: integridadeImg17,
+        },
+    ];
+
     return (
-        <section id="integridade" className="dstq-section dstq-editorial" style={{ backgroundColor: '#ffffff' }}>
+        <section id="integridade" className="dstq-section dstq-editorial" style={{ backgroundColor: '#ffffff', overflowX: "hidden" }}>
             <div className="container">
                 <div className="dstq-section-label dstq-section-label--light dstq-reveal" style={{ color: '#004282' }}>Governança e Ética</div>
                 <h2 className="dstq-section-heading dstq-section-heading--on-light dstq-reveal dstq-reveal--d1" style={{ color: '#0a1f3c' }}>
                     <span style={{ color: '#0a1f3c' }}>Programa de </span><span className="dstq-accent">Integridade e Compliance</span>
                 </h2>
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
-                
-                <div className="row mt-5 g-5">
-                    <div className="col-lg-8 dstq-reveal dstq-reveal--d2">
-                        <p className="dstq-editorial-paragraph is-lead">
-                            Em 2025, o Sistema de Integridade da Previdência BRB foi tratado como prioridade estratégica, com foco no cumprimento integral do Plano de Integridade, e na consolidação de uma cultura organizacional ética e transparente. Todas as ações previstas para o exercício foram executadas, e o Plano de Integridade de 2026 foi elaborado e aprovado pela Diretoria Executiva, garantindo a continuidade das iniciativas.
-                        </p>
-                        
-                        <h3 className="dstq-editorial-subtitle">Atuação da alta administração</h3>
-                        <p className="dstq-editorial-paragraph">
-                            A alta administração manteve atuação próxima e preventiva, com realização das reuniões de análise crítica do Sistema de Integridade. Foram realizadas comunicações e manifestações formais da Diretoria Executiva, reforçando o compromisso com a ética, a transparência, a governança e o cumprimento do dever fiduciário, sempre vinculando a integridade à gestão responsável dos recursos dos participantes.
-                        </p>
 
-                        <h3 className="dstq-editorial-subtitle">Manutenção e fortalecimento do sistema de compliance</h3>
-                        <p className="dstq-editorial-paragraph">
-                            Em 2025, o Plano de Integridade concentrou-se na mitigação de riscos de compliance, no aprimoramento de processos e na atualização de normativos internos, em alinhamento ao Programa de Integridade e Compliance da Previdência BRB. A entidade manteve a certificação DSC 10.000, entendida como um marco relevante para a gestão e um selo que referenda todas as medidas adotadas para o monitoramento e aperfeiçoamento contínuo dos controles internos e da cultura de integridade, no âmbito da atuação institucional.
-                        </p>
+                <div className="mt-5">
+                    {blocosIntegridade.map((bloco, idx) => {
+                        const textoEsquerda = idx % 2 === 0;
+                        const imagemStyle = textoEsquerda
+                            ? { marginRight: "calc((100vw - 100%) / -2)" }
+                            : { marginLeft: "calc((100vw - 100%) / -2)" };
 
-                        <h3 className="dstq-editorial-subtitle">Comunicações e Minuto Compliance</h3>
-                        <p className="dstq-editorial-paragraph">
-                            A comunicação interna e externa sobre integridade foi aprimorada e intensificada, com divulgação de conteúdos em diferentes canais para conscientizar e evidenciar as medidas implementadas, reforçando o uso dos canais de ética e de ouvidoria e promovendo o aculturamento organizacional.
-                        </p>
-
-                        <h3 className="dstq-editorial-subtitle">Canal de Ética e Ouvidoria</h3>
-                        <p className="dstq-editorial-paragraph">
-                            O Canal de Ética permaneceu amplamente divulgado no site da entidade nos comunicados de compliance, com informações claras sobre quando e como utilizá-lo, assegurando confidencialidade, independência e tratamento de eventuais relatos. Em complemento, a Ouvidoria continuou a atuar como canal estruturado para manifestações não solucionadas no primeiro atendimento, fortalecendo a transparência, o acolhimento e a melhoria contínua dos serviços prestados.
-                        </p>
-
-                        <h3 className="dstq-editorial-subtitle">Treinamentos e Semana de Integridade</h3>
-                        <p className="dstq-editorial-paragraph">
-                            Ao longo de 2025, o time participou de treinamentos em temas de integridade, compliance, em linha com o Programa de Integridade e Compliance. Foi realizada a Segunda Semana de Integridade, com programação voltada à importância do Sistema de Integridade e Compliance, à prevenção de crimes de lavagem de dinheiro, à ética e ao uso do canal de denúncia, reforçando o papel de cada colaborador na sustentação do sistema de integridade. A semana contou com a participação de palestrantes externos da CGU, do Banco Central e do presidente do Conselho Fiscal da Previdência BRB.
-                        </p>
-
-                        <h3 className="dstq-editorial-subtitle">Cultura de integridade e dever fiduciário</h3>
-                        <p className="dstq-editorial-paragraph">
-                            Em todas essas ações, a Previdência BRB reforçou a mensagem de que a integridade é a base para o desenvolvimento dos processos internos e para a gestão responsável dos recursos previdenciários administrados. O dever fiduciário foi continuamente associado à conduta ética e à conformidade normativa, evidenciando que decisões responsáveis e coerentes são essenciais para garantir um futuro sustentável e a confiança de participantes, patrocinadores e órgãos de controle.
-                        </p>
-                    </div>
-                    <div className="col-lg-4 dstq-reveal dstq-reveal--d4 d-none d-lg-block">
-                        <div className="dstq-img-card" style={{ position: 'sticky', top: '120px', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.1)' }}>
-                            <img src={IMAGES.instTrust} alt="Integridade e Compliance" style={{ width: '100%', height: 'auto', display: 'block' }} />
-                            <div className="dstq-img-badge">Selo DSC 10.000</div>
-                        </div>
-                    </div>
+                        return (
+                            <div className="row g-0 align-items-stretch mb-4 mb-lg-5" key={bloco.titulo}>
+                                <div className={`col-lg-6 dstq-reveal ${textoEsquerda ? "" : "order-lg-2"}`}>
+                                    <div
+                                        style={{
+                                            height: "100%",
+                                            background: "#f8fafc",
+                                            padding: "34px 30px",
+                                            borderRadius: "20px",
+                                            border: "1px solid #e2e8f0",
+                                        }}
+                                    >
+                                        <h3 className="dstq-editorial-subtitle" style={{ marginTop: 0 }}>{bloco.titulo}</h3>
+                                        <p className="dstq-editorial-paragraph" style={{ marginBottom: 0 }}>{bloco.texto}</p>
+                                    </div>
+                                </div>
+                                <div className={`col-lg-6 dstq-reveal ${textoEsquerda ? "" : "order-lg-1"}`}>
+                                    <div style={imagemStyle}>
+                                        <img
+                                            src={bloco.imagem}
+                                            alt={bloco.titulo}
+                                            style={{
+                                                width: "100%",
+                                                height: "100%",
+                                                minHeight: "320px",
+                                                objectFit: "cover",
+                                                display: "block",
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </section>
