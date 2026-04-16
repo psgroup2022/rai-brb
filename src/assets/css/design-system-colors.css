@@ -1513,7 +1513,7 @@ header.header-glass .sticky-header.main-bar-wraper.two.is-fixed .header-search-b
   color: #334155;
   font-size: 20px;
   line-height: 1.8;
-  max-width: 900px;
+  max-width: 100%;
   margin-bottom: 0;
 }
 
@@ -3155,6 +3155,7 @@ header.header-glass .sticky-header.main-bar-wraper.two.is-fixed .header-search-b
 p,
 li {
   font-size: 20px !important;
+  max-width: 100% !important;
 }
 
 /* Exception: keep nav/header li as-is via specificity below */

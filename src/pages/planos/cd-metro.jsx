@@ -736,20 +736,20 @@ function PlanoCDMetro() {
                         <div className="col-lg-9">
                             <div style={{ marginBottom: "12px" }}>
                                 <span style={{ color: "#00aeef", fontSize: "13px", fontWeight: "600", letterSpacing: "2px", textTransform: "uppercase" }}>
-                                    # Nossos Planos · Contribuicao Definida
+                                    # NOSSOS PLANOS · CONTRIBUIÇÃO DEFINIDA
                                 </span>
                             </div>
 
                             <div style={{ display: "flex", alignItems: "center", gap: "24px", marginBottom: "16px" }}>
                                 <img src={iconCDMetro} alt="Plano CD-Metro/DF" style={{ width: "72px", height: "72px", objectFit: "contain" }} />
                                 <h1 style={{ color: "#fff", fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: "700", lineHeight: "1.1", margin: 0 }}>
-                                    Plano <span style={{ color: "#00aeef" }}>CD-Metro/DF</span>
+                                    Plano <span style={{ color: "#00aeef" }}>CD-Metrô/DF</span>
                                 </h1>
                             </div>
 
                             <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px" }}>
-                                Plano de Contribuicao Definida dos empregados do Metro-DF, com desempenho consistente
-                                de 11,74% em 2025 — 139% do indice de referencia.
+                                Plano de Contribuição Definida dos empregados do Metrô-DF, com desempenho consistente
+                                de 11,74% em 2025 — 139% do índice de referência.
                             </p>
 
                             <ol className="breadcrumb" style={{ marginBottom: 0, padding: 0, background: "transparent" }}>

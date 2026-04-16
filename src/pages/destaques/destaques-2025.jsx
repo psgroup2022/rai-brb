@@ -216,7 +216,7 @@ function FullImgComunicacao() {
                 <h2 className="dstq-section-heading dstq-reveal dstq-reveal--d1" style={{ maxWidth: 700, color: '#0a1f3c', marginBottom: '1.5rem' }}>
                     <span>Comunicação com foco na </span><span className="dstq-accent">transparência</span>
                 </h2>
-                <p className="dstq-reveal dstq-reveal--d2" style={{ maxWidth: 700, color: '#314e7a', fontSize: '1.25rem', lineHeight: '1.6', fontWeight: 500 }}>
+                <p className="dstq-reveal dstq-reveal--d2" style={{ color: '#314e7a', fontSize: '1.25rem', lineHeight: '1.6', fontWeight: 500 }}>
                     A Previdência BRB mantém o compromisso contínuo com a transparência, a clareza das informações e o fortalecimento do relacionamento com seus participantes, assistidos e demais públicos de interesse.
                 </p>
             </div>
