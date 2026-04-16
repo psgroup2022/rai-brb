@@ -476,7 +476,12 @@ function SecaoAtuarial() {
 
 
         <div className="plano-table-wrap">
-          <table className="plano-table plano-table--light">
+          <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
+            <colgroup>
+              <col style={{ width: '56%' }} />
+              <col style={{ width: '22%' }} />
+              <col style={{ width: '22%' }} />
+            </colgroup>
             <thead>
               <tr><th>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
             </thead>
@@ -492,7 +497,12 @@ function SecaoAtuarial() {
         </div>
 
         <div className="plano-table-wrap">
-          <table className="plano-table plano-table--light">
+          <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
+            <colgroup>
+              <col style={{ width: '56%' }} />
+              <col style={{ width: '22%' }} />
+              <col style={{ width: '22%' }} />
+            </colgroup>
             <thead>
               <tr><th>Provisões Matemáticas</th><th className="num">2024</th><th className="num">2025</th></tr>
             </thead>
@@ -507,7 +517,12 @@ function SecaoAtuarial() {
         </div>
 
         <div className="plano-table-wrap dstq-reveal" style={{ marginTop: '24px' }}>
-          <table className="plano-table plano-table--light">
+          <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
+            <colgroup>
+              <col style={{ width: '56%' }} />
+              <col style={{ width: '22%' }} />
+              <col style={{ width: '22%' }} />
+            </colgroup>
             <thead>
               <tr><th>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
             </thead>

@@ -529,7 +529,7 @@ function SecaoAtuarial() {
 
                 {/* Tabela 1 — Ativo Líquido */}
                 <div className="plano-table-wrap dstq-reveal">
-                    <table className="plano-table plano-table--light">
+                    <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
                         <colgroup>
                             <col style={{ width: '56%' }} />
                             <col style={{ width: '22%' }} />
@@ -558,7 +558,7 @@ function SecaoAtuarial() {
 
                 {/* Tabela 2 — Provisões Matemáticas */}
                 <div className="plano-table-wrap dstq-reveal" style={{ marginTop: '24px' }}>
-                    <table className="plano-table plano-table--light">
+                    <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
                         <colgroup>
                             <col style={{ width: '56%' }} />
                             <col style={{ width: '22%' }} />
@@ -586,7 +586,7 @@ function SecaoAtuarial() {
 
                 {/* Tabela 3 — Déficit/Superávit */}
                 <div className="plano-table-wrap dstq-reveal" style={{ marginTop: '24px' }}>
-                    <table className="plano-table plano-table--light">
+                    <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
                         <colgroup>
                             <col style={{ width: '56%' }} />
                             <col style={{ width: '22%' }} />

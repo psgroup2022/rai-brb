@@ -18,9 +18,10 @@ import {
     Tooltip,
     Legend,
 } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Bar } from "react-chartjs-2";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend, ChartDataLabels);
 
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -111,7 +112,21 @@ function SecaoDesempenho() {
         indexAxis: "y",
         plugins: {
             legend: { display: false },
-            datalabels: { display: false },
+            datalabels: {
+                display: true,
+                color: "rgba(255,255,255,0.95)",
+                anchor: "end",
+                align: "right",
+                offset: 6,
+                clamp: true,
+                clip: false,
+                font: { weight: 700, size: 12 },
+                formatter: (value) =>
+                    `${Number(value).toLocaleString("pt-BR", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                    })}%`,
+            },
             tooltip: { enabled: true },
         },
         scales: {
