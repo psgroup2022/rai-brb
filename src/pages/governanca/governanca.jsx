@@ -68,14 +68,9 @@ function OrgBody({ sigla, title, subtitle, icon, children }) {
 }
 
 function MemberCard({ name, role, isPresident = false }) {
-    const parts = name.trim().split(" ");
-    const initials = (parts[0][0] + (parts[parts.length - 1][0] || "")).toUpperCase();
     return (
         <div className={`gov-member-card${isPresident ? " gov-member-card--pres" : ""}`}>
-            <div className="gov-member-photo">
-                <span className="gov-member-initials">{initials}</span>
-                <span className="gov-member-photo-hint">foto</span>
-            </div>
+            {/* Foto/avatar removido, exibe apenas nome, cargo e badge se presidente */}
             <div className="gov-member-info">
                 <h4 className="gov-member-name">{name}</h4>
                 <span className="gov-member-role">{role}</span>

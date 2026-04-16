@@ -429,7 +429,7 @@ function PerfilCorporativo() {
                         <div className="destaque-card">
                             <div className="destaque-card__icon">🤝</div>
                             <h4 className="destaque-card__title">Expansão e Parcerias</h4>
-                            <ul className="destaque-card__list">
+                            <ul className="destque-card__list">
                                 <li>Aprovação da distribuição do Plano BrasíliaPrev nos canais do BRB – Banco de Brasília S.A., incluindo a plataforma digital da BRB Investimentos e as agências físicas com o apoio da BRB Seguros.</li>
                                 <li>Celebração de convênios com novos instituidores, com destaque para o Conselho Regional de Medicina Veterinária do Distrito Federal (CRMV-DF) formalização de parcerias com cinco novos filiados: Colégio Biângulo, PPN Tecnologia e Colégio do Sol.</li>
                                 <li>Êxito nos processos seletivos para administração de planos de benefícios das estatais federais Telebrás S.A. e Infra S.A., aguardando aprovação na SEST.</li>
@@ -438,10 +438,10 @@ function PerfilCorporativo() {
                     </div>
 
                     <div className="destaques-item">
-                        <div className="destaque-card destaque-card--growth">
-                            <div className="destaque-card__icon">📈</div>
-                            <h4 className="destaque-card__title">Crescimento e Desempenho</h4>
-                            <ul className="destaque-card__list">
+                        <div className="destque-card destque-card--growth">
+                            <div className="destque-card__icon">📈</div>
+                            <h4 className="destque-card__title">Crescimento e Desempenho</h4>
+                            <ul className="destque-card__list">
                                 <li>O patrimônio administrado atingiu <strong>R$ 4,35 bilhões</strong>, correspondendo a <strong>99,7%</strong> da meta estabelecida.</li>
                                 <li>O <strong>Plano CV-03</strong> alcançou a marca de <strong>R$ 1 bilhão</strong> em patrimônio.</li>
                                 <li>Todos os planos superaram suas metas de rentabilidade e os respectivos índices de referência.</li>
@@ -453,10 +453,10 @@ function PerfilCorporativo() {
                     </div>
 
                     <div className="destaques-item">
-                        <div className="destaque-card">
-                            <div className="destaque-card__icon">💰</div>
-                            <h4 className="destaque-card__title">Eficiência e Gestão de Custos</h4>
-                            <ul className="destaque-card__list">
+                        <div className="destque-card">
+                            <div className="destque-card__icon">💰</div>
+                            <h4 className="destque-card__title">Eficiência e Gestão de Custos</h4>
+                            <ul className="destque-card__list">
                                 <li>Redução de <strong>4,4%</strong> na despesa per capita, em relação a 2024.</li>
                                 <li>O custo administrativo correspondeu a <strong>0,42%</strong> do patrimônio administrado, ficando <strong>6,7% abaixo</strong> de 2024.</li>
                                 <li>As despesas administrativas ficaram <strong>4,5% inferiores</strong> ao orçamento, representando economia de aproximadamente <strong>R$ 849 mil</strong>.</li>
@@ -465,10 +465,10 @@ function PerfilCorporativo() {
                     </div>
 
                     <div className="destaques-item">
-                        <div className="destaque-card">
-                            <div className="destaque-card__icon">📱</div>
-                            <h4 className="destaque-card__title">Experiência do Participante e Canais Digitais</h4>
-                            <ul className="destaque-card__list">
+                        <div className="destque-card">
+                            <div className="destque-card__icon">📱</div>
+                            <h4 className="destque-card__title">Experiência do Participante e Canais Digitais</h4>
+                            <ul className="destque-card__list">
                                 <li>Índice de satisfação no atendimento de <strong>96,73%</strong>.</li>
                                 <li>Registro de <strong>73.173 acessos</strong> ao portal e aplicativo.</li>
                                 <li>Implantação de perfis de investimento nos Planos <strong>CD-05</strong> e <strong>BrasíliaPrev</strong>.</li>
@@ -477,10 +477,10 @@ function PerfilCorporativo() {
                     </div>
 
                     <div className="destaques-item">
-                        <div className="destaque-card">
-                            <div className="destaque-card__icon">💡</div>
-                            <h4 className="destaque-card__title">Produtos, Inovação e Expansão</h4>
-                            <ul className="destaque-card__list">
+                        <div className="destque-card">
+                            <div className="destque-card__icon">💡</div>
+                            <h4 className="destque-card__title">Produtos, Inovação e Expansão</h4>
+                            <ul className="destque-card__list">
                                 <li>Implantação do <strong>Projeto Correspondentes</strong>, com foco na ampliação da base de patrocinadores, instituidores e participantes, por meio de consultores credenciados.</li>
                                 <li>Lançamento do programa <strong>Indique e Ganhe</strong>, voltado à expansão da base de participantes do Plano BrasíliaPrev.</li>
                                 <li>Desenvolvimento da segunda edição do <strong>Projeto Eureka</strong>, estimulando ideias inovadoras entre os colaboradores.</li>
@@ -489,19 +489,19 @@ function PerfilCorporativo() {
                     </div>
 
                     <div className="destaques-item">
-                        <div className="destaque-card">
-                            <div className="destaque-card__icon">📚</div>
-                            <h4 className="destaque-card__title">Educação Financeira e Previdenciária</h4>
-                            <p className="destaque-card__text">A Previdência BRB dando continuidade às ações de educação financeira e previdenciária, em 2025, efetuou projetos em escolas públicas e privadas do Distrito Federal, com foco em alunos do ensino fundamental e médio. As iniciativas envolveram palestras, atividades práticas e ações educativas voltadas à conscientização sobre o uso responsável dos recursos financeiros. Esse projeto foi apresentado no <strong>Congresso da ABRAPP</strong>, reforçando o compromisso institucional com a agenda <strong>ESG</strong>.</p>
-                            <p className="destaque-card__text">Além disso, a Entidade disponibiliza uma plataforma interativa de educação financeira, com conteúdos multimídia, jogos e testes, acessível em: <a href="https://educacao.previdenciabrb.org.br/" target="_blank" rel="noreferrer">educacao.previdenciabrb.org.br</a></p>
+                        <div className="destque-card">
+                            <div className="destque-card__icon">📚</div>
+                            <h4 className="destque-card__title">Educação Financeira e Previdenciária</h4>
+                            <p className="destque-card__text">A Previdência BRB dando continuidade às ações de educação financeira e previdenciária, em 2025, efetuou projetos em escolas públicas e privadas do Distrito Federal, com foco em alunos do ensino fundamental e médio. As iniciativas envolveram palestras, atividades práticas e ações educativas voltadas à conscientização sobre o uso responsável dos recursos financeiros. Esse projeto foi apresentado no <strong>Congresso da ABRAPP</strong>, reforçando o compromisso institucional com a agenda <strong>ESG</strong>.</p>
+                            <p className="destque-card__text">Além disso, a Entidade disponibiliza uma plataforma interativa de educação financeira, com conteúdos multimídia, jogos e testes, acessível em: <a href="https://educacao.previdenciabrb.org.br/" target="_blank" rel="noreferrer">educacao.previdenciabrb.org.br</a></p>
                         </div>
                     </div>
 
                     <div className="destaques-item">
-                        <div className="destaque-card destaque-card--esg">
-                            <div className="destaque-card__icon">🌱</div>
-                            <h4 className="destaque-card__title">Sustentabilidade e Governança (ESG)</h4>
-                            <ul className="destaque-card__list">
+                        <div className="destque-card destque-card--esg">
+                            <div className="destque-card__icon">🌱</div>
+                            <h4 className="destque-card__title">Sustentabilidade e Governança (ESG)</h4>
+                            <ul className="destque-card__list">
                                 <li>Implementação da nova <strong>Política de Responsabilidade Socioambiental (PRSA)</strong>, incorporando diretrizes ASG para as áreas de investimentos e gestão de pessoas (DEI).</li>
                                 <li>Fortalecimento das práticas de governança, com a conquista do <strong>Selo de Autorregulação em Governança Corporativa (ABRAPP)</strong>.</li>
                                 <li>Realização da <strong>Segunda Semana de Integridade</strong>.</li>
@@ -510,10 +510,10 @@ function PerfilCorporativo() {
                     </div>
 
                     <div className="destaques-item">
-                        <div className="destaque-card">
-                            <div className="destaque-card__icon">🔗</div>
-                            <h4 className="destaque-card__title">Parcerias Estratégicas</h4>
-                            <ul className="destaque-card__list">
+                        <div className="destque-card">
+                            <div className="destque-card__icon">🔗</div>
+                            <h4 className="destque-card__title">Parcerias Estratégicas</h4>
+                            <ul className="destque-card__list">
                                 <li>Formalização de parceria com a <strong>ABRAPP</strong> como instituidora do Plano BrasíliaPrev, possibilitando a ampliação da base de instituidores e participantes por meio da adesão de novos afiliados.</li>
                                 <li>Formalização de parceria com a <strong>MAG Seguros S.A.</strong> para oferta de seguro de vida e invalidez aos participantes dos planos CD.</li>
                             </ul>
@@ -521,10 +521,10 @@ function PerfilCorporativo() {
                     </div>
 
                     <div className="destaques-item">
-                        <div className="destaque-card">
-                            <div className="destaque-card__icon">👥</div>
-                            <h4 className="destaque-card__title">Desenvolvimento de Pessoas</h4>
-                            <ul className="destaque-card__list">
+                        <div className="destque-card">
+                            <div className="destque-card__icon">👥</div>
+                            <h4 className="destque-card__title">Desenvolvimento de Pessoas</h4>
+                            <ul className="destque-card__list">
                                 <li>Realização de treinamentos voltadas ao desenvolvimento e capacitação dos colaboradores.</li>
                             </ul>
                         </div>
@@ -809,7 +809,7 @@ function PerfilCorporativo() {
                     <p className="perfil-eyebrow" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '12px', color: '#00aeef', marginBottom: '8px' }}>INDICADORES DA GESTÃO ADMINISTRATIVA</p>
                     <h3 className="perfil-chart-title">Custo/Custeio Administrativo</h3>
                     <p className="perfil-body-text">O custo administrativo em 2025 foi menor que o custeio em 29,1%, promovendo a capitalização do PGA. O custo total (despesas +provisão do PIS/COFINS) comparado ao custeio administrativo (receitas) correspondeu 0,77%, portanto, numa situação mais favorável comparada ao resultado de 2024, considerando, principalmente, os resultados positivos das receitas dos investimentos. <strong>Meta alcançada!</strong></p>
-                    <p className="perfil-destaque-meta">Despesa Administrativa da Previdência BRB / Receita Administrativa Total. (Cobertura da despesa administrativa)</p>
+                    <p className="perfil-destque-meta">Despesa Administrativa da Previdência BRB / Receita Administrativa Total. (Cobertura da despesa administrativa)</p>
                 </div>
 
                 {/* Custo Administrativo Meta x Alcançado */}
@@ -881,7 +881,7 @@ function PerfilCorporativo() {
                     <h3 className="perfil-chart-title">Custo Administrativo / Ativo Total</h3>
                     <p className="perfil-body-text">A comparação das despesas administrativos com o ativo total (patrimônio) resultou em 0,42%, portanto, 6,67% menor que o resultado alcançado em 2024, de 0,45%. Quanto menor, melhor para os Participantes. <strong>Meta alcançada!</strong></p>
                     <p className="perfil-body-text">Fato que evidencia a responsabilidade na gestão dos recursos administrativos. Previdência BRB.</p>
-                    <p className="perfil-destaque-meta">Custo Administrativo/Ativo Total.</p>
+                    <p className="perfil-destque-meta">Custo Administrativo/Ativo Total.</p>
                 </div>
 
                 <div className="perfil-chart-block mt-4" style={{ maxWidth: 480 }}>
@@ -1023,7 +1023,6 @@ function PerfilCorporativo() {
                                     </tbody>
                                 </table>
                             </div>
-                            <Bar data={sgbrPAData} options={chartOpts((v) => v)} />
                         </div>
                     </div>
                     {/* RNC */}
@@ -1039,7 +1038,6 @@ function PerfilCorporativo() {
                                     </tbody>
                                 </table>
                             </div>
-                            <Bar data={sgbrRNCData} options={chartOpts((v) => v)} />
                         </div>
                     </div>
                     {/* AM */}
@@ -1056,7 +1054,6 @@ function PerfilCorporativo() {
                                     </tbody>
                                 </table>
                             </div>
-                            <Bar data={sgbrAMData} options={chartOpts((v) => v)} />
                         </div>
                     </div>
                 </div>
@@ -1090,12 +1087,8 @@ function PerfilCorporativo() {
                 </div>
 
                 {/* Ações do Plano de Integridade */}
-                <div className="perfil-chart-block mt-5">
+                <div className="perfil-chart-block mt-5" style={{ maxWidth: 480 }}>
                     <h3 className="perfil-chart-title">Ações dos Plano de Integridade – 2025 – 100% realizadas – Meta alcançada</h3>
-                    <p className="perfil-body-text">Ações Previstas: 17 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ações Realizadas: 17</p>
-                </div>
-                <div className="perfil-chart-block mt-3" style={{ maxWidth: 480 }}>
-                    <h3 className="perfil-chart-title">Ações de Integridade</h3>
                     <Bar
                         data={acoesIntegridadeData}
                         options={{
@@ -1178,7 +1171,7 @@ function PerfilCorporativo() {
                     <div className="col-lg-4">
                         <div className="perfil-chart-block" style={{ height: '100%' }}>
                             <h3 className="perfil-chart-title">Índice de Maturidade Financeira</h3>
-                            <p className="perfil-body-text">O IMF é o resultado da comparação entre as receitas e despesas previdenciais. Constata-se que em 2025 esse indicador mostrou uma redução de 5,15%, portanto a meta foi alcançada.</p>
+                            <p className="perfil-body-text">O IMF é o resultado da comparação entre as receitas e despesas previdenciárias. Constata-se que em 2025 esse indicador mostrou uma redução de 5,15%, portanto a meta foi alcançada.</p>
                             <div className="perfil-table-wrapper mt-3">
                                 <table className="perfil-table">
                                     <thead><tr><th>Ano</th><th className="text-end">Índice</th></tr></thead>
@@ -1195,22 +1188,7 @@ function PerfilCorporativo() {
                         <div className="perfil-chart-block" style={{ height: '100%' }}>
                             <h3 className="perfil-chart-title">Índice de Cobertura Previdencial</h3>
                             <p className="perfil-body-text">Mais participantes vinculados aos Planos de Benefícios – Meta alcançada</p>
-                            <div className="row align-items-center g-4 mt-1">
-                                <div className="col-md-4">
-                                    <div className="perfil-table-wrapper">
-                                        <table className="perfil-table">
-                                            <thead><tr><th>Indicador</th><th className="text-end">Valor</th></tr></thead>
-                                            <tbody>
-                                                <tr><td>Meta</td><td className="text-end">86%</td></tr>
-                                                <tr><td>Realizado</td><td className="text-end">87,59%</td></tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div className="col-md-8">
-                                    <Bar data={custeioData} options={chartOpts((v) => v.toFixed(2).replace(".", ","))} />
-                                </div>
-                            </div>
+                            <Bar data={custeioData} options={chartOpts((v) => v.toFixed(2).replace(".", ","))} />
                         </div>
                     </div>
                 </div>
@@ -1290,37 +1268,6 @@ function PerfilCorporativo() {
                     </div>
                 </div>
 
-                <div className="perfil-chart-block perfil-chart-block--light mt-4" style={{ maxWidth: 480 }}>
-                    <h3 className="perfil-chart-title">Qtd Participantes</h3>
-                    <Bar
-                        data={qtdParticipantesMetaData}
-                        options={{
-                            responsive: true,
-                            layout: { padding: { top: 30 } },
-                            plugins: {
-                                legend: { display: false },
-                                tooltip: { callbacks: { label: (ctx) => ctx.parsed.y.toLocaleString("pt-BR") } },
-                                datalabels: {
-                                    anchor: "end",
-                                    align: "end",
-                                    color: "#0f172a",
-                                    font: { weight: "700", size: 14 },
-                                    formatter: (v) => v.toLocaleString("pt-BR"),
-                                },
-                            },
-                            scales: {
-                                x: { ticks: { color: "#475569", font: { size: 13 } }, grid: { color: "rgba(15,23,42,.08)" } },
-                                y: {
-                                    min: 0,
-                                    max: 11000,
-                                    ticks: { color: "#475569", callback: (v) => v.toLocaleString("pt-BR"), font: { size: 12 } },
-                                    grid: { color: "rgba(15,23,42,.08)" },
-                                },
-                            },
-                        }}
-                    />
-                </div>
-
                 <div className="perfil-table-wrapper mt-4">
                     <div className="table-responsive" id="tabela-participantes-planos">
                         <table className="perfil-table">
@@ -1381,44 +1328,9 @@ function PerfilCorporativo() {
                     <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', background: 'linear-gradient(145deg, #14532d, #166534)', borderColor: 'rgba(74,222,128,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '1.5rem', fontWeight: '900', color: '#bbf7d0' }}>Meta Alcançada</p></div></div>
                 </div>
 
-                <div className="perfil-chart-block perfil-chart-block--light mt-2" style={{ maxWidth: 600 }}>
-                    <h3 className="perfil-chart-title" style={{ color: '#0f172a' }}>Equilíbrio Técnico</h3>
-                    <Bar data={equilibrioTecnicoData} options={{ responsive: true, layout: { padding: { top: 30 } }, plugins: { legend: { position: 'bottom', labels: { color: "#475569", font: { size: 13 } } }, tooltip: { callbacks: { label: (ctx) => ctx.dataset.label + ": " + ctx.parsed.y.toFixed(2).replace(".", ",") } }, datalabels: { anchor: "end", align: "end", color: "#0f172a", font: { weight: "700", size: 13 }, formatter: (v) => v.toFixed(2).replace(".", ",") } }, scales: { x: { ticks: { color: "#475569", font: { size: 13 } }, grid: { color: "rgba(15,23,42,.08)" } }, y: { min: 0, max: 120, ticks: { color: "#475569", callback: (v) => v.toFixed(2).replace(".", ","), font: { size: 12 } }, grid: { color: "rgba(15,23,42,.08)" } } } }} />
-                </div>
-
                 {/* Receita Previdencial Per Capita */}
                 <h3 className="perfil-section-title mt-5" style={{ fontSize: '1.3rem' }}>Receita Previdencial Per capita – de todos os planos</h3>
                 <div className="perfil-divider mb-4" />
-
-                {/* BrasíliaPrev */}
-                <div className="row g-3 mb-3">
-                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '2rem', fontWeight: '900', textAlign: 'center' }}>BrasíliaPrev</p></div></div>
-                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Meta</p><p className="perfil-kpi-value">R$122,44</p></div></div>
-                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Realizado</p><p className="perfil-kpi-value">R$147,30</p></div></div>
-                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', background: 'linear-gradient(145deg, #14532d, #166534)', borderColor: 'rgba(74,222,128,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '1.5rem', fontWeight: '900', color: '#bbf7d0' }}>Meta Alcançada</p></div></div>
-                </div>
-
-                {/* RegiusPrev */}
-                <div className="row g-3 mb-4">
-                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '2rem', fontWeight: '900', textAlign: 'center' }}>RegiusPrev</p></div></div>
-                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Meta</p><p className="perfil-kpi-value">R$334,13</p></div></div>
-                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Realizado</p><p className="perfil-kpi-value">R$447,03</p></div></div>
-                    <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', background: 'linear-gradient(145deg, #14532d, #166534)', borderColor: 'rgba(74,222,128,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '1.5rem', fontWeight: '900', color: '#bbf7d0' }}>Meta Alcançada</p></div></div>
-                </div>
-
-                {/* CV-03, CD-05, CD-Metrô */}
-                {[
-                    { plano: "CV-03",    meta: "R$2.330,46", realizado: "R$2.555,19" },
-                    { plano: "CD-05",    meta: "R$1.076,29", realizado: "R$1.078,06" },
-                    { plano: "CD-Metrô", meta: "R$1.328,84", realizado: "R$1.401,85" },
-                ].map((item, i) => (
-                    <div className="row g-3 mb-3" key={i}>
-                        <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '2rem', fontWeight: '900', textAlign: 'center' }}>{item.plano}</p></div></div>
-                        <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Meta</p><p className="perfil-kpi-value">{item.meta}</p></div></div>
-                        <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%' }}><p className="perfil-kpi-label">Realizado</p><p className="perfil-kpi-value">{item.realizado}</p></div></div>
-                        <div className="col-lg-3 col-md-6"><div className="perfil-kpi-card" style={{ height: '100%', background: 'linear-gradient(145deg, #14532d, #166534)', borderColor: 'rgba(74,222,128,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="perfil-kpi-value" style={{ fontSize: '1.5rem', fontWeight: '900', color: '#bbf7d0' }}>Meta Alcançada</p></div></div>
-                    </div>
-                ))}
 
                 <div className="perfil-chart-block perfil-chart-block--light mt-2">
                     <h3 className="perfil-chart-title" style={{ color: '#0f172a' }}>Receita Previdencial Per Capita</h3>
