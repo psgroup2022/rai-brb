@@ -505,32 +505,7 @@ function SecaoArrecadacao() {
                     <Bar data={fluxData} options={fluxOptions} />
                 </div>
 
-                <div className="plano-table-wrap dstq-reveal">
-                    <table className="plano-table">
-                        <thead>
-                            <tr>
-                                <th style={{ minWidth: '180px' }}></th>
-                                <th className="num">2023</th>
-                                <th className="num">2024</th>
-                                <th className="num">2025</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Arrecadação</td>
-                                <td className="num">9.065.015</td>
-                                <td className="num">11.976.829</td>
-                                <td className="num">15.117.462</td>
-                            </tr>
-                            <tr>
-                                <td>Benefícios/Institutos</td>
-                                <td className="num">1.895.446</td>
-                                <td className="num">1.229.946</td>
-                                <td className="num">2.323.791</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+
 
             </div>
         </section>

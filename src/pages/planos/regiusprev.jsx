@@ -447,22 +447,7 @@ function SecaoArrecadacao() {
                     <Bar data={fluxData} options={fluxOptions} />
                 </div>
 
-                <div className="plano-table-wrap">
-                    <table className="plano-table">
-                        <thead>
-                            <tr>
-                                <th>Rubrica</th>
-                                <th className="num">2023</th>
-                                <th className="num">2024</th>
-                                <th className="num">2025</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Arrecadação</td><td className="num">R$ 89.888</td><td className="num">R$ 251.055</td><td className="num">R$ 367.056</td></tr>
-                            <tr><td>Benefícios/Institutos</td><td className="num">R$ 0</td><td className="num">R$ 5.527</td><td className="num">R$ 4.175</td></tr>
-                        </tbody>
-                    </table>
-                </div>
+
             </div>
         </section>
     );
