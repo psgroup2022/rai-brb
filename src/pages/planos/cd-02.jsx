@@ -60,26 +60,6 @@ function Band({ quote }) {
    Seção 2 — Rentabilidade 2025
 ───────────────────────────────────────────── */
 function SecaoRentabilidade() {
-  const data = {
-    labels: ["Rentabilidade", "Índice de Referência"],
-    datasets: [{
-      data: [12.82, 8.43],
-      backgroundColor: ["#00aeef", "#0074c8"],
-      borderRadius: 6,
-    }],
-  };
-  const options = {
-    indexAxis: "y",
-    plugins: { legend: { display: false } },
-    scales: {
-      x: {
-        ticks: { callback: (v) => v + "%", color: LIGHT_CHART_OPTS.color },
-        grid: { color: LIGHT_CHART_OPTS.borderColor },
-      },
-      y: { ticks: { color: LIGHT_CHART_OPTS.color }, grid: { display: false } },
-    },
-  };
-
   return (
     <section id="rentabilidade" className="plano-section plano-section--light">
       <div className="container">
@@ -105,11 +85,6 @@ function SecaoRentabilidade() {
             </li>
           ))}
         </ul>
-
-        <div className="plano-chart-box plano-chart-box--light">
-          <div className="plano-chart-title">Rentabilidade vs. Índice de Referência</div>
-          <Bar data={data} options={options} />
-        </div>
       </div>
     </section>
   );
