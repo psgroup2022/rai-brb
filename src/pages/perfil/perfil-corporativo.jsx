@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
-import html2canvas from "html2canvas";
-import { jsPDF } from "jspdf";
 import { IMAGES } from "../../constant/theme";
 import Footer2 from "../../layout/footer2";
 import Header2 from "../../layout/header2";
@@ -130,40 +128,6 @@ function PerfilCorporativo() {
 
         return () => ctx.revert();
     }, []);
-
-    const downloadTablePdf = async (containerId, fileName) => {
-        const target = document.getElementById(containerId);
-        if (!target) return;
-
-        const canvas = await html2canvas(target, {
-            scale: 2,
-            backgroundColor: "#ffffff",
-            useCORS: true,
-        });
-
-        const imgData = canvas.toDataURL("image/png");
-        const pdf = new jsPDF("p", "mm", "a4");
-        const pageWidth = pdf.internal.pageSize.getWidth();
-        const pageHeight = pdf.internal.pageSize.getHeight();
-        const margin = 10;
-        const contentWidth = pageWidth - margin * 2;
-        const imgHeight = (canvas.height * contentWidth) / canvas.width;
-
-        let remainingHeight = imgHeight;
-        let position = margin;
-
-        pdf.addImage(imgData, "PNG", margin, position, contentWidth, imgHeight);
-        remainingHeight -= pageHeight - margin * 2;
-
-        while (remainingHeight > 0) {
-            position = remainingHeight - imgHeight + margin;
-            pdf.addPage();
-            pdf.addImage(imgData, "PNG", margin, position, contentWidth, imgHeight);
-            remainingHeight -= pageHeight - margin * 2;
-        }
-
-        pdf.save(fileName);
-    };
 
     /* ── 3.2 Patrocinadoras ── */
     const patrocinadoras = [
@@ -689,15 +653,6 @@ function PerfilCorporativo() {
                                 })()}
                             </tbody>
                         </table>
-                    </div>
-                    <div className="perfil-table-actions">
-                        <button
-                            type="button"
-                            className="perfil-pdf-btn"
-                            onClick={() => downloadTablePdf("tabela-vinculos-planos", "patrocinadoras-instituidoras-por-plano.pdf")}
-                        >
-                            Download da Tabela em PDF
-                        </button>
                     </div>
                 </div>
             </Section>
@@ -1263,15 +1218,6 @@ function PerfilCorporativo() {
                             </tbody>
                         </table>
                     </div>
-                    <div className="perfil-table-actions">
-                        <button
-                            type="button"
-                            className="perfil-pdf-btn"
-                            onClick={() => downloadTablePdf("tabela-arrecadacao-planos", "arrecadacao-por-plano.pdf")}
-                        >
-                            Download da Tabela em PDF
-                        </button>
-                    </div>
                 </div>
             </Section>
 
@@ -1333,15 +1279,6 @@ function PerfilCorporativo() {
                                 ))}
                             </tbody>
                         </table>
-                    </div>
-                    <div className="perfil-table-actions">
-                        <button
-                            type="button"
-                            className="perfil-pdf-btn"
-                            onClick={() => downloadTablePdf("tabela-participantes-planos", "participantes-por-plano.pdf")}
-                        >
-                            Download da Tabela em PDF
-                        </button>
                     </div>
                 </div>
             </Section>

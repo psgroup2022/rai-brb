@@ -1706,28 +1706,6 @@ header.header-glass .sticky-header.main-bar-wraper.two.is-fixed .header-search-b
   border-top: 2px solid #00aeef !important;
 }
 
-.perfil-table-actions {
-  margin-top: 16px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.perfil-pdf-btn {
-  border: 1px solid #006aae;
-  background: linear-gradient(135deg, #004282 0%, #0074c8 100%);
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 10px 18px;
-  border-radius: 10px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.perfil-pdf-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(0, 66, 130, 0.25);
-}
-
 /* ── Badges ── */
 .perfil-badge {
   display: inline-block;

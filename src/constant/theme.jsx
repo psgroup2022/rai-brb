@@ -121,7 +121,7 @@ import bannrimg5 from '../assets/img/bannr-img-5.png'
 import bannrimg6 from '../assets/img/bannr-img-6.png'
 import corpLeadership from '../assets/img/corporate-leadership.png';
 import execSummaryImg from '../assets/img/executive-summary.png';
-import officeCollab from '../assets/img/office-collaboration.png';
+import officeCollab from '../assets/img/img_06.jpg';
 import instTrust from '../assets/img/institutional-trust.png';
 import boardroomMeet from '../assets/img/boardroom-meeting.png';
 import retirementJoyImg from '../assets/img/img_03.jpg';
