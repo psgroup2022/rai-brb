@@ -5972,9 +5972,9 @@ ul.pagination li a:hover {
 }
 
 .macro-eco-card-text {
-    font-size: 0.9rem;
+    font-size: 18px;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.58);
+    color: rgba(255, 255, 255, 0.75);
 }
 
 /* Selic badge no card Brasil */
@@ -6219,10 +6219,10 @@ ul.pagination li a:hover {
 }
 .macro-eco-pullquote p {
     font-family: 'Sora', sans-serif;
-    font-size: clamp(0.95rem, 1.6vw, 1.12rem);
+    font-size: 18px;
     font-weight: 500;
     line-height: 1.78;
-    color: rgba(255, 255, 255, 0.78);
+    color: rgba(255, 255, 255, 0.88);
     position: relative;
     z-index: 1;
     margin: 0;
