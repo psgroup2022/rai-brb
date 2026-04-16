@@ -8,6 +8,7 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import imgAsg from "../../assets/img/img_asg.jpg";
+import img01 from "../../assets/img/img_01.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -268,7 +269,7 @@ function MensagemLiderancas() {
                                 boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
                             }}>
                                 <img
-                                    src={IMAGES.corpLeadership}
+                                    src={img01}
                                     alt="Liderança Previdência BRB"
                                     style={{ width: '100%', height: 'auto', display: 'block' }}
                                 />

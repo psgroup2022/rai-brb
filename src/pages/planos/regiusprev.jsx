@@ -105,10 +105,10 @@ function SecaoRentabilidade() {
 
 function SecaoDesempenho() {
   const compData = {
-    labels: ["Rentabilidade", "Índice de Referência", "Mediana Mercado"],
+    labels: ["Rentabilidade", "Índice de Referência", "Ganho Real"],
     datasets: [
       {
-        data: [12.37, 8.44, 7.8],
+        data: [12.37, 8.44, 7.78],
         backgroundColor: ["#00aeef", "#0074c8", "#94a3b8"],
         borderRadius: 6,
       },
@@ -137,7 +137,7 @@ function SecaoDesempenho() {
         ctx.fillStyle = "rgba(255,255,255,0.9)";
         ctx.textAlign = "left";
         ctx.textBaseline = "middle";
-        const vals = ["12,37%", "8,44%", "7,8%"];
+        const vals = ["12,37%", "8,44%", "7,78%"];
         chart.data.datasets[0].data.forEach((val, i) => {
           const meta = chart.getDatasetMeta(0).data[i];
           ctx.fillText(vals[i], meta.x + 8, meta.y);
