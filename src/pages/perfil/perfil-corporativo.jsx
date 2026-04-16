@@ -423,114 +423,110 @@ function PerfilCorporativo() {
                 </div>
 
                 {/* Destaques 2025 */}
-                <div className="row g-4 mt-4">
+                <div className="destaques-grid">
 
-                    <div className="col-lg-6">
-                        <div className="perfil-highlight-card">
-                            <div className="perfil-highlight-icon">🤝</div>
-                            <div>
-                                <h4>Expansão e Parcerias</h4>
-                                <ul className="perfil-highlight-list">
-                                    <li>Aprovação da distribuição do Plano BrasíliaPrev nos canais do BRB – Banco de Brasília S.A., incluindo a plataforma digital da BRB Investimentos e as agências físicas com o apoio da BRB Seguros.</li>
-                                    <li>Celebração de convênios com novos instituidores, com destaque para o Conselho Regional de Medicina Veterinária do Distrito Federal (CRMV-DF) formalização de parcerias com cinco novos filiados: Colégio Biângulo, PPN Tecnologia e Colégio do Sol.</li>
-                                    <li>Êxito nos processos seletivos para administração de planos de benefícios das estatais federais Telebrás S.A. e Infra S.A., aguardando aprovação na SEST.</li>
-                                </ul>
-                            </div>
+                    <div className="destaques-item destaques-item--featured">
+                        <div className="destaque-card">
+                            <div className="destaque-card__icon">🤝</div>
+                            <h4 className="destaque-card__title">Expansão e Parcerias</h4>
+                            <ul className="destaque-card__list">
+                                <li>Aprovação da distribuição do Plano BrasíliaPrev nos canais do BRB – Banco de Brasília S.A., incluindo a plataforma digital da BRB Investimentos e as agências físicas com o apoio da BRB Seguros.</li>
+                                <li>Celebração de convênios com novos instituidores, com destaque para o Conselho Regional de Medicina Veterinária do Distrito Federal (CRMV-DF) formalização de parcerias com cinco novos filiados: Colégio Biângulo, PPN Tecnologia e Colégio do Sol.</li>
+                                <li>Êxito nos processos seletivos para administração de planos de benefícios das estatais federais Telebrás S.A. e Infra S.A., aguardando aprovação na SEST.</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div className="col-lg-6">
-                        <div className="perfil-highlight-card">
-                            <div className="perfil-highlight-icon">📈</div>
-                            <div>
-                                <h4>Crescimento e Desempenho</h4>
-                                <p>O patrimônio administrado atingiu R$ 4,35 bilhões, correspondendo a 99,7% da meta estabelecida.</p>
-                                <p>O Plano CV-03 alcançou a marca de R$ 1 bilhão em patrimônio.</p>
-                                <p>Todos os planos superaram suas metas de rentabilidade e os respectivos índices de referência.</p>
-                                <p>O Plano BD-01 apresentou superávit de R$ 91,141 milhões, e o CV-03, de R$ 8,215 milhões.</p>
-                                <p>A base de participantes atingiu 7.619 participantes, com crescimento anual de 5,31%.</p>
-                                <p>O Índice de Cobertura Previdencial (ICP) alcançou 87,59%.</p>
-                            </div>
+                    <div className="destaques-item">
+                        <div className="destaque-card destaque-card--growth">
+                            <div className="destaque-card__icon">📈</div>
+                            <h4 className="destaque-card__title">Crescimento e Desempenho</h4>
+                            <ul className="destaque-card__list">
+                                <li>O patrimônio administrado atingiu <strong>R$ 4,35 bilhões</strong>, correspondendo a <strong>99,7%</strong> da meta estabelecida.</li>
+                                <li>O <strong>Plano CV-03</strong> alcançou a marca de <strong>R$ 1 bilhão</strong> em patrimônio.</li>
+                                <li>Todos os planos superaram suas metas de rentabilidade e os respectivos índices de referência.</li>
+                                <li>O Plano BD-01 apresentou superávit de <strong>R$ 91,141 milhões</strong>, e o CV-03, de <strong>R$ 8,215 milhões</strong>.</li>
+                                <li>A base de participantes atingiu <strong>7.619 participantes</strong>, com crescimento anual de <strong>5,31%</strong>.</li>
+                                <li>O Índice de Cobertura Previdencial (ICP) alcançou <strong>87,59%</strong>.</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div className="col-lg-6">
-                        <div className="perfil-highlight-card">
-                            <div className="perfil-highlight-icon">💰</div>
-                            <div>
-                                <h4>Eficiência e Gestão de Custos</h4>
-                                <p>Redução de 4,4% na despesa per capita, em relação a 2024.</p>
-                                <p>O custo administrativo correspondeu a 0,42% do patrimônio administrado, ficando 6,7% abaixo de 2024.</p>
-                                <p>As despesas administrativas ficaram 4,5% inferiores ao orçamento, representando economia de aproximadamente R$ 849 mil.</p>
-                            </div>
+                    <div className="destaques-item">
+                        <div className="destaque-card">
+                            <div className="destaque-card__icon">💰</div>
+                            <h4 className="destaque-card__title">Eficiência e Gestão de Custos</h4>
+                            <ul className="destaque-card__list">
+                                <li>Redução de <strong>4,4%</strong> na despesa per capita, em relação a 2024.</li>
+                                <li>O custo administrativo correspondeu a <strong>0,42%</strong> do patrimônio administrado, ficando <strong>6,7% abaixo</strong> de 2024.</li>
+                                <li>As despesas administrativas ficaram <strong>4,5% inferiores</strong> ao orçamento, representando economia de aproximadamente <strong>R$ 849 mil</strong>.</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div className="col-lg-6">
-                        <div className="perfil-highlight-card">
-                            <div className="perfil-highlight-icon">📱</div>
-                            <div>
-                                <h4>Experiência do Participante e Canais Digitais</h4>
-                                <p>Índice de satisfação no atendimento de 96,73%.</p>
-                                <p>Registro de 73.173 acessos ao portal e aplicativo.</p>
-                                <p>Implantação de perfis de investimento nos Planos CD-05 e BrasíliaPrev.</p>
-                            </div>
+                    <div className="destaques-item">
+                        <div className="destaque-card">
+                            <div className="destaque-card__icon">📱</div>
+                            <h4 className="destaque-card__title">Experiência do Participante e Canais Digitais</h4>
+                            <ul className="destaque-card__list">
+                                <li>Índice de satisfação no atendimento de <strong>96,73%</strong>.</li>
+                                <li>Registro de <strong>73.173 acessos</strong> ao portal e aplicativo.</li>
+                                <li>Implantação de perfis de investimento nos Planos <strong>CD-05</strong> e <strong>BrasíliaPrev</strong>.</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div className="col-lg-6">
-                        <div className="perfil-highlight-card">
-                            <div className="perfil-highlight-icon">💡</div>
-                            <div>
-                                <h4>Produtos, Inovação e Expansão</h4>
-                                <p>Implantação do Projeto Correspondentes, com foco na ampliação da base de patrocinadores, instituidores e participantes, por meio de consultores credenciados.</p>
-                                <p>Lançamento do programa Indique e Ganhe, voltado à expansão da base de participantes do Plano BrasíliaPrev.</p>
-                                <p>Desenvolvimento da segunda edição do Projeto Eureka, estimulando ideias inovadoras entre os colaboradores.</p>
-                            </div>
+                    <div className="destaques-item">
+                        <div className="destaque-card">
+                            <div className="destaque-card__icon">💡</div>
+                            <h4 className="destaque-card__title">Produtos, Inovação e Expansão</h4>
+                            <ul className="destaque-card__list">
+                                <li>Implantação do <strong>Projeto Correspondentes</strong>, com foco na ampliação da base de patrocinadores, instituidores e participantes, por meio de consultores credenciados.</li>
+                                <li>Lançamento do programa <strong>Indique e Ganhe</strong>, voltado à expansão da base de participantes do Plano BrasíliaPrev.</li>
+                                <li>Desenvolvimento da segunda edição do <strong>Projeto Eureka</strong>, estimulando ideias inovadoras entre os colaboradores.</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div className="col-lg-6">
-                        <div className="perfil-highlight-card">
-                            <div className="perfil-highlight-icon">📚</div>
-                            <div>
-                                <h4>Educação Financeira e Previdenciária</h4>
-                                <p>A Previdência BRB dando continuidade às ações de educação financeira e previdenciária, em 2025, efetuou projetos em escolas públicas e privadas do Distrito Federal, com foco em alunos do ensino fundamental e médio. As iniciativas envolveram palestras, atividades práticas e ações educativas voltadas à conscientização sobre o uso responsável dos recursos financeiros. Esse projeto foi apresentado no Congresso da ABRAPP, reforçando o compromisso institucional com a agenda ESG.</p>
-                                <p>Além disso, a Entidade disponibiliza uma plataforma interativa de educação financeira, com conteúdos multimídia, jogos e testes, acessível em: <a href="https://educacao.previdenciabrb.org.br/" target="_blank" rel="noreferrer">educacao.previdenciabrb.org.br</a></p>
-                            </div>
+                    <div className="destaques-item">
+                        <div className="destaque-card">
+                            <div className="destaque-card__icon">📚</div>
+                            <h4 className="destaque-card__title">Educação Financeira e Previdenciária</h4>
+                            <p className="destaque-card__text">A Previdência BRB dando continuidade às ações de educação financeira e previdenciária, em 2025, efetuou projetos em escolas públicas e privadas do Distrito Federal, com foco em alunos do ensino fundamental e médio. As iniciativas envolveram palestras, atividades práticas e ações educativas voltadas à conscientização sobre o uso responsável dos recursos financeiros. Esse projeto foi apresentado no <strong>Congresso da ABRAPP</strong>, reforçando o compromisso institucional com a agenda <strong>ESG</strong>.</p>
+                            <p className="destaque-card__text">Além disso, a Entidade disponibiliza uma plataforma interativa de educação financeira, com conteúdos multimídia, jogos e testes, acessível em: <a href="https://educacao.previdenciabrb.org.br/" target="_blank" rel="noreferrer">educacao.previdenciabrb.org.br</a></p>
                         </div>
                     </div>
 
-                    <div className="col-lg-6">
-                        <div className="perfil-highlight-card">
-                            <div className="perfil-highlight-icon">🌱</div>
-                            <div>
-                                <h4>Sustentabilidade e Governança (ESG)</h4>
-                                <p>Implementação da nova Política de Responsabilidade Socioambiental (PRSA), incorporando diretrizes ASG para as áreas de investimentos e gestão de pessoas (DEI).</p>
-                                <p>Fortalecimento das práticas de governança, com a conquista do Selo de Autorregulação em Governança Corporativa (ABRAPP).</p>
-                                <p>Realização da Segunda Semana de Integridade.</p>
-                            </div>
+                    <div className="destaques-item">
+                        <div className="destaque-card destaque-card--esg">
+                            <div className="destaque-card__icon">🌱</div>
+                            <h4 className="destaque-card__title">Sustentabilidade e Governança (ESG)</h4>
+                            <ul className="destaque-card__list">
+                                <li>Implementação da nova <strong>Política de Responsabilidade Socioambiental (PRSA)</strong>, incorporando diretrizes ASG para as áreas de investimentos e gestão de pessoas (DEI).</li>
+                                <li>Fortalecimento das práticas de governança, com a conquista do <strong>Selo de Autorregulação em Governança Corporativa (ABRAPP)</strong>.</li>
+                                <li>Realização da <strong>Segunda Semana de Integridade</strong>.</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div className="col-lg-6">
-                        <div className="perfil-highlight-card">
-                            <div className="perfil-highlight-icon">🔗</div>
-                            <div>
-                                <h4>Parcerias Estratégicas</h4>
-                                <p>Formalização de parceria com a ABRAPP como instituidora do Plano BrasíliaPrev, possibilitando a ampliação da base de instituidores e participantes por meio da adesão de novos afiliados.</p>
-                                <p>Formalização de parceria com a MAG Seguros S.A. para oferta de seguro de vida e invalidez aos participantes dos planos CD.</p>
-                            </div>
+                    <div className="destaques-item">
+                        <div className="destaque-card">
+                            <div className="destaque-card__icon">🔗</div>
+                            <h4 className="destaque-card__title">Parcerias Estratégicas</h4>
+                            <ul className="destaque-card__list">
+                                <li>Formalização de parceria com a <strong>ABRAPP</strong> como instituidora do Plano BrasíliaPrev, possibilitando a ampliação da base de instituidores e participantes por meio da adesão de novos afiliados.</li>
+                                <li>Formalização de parceria com a <strong>MAG Seguros S.A.</strong> para oferta de seguro de vida e invalidez aos participantes dos planos CD.</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div className="col-lg-6">
-                        <div className="perfil-highlight-card">
-                            <div className="perfil-highlight-icon">👥</div>
-                            <div>
-                                <h4>Desenvolvimento de Pessoas</h4>
-                                <p>Realização de treinamentos voltadas ao desenvolvimento e capacitação dos colaboradores.</p>
-                            </div>
+                    <div className="destaques-item">
+                        <div className="destaque-card">
+                            <div className="destaque-card__icon">👥</div>
+                            <h4 className="destaque-card__title">Desenvolvimento de Pessoas</h4>
+                            <ul className="destaque-card__list">
+                                <li>Realização de treinamentos voltadas ao desenvolvimento e capacitação dos colaboradores.</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -588,49 +584,49 @@ function PerfilCorporativo() {
                                 {(() => {
                                     const rows = [
                                         ["BD-01","Patrocinadora","BRB","2"],
-                                        ["BD-01","Patrocinadora","Previdência BRB","1"],
+                                        ["BD-01","Patrocinadora","Previdência BRB",""],
                                         ["CD-02","Patrocinadora","BRB","2"],
-                                        ["CD-02","Patrocinadora","Previdência BRB","1"],
+                                        ["CD-02","Patrocinadora","Previdência BRB",""],
                                         ["CV-03","Patrocinadora","BRB","4"],
-                                        ["CV-03","Patrocinadora","Previdência BRB","1"],
-                                        ["CV-03","Patrocinadora","Corretora Seguros BRB","1"],
-                                        ["CV-03","Patrocinadora","BRBCARD","1"],
+                                        ["CV-03","Patrocinadora","Previdência BRB",""],
+                                        ["CV-03","Patrocinadora","Corretora Seguros BRB",""],
+                                        ["CV-03","Patrocinadora","BRBCARD",""],
                                         ["CD-Metrô","Patrocinadora","Metrô-DF","1"],
                                         ["CD-05","Patrocinadora","BRB","6"],
-                                        ["CD-05","Patrocinadora","Previdência BRB","1"],
-                                        ["CD-05","Patrocinadora","BRBCARD","1"],
-                                        ["CD-05","Patrocinadora","Saúde BRB","1"],
-                                        ["CD-05","Patrocinadora","Aneabrb","1"],
-                                        ["CD-05","Patrocinadora","CEASA-DF","1"],
+                                        ["CD-05","Patrocinadora","Previdência BRB",""],
+                                        ["CD-05","Patrocinadora","BRBCARD",""],
+                                        ["CD-05","Patrocinadora","Saúde BRB",""],
+                                        ["CD-05","Patrocinadora","Aneabrb",""],
+                                        ["CD-05","Patrocinadora","CEASA-DF",""],
                                         ["BrasíliaPrev","Instituidora","Previdência BRB","15"],
-                                        ["BrasíliaPrev","Instituidora","Aneabrb","1"],
-                                        ["BrasíliaPrev","Instituidora","COPEV-DF","1"],
-                                        ["BrasíliaPrev","Instituidora","AABR","1"],
-                                        ["BrasíliaPrev","Instituidora","ABRAPP","1"],
-                                        ["BrasíliaPrev","Instituidora","CRMV-DF","1"],
-                                        ["BrasíliaPrev","Instituidora Filiada","Bloco 244","1"],
-                                        ["BrasíliaPrev","Instituidora Filiada","GS3 Tecnologia","1"],
-                                        ["BrasíliaPrev","Instituidora Filiada","Colégio Biângulo","1"],
-                                        ["BrasíliaPrev","Instituidora Filiada","PPN Tecnologia","1"],
-                                        ["BrasíliaPrev","Instituidora Filiada","Colégio do Sol","1"],
-                                        ["BrasíliaPrev","Instituidora Filiada","Prime","1"],
-                                        ["BrasíliaPrev","Instituidora Filiada","Academia Ultra 1","—"],
-                                        ["BrasíliaPrev","Instituidora Filiada","Academia Ultra 2","—"],
-                                        ["BrasíliaPrev","Instituidora Filiada","Academia Ultra 3","1"],
+                                        ["BrasíliaPrev","Instituidora","Aneabrb",""],
+                                        ["BrasíliaPrev","Instituidora","COPEV-DF",""],
+                                        ["BrasíliaPrev","Instituidora","AABR",""],
+                                        ["BrasíliaPrev","Instituidora","ABRAPP",""],
+                                        ["BrasíliaPrev","Instituidora","CRMV-DF",""],
+                                        ["BrasíliaPrev","Instituidora Filiada","Bloco 244",""],
+                                        ["BrasíliaPrev","Instituidora Filiada","GS3 Tecnologia",""],
+                                        ["BrasíliaPrev","Instituidora Filiada","Colégio Biângulo",""],
+                                        ["BrasíliaPrev","Instituidora Filiada","PPN Tecnologia",""],
+                                        ["BrasíliaPrev","Instituidora Filiada","Colégio do Sol",""],
+                                        ["BrasíliaPrev","Instituidora Filiada","Prime",""],
+                                        ["BrasíliaPrev","Instituidora Filiada","Academia Ultra 1",""],
+                                        ["BrasíliaPrev","Instituidora Filiada","Academia Ultra 2",""],
+                                        ["BrasíliaPrev","Instituidora Filiada","Academia Ultra 3",""],
                                         ["RegiusPrev","Patrocinadora","Cruzeiro do Oeste Câmara Municipal","14"],
-                                        ["RegiusPrev","Patrocinadora","Município de Cruzeiro do Oeste","1"],
-                                        ["RegiusPrev","Patrocinadora","Cruzeiro do Sul Câmara Municipal","1"],
-                                        ["RegiusPrev","Patrocinadora","Município de Cruzeiro do Sul","1"],
-                                        ["RegiusPrev","Patrocinadora","Município de São Tomé","1"],
-                                        ["RegiusPrev","Patrocinadora","São Tomé Câmara Municipal","1"],
-                                        ["RegiusPrev","Patrocinadora","Município de Querência do Norte","1"],
-                                        ["RegiusPrev","Patrocinadora","Querência do Norte Câmara Municipal","1"],
-                                        ["RegiusPrev","Patrocinadora","Município de Maringá – Prefeitura","1"],
-                                        ["RegiusPrev","Patrocinadora","Agência Maringaense de Regulação – AMR","1"],
-                                        ["RegiusPrev","Patrocinadora","IPPLAM","1"],
-                                        ["RegiusPrev","Patrocinadora","Maringá Previdência","1"],
-                                        ["RegiusPrev","Patrocinadora","Instituto Ambiental de Maringá – IAM","1"],
-                                        ["RegiusPrev","Patrocinadora","Câmara Municipal de Maringá","1"],
+                                        ["RegiusPrev","Patrocinadora","Município de Cruzeiro do Oeste",""],
+                                        ["RegiusPrev","Patrocinadora","Cruzeiro do Sul Câmara Municipal",""],
+                                        ["RegiusPrev","Patrocinadora","Município de Cruzeiro do Sul",""],
+                                        ["RegiusPrev","Patrocinadora","Município de São Tomé",""],
+                                        ["RegiusPrev","Patrocinadora","São Tomé Câmara Municipal",""],
+                                        ["RegiusPrev","Patrocinadora","Município de Querência do Norte",""],
+                                        ["RegiusPrev","Patrocinadora","Querência do Norte Câmara Municipal",""],
+                                        ["RegiusPrev","Patrocinadora","Município de Maringá – Prefeitura",""],
+                                        ["RegiusPrev","Patrocinadora","Agência Maringaense de Regulação – AMR",""],
+                                        ["RegiusPrev","Patrocinadora","IPPLAM",""],
+                                        ["RegiusPrev","Patrocinadora","Maringá Previdência",""],
+                                        ["RegiusPrev","Patrocinadora","Instituto Ambiental de Maringá – IAM",""],
+                                        ["RegiusPrev","Patrocinadora","Câmara Municipal de Maringá",""],
                                     ];
                                     // Pre-compute rowspan for each unique plano group
                                     const spanMap = {};
@@ -672,7 +668,7 @@ function PerfilCorporativo() {
             {/* ── 3.4 NOSSA GENTE ── */}
             <Section id="nossa-gente" eyebrow="# Pessoas" title="Nossa Gente — Público Interno">
                 <div className="row align-items-center g-5 mb-4">
-                    <div className="col-lg-6">
+                    <div className="col-lg-6" style={{ animation: "fadeInUp 0.6s ease-out backwards" }}>
                         <p className="perfil-body-text">
                             Em 2025, a Previdência BRB investiu na capacitação contínua de colaboradores e dirigentes, realizando treinamentos voltados ao desenvolvimento de competências alinhadas ao planejamento estratégico. Os encontros mensais e as reuniões de líderes serviram como oportunidades de aprendizado, troca de experiências e fortalecimento do trabalho em equipe.
                         </p>
@@ -688,7 +684,7 @@ function PerfilCorporativo() {
                             Além disso, a Previdência BRB viabillizou a renovação de 11 certificações profissionais: 1 CEA, 8 CPA-20 e 2 ICSS, garantindo que a equipe atue com excelência técnica nos órgãos colegiados e comitês técnicos.
                         </p>
                     </div>
-                    <div className="col-lg-6">
+                    <div className="col-lg-6" style={{ animation: "fadeInUp 0.6s ease-out backwards" }}>
                         <div style={{ borderRadius: '24px', overflow: 'hidden', border: '8px solid #fff', boxShadow: '0 10px 25px rgba(0,0,0,0.05)' }}>
                             <img src={IMAGES.officeCollab} alt="Nossa Gente" style={{ width: '100%', height: 'auto' }} />
                         </div>

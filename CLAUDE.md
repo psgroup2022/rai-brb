@@ -69,6 +69,13 @@ Reference: `DESIGN.md` and `docs/design-system/ADINA_DESIGN_SYSTEM.md`.
 - Card corners: ~14–18px border-radius. Prefer translucent overlays in dark hero sections.
 - The contrast triad for BRB institutional sections: Deep Navy + White + Accent Cyan.
 
+## gstack
+
+For all web browsing, use the `/browse` skill from gstack. Never use `mcp__claude-in-chrome__*` tools.
+
+**Available skills:**
+/office-hours, /plan-ceo-review, /plan-eng-review, /plan-design-review, /design-consultation, /design-shotgun, /design-html, /review, /ship, /land-and-deploy, /canary, /benchmark, /browse, /connect-chrome, /qa, /qa-only, /design-review, /setup-browser-cookies, /setup-deploy, /retro, /investigate, /document-release, /codex, /cso, /autoplan, /plan-devex-review, /devex-review, /careful, /freeze, /guard, /unfreeze, /gstack-upgrade, /learn
+
 ## Notes
 
 - `src/componenet/` (typo preserved from original template) contains the `Scroll` utility component used in the router.
