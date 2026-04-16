@@ -63,29 +63,6 @@ function Band({ quote }) {
 
 
 function SecaoRentabilidade() {
-    const data = {
-        labels: ["Rentabilidade", "Índice de Referência", "Mediana Mercado"],
-        datasets: [
-            {
-                data: [12.37, 8.44, 7.8],
-                backgroundColor: ["#00aeef", "#0074c8", "#94a3b8"],
-                borderRadius: 6,
-            },
-        ],
-    };
-
-    const options = {
-        indexAxis: "y",
-        plugins: { legend: { display: false } },
-        scales: {
-            x: {
-                ticks: { callback: (v) => v + "%", color: LIGHT_CHART_OPTS.color },
-                grid: { color: LIGHT_CHART_OPTS.borderColor },
-            },
-            y: { ticks: { color: LIGHT_CHART_OPTS.color }, grid: { display: false } },
-        },
-    };
-
     return (
         <section id="rentabilidade" className="plano-section plano-section--light">
             <div className="container">
@@ -96,41 +73,30 @@ function SecaoRentabilidade() {
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
                 <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d2">
-                    O Plano RegiusPrev registrou rentabilidade de <strong style={{ color: "#0a1f3c" }}>12,37%</strong>{" "}
-                    em 2025, representando{" "}
-                    <strong style={{ color: "#0a1f3c" }}>147% do índice de referência (IPCA + 4% a.a.)</strong>.
-                    Toda a carteira está alocada em Renda Fixa, com estratégia concentrada em Títulos Públicos
-                    Federais atrelados à Selic (94% do portfólio).
+                    O Plano RegiusPrev encerrou 2025 com rentabilidade de <strong style={{ color: "#0a1f3c" }}>12,37%</strong>,
+                    superando de forma expressiva o índice de referência de{" "}
+                    <strong style={{ color: "#0a1f3c" }}>8,44% (IPCA + 4,00% a.a.)</strong>, o que evidencia a solidez da
+                    estratégia adotada.
                 </p>
 
                 <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d3" style={{ marginTop: 16 }}>
-                    O RegiusPrev é o plano de previdência complementar mais recente administrado pela Previdência BRB,
-                    destinado a Estados e Municípios que desejam implantar o Regime de Previdência Complementar (RPC)
-                    para seus servidores, conforme previsto na Emenda Constitucional nº 103/2019.
+                    O desempenho foi integralmente explicado pela Renda Fixa, com retorno igualmente de 12,37%, refletindo a
+                    elevada participação de títulos públicos federais, em especial{" "}
+                    <strong style={{ color: "#0a1f3c" }}>NTN-B (+11,76%)</strong>, e fundos de renda fixa com desempenho
+                    consistente <strong style={{ color: "#0a1f3c" }}>(+14,07%)</strong>.
                 </p>
 
-                <div className="plano-chart-box plano-chart-box--light">
-                    <div className="plano-chart-title">Rentabilidade vs. Índice de Referência</div>
-                    <Bar data={data} options={options} />
-                </div>
+                <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d3" style={{ marginTop: 16 }}>
+                    As LFT contribuíram de forma pontual no início do exercício, enquanto os fundos sob gestão própria
+                    reforçaram a estabilidade dos retornos ao longo do ano.
+                </p>
 
-                <div className="plano-kpi-row">
-                    <div className="plano-kpi-card plano-kpi-card--light">
-                        <div className="plano-kpi-label">Desempenho vs. Referência</div>
-                        <div className="plano-kpi-value">147%</div>
-                        <div className="plano-kpi-sub">Acima de 118% registrado em 2024</div>
-                    </div>
-                    <div className="plano-kpi-card plano-kpi-card--light">
-                        <div className="plano-kpi-label">Concentração Renda Fixa</div>
-                        <div className="plano-kpi-value">94%</div>
-                        <div className="plano-kpi-sub">Carteira conservadora e soberana</div>
-                    </div>
-                    <div className="plano-kpi-card plano-kpi-card--light">
-                        <div className="plano-kpi-label">Crescimento Patrimônio</div>
-                        <div className="plano-kpi-value">+117,66%</div>
-                        <div className="plano-kpi-sub">De R$ 348 mil para R$ 758 mil</div>
-                    </div>
-                </div>
+                <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d3" style={{ marginTop: 16 }}>
+                    A carteira apresentou baixa volatilidade e elevada previsibilidade, características alinhadas ao perfil do
+                    plano e ao público atendido. No consolidado, o RegiusPrev demonstrou elevada aderência à política de
+                    investimentos e capacidade consistente de superação do seu benchmark, preservando o poder de compra dos
+                    participantes.
+                </p>
             </div>
         </section>
     );
