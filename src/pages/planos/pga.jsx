@@ -182,7 +182,7 @@ function SecaoCusteioAdministrativo() {
 
 function SecaoDesempenhoPlano() {
   const compData = {
-    labels: ["Meta Atuarial", "Rentabilidade", "Ganho Real"],
+    labels: ["Referencial", "Rentabilidade", "Ganho Real"],
     datasets: [{
       label: "%",
       data: [8.44, 11.51, 6.95],
