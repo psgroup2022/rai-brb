@@ -348,7 +348,7 @@ function SecaoArrecadacao() {
     labels: ["2023", "2024", "2025"],
     datasets: [
       { label: "Arrecadação", data: [89888, 251055, 367056], backgroundColor: "#00aeef", borderRadius: 4 },
-      { label: "Benefícios/Institutos", data: [0, 5527, 4175], backgroundColor: "#0074c8", borderRadius: 4 },
+      { label: "Benefícios/Institutos", data: [0, 5527, 0], backgroundColor: "#0074c8", borderRadius: 4 },
     ],
   };
 
