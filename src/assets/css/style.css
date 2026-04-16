@@ -5780,6 +5780,9 @@ ul.pagination li a:hover {
     opacity: 0;
     transform: translateY(32px);
     transition: opacity 0.7s ease, transform 0.7s ease;
+    width: 100%;
+    /* Garante que a tabela não estoure o container em telas pequenas */
+    -webkit-overflow-scrolling: touch;
 }
 .plano-table-wrap.is-visible {
     opacity: 1;
@@ -5792,6 +5795,7 @@ ul.pagination li a:hover {
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 12px;
     overflow: hidden;
+    table-layout: auto;
 }
 .plano-table--light {
     background: #ffffff;
@@ -5808,6 +5812,7 @@ ul.pagination li a:hover {
     letter-spacing: 0.06em;
     text-transform: uppercase;
     border-bottom: 1px solid rgba(255,255,255,0.08);
+    white-space: normal;
 }
 .plano-table--light th {
     color: #004282;
@@ -5815,11 +5820,16 @@ ul.pagination li a:hover {
 }
 .plano-table td {
     padding: 13px 18px;
-    font-size: 0.88rem;
+    font-size: 0.95rem;
     color: rgba(255,255,255,0.7);
     border-bottom: 1px solid rgba(255,255,255,0.05);
+    white-space: normal;
+    vertical-align: top;
 }
 .plano-table--light td { color: #475569; border-bottom-color: #e6e6e6; }
+.plano-table--light td, .plano-table--light th {
+    background: #fff;
+}
 .plano-table tbody tr:hover { background: rgba(0,174,239,0.04); }
 .plano-table tbody tr:last-child td { border-bottom: none; }
 .plano-table td.num, .plano-table th.num {
@@ -5829,6 +5839,20 @@ ul.pagination li a:hover {
     text-align: right;
     white-space: nowrap;
     letter-spacing: 0;
+}
+@media (max-width: 700px) {
+    .plano-table th, .plano-table td {
+        padding: 10px 8px;
+        font-size: 0.92rem;
+    }
+    .plano-table-wrap {
+        margin-top: 24px;
+    }
+}
+.plano-table td.long-text {
+    white-space: normal !important;
+    word-break: break-word !important;
+    max-width: 260px;
 }
 .plano-table--light td.num, .plano-table--light th.num { color: #004282; }
 .plano-table tr.total td { font-weight: 700; background: rgba(0,174,239,0.06); }

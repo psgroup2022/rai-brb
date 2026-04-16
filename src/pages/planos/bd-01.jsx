@@ -725,7 +725,7 @@ function SecaoPremissas() {
                             </tr>
                             <tr>
                                 <td>Entrada em Aposentadoria</td>
-                                <td className="num" style={{ color: '#00aeef', fontWeight: 700 }}>Postergação de 24 meses para participantes até 60 anos, postergação de 6 meses para participantes entre 60 e 65 anos e que não ocorra postergação após 65 anos.</td>
+                                <td className="num long-text" style={{ color: '#00aeef', fontWeight: 700 }}>Postergação de 24 meses para participantes até 60 anos, postergação de 6 meses para participantes entre 60 e 65 anos e que não ocorra postergação após 65 anos.</td>
                                 <td className="num">24 meses</td>
                             </tr>
                         </tbody>
