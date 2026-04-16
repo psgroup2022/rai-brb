@@ -453,26 +453,23 @@ function SecaoAtuarial() {
 
         {/* Tabela Ativo Líquido */}
         <div className="plano-table-wrap">
-          <table className="plano-table plano-table--light">
+          <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
+            <colgroup><col /><col style={{ width: '22%' }} /><col style={{ width: '22%' }} /></colgroup>
             <thead>
-              <tr>
-                <th style={{ minWidth: '260px' }}>Rubrica</th>
-                <th className="num">2024</th>
-                <th className="num">2025</th>
-              </tr>
+              <tr><th>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
             </thead>
             <tbody>
               {[
-                ["Ativo Total", "R$ 70.115.689,56", "R$ 71.614.636,73"],
-                ["Exigível Operacional", "-R$ 185.690,00", "-R$ 181.725,46"],
-                ["Fundos (Administrativo e Investimento)", "-R$ 548.717,30", "-R$ 623.783,35"],
+                ["Ativo Total",                              "70.115.689,56",  "71.614.636,73"],
+                ["Exigível Operacional",                     "-185.690,00",    "-181.725,46"],
+                ["Fundos (Administrativo e Investimento)",   "-548.717,30",    "-623.783,35"],
               ].map(([r, a, b], i) => (
                 <tr key={i}><td>{r}</td><td className="num">{a}</td><td className="num">{b}</td></tr>
               ))}
               <tr className="total">
                 <td><strong>Ativo Líquido do Plano</strong></td>
-                <td className="num">R$ 69.381.282,26</td>
-                <td className="num">R$ 70.809.127,92</td>
+                <td className="num"><strong>69.381.282,26</strong></td>
+                <td className="num"><strong>70.809.127,92</strong></td>
               </tr>
             </tbody>
           </table>
@@ -480,21 +477,22 @@ function SecaoAtuarial() {
 
         {/* Tabela Provisões Matemáticas */}
         <div className="plano-table-wrap" style={{ marginTop: 32 }}>
-          <table className="plano-table plano-table--light">
+          <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
+            <colgroup><col /><col style={{ width: '22%' }} /><col style={{ width: '22%' }} /></colgroup>
             <thead>
-              <tr><th style={{ minWidth: '260px' }}>Provisões Matemáticas</th><th className="num">2024</th><th className="num">2025</th></tr>
+              <tr><th>Provisões Matemáticas</th><th className="num">2024</th><th className="num">2025</th></tr>
             </thead>
             <tbody>
               {[
-                ["Provisão Matemática de Benefício Concedido", "R$ 9.441.535,79", "R$ 12.649.666,37"],
-                ["Provisão Matemática de Benefício a Conceder", "R$ 59.214.818,22", "R$ 57.308.783,27"],
+                ["Provisão Matemática de Benefício Concedido",  "9.441.535,79",  "12.649.666,37"],
+                ["Provisão Matemática de Benefício a Conceder", "59.214.818,22", "57.308.783,27"],
               ].map(([r, a, b], i) => (
                 <tr key={i}><td>{r}</td><td className="num">{a}</td><td className="num">{b}</td></tr>
               ))}
               <tr className="total">
                 <td><strong>Provisão Matemática Total</strong></td>
-                <td className="num">R$ 68.656.354,01</td>
-                <td className="num">R$ 69.958.449,64</td>
+                <td className="num"><strong>68.656.354,01</strong></td>
+                <td className="num"><strong>69.958.449,64</strong></td>
               </tr>
             </tbody>
           </table>
@@ -502,22 +500,23 @@ function SecaoAtuarial() {
 
         {/* Tabela Resultado Atuarial */}
         <div className="plano-table-wrap" style={{ marginTop: 32 }}>
-          <table className="plano-table plano-table--light">
+          <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
+            <colgroup><col /><col style={{ width: '22%' }} /><col style={{ width: '22%' }} /></colgroup>
             <thead>
-              <tr><th style={{ minWidth: '260px' }}>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
+              <tr><th>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
             </thead>
             <tbody>
               {[
-                ["Ativo Líquido do Plano", "R$ 69.381.282,26", "R$ 70.809.127,92"],
-                ["Provisão Matemática Total", "-R$ 68.656.354,01", "-R$ 69.958.449,64"],
-                ["Fundo Previdencial", "-R$ 724.928,25", "-R$ 850.678,28"],
+                ["Ativo Líquido do Plano",       "69.381.282,26",  "70.809.127,92"],
+                ["Provisão Matemática Total",    "-68.656.354,01", "-69.958.449,64"],
+                ["Fundo Previdencial",           "-724.928,25",    "-850.678,28"],
               ].map(([r, a, b], i) => (
                 <tr key={i}><td>{r}</td><td className="num">{a}</td><td className="num">{b}</td></tr>
               ))}
               <tr className="total">
                 <td><strong>Resultado Atuarial</strong></td>
-                <td className="num">R$ 0,00</td>
-                <td className="num">R$ 0,00</td>
+                <td className="num"><strong>0,00</strong></td>
+                <td className="num"><strong>0,00</strong></td>
               </tr>
             </tbody>
           </table>

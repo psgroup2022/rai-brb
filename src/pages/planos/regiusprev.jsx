@@ -522,31 +522,33 @@ function SecaoAtuarial() {
                 </div>
 
                 <div className="plano-table-wrap">
-                    <table className="plano-table plano-table--light">
+                    <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
+                        <colgroup><col /><col style={{ width: '22%' }} /><col style={{ width: '22%' }} /></colgroup>
                         <thead>
                             <tr><th>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>Ativo Total</td><td className="num">R$ 358.916,96</td><td className="num">R$ 780.553,41</td></tr>
-                            <tr><td>Exigível Operacional</td><td className="num">-R$ 1.163,26</td><td className="num">-R$ 1.822,78</td></tr>
-                            <tr><td>Fundos (Administrativo e Investimento)</td><td className="num">-R$ 9.242,20</td><td className="num">-R$ 20.173,49</td></tr>
+                            <tr><td>Ativo Total</td><td className="num">358.916,96</td><td className="num">780.553,41</td></tr>
+                            <tr><td>Exigível Operacional</td><td className="num">-1.163,26</td><td className="num">-1.822,78</td></tr>
+                            <tr><td>Fundos (Administrativo e Investimento)</td><td className="num">-9.242,20</td><td className="num">-20.173,49</td></tr>
                             <tr className="total">
-                                <td><strong>Ativo Líquido do Plano</strong></td><td className="num">R$ 348.511,50</td><td className="num">R$ 758.557,14</td>
+                                <td><strong>Ativo Líquido do Plano</strong></td><td className="num"><strong>348.511,50</strong></td><td className="num"><strong>758.557,14</strong></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div className="plano-table-wrap">
-                    <table className="plano-table plano-table--light">
+                <div className="plano-table-wrap" style={{ marginTop: '24px' }}>
+                    <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
+                        <colgroup><col /><col style={{ width: '22%' }} /><col style={{ width: '22%' }} /></colgroup>
                         <thead>
                             <tr><th>Provisões Matemáticas</th><th className="num">2024</th><th className="num">2025</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>Provisão Matemática de Benefício Concedido</td><td className="num">R$ 0,00</td><td className="num">R$ 0,00</td></tr>
-                            <tr><td>Provisão Matemática de Benefício a Conceder</td><td className="num">R$ 348.511,50</td><td className="num">R$ 758.557,14</td></tr>
+                            <tr><td>Provisão Matemática de Benefício Concedido</td><td className="num">0,00</td><td className="num">0,00</td></tr>
+                            <tr><td>Provisão Matemática de Benefício a Conceder</td><td className="num">348.511,50</td><td className="num">758.557,14</td></tr>
                             <tr className="total">
-                                <td><strong>Provisão Matemática Total</strong></td><td className="num">R$ 348.511,50</td><td className="num">R$ 758.557,14</td>
+                                <td><strong>Provisão Matemática Total</strong></td><td className="num"><strong>348.511,50</strong></td><td className="num"><strong>758.557,14</strong></td>
                             </tr>
                         </tbody>
                     </table>

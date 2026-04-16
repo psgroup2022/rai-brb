@@ -2256,6 +2256,11 @@ header.two {
     z-index: 5;
     position: relative;
 } 
+.services-two h3 {
+    color: #ffffff;
+    z-index: 5;
+    position: relative;
+}
 .services-two h3 a {
     font-size: 22px;
     font-weight: bold;
@@ -2264,7 +2269,8 @@ header.two {
     padding-bottom: 10px;
     z-index: 5;
     position: relative;
-} 
+    color: #ffffff;
+}
 .services-two p { 
     z-index: 5;
     position: relative;
@@ -5821,6 +5827,8 @@ ul.pagination li a:hover {
     font-weight: 700;
     color: #00aeef;
     text-align: right;
+    white-space: nowrap;
+    letter-spacing: 0;
 }
 .plano-table--light td.num, .plano-table--light th.num { color: #004282; }
 .plano-table tr.total td { font-weight: 700; background: rgba(0,174,239,0.06); }

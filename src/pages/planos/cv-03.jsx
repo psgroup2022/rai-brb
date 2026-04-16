@@ -404,22 +404,23 @@ function SecaoAtuarial() {
 
                 {/* Tabela Ativo Líquido */}
                 <div className="plano-table-wrap">
-                    <table className="plano-table plano-table--light">
+                    <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
+                        <colgroup><col /><col style={{ width: '22%' }} /><col style={{ width: '22%' }} /></colgroup>
                         <thead>
                             <tr><th>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
                         </thead>
                         <tbody>
                             {[
-                                ["Ativo Total",                             "R$ 844.911.940,82",  "R$ 1.015.500.627,60"],
-                                ["Exigível Operacional",                   "-R$ 400.854,32",     "-R$ 504.776,41"],
-                                ["Fundos (Administrativo e Investimento)", "-R$ 13.371.149,15",  "-R$ 15.340.453,30"],
+                                ["Ativo Total",                             "844.911.940,82",  "1.015.500.627,60"],
+                                ["Exigível Operacional",                   "-400.854,32",     "-504.776,41"],
+                                ["Fundos (Administrativo e Investimento)", "-13.371.149,15",  "-15.340.453,30"],
                             ].map(([r, a, b], i) => (
                                 <tr key={i}><td>{r}</td><td className="num">{a}</td><td className="num">{b}</td></tr>
                             ))}
                             <tr className="total">
                                 <td><strong>Ativo Líquido do Plano</strong></td>
-                                <td className="num">R$ 831.139.937,35</td>
-                                <td className="num">R$ 999.655.397,89</td>
+                                <td className="num"><strong>831.139.937,35</strong></td>
+                                <td className="num"><strong>999.655.397,89</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -427,22 +428,23 @@ function SecaoAtuarial() {
 
                 {/* Tabela Provisões Matemáticas */}
                 <div className="plano-table-wrap" style={{ marginTop: 32 }}>
-                    <table className="plano-table plano-table--light">
+                    <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
+                        <colgroup><col /><col style={{ width: '22%' }} /><col style={{ width: '22%' }} /></colgroup>
                         <thead>
                             <tr><th>Provisões Matemáticas</th><th className="num">2024</th><th className="num">2025</th></tr>
                         </thead>
                         <tbody>
                             {[
-                                ["Provisão Matemática de Benefício Concedido",  "R$ 23.112.439,34",  "R$ 31.481.835,54"],
-                                ["Provisão Matemática de Benefício a Conceder", "R$ 772.347.259,37", "R$ 924.775.606,06"],
-                                ["Provisão Matemática a Constituir",            "-R$ 253.343,70",    "-R$ 189.495,63"],
+                                ["Provisão Matemática de Benefício Concedido",  "23.112.439,34",  "31.481.835,54"],
+                                ["Provisão Matemática de Benefício a Conceder", "772.347.259,37", "924.775.606,06"],
+                                ["Provisão Matemática a Constituir",            "-253.343,70",    "-189.495,63"],
                             ].map(([r, a, b], i) => (
                                 <tr key={i}><td>{r}</td><td className="num">{a}</td><td className="num">{b}</td></tr>
                             ))}
                             <tr className="total">
                                 <td><strong>Provisão Matemática Total</strong></td>
-                                <td className="num">R$ 795.206.355,01</td>
-                                <td className="num">R$ 956.067.945,97</td>
+                                <td className="num"><strong>795.206.355,01</strong></td>
+                                <td className="num"><strong>956.067.945,97</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -450,17 +452,18 @@ function SecaoAtuarial() {
 
                 {/* Tabela Resultado Atuarial */}
                 <div className="plano-table-wrap" style={{ marginTop: 32 }}>
-                    <table className="plano-table plano-table--light">
+                    <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
+                        <colgroup><col /><col style={{ width: '22%' }} /><col style={{ width: '22%' }} /></colgroup>
                         <thead>
                             <tr><th>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
                         </thead>
                         <tbody>
                             {[
-                                ["Ativo Líquido do Plano",           "R$ 831.139.937,35",  "R$ 999.655.397,89"],
-                                ["Provisão Matemática Total",        "-R$ 795.206.355,01", "-R$ 956.067.945,97"],
-                                ["Fundo Previdencial",               "-R$ 30.508.480,11",  "-R$ 35.372.138,40"],
-                                ["Superávit (Reserva de Contingência)", "R$ 5.425.102,23", "R$ 7.202.138,12"],
-                                ["Reserva Especial",                 "R$ 0,00",            "R$ 1.013.175,40"],
+                                ["Ativo Líquido do Plano",               "831.139.937,35",  "999.655.397,89"],
+                                ["Provisão Matemática Total",            "-795.206.355,01", "-956.067.945,97"],
+                                ["Fundo Previdencial",                   "-30.508.480,11",  "-35.372.138,40"],
+                                ["Superávit (Reserva de Contingência)",  "5.425.102,23",    "7.202.138,12"],
+                                ["Reserva Especial",                     "0,00",            "1.013.175,40"],
                             ].map(([r, a, b], i) => (
                                 <tr key={i}><td>{r}</td><td className="num">{a}</td><td className="num">{b}</td></tr>
                             ))}
