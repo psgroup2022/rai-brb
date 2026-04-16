@@ -567,7 +567,10 @@ function SecaoCustos() {
           <table className="plano-table">
             <thead>
               <tr>
-                <th>Despesas (R$)</th>
+                <th colSpan={4} style={{ textAlign: 'center' }}>Despesas (R$)</th>
+              </tr>
+              <tr>
+                <th>Gestão Própria</th>
                 <th className="num">Gestão Previdencial</th>
                 <th className="num">Gestão de Investimentos</th>
                 <th className="num">Total</th>
@@ -580,17 +583,10 @@ function SecaoCustos() {
               <tr><td>Despesas de Consumo, Depreciações, Tafic etc</td><td className="num">61</td><td className="num">69</td><td className="num">130</td></tr>
               <tr><td>Contingências (PIS e COFINS)</td><td className="num">504</td><td className="num">110</td><td className="num">614</td></tr>
               <tr className="total">
-                <td><strong>TOTAIS</strong></td><td className="num">1.279</td><td className="num">986</td><td className="num">2.265</td>
+                <td><strong>TOTAIS</strong></td><td className="num"><strong>1.279</strong></td><td className="num"><strong>986</strong></td><td className="num"><strong>2.265</strong></td>
               </tr>
             </tbody>
           </table>
-        </div>
-
-        <div className="plano-chart-box">
-          <div className="plano-chart-title">Distribuição de Custos Administrativos</div>
-          <div style={{ maxWidth: 420, margin: "0 auto" }}>
-            <Doughnut data={custosData} options={custosOptions} />
-          </div>
         </div>
 
         <div style={{ marginTop: 48 }}>
