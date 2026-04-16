@@ -198,7 +198,7 @@ function MensagemLiderancas() {
                                 </p>
 
                                 <p style={{ marginBottom: '28px' }}>
-                                    O desenvolvimento do time foi uma marca em 2025, com a realização de 1.417 horas de treinamento, e incentivamos a inovação, por meio do Programa Eureka, em que os colaboradores apresentaram projetos de melhoria nos processos internos e no atendimento ao Participante. Avançamos, ainda, na agenda de governança e integridade, com a obtenção e renovação de certificações relevantes, que atestam a qualidade dos processos, a segurança da informação e a solidez da gestão (ISO 27.7001 e 27.701, Certificações ABRAPP em Governança de Investimentos e Governança Corporativa e a DSC 10.000, que referendou o nosso Sistema de Integridade e Compliance).
+                                    O desenvolvimento do time foi uma marca em 2025, com a realização de 1.417 horas de treinamento, e incentivamos a inovação, por meio do Programa Eureka, em que os colaboradores apresentaram projetos de melhoria nos processos internos e no atendimento ao Participante. Avançamos, ainda, na agenda de governança e integridade, com a obtenção e renovação de certificações relevantes, que atestam a qualidade dos processos, a segurança da informação e a solidez da gestão (ISO 27.001 e 27.701, Certificações ABRAPP em Governança de Investimentos e Governança Corporativa e a DSC 10.000, que referendou o nosso Sistema de Integridade e Compliance).
                                 </p>
 
                                 <p style={{ marginBottom: '28px' }}>

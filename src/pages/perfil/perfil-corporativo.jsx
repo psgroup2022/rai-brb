@@ -409,7 +409,7 @@ function PerfilCorporativo() {
                             Somos uma Entidade Fechada de Previdência Complementar, instituída como uma sociedade civil sem fins lucrativos. Desde 2023 adotamos o nome fantasia de Previdência BRB, em homenagem à Patrocinadora Fundadora, o BRB-Banco de Brasília S/A, onde tudo começou em 1985.
                         </p>
                         <p className="perfil-body-text">
-                            Administramos 7 Planos de Benefícios (BD-01, CD-02, CV-03, CD- Metrô-DF, CD-05, RegiusPrev – de entes federativos e o plano instituído BrasíliaPrev, além do PGA – Plano de Gestão Administrativa, que garante a sustentabilidade administrativa da Entidade.
+                            Administramos 7 Planos de Benefícios (BD-01, CD-02, CV-03, CD-Metrô-DF, CD-05, RegiusPrev – de entes federativos e o plano instituído BrasíliaPrev, além do PGA – Plano de Gestão Administrativa, que garante a sustentabilidade administrativa da Entidade.
                         </p>
                         <p className="perfil-body-text">
                             Em 2025, a Previdência BRB consolidou avanços relevantes em sua estratégia de crescimento, fortalecimento institucional e aprimoramento da governança, com destaque para os seguintes resultados:
@@ -681,7 +681,7 @@ function PerfilCorporativo() {
                             Também tiveram continuidade os programas de Educação Financeira e Previdenciária e de Gestão ASG, — todos integrantes do Programa de Educação Continuada (PEC) da Previdência BRB. No total, foram registradas 2.516 horas de treinamentos, resultado 66,93% superior ao alcançado em 2024.
                         </p>
                         <p className="perfil-body-text">
-                            Além disso, a Previdência BRB viabillizou a renovação de 11 certificações profissionais: 1 CEA, 8 CPA-20 e 2 ICSS, garantindo que a equipe atue com excelência técnica nos órgãos colegiados e comitês técnicos.
+                            Além disso, a Previdência BRB viabilizou a renovação de 11 certificações profissionais: 1 CEA, 8 CPA-20 e 2 ICSS, garantindo que a equipe atue com excelência técnica nos órgãos colegiados e comitês técnicos.
                         </p>
                     </div>
                     <div className="col-lg-6" style={{ animation: "fadeInUp 0.6s ease-out backwards" }}>

@@ -8,6 +8,8 @@ import iconCDMetro from "../../assets/img/cdmetro.svg";
 import headerCDMetroVideo from "../../assets/img/cd-metro.mp4";
 import { IMAGES } from "../../constant/theme";
 
+
+import { Bar } from "react-chartjs-2";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -18,39 +20,18 @@ import {
     Tooltip,
     Legend,
 } from "chart.js";
-import { Bar, Doughnut, Pie } from "react-chartjs-2";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend);
-
-function useReveal() {
-    useEffect(() => {
-        const els = document.querySelectorAll(".dstq-reveal, .plano-kpi-card, .plano-chart-box, .plano-table-wrap");
-        const observer = new IntersectionObserver(
-            (entries) =>
-                entries.forEach((e) => {
-                    if (e.isIntersecting) {
-                        e.target.classList.add("is-visible");
-                        observer.unobserve(e.target);
-                    }
-                }),
-            { threshold: 0.1 }
-        );
-        els.forEach((el) => observer.observe(el));
-        return () => observer.disconnect();
-    }, []);
-}
-
-const DARK_CHART_OPTS = {
-    color: "rgba(255,255,255,0.6)",
-    borderColor: "rgba(255,255,255,0.08)",
-};
 
 const LIGHT_CHART_OPTS = {
     color: "rgba(10,31,60,0.7)",
     borderColor: "rgba(0,0,0,0.06)",
 };
 
-
+const DARK_CHART_OPTS = {
+    color: "rgba(255,255,255,0.6)",
+    borderColor: "rgba(255,255,255,0.08)",
+};
 
 function Band({ quote }) {
     return (
@@ -212,7 +193,7 @@ function SecaoDesempenho() {
                             <span className="pop-total-label">participantes em 2025</span>
                             <div className="pop-total-delta">
                                 <span className="pop-delta-badge" style={{ color: '#16a34a', background: 'rgba(22, 163, 74, 0.1)' }}>▲ 4,02%</span>
-                                <span className="pop-delta-context">vs. 2024</span>
+                                <span className="pop-delta-context">vs. 896 em 2024</span>
                             </div>
                         </div>
                         <div className="pop-closed-tag" style={{ background: "rgba(0,174,239,0.06)", border: "1px solid rgba(0,174,239,0.15)" }}>
@@ -420,8 +401,8 @@ function SecaoArrecadacao() {
     const fluxData = {
         labels: ["2023", "2024", "2025"],
         datasets: [
-            { label: "Arrecadacao", data: [12.282, 15.907, 16.648], backgroundColor: "#00aeef", borderRadius: 4 },
-            { label: "Beneficios/Institutos", data: [0.93, 1.32, 2.233], backgroundColor: "#0074c8", borderRadius: 4 },
+            { label: "Arrecadação", data: [12.282, 15.907, 16.648], backgroundColor: "#00aeef", borderRadius: 4 },
+            { label: "Benefícios/Institutos", data: [0.93, 1.32, 2.233], backgroundColor: "#0074c8", borderRadius: 4 },
         ],
     };
 
@@ -441,7 +422,7 @@ function SecaoArrecadacao() {
             <div className="container">
                 <div className="dstq-section-label dstq-reveal">Fluxo Financeiro</div>
                 <h2 className="dstq-section-heading dstq-reveal dstq-reveal--d1">
-                    Arrecadacao e <span className="dstq-accent">Beneficios</span>
+                    Arrecadação e <span className="dstq-accent">Benefícios</span>
                 </h2>
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
@@ -450,7 +431,7 @@ function SecaoArrecadacao() {
                 </p>
 
                 <div className="plano-chart-box">
-                    <div className="plano-chart-title">Evolucao Arrecadacao vs. Beneficios (R$ milhoes)</div>
+                    <div className="plano-chart-title">Evolução Arrecadação vs. Benefícios (R$ milhões)</div>
                     <Bar data={fluxData} options={fluxOptions} />
                 </div>
 
@@ -464,68 +445,71 @@ function SecaoAtuarial() {
     return (
         <section id="atuarial" className="plano-section plano-section--light">
             <div className="container">
-                <div className="dstq-section-label dstq-section-label--light dstq-reveal">Situacao Atuarial</div>
+                <div className="dstq-section-label dstq-section-label--light dstq-reveal">Situação Atuarial</div>
                 <h2 className="dstq-section-heading dstq-section-heading--on-light dstq-reveal dstq-reveal--d1">
                     Resultado <span className="dstq-accent">Atuarial</span>
                 </h2>
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
                 <div className="plano-table-wrap dstq-reveal">
-                    <table className="plano-table plano-table--light">
+                    <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
+                        <colgroup><col /><col style={{ width: '22%' }} /><col style={{ width: '22%' }} /></colgroup>
                         <thead>
                             <tr><th>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
                         </thead>
                         <tbody>
                             {[
-                                ["Ativo Total", "R$ 124.704.127,86", "R$ 153.715.488,25"],
-                                ["Exigivel Operacional", "-R$ 67.415,27", "-R$ 74.654,11"],
-                                ["Fundos (Administrativo e Investimento)", "-R$ 2.010.747,26", "-R$ 2.386.127,72"],
+                                ["Ativo Total",                              "124.704.127,86",  "153.715.488,25"],
+                                ["Exigível Operacional",                     "-67.415,27",      "-74.654,11"],
+                                ["Fundos (Administrativo e Investimento)",   "-2.010.747,26",   "-2.386.127,72"],
                             ].map(([r, a, b], i) => (
                                 <tr key={i}><td>{r}</td><td className="num">{a}</td><td className="num">{b}</td></tr>
                             ))}
                             <tr className="total">
-                                <td><strong>Ativo Liquido do Plano</strong></td>
-                                <td className="num">R$ 122.625.965,33</td>
-                                <td className="num">R$ 151.254.706,42</td>
+                                <td><strong>Ativo Líquido do Plano</strong></td>
+                                <td className="num"><strong>122.625.965,33</strong></td>
+                                <td className="num"><strong>151.254.706,42</strong></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div className="plano-table-wrap dstq-reveal">
-                    <table className="plano-table plano-table--light">
+                <div className="plano-table-wrap dstq-reveal" style={{ marginTop: '24px' }}>
+                    <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
+                        <colgroup><col /><col style={{ width: '22%' }} /><col style={{ width: '22%' }} /></colgroup>
                         <thead>
-                            <tr><th>Provisoes Matematicas</th><th className="num">2024</th><th className="num">2025</th></tr>
+                            <tr><th>Provisões Matemáticas</th><th className="num">2024</th><th className="num">2025</th></tr>
                         </thead>
                         <tbody>
                             {[
-                                ["Provisao Matematica de Beneficio Concedido", "R$ 72.909,11", "R$ 348.348,45"],
-                                ["Provisao Matematica de Beneficio a Conceder", "R$ 121.814.120,05", "R$ 149.951.979,06"],
+                                ["Provisão Matemática de Benefício Concedido",  "72.909,11",         "348.348,45"],
+                                ["Provisão Matemática de Benefício a Conceder", "121.814.120,05",    "149.951.979,06"],
                             ].map(([r, a, b], i) => (
                                 <tr key={i}><td>{r}</td><td className="num">{a}</td><td className="num">{b}</td></tr>
                             ))}
                             <tr className="total">
-                                <td><strong>Provisao Matematica Total</strong></td>
-                                <td className="num">R$ 121.887.029,16</td>
-                                <td className="num">R$ 150.300.327,51</td>
+                                <td><strong>Provisão Matemática Total</strong></td>
+                                <td className="num"><strong>121.887.029,16</strong></td>
+                                <td className="num"><strong>150.300.327,51</strong></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div className="plano-table-wrap dstq-reveal">
-                    <table className="plano-table plano-table--light">
+                <div className="plano-table-wrap dstq-reveal" style={{ marginTop: '24px' }}>
+                    <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
+                        <colgroup><col /><col style={{ width: '22%' }} /><col style={{ width: '22%' }} /></colgroup>
                         <thead>
-                            <tr><th>Resultado Atuarial</th><th className="num">2024</th><th className="num">2025</th></tr>
+                            <tr><th>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>Ativo Liquido do Plano</td><td className="num">R$ 122.625.965,33</td><td className="num">R$ 151.254.706,42</td></tr>
-                            <tr><td>Provisao Matematica Total</td><td className="num">-R$ 121.887.029,16</td><td className="num">-R$ 150.300.327,51</td></tr>
-                            <tr><td>Fundo Previdencial</td><td className="num">-R$ 738.936,17</td><td className="num">-R$ 954.378,91</td></tr>
-                            <tr style={{ background: "rgba(0,174,239,0.05)" }}>
+                            <tr><td>Ativo Líquido do Plano</td><td className="num">122.625.965,33</td><td className="num">151.254.706,42</td></tr>
+                            <tr><td>Provisão Matemática Total</td><td className="num">-121.887.029,16</td><td className="num">-150.300.327,51</td></tr>
+                            <tr><td>Fundo Previdencial</td><td className="num">-738.936,17</td><td className="num">-954.378,91</td></tr>
+                            <tr className="total">
                                 <td><strong>Resultado Atuarial</strong></td>
-                                <td className="num">R$ 0,00</td>
-                                <td className="num">R$ 0,00</td>
+                                <td className="num"><strong>0,00</strong></td>
+                                <td className="num"><strong>0,00</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -554,11 +538,44 @@ function SecaoAtuarial() {
     );
 }
 
+function SecaoEquilibrioCDMetro() {
+    return (
+        <section id="equilibrio" className="plano-section plano-section--dark">
+            <div className="container">
+                <div className="dstq-section-label dstq-reveal">Situação Financeira</div>
+                <h2 className="dstq-section-heading dstq-reveal dstq-reveal--d1">
+                    Equilíbrio <span className="dstq-accent">Técnico</span> do Plano
+                </h2>
+                <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
+
+                <div className="eq-grid dstq-reveal dstq-reveal--d2">
+                    <div className="eq-card eq-card--pat">
+                        <span className="eq-card-label">Patrimônio de Cobertura</span>
+                        <div className="eq-card-number">
+                            <span className="eq-currency">R$</span>
+                            <span className="eq-integer">150.300.327</span>
+                            <span className="eq-decimal">,51</span>
+                        </div>
+                    </div>
+                    <div className="eq-card eq-card--prov">
+                        <span className="eq-card-label">Provisões Matemáticas</span>
+                        <div className="eq-card-number">
+                            <span className="eq-currency">R$</span>
+                            <span className="eq-integer">150.300.327</span>
+                            <span className="eq-decimal">,51</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
 function SecaoEquilibrio() {
     return (
         <section className="plano-section plano-section--dark">
             <div className="container">
-                <div className="dstq-section-label dstq-reveal">Dashboard</div>
+                <div className="dstq-section-label dstq-reveal">Situação Financeira</div>
                 <h2 className="dstq-section-heading dstq-reveal dstq-reveal--d1">
                     Equilíbrio Técnico <span className="dstq-accent">do Plano</span>
                 </h2>
@@ -582,114 +599,108 @@ function SecaoEquilibrio() {
 
 function SecaoCustos() {
     return (
-        <section id="custos" className="plano-section plano-section--light">
+        <section id="custos" className="plano-section plano-section--dark">
             <div className="container">
-                <div className="dstq-section-label dstq-section-label--light dstq-reveal">Despesas Administrativas</div>
-                <h2 className="dstq-section-heading dstq-section-heading--on-light dstq-reveal dstq-reveal--d1">
+                <div className="dstq-section-label dstq-reveal">Despesas Administrativas</div>
+                <h2 className="dstq-section-heading dstq-reveal dstq-reveal--d1">
                     Custos com a <span className="dstq-accent">Administração</span>
                 </h2>
                 <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
-                <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d2">
-                    Em 2025, os custos com a administração do Plano de Benefícios CD-METRÔ-DF, formados pelas despesas com a gestão previdencial e a gestão de investimentos do Plano, foram distribuídos conforme demonstrado a seguir:
-                </p>
-
-                <div className="plano-table-wrap dstq-reveal" style={{ marginTop: 40 }}>
-                    <table className="plano-table plano-table--light">
-                        <thead style={{ backgroundColor: "#0074c8", color: "#fff" }}>
+                <div className="plano-table-wrap dstq-reveal">
+                    <table className="plano-table">
+                        <thead>
                             <tr>
-                                <th colSpan="4" style={{ textAlign: "center", backgroundColor: "#3b82f6", color: "#fff", padding: "12px", fontSize: "1.1rem", borderBottom: "2px solid #fff" }}>
-                                    DESPESAS (R$)
-                                </th>
+                                <th colSpan={4} style={{ textAlign: 'center' }}>Despesas (R$)</th>
                             </tr>
-                            <tr style={{ backgroundColor: "#3b82f6" }}>
-                                <th style={{ color: "#fff", fontWeight: "700" }}>GESTÃO PRÓPRIA</th>
-                                <th className="num" style={{ color: "#fff", fontWeight: "700", textAlign: "center" }}>GESTÃO PREVIDENCIAL</th>
-                                <th className="num" style={{ color: "#fff", fontWeight: "700", textAlign: "center" }}>GESTÃO DE INVESTIMENTOS</th>
-                                <th className="num" style={{ color: "#fff", fontWeight: "700", textAlign: "center" }}>TOTAL</th>
+                            <tr>
+                                <th>Gestão Própria</th>
+                                <th className="num">Gestão Previdencial</th>
+                                <th className="num">Gestão de Investimentos</th>
+                                <th className="num">Total</th>
                             </tr>
                         </thead>
                         <tbody>
                             {[
-                                ["Pessoal e Encargos", "184.158", "207.668", "391.826"],
-                                ["Treinamento e Viagens", "1.730", "1.951", "3.682"],
-                                ["Serviços de Terceiros", "64.896", "73.181", "138.077"],
-                                ["Despesas de Consumo, Depreciações, Tafic etc", "19.044", "21.475", "40.519"],
-                                ["Contingências (PIS e COFINS)", "30", "45.576", "45.606"],
+                                ["Pessoal e Encargos",                            "184.158", "207.668", "391.826"],
+                                ["Treinamento e Viagens",                         "1.730",   "1.951",   "3.682"],
+                                ["Serviços de Terceiros",                         "64.896",  "73.181",  "138.077"],
+                                ["Despesas de Consumo, Depreciações, Tafic etc",  "19.044",  "21.475",  "40.519"],
+                                ["Contingências (PIS e COFINS)",                  "30",      "45.576",  "45.606"],
                             ].map(([desc, prev, inv, tot], i) => (
                                 <tr key={i}>
-                                    <td style={{ fontWeight: i === 0 ? "600" : "400" }}>{desc}</td>
+                                    <td>{desc}</td>
                                     <td className="num">{prev}</td>
                                     <td className="num">{inv}</td>
                                     <td className="num">{tot}</td>
                                 </tr>
                             ))}
-                            <tr className="total" style={{ backgroundColor: "rgba(59, 130, 246, 0.1)" }}>
-                                <td style={{ backgroundColor: "#3b82f6", color: "#fff", fontWeight: "700" }}>TOTAIS</td>
-                                <td className="num" style={{ fontWeight: "700", backgroundColor: "rgba(59, 130, 246, 0.05)" }}>269.858</td>
-                                <td className="num" style={{ fontWeight: "700", backgroundColor: "rgba(59, 130, 246, 0.05)" }}>349.851</td>
-                                <td className="num" style={{ fontWeight: "700", backgroundColor: "rgba(59, 130, 246, 0.05)" }}>619.710</td>
+                            <tr className="total">
+                                <td><strong>TOTAIS</strong></td>
+                                <td className="num"><strong>269.858</strong></td>
+                                <td className="num"><strong>349.851</strong></td>
+                                <td className="num"><strong>619.710</strong></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+
+                {/* Tabela — Custos com a Gestão dos Planos Previdenciais */}
+                <div style={{ marginTop: '40px' }}>
+                    <h3 className="dstq-section-heading dstq-reveal" style={{ fontSize: '1.3rem', marginBottom: '20px' }}>
+                        Custos com a Gestão de Planos Previdenciais
+                    </h3>
+                    <div className="plano-table-wrap dstq-reveal">
+                        <table className="plano-table">
+                            <thead>
+                                <tr>
+                                    <th>Descrição</th>
+                                    <th className="num">CD Metrô-DF</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {[
+                                    ["Despesas de Fomento",                          "-"],
+                                    ["Pessoal e Encargos",                           "391.826"],
+                                    ["Treinamentos/Viagens",                         "3.682"],
+                                    ["Serviços de Terceiros",                        "138.077"],
+                                    ["Despesas de Consumo, Depreciação, Tafic, Etc", "40.519"],
+                                    ["Contingências (PIS e COFINS)",                 "45.606"],
+                                ].map(([desc, val], i) => (
+                                    <tr key={i}><td>{desc}</td><td className="num">{val}</td></tr>
+                                ))}
+                                <tr className="total">
+                                    <td><strong>Sub-Total (Despesas Adm)</strong></td>
+                                    <td className="num"><strong>619.710</strong></td>
+                                </tr>
+                                {[
+                                    ["Corretagens/Emolumentos Bolsa Valores",        "-"],
+                                    ["Taxa Adm/Gestão Fundos Abertos",               "20.243"],
+                                    ["Taxa Custódia/Controladoria Fundos Abertos",   "2.737"],
+                                    ["Taxa Performance Fundos Abertos",              "7.006"],
+                                    ["Outras Despesas Fundos Abertos",               "2.855"],
+                                ].map(([desc, val], i) => (
+                                    <tr key={i}><td>{desc}</td><td className="num">{val}</td></tr>
+                                ))}
+                                <tr className="total">
+                                    <td><strong>Sub-Total (Despesas Outras)</strong></td>
+                                    <td className="num"><strong>32.841</strong></td>
+                                </tr>
+                                <tr className="total" style={{ background: 'rgba(0,174,239,0.12)' }}>
+                                    <td><strong>TOTAL</strong></td>
+                                    <td className="num"><strong>652.550</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </section>
     );
 }
 
-function SecaoCustosGestao() {
-    return (
-        <section className="plano-section plano-section--light" style={{ paddingTop: 0 }}>
-            <div className="container">
-                <h3 className="dstq-reveal" style={{ fontSize: "1.4rem", fontWeight: "700", marginBottom: "24px", color: "#0074c8", textTransform: "uppercase" }}>
-                    Custos com a Gestão de Planos Previdenciais
-                </h3>
-                
-                <div className="plano-table-wrap dstq-reveal">
-                    <table className="plano-table plano-table--light">
-                        <thead style={{ backgroundColor: "#0074c8", color: "#fff" }}>
-                            <tr>
-                                <th style={{ color: "#fff", padding: "12px 20px", textAlign: "left", fontWeight: "700" }}>DESCRIÇÃO</th>
-                                <th style={{ color: "#fff", padding: "12px 20px", textAlign: "right", width: "200px", fontWeight: "700" }}>CD METRÔ-DF</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {[
-                                ["DESPESAS DE FOMENTO", "-"],
-                                ["PESSOAL E ENCARGOS", "391.826", true],
-                                ["TREINAMENTOS/VIAGENS", "3.682"],
-                                ["SERVIÇOS DE TERCEIROS", "138.077"],
-                                ["DESPESAS DE CONSUMO, DEPRECIAÇÃO, TAFIC, ETC)", "40.519"],
-                                ["CONTINGÊNCIAS (PIS e COFINS)", "45.606"],
-                                ["TOTAL", "619.710", false, true],
-                                ["CORRETAGENS/EMOLUMENTOS BOLSA VALORES", "-"],
-                                ["TAXA ADM/GESTÃO FUNDOS ABERTOS", "20.243"],
-                                ["TAXA CUSTODIA/CONTROLADORIA FUNDOS ABERTOS", "2.737"],
-                                ["TAXA PERFORMACE FUNDOS ABERTOS", "7.006"],
-                                ["OUTRAS DESPESAS FUNDOS ABERTOS", "2.855"],
-                                ["SUB-TOTAL (DESPESAS OUTRAS)", "32.841", true, true],
-                                ["TOTAL", "652.550", false, true],
-                            ].map(([desc, val, underline, isTotal], i) => (
-                                <tr key={i} className={isTotal ? "total" : ""}>
-                                    <td style={{ 
-                                        textDecoration: underline ? "underline" : "none",
-                                        fontWeight: isTotal ? "700" : "400"
-                                    }}>
-                                        {desc}
-                                    </td>
-                                    <td className="num" style={{ fontWeight: isTotal ? "700" : "400" }}>
-                                        {val}
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-    );
-}
+function SecaoCustosGestao() { return null; }
 function PlanoCDMetro() {
     useReveal();
 
@@ -783,16 +794,16 @@ function PlanoCDMetro() {
             </section>
 
             <SecaoEconomia />
-            <Band quote={'"O Plano CD-Metro/DF apresentou rentabilidade de 11,74%, equivalente a 139% do indice de referencia, com desempenho consistente e crescimento de 4,02% no numero de participantes."'} />
+            <Band quote={'"O Plano CD-Metrô/DF apresentou rentabilidade de 11,74%, equivalente a 139% do índice de referência, com desempenho consistente e crescimento de 4,02% no número de participantes."'} />
             <SecaoRentabilidade />
             <SecaoDesempenho />
             <SecaoInvestimentos />
             <SecaoArrecadacao />
-            <SecaoAtuarial />
             <SecaoEquilibrio />
+            <SecaoAtuarial />
             <SecaoCustos />
             <SecaoCustosGestao />
-            <Band quote={'"O Plano CD-Metro/DF encerrou 2025 com Equilibrio Tecnico economico e atuarial, rentabilidade de 11,74% e crescimento de 4,02% no numero de participantes."'} />
+            <Band quote={'"O Plano CD-Metrô/DF encerrou 2025 com Equilíbrio Técnico, econômico e atuarial, rentabilidade de 11,74% e crescimento de 4,02% no número de participantes."'} />
 
             <SecaoIndicePlanos particlesId="services-particles-cdmetro" />
 
@@ -802,3 +813,21 @@ function PlanoCDMetro() {
 }
 
 export default PlanoCDMetro;
+
+// Adiciona o hook useReveal (copiado do bd-01)
+function useReveal() {
+    useEffect(() => {
+        const els = document.querySelectorAll(".dstq-reveal, .plano-kpi-card, .plano-chart-box, .plano-table-wrap");
+        const observer = new IntersectionObserver(
+            (entries) => entries.forEach((e) => {
+                if (e.isIntersecting) {
+                    e.target.classList.add("is-visible");
+                    observer.unobserve(e.target);
+                }
+            }),
+            { threshold: 0.1 }
+        );
+        els.forEach((el) => observer.observe(el));
+        return () => observer.disconnect();
+    }, []);
+}

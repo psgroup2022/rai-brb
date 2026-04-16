@@ -446,11 +446,9 @@ function Governanca() {
                                     <p className="gov-info-box-subtitle">Controle e fiscalização interna</p>
                                     <p className="gov-scroll-card-desc">
                                         Órgão de controle interno e fiscalização, o Conselho Fiscal tem como principal função zelar pela gestão da PREVIDÊNCIA BRB, assegurando o cumprimento de normas e a correta aplicação dos recursos da Entidade.
-•	
-
                                     </p>
                                     <ul className="gov-scroll-card-desc">
-                                        <li>2 (dois) membros efetivos e igual número de suplentes designados por Patrocinadoras e Instituidoras, dentre os Participantes Ativos e Participantes Assistidos. </li>
+                                        <li>2 (dois) membros efetivos e igual número de suplentes designados por Patrocinadoras e Instituidoras, dentre os Participantes Ativos e Participantes Assistidos.</li>
                                         <li>2 (dois) membros efetivos e igual número de suplentes escolhidos em eleição direta pelos Participantes Ativos e Assistidos.</li>
                                         <li>A presidência do Conselho Fiscal caberá a um dos membros eleitos, escolhido por estes. </li>
                                     </ul>
