@@ -60,26 +60,6 @@ function Band({ quote }) {
    Seção 2 — Rentabilidade 2025
 ───────────────────────────────────────────── */
 function SecaoRentabilidade() {
-  const data = {
-    labels: ["Rentabilidade", "Índice de Referência"],
-    datasets: [{
-      data: [12.82, 8.43],
-      backgroundColor: ["#00aeef", "#0074c8"],
-      borderRadius: 6,
-    }],
-  };
-  const options = {
-    indexAxis: "y",
-    plugins: { legend: { display: false } },
-    scales: {
-      x: {
-        ticks: { callback: (v) => v + "%", color: LIGHT_CHART_OPTS.color },
-        grid: { color: LIGHT_CHART_OPTS.borderColor },
-      },
-      y: { ticks: { color: LIGHT_CHART_OPTS.color }, grid: { display: false } },
-    },
-  };
-
   return (
     <section id="rentabilidade" className="plano-section plano-section--light">
       <div className="container">
@@ -105,11 +85,6 @@ function SecaoRentabilidade() {
             </li>
           ))}
         </ul>
-
-        <div className="plano-chart-box plano-chart-box--light">
-          <div className="plano-chart-title">Rentabilidade vs. Índice de Referência</div>
-          <Bar data={data} options={options} />
-        </div>
       </div>
     </section>
   );
@@ -122,20 +97,40 @@ function SecaoDesempenho() {
   const compData = {
     labels: ["Referencial", "Rentabilidade", "Ganho Real"],
     datasets: [{
+      label: "%",
       data: [8.44, 12.82, 8.21],
-      backgroundColor: ["#0074c8", "#00aeef", "#004282"],
+      backgroundColor: ["rgba(0,116,200,0.85)", "rgba(0,174,239,0.9)", "rgba(72,199,142,0.9)"],
       borderRadius: 6,
     }],
   };
   const compOptions = {
     indexAxis: "y",
-    plugins: { legend: { display: false } },
+    plugins: {
+      legend: { display: false },
+      datalabels: { display: false },
+    },
     scales: {
       x: {
         ticks: { callback: (v) => v + "%", color: DARK_CHART_OPTS.color },
         grid: { color: DARK_CHART_OPTS.borderColor },
+        max: 14,
       },
       y: { ticks: { color: DARK_CHART_OPTS.color }, grid: { display: false } },
+    },
+    animation: {
+      onComplete: function () {
+        const chart = this;
+        const ctx = chart.ctx;
+        ctx.font = 'bold 13px Sora, Poppins, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        const vals = ["8,44%", "12,82%", "8,21% a.a."];
+        chart.data.datasets[0].data.forEach((val, i) => {
+          const meta = chart.getDatasetMeta(0).data[i];
+          ctx.fillText(vals[i], meta.x + 8, meta.y);
+        });
+      },
     },
   };
 
@@ -148,25 +143,13 @@ function SecaoDesempenho() {
         </h2>
         <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
-        <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
-          O Plano registrou uma rentabilidade acumulada de 12,82% em 2025, equivalente a 152% do seu índice de referência (IPCA+4,00% a.a.). Esse resultado representa um ganho real (acima da inflação) de 8,21%, sendo o plano de melhor desempenho entre todos os administrados pela Previdência BRB.
-        </p>
-        <p className="dstq-text-body dstq-reveal dstq-reveal--d3" style={{ marginTop: 12 }}>
-          O CD-02 possui 64% do seu patrimônio total alocado em NTN-B, com taxa média ponderada de 5,39% a.a. + IPCA.
-        </p>
-
-        <div className="plano-kpi-row" style={{ marginTop: 32 }}>
-          {[
-            { label: "Recurso do Plano", value: "R$ 70.959.586" },
-            { label: "Referencial", value: "8,44%" },
-            { label: "Rentabilidade", value: "12,82%" },
-            { label: "Ganho Real (acima da inflação)", value: "8,21% a.a." },
-          ].map((k, i) => (
-            <div className="plano-kpi-card" key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
-              <div className="plano-kpi-label">{k.label}</div>
-              <div className="plano-kpi-value">{k.value}</div>
-            </div>
-          ))}
+        <div className="dstq-reveal dstq-reveal--d2" style={{ marginBottom: '32px' }}>
+          <p className="dstq-text-body" style={{ marginBottom: '12px' }}>
+            O Plano registrou uma rentabilidade acumulada de <strong style={{ color: '#00aeef' }}>12,82%</strong> em 2025, equivalente a <strong style={{ color: '#00aeef' }}>152%</strong> do seu índice de referência (IPCA+4,00% a.a.), representando um ganho real (acima da inflação) de <strong style={{ color: '#00aeef' }}>8,21%</strong>, sendo o plano de melhor desempenho entre todos os administrados pela Previdência BRB.
+          </p>
+          <p className="dstq-text-body">
+            O CD-02 possui <strong style={{ color: '#00aeef' }}>64%</strong> do seu patrimônio total alocado em NTN-B, com taxa média ponderada de <strong style={{ color: '#00aeef' }}>5,39% a.a. + IPCA</strong>.
+          </p>
         </div>
 
         <div className="plano-chart-box">
@@ -374,18 +357,48 @@ function SecaoArrecadacao() {
   const fluxData = {
     labels: ["2023", "2024", "2025"],
     datasets: [
-      { label: "Arrecadação", data: [3494.26, 2939.10, 2435.61], backgroundColor: "#00aeef", borderRadius: 4 },
-      { label: "Benefícios/Institutos", data: [15638.14, 10939.53, 9155.84], backgroundColor: "#0074c8", borderRadius: 4 },
+      { label: "Arrecadação", data: [3494263, 2939098, 2435607], backgroundColor: "#00aeef", borderRadius: 4 },
+      { label: "Benefícios/Institutos", data: [15638144, 10939525, 9155841], backgroundColor: "#0074c8", borderRadius: 4 },
     ],
   };
+
+  const fmtAxis = (v) => {
+    if (v >= 1_000_000) return "R$ " + (v / 1_000_000).toFixed(0) + "M";
+    if (v >= 1_000) return "R$ " + (v / 1_000).toFixed(0) + "K";
+    return "R$ " + v;
+  };
+
+  const fmtLabel = (v) =>
+    "R$ " + v.toLocaleString("pt-BR");
+
   const fluxOptions = {
-    plugins: { legend: { position: "top", labels: { color: DARK_CHART_OPTS.color } } },
+    plugins: {
+      legend: { position: "top", labels: { color: DARK_CHART_OPTS.color } },
+      datalabels: { display: false },
+    },
     scales: {
       y: {
-        ticks: { callback: (v) => "R$ " + v.toLocaleString("pt-BR"), color: DARK_CHART_OPTS.color },
+        ticks: { callback: fmtAxis, color: DARK_CHART_OPTS.color },
         grid: { color: DARK_CHART_OPTS.borderColor },
       },
       x: { ticks: { color: DARK_CHART_OPTS.color }, grid: { display: false } },
+    },
+    animation: {
+      onComplete: function () {
+        const chart = this;
+        const ctx = chart.ctx;
+        ctx.font = 'bold 11px Sora, Poppins, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,0.92)';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        chart.data.datasets.forEach((dataset, di) => {
+          const meta = chart.getDatasetMeta(di);
+          meta.data.forEach((bar, i) => {
+            const val = dataset.data[i];
+            if (val > 0) ctx.fillText(fmtLabel(val), bar.x, bar.y - 4);
+          });
+        });
+      },
     },
   };
 
@@ -403,10 +416,9 @@ function SecaoArrecadacao() {
         </p>
 
         <div className="plano-chart-box">
-          <div className="plano-chart-title">Evolução Arrecadação vs. Benefícios (R$ milhares)</div>
+          <div className="plano-chart-title">Evolução Arrecadação vs. Benefícios/Institutos</div>
           <Bar data={fluxData} options={fluxOptions} />
         </div>
-
 
       </div>
     </section>
@@ -426,25 +438,43 @@ function SecaoAtuarial() {
         </h2>
         <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
+        <div className="dstq-reveal dstq-reveal--d2" style={{ marginBottom: '32px' }}>
+          <p className="dstq-text-body dstq-text-body--on-light" style={{ marginBottom: '14px' }}>
+            Cotejando o Patrimônio de Cobertura do Plano em 31 de dezembro de 2025, no montante de <strong style={{ color: '#0a1f3c' }}>R$ 70.809.127,92</strong>, com as Provisões Matemáticas, no mesmo período, de <strong style={{ color: '#0a1f3c' }}>R$ 69.958.449,64</strong>, o Plano CD-02 registrou <strong style={{ color: '#0a1f3c' }}>Resultado Atuarial de R$ 0,00</strong>, com equilíbrio técnico pleno.
+          </p>
+          <p className="dstq-text-body dstq-text-body--on-light" style={{ marginBottom: '14px' }}>
+            As Provisões Matemáticas dimensionadas em 31 de dezembro de 2025, no montante de <strong style={{ color: '#0a1f3c' }}>R$ 69.958.449,64</strong>, comparativamente àquelas constantes da Avaliação Atuarial de 2024, que perfizeram <strong style={{ color: '#0a1f3c' }}>R$ 68.656.354,01</strong>, representaram um aumento de aproximadamente <strong style={{ color: '#0a1f3c' }}>1,90%</strong>.
+          </p>
+          <p className="dstq-text-body dstq-text-body--on-light" style={{ marginBottom: '14px' }}>
+            A variação registrada é justificada pela manutenção de contribuições de participantes e patrocinadores, acrescidas do estoque e respectiva rentabilidade auferida no período, inferior aos montantes de resgate, portabilidade e concessões ocorridas no exercício.
+          </p>
+          <p className="dstq-text-body dstq-text-body--on-light">
+            O Plano de Benefícios CD-02 encontra-se em <strong style={{ color: '#0a1f3c' }}>Equilíbrio Técnico</strong> e, portanto, não há necessidade de aplicação de plano de equacionamento.
+          </p>
+        </div>
+
         {/* Tabela Ativo Líquido */}
         <div className="plano-table-wrap">
-          <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
-            <colgroup><col /><col style={{ width: '22%' }} /><col style={{ width: '22%' }} /></colgroup>
+          <table className="plano-table plano-table--light">
             <thead>
-              <tr><th>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
+              <tr>
+                <th style={{ minWidth: '260px' }}>Rubrica</th>
+                <th className="num">2024</th>
+                <th className="num">2025</th>
+              </tr>
             </thead>
             <tbody>
               {[
-                ["Ativo Total",                              "70.115.689,56",  "71.614.636,73"],
-                ["Exigível Operacional",                     "-185.690,00",    "-181.725,46"],
-                ["Fundos (Administrativo e Investimento)",   "-548.717,30",    "-623.783,35"],
+                ["Ativo Total", "R$ 70.115.689,56", "R$ 71.614.636,73"],
+                ["Exigível Operacional", "-R$ 185.690,00", "-R$ 181.725,46"],
+                ["Fundos (Administrativo e Investimento)", "-R$ 548.717,30", "-R$ 623.783,35"],
               ].map(([r, a, b], i) => (
                 <tr key={i}><td>{r}</td><td className="num">{a}</td><td className="num">{b}</td></tr>
               ))}
               <tr className="total">
                 <td><strong>Ativo Líquido do Plano</strong></td>
-                <td className="num"><strong>69.381.282,26</strong></td>
-                <td className="num"><strong>70.809.127,92</strong></td>
+                <td className="num">R$ 69.381.282,26</td>
+                <td className="num">R$ 70.809.127,92</td>
               </tr>
             </tbody>
           </table>
@@ -452,22 +482,21 @@ function SecaoAtuarial() {
 
         {/* Tabela Provisões Matemáticas */}
         <div className="plano-table-wrap" style={{ marginTop: 32 }}>
-          <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
-            <colgroup><col /><col style={{ width: '22%' }} /><col style={{ width: '22%' }} /></colgroup>
+          <table className="plano-table plano-table--light">
             <thead>
-              <tr><th>Provisões Matemáticas</th><th className="num">2024</th><th className="num">2025</th></tr>
+              <tr><th style={{ minWidth: '260px' }}>Provisões Matemáticas</th><th className="num">2024</th><th className="num">2025</th></tr>
             </thead>
             <tbody>
               {[
-                ["Provisão Matemática de Benefício Concedido",  "9.441.535,79",  "12.649.666,37"],
-                ["Provisão Matemática de Benefício a Conceder", "59.214.818,22", "57.308.783,27"],
+                ["Provisão Matemática de Benefício Concedido", "R$ 9.441.535,79", "R$ 12.649.666,37"],
+                ["Provisão Matemática de Benefício a Conceder", "R$ 59.214.818,22", "R$ 57.308.783,27"],
               ].map(([r, a, b], i) => (
                 <tr key={i}><td>{r}</td><td className="num">{a}</td><td className="num">{b}</td></tr>
               ))}
               <tr className="total">
                 <td><strong>Provisão Matemática Total</strong></td>
-                <td className="num"><strong>68.656.354,01</strong></td>
-                <td className="num"><strong>69.958.449,64</strong></td>
+                <td className="num">R$ 68.656.354,01</td>
+                <td className="num">R$ 69.958.449,64</td>
               </tr>
             </tbody>
           </table>
@@ -475,37 +504,26 @@ function SecaoAtuarial() {
 
         {/* Tabela Resultado Atuarial */}
         <div className="plano-table-wrap" style={{ marginTop: 32 }}>
-          <table className="plano-table plano-table--light" style={{ tableLayout: 'fixed' }}>
-            <colgroup><col /><col style={{ width: '22%' }} /><col style={{ width: '22%' }} /></colgroup>
+          <table className="plano-table plano-table--light">
             <thead>
-              <tr><th>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
+              <tr><th style={{ minWidth: '260px' }}>Rubrica</th><th className="num">2024</th><th className="num">2025</th></tr>
             </thead>
             <tbody>
               {[
-                ["Ativo Líquido do Plano",       "69.381.282,26",  "70.809.127,92"],
-                ["Provisão Matemática Total",    "-68.656.354,01", "-69.958.449,64"],
-                ["Fundo Previdencial",           "-724.928,25",    "-850.678,28"],
+                ["Ativo Líquido do Plano", "R$ 69.381.282,26", "R$ 70.809.127,92"],
+                ["Provisão Matemática Total", "-R$ 68.656.354,01", "-R$ 69.958.449,64"],
+                ["Fundo Previdencial", "-R$ 724.928,25", "-R$ 850.678,28"],
               ].map(([r, a, b], i) => (
                 <tr key={i}><td>{r}</td><td className="num">{a}</td><td className="num">{b}</td></tr>
               ))}
               <tr className="total">
                 <td><strong>Resultado Atuarial</strong></td>
-                <td className="num"><strong>0,00</strong></td>
-                <td className="num"><strong>0,00</strong></td>
+                <td className="num">R$ 0,00</td>
+                <td className="num">R$ 0,00</td>
               </tr>
             </tbody>
           </table>
         </div>
-
-        <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d2" style={{ marginTop: 36 }}>
-          As Provisões Matemáticas dimensionadas em 31 de dezembro de 2025, no montante de R$ 69.958.449,64, comparativamente àquelas constantes de Avaliação Atuarial de 2024, que perfizeram R$ 68.656.354,01, representaram um aumento de aproximadamente 1,90%.
-        </p>
-        <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d3" style={{ marginTop: 16 }}>
-          A variação registrada é justificada pela manutenção de contribuições de participantes e patrocinadores, acrescidas do estoque e respectiva rentabilidade auferida no período, inferior aos montantes de resgate, portabilidade e concessões ocorridas no exercício.
-        </p>
-        <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d3" style={{ marginTop: 16 }}>
-          O Plano de Benefícios CD-02 encerrou o exercício de 2025 com Equilíbrio Técnico econômico e atuarial, registrando, portanto, suficiência de cobertura e solvência.
-        </p>
 
         {/* CTA */}
         <div className="dstq-cta-wrap" style={{ marginTop: 40 }}>
@@ -560,7 +578,7 @@ function SecaoEquilibrio() {
 /* ─────────────────────────────────────────────
    Seção 7 — Custos
 ───────────────────────────────────────────── */
-function SecaoCustos() {
+function SecaoCustos(texto) {
   return (
     <section className="plano-section plano-section--dark">
       <div className="container">
@@ -571,6 +589,7 @@ function SecaoCustos() {
         <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
         <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
+          {texto}
           Em 2025, os custos com a administração do Plano de Benefícios CD-02, formados pelas despesas com a gestão previdencial e a gestão de investimentos do Plano, foram distribuídos conforme demonstrado a seguir:
         </p>
 
@@ -579,9 +598,12 @@ function SecaoCustos() {
           <table className="plano-table">
             <thead>
               <tr>
-                <th>Despesas (R$)</th>
-                <th className="num">Gestão Própria</th>
+                <th colSpan={4} style={{ textAlign: 'center' }}>Despesas (R$)</th>
+              </tr>
+              <tr>
+                <th>Gestão Própria</th>
                 <th className="num">Gestão Previdencial</th>
+                <th className="num">Gestão de Investimentos</th>
                 <th className="num">Total</th>
               </tr>
             </thead>
@@ -602,71 +624,69 @@ function SecaoCustos() {
               ))}
               <tr className="total">
                 <td><strong>TOTAIS</strong></td>
-                <td className="num">152.482</td>
-                <td className="num">191.337</td>
-                <td className="num">343.820</td>
+                <td className="num"><strong>152.482</strong></td>
+                <td className="num"><strong>191.337</strong></td>
+                <td className="num"><strong>343.820</strong></td>
               </tr>
             </tbody>
           </table>
         </div>
 
         {/* Tabela 2 — Custos com a Gestão dos Planos Previdenciais */}
-        <div className="plano-table-wrap" style={{ marginTop: 48 }}>
-          <h3 className="dstq-section-heading dstq-reveal" style={{ fontSize: "1.4rem", marginBottom: "24px" }}>
+        <div style={{ marginTop: '40px' }}>
+          <h3 className="dstq-section-heading dstq-reveal" style={{ fontSize: '1.3rem', marginBottom: '20px' }}>
             Custos com a Gestão dos Planos Previdenciais
           </h3>
-          <table className="plano-table">
-            <thead>
-              <tr>
-                <th>Descrição</th>
-                <th className="num">CD-02</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ["Despesas de Fomento", "—"],
-                ["Pessoal e Encargos", "2.656.919"],
-                ["Treinamentos/Viagens", "24.966"],
-                ["Serviços de Terceiros", "936.284"],
-                ["Despesas de Consumo, Depreciação, Tafic, etc", "263.558"],
-                ["Contingências (PIS e COFINS)", "279.889"],
-              ].map(([desc, val], i) => (
-                <tr key={i}>
-                  <td>{desc}</td>
-                  <td className="num">{val}</td>
+          <div className="plano-table-wrap dstq-reveal">
+            <table className="plano-table">
+              <thead>
+                <tr>
+                  <th>Descrição</th>
+                  <th className="num">CD-02</th>
                 </tr>
-              ))}
-              <tr className="total">
-                <td><strong>TOTAL</strong></td>
-                <td className="num">4.161.616</td>
-              </tr>
-              {[
-                ["Corretagens/Emolumentos Bolsa Valores", "—"],
-                ["Taxa Adm/Gestão Fundos Abertos", "25.747"],
-                ["Taxa Custódia/Controladoria Fundos Abertos", "8.048"],
-                ["Taxa Performance Fundos Abertos", "9"],
-                ["Outras Despesas Fundos Abertos", "18.328"],
-              ].map(([desc, val], i) => (
-                <tr key={i}>
-                  <td>{desc}</td>
-                  <td className="num">{val}</td>
+              </thead>
+              <tbody>
+                {[
+                  ["Despesas de Fomento", "—"],
+                  ["Pessoal e Encargos", "2.656.919"],
+                  ["Treinamentos/Viagens", "24.966"],
+                  ["Serviços de Terceiros", "936.284"],
+                  ["Despesas de Consumo, Depreciação, Tafic, Etc", "263.558"],
+                  ["Contingências (PIS e COFINS)", "279.889"],
+                ].map(([desc, val], i) => (
+                  <tr key={i}><td>{desc}</td><td className="num">{val}</td></tr>
+                ))}
+                <tr className="total">
+                  <td><strong>Sub-Total (Despesas Adm)</strong></td>
+                  <td className="num"><strong>4.161.616</strong></td>
                 </tr>
-              ))}
-              <tr style={{ background: "rgba(0,174,239,0.06)" }}>
-                <td><strong>Sub-total (Despesas Outras)</strong></td>
-                <td className="num">52.132</td>
-              </tr>
-              <tr className="total">
-                <td><strong>TOTAL GERAL</strong></td>
-                <td className="num">4.213.747</td>
-              </tr>
-            </tbody>
-          </table>
+                {[
+                  ["Corretagens/Emolumentos Bolsa Valores", "—"],
+                  ["Taxa Adm/Gestão Fundos Abertos", "25.747"],
+                  ["Taxa Custódia/Controladoria Fundos Abertos", "8.048"],
+                  ["Taxa Performance Fundos Abertos", "9"],
+                  ["Outras Despesas Fundos Abertos", "18.328"],
+                ].map(([desc, val], i) => (
+                  <tr key={i}><td>{desc}</td><td className="num">{val}</td></tr>
+                ))}
+                <tr className="total">
+                  <td><strong>Sub-Total (Despesas Outras)</strong></td>
+                  <td className="num"><strong>52.132</strong></td>
+                </tr>
+                <tr className="total" style={{ background: 'rgba(0,174,239,0.12)' }}>
+                  <td><strong>TOTAL</strong></td>
+                  <td className="num"><strong>4.213.747</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
+
 
 /* ─────────────────────────────────────────────
    Componente principal
