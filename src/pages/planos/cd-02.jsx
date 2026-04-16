@@ -97,20 +97,40 @@ function SecaoDesempenho() {
   const compData = {
     labels: ["Referencial", "Rentabilidade", "Ganho Real"],
     datasets: [{
+      label: "%",
       data: [8.44, 12.82, 8.21],
-      backgroundColor: ["#0074c8", "#00aeef", "#004282"],
+      backgroundColor: ["rgba(0,116,200,0.85)", "rgba(0,174,239,0.9)", "rgba(72,199,142,0.9)"],
       borderRadius: 6,
     }],
   };
   const compOptions = {
     indexAxis: "y",
-    plugins: { legend: { display: false } },
+    plugins: {
+      legend: { display: false },
+      datalabels: { display: false },
+    },
     scales: {
       x: {
         ticks: { callback: (v) => v + "%", color: DARK_CHART_OPTS.color },
         grid: { color: DARK_CHART_OPTS.borderColor },
+        max: 14,
       },
       y: { ticks: { color: DARK_CHART_OPTS.color }, grid: { display: false } },
+    },
+    animation: {
+      onComplete: function () {
+        const chart = this;
+        const ctx = chart.ctx;
+        ctx.font = 'bold 13px Sora, Poppins, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        const vals = ["8,44%", "12,82%", "8,21% a.a."];
+        chart.data.datasets[0].data.forEach((val, i) => {
+          const meta = chart.getDatasetMeta(0).data[i];
+          ctx.fillText(vals[i], meta.x + 8, meta.y);
+        });
+      },
     },
   };
 
@@ -123,25 +143,13 @@ function SecaoDesempenho() {
         </h2>
         <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
-        <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
-          O Plano registrou uma rentabilidade acumulada de 12,82% em 2025, equivalente a 152% do seu índice de referência (IPCA+4,00% a.a.). Esse resultado representa um ganho real (acima da inflação) de 8,21%, sendo o plano de melhor desempenho entre todos os administrados pela Previdência BRB.
-        </p>
-        <p className="dstq-text-body dstq-reveal dstq-reveal--d3" style={{ marginTop: 12 }}>
-          O CD-02 possui 64% do seu patrimônio total alocado em NTN-B, com taxa média ponderada de 5,39% a.a. + IPCA.
-        </p>
-
-        <div className="plano-kpi-row" style={{ marginTop: 32 }}>
-          {[
-            { label: "Recurso do Plano", value: "R$ 70.959.586" },
-            { label: "Referencial", value: "8,44%" },
-            { label: "Rentabilidade", value: "12,82%" },
-            { label: "Ganho Real (acima da inflação)", value: "8,21% a.a." },
-          ].map((k, i) => (
-            <div className="plano-kpi-card" key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
-              <div className="plano-kpi-label">{k.label}</div>
-              <div className="plano-kpi-value">{k.value}</div>
-            </div>
-          ))}
+        <div className="dstq-reveal dstq-reveal--d2" style={{ marginBottom: '32px' }}>
+          <p className="dstq-text-body" style={{ marginBottom: '12px' }}>
+            O Plano registrou uma rentabilidade acumulada de <strong style={{ color: '#00aeef' }}>12,82%</strong> em 2025, equivalente a <strong style={{ color: '#00aeef' }}>152%</strong> do seu índice de referência (IPCA+4,00% a.a.), representando um ganho real (acima da inflação) de <strong style={{ color: '#00aeef' }}>8,21%</strong>, sendo o plano de melhor desempenho entre todos os administrados pela Previdência BRB.
+          </p>
+          <p className="dstq-text-body">
+            O CD-02 possui <strong style={{ color: '#00aeef' }}>64%</strong> do seu patrimônio total alocado em NTN-B, com taxa média ponderada de <strong style={{ color: '#00aeef' }}>5,39% a.a. + IPCA</strong>.
+          </p>
         </div>
 
         <div className="plano-chart-box">
