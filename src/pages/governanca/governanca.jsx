@@ -476,7 +476,7 @@ function Governanca() {
                     <div className="gov-committees-intro mt-5 mb-4">
                         <span className="gov-eyebrow" style={{ color: "rgba(200,220,255,.55)" }}>Órgãos de Suporte</span>
                         <h3 className="gov-subsection-title" style={{ color: "#fff" }}>Comitês Estratégicos</h3>
-                        <p style={{ color: "rgba(200,220,255,.65)", fontSize: "19px", maxWidth: "780px", marginTop: "12px", lineHeight: "1.7" }}>
+                        <p style={{ color: "rgba(200,220,255,.65)", fontSize: "19px", marginTop: "12px", lineHeight: "1.7" }}>
                             Os Órgãos Estatutários da Previdência BRB contam com o suporte de quatro comitês estratégicos: o Comitê de Investimentos (COMIN), o Comitê de Patrocinadoras (COPAT), o Comitê de Gerenciamento de Crise e Imagem (COMCI) e o Comitê de Gestão de Riscos (CORIS).
 Os comitês COMIN e COPAT são formados por membros indicados pelas Patrocinadoras e Instituidoras dos planos administrados pela Entidade. Já os comitês COMCI e CORIS são compostos por representantes das unidades organizacionais da Previdência BRB.
 

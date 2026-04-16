@@ -744,7 +744,7 @@ function PlanoCD02() {
                 Plano <span style={{ color: "#00aeef" }}>CD-02</span>
               </h1>
 
-              <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px", maxWidth: "660px" }}>
+              <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px" }}>
                 Plano de Contribuição Definida com predominância em renda fixa e captura de prêmios
                 elevados, apresentando o melhor desempenho do portfólio em 2025.
               </p>

@@ -785,7 +785,7 @@ function PlanoPGA() {
                                 </h1>
                             </div>
 
-                            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px", maxWidth: "760px" }}>
+                            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px" }}>
                                 Estrutura de custeio e suporte administrativo da Previdência BRB, com foco em eficiência,
                                 governança de despesas e sustentabilidade operacional.
                             </p>

@@ -332,7 +332,7 @@ function Rentabilidade2025() {
                             <h1 style={{ color: "#fff", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: "700", lineHeight: "1.2", marginBottom: "16px" }}>
                                 RENTABILIDADE <span style={{ color: "#00aeef" }}>2025</span>
                             </h1>
-                            <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "24px", maxWidth: "700px" }}>
+                            <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "24px" }}>
                                 Resultados consolidados dos planos de benefícios.
                             </p>
                             <a

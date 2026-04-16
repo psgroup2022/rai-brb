@@ -899,7 +899,7 @@ function PlanoCD05() {
                                 </h1>
                             </div>
 
-                            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px", maxWidth: "720px" }}>
+                            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px" }}>
                                 Plano multiperfilado com perfis Conservador, Moderado e Arrojado. Rentabilidade de
                                 12,28% em 2025 — 145% do índice de referência, com crescimento de 30% no número de participantes.
                             </p>

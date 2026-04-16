@@ -740,7 +740,7 @@ function PlanoRegiusPrev() {
                                 </h1>
                             </div>
 
-                            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px", maxWidth: "760px" }}>
+                            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px" }}>
                                 O plano mais recente da Previdência BRB, destinado a servidores municipais do Paraná.
                                 Rentabilidade de 12,37% em 2025, equivalente a 146% do índice de referência, com
                                 crescimento de 10,17% no número de participantes.

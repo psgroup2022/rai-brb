@@ -48,7 +48,7 @@ function SecaoRentabilidade() {
     const data = {
         labels: ["Rentabilidade", "Índice de Referência"],
         datasets: [{
-            data: [12.18, 8.43],
+            data: [12.18, 8.44],
             backgroundColor: ["#00aeef", "#0074c8"],
             borderRadius: 6,
         }],
@@ -323,8 +323,8 @@ function SecaoInvestimentos() {
                                 <tr style={{ background: "rgba(0,174,239,0.05)" }}>
                                     <td><strong>ÍNDICE DE REFERÊNCIA</strong></td>
                                     <td className="num">5,03</td>
-                                    <td className="num">3,24</td>
-                                    <td className="num">8,43</td>
+                                    <td className="num">3,25</td>
+                                    <td className="num">8,44</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -386,32 +386,7 @@ function SecaoArrecadacao() {
                     <Bar data={fluxData} options={fluxOptions} />
                 </div>
 
-                <div className="plano-table-wrap">
-                    <table className="plano-table">
-                        <thead>
-                            <tr>
-                                <th>Rubrica</th>
-                                <th className="num">2023</th>
-                                <th className="num">2024</th>
-                                <th className="num">2025</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Arrecadação</td>
-                                <td className="num">R$ 63.079.059</td>
-                                <td className="num">R$ 69.290.707</td>
-                                <td className="num">R$ 74.803.748</td>
-                            </tr>
-                            <tr>
-                                <td>Benefícios/Institutos</td>
-                                <td className="num">R$ 5.201.976</td>
-                                <td className="num">R$ 4.772.613</td>
-                                <td className="num">R$ 6.508.311</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+
             </div>
         </section>
     );
@@ -567,18 +542,86 @@ function SecaoPremissas() {
                     Foi realizado o estudo de aderência do Plano CV-03, de modo que foram alteradas as seguintes premissas:
                 </p>
 
-                <div className="plano-kpi-row">
-                    <div className="plano-kpi-card" style={{ transitionDelay: "0s" }}>
-                        <div className="plano-kpi-label">Taxa de Crescimento Real dos Salários</div>
-                        <div className="plano-kpi-value">1,67%</div>
-                        <div className="plano-kpi-sub">Anterior: 2,73%</div>
-                    </div>
-                    <div className="plano-kpi-card" style={{ transitionDelay: "0.08s" }}>
-                        <div className="plano-kpi-label">Taxa Real de Juros</div>
-                        <div className="plano-kpi-value">4,50% a.a.</div>
-                        <div className="plano-kpi-sub">Anterior: 4,00% a.a.</div>
-                    </div>
+                <div className="plano-table-wrap dstq-reveal dstq-reveal--d2" style={{ marginTop: 24 }}>
+                    <table className="plano-table">
+                        <thead>
+                            <tr>
+                                <th colSpan="2">Hipóteses e Premissas Atuariais</th>
+                                <th className="num">Avaliação Atuarial Anual 2025</th>
+                                <th className="num">Avaliação Atuarial Anual 2024</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowSpan="3" style={{ verticalAlign: 'middle', fontWeight: 600 }}>Biométricas</td>
+                                <td>Tábua de Mortalidade Geral</td>
+                                <td className="num">AT 2012 Basic M & F</td>
+                                <td className="num">AT 2012 Basic M & F</td>
+                            </tr>
+                            <tr>
+                                <td>Tábua de Mortalidade de Inválidos</td>
+                                <td className="num">CSO 80 M Basic</td>
+                                <td className="num">CSO 80 M Basic</td>
+                            </tr>
+                            <tr>
+                                <td>Tábua de Entrada em Invalidez</td>
+                                <td className="num">Álvaro Vindas Suavizada em 50%</td>
+                                <td className="num">Álvaro Vindas Suavizada em 50%</td>
+                            </tr>
+
+                            <tr>
+                                <td rowSpan="5" style={{ verticalAlign: 'middle', fontWeight: 600 }}>Econômicas e Financeiras</td>
+                                <td>Taxa Real de Juros</td>
+                                <td className="num">4,50%</td>
+                                <td className="num">4,00%</td>
+                            </tr>
+                            <tr>
+                                <td>Crescimento Real de Salários</td>
+                                <td className="num">1,67%</td>
+                                <td className="num">2,73%</td>
+                            </tr>
+                            <tr>
+                                <td>Índice de Atualização</td>
+                                <td className="num">IPCA</td>
+                                <td className="num">IPCA</td>
+                            </tr>
+                            <tr>
+                                <td>Taxa de Carregamento</td>
+                                <td className="num">0,00%</td>
+                                <td className="num">0,00%</td>
+                            </tr>
+                            <tr>
+                                <td>Fator de Capacidade</td>
+                                <td className="num">98,44%</td>
+                                <td className="num">98,44%</td>
+                            </tr>
+
+                            <tr>
+                                <td rowSpan="4" style={{ verticalAlign: 'middle', fontWeight: 600 }}>Demográficas</td>
+                                <td>Taxa de Rotatividade</td>
+                                <td className="num">2,03%</td>
+                                <td className="num">2,03%</td>
+                            </tr>
+                            <tr>
+                                <td>Composição Familiar</td>
+                                <td className="num">Não Aplicável</td>
+                                <td className="num">Não Aplicável</td>
+                            </tr>
+                            <tr>
+                                <td>Novos Entrados</td>
+                                <td className="num">Não Aplicável</td>
+                                <td className="num">Não Aplicável</td>
+                            </tr>
+                            <tr>
+                                <td>Entrada em Aposentadoria</td>
+                                <td className="num">Primeira Elegibilidade à Aposentadoria Normal</td>
+                                <td className="num">Primeira Elegibilidade à Aposentadoria Normal</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+
+
 
                 <p className="dstq-text-body dstq-reveal dstq-reveal--d3" style={{ marginTop: 24 }}>
                     Destaca-se a alteração da Taxa de Crescimento Real dos Salários para 1,67%, em substituição a taxa de 2,73%, face os estudos de aderências que comprovaram a redução histórica dentro dos intervalos de confiança dos respectivos testes.
@@ -757,7 +800,7 @@ function PlanoCV03() {
                                 </h1>
                             </div>
 
-                            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px", maxWidth: "720px" }}>
+                            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px" }}>
                                 Plano de Contribuição Variável com recuperação relevante em 2025, registrando
                                 rentabilidade de 12,18% — 144% da meta atuarial, após resultado negativo em 2024.
                             </p>

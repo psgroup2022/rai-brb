@@ -772,7 +772,7 @@ function PlanoCDMetro() {
                                 </h1>
                             </div>
 
-                            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px", maxWidth: "720px" }}>
+                            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px" }}>
                                 Plano de Contribuicao Definida dos empregados do Metro-DF, com desempenho consistente
                                 de 11,74% em 2025 — 139% do indice de referencia.
                             </p>

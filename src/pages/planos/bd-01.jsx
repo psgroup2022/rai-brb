@@ -94,19 +94,7 @@ function SecaoRentabilidade() {
                     ))}
                 </ul>
 
-                <div className="plano-kpi-row">
-                    {[
-                        { label: "Rentabilidade Acumulada (10 anos)", value: "196%",      sub: "Supera meta atuarial e Selic (142%)" },
-                        { label: "Ganho Real",                         value: "+1,93%",   sub: "Acima do compromisso de 4,90%" },
-                        { label: "Superávit Técnico",                  value: "R$ 91,1 mi", sub: "Reversão do déficit de 2024" },
-                    ].map((k, i) => (
-                        <div className="plano-kpi-card plano-kpi-card--light" key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
-                            <div className="plano-kpi-label">{k.label}</div>
-                            <div className="plano-kpi-value">{k.value}</div>
-                            {k.sub && <div className="plano-kpi-sub">{k.sub}</div>}
-                        </div>
-                    ))}
-                </div>
+
             </div>
         </section>
     );
@@ -482,32 +470,7 @@ function SecaoArrecadacao() {
                     <Bar data={fluxData} options={fluxOptions} />
                 </div>
 
-                <div className="plano-table-wrap">
-                    <table className="plano-table">
-                        <thead>
-                            <tr>
-                                <th>Rubrica</th>
-                                <th className="num">2023</th>
-                                <th className="num">2024</th>
-                                <th className="num">2025</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Arrecadação</td>
-                                <td className="num">R$ 89.576.679</td>
-                                <td className="num">R$ 98.685.983</td>
-                                <td className="num">R$ 95.810.427</td>
-                            </tr>
-                            <tr>
-                                <td>Benefícios/Institutos</td>
-                                <td className="num">R$ 234.748.705</td>
-                                <td className="num">R$ 251.562.380</td>
-                                <td className="num">R$ 264.930.430</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+
             </div>
         </section>
     );
@@ -1099,7 +1062,7 @@ function PlanoBD01() {
                                 </h1>
                             </div>
 
-                            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px", maxWidth: "660px" }}>
+                            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px" }}>
                                 Plano de Benefício Definido com gestão focada em equilíbrio atuarial e preservação
                                 do patrimônio dos participantes.
                             </p>

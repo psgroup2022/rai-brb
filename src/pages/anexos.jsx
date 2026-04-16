@@ -108,7 +108,7 @@ const Anexos = () => {
                         }}>
                             Anexos e <span style={{ color: "#00aeef" }}>Documentos</span>
                         </h1>
-                        <p style={{ color: "rgba(255,255,255,0.7)", maxWidth: "600px", fontSize: "1rem" }}>
+                        <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "1rem" }}>
                             Acesse aqui a lista completa de demonstrações atuariais, pareceres, notas explicativas e relatórios de auditoria da Previdência BRB.
                         </p>
                     </motion.div>

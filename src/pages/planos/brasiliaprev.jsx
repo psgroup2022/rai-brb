@@ -891,7 +891,7 @@ function PlanoBrasiliaPrev() {
                                     Plano <span style={{ color: "#00aeef" }}>BrasíliaPrev</span>
                                 </h1>
                             </div>
-                            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px", maxWidth: "760px" }}>
+                            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "16px" }}>
                                 Plano instituído voltado a associados e seus familiares, com rentabilidade de 12,70% em 2025, equivalente a 150% do índice de referência, e crescimento de 14,85% no número de participantes.
                             </p>
                             <ol className="breadcrumb" style={{ marginBottom: 0, padding: 0, background: "transparent" }}>
