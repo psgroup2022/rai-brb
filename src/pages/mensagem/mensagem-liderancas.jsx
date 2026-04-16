@@ -7,6 +7,7 @@ import { IMAGES } from "../../constant/theme";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import imgAsg from "../../assets/img/img_asg.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -400,7 +401,28 @@ function AsgScrollPhrase() {
 
     return (
         <div className="asg-scroll-wrapper" style={{ position: 'relative' }}>
-            <div ref={sectionRef} style={{ background: '#000814', overflow: 'hidden', height: '100vh', display: 'flex', alignItems: 'center' }}>
+            <div 
+                ref={sectionRef} 
+                style={{ 
+                    backgroundImage: `url(${imgAsg})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundAttachment: 'fixed',
+                    overflow: 'hidden', 
+                    height: '100vh', 
+                    display: 'flex', 
+                    alignItems: 'center',
+                    position: 'relative'
+                }}
+            >
+                {/* Overlay for better readability */}
+                <div style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'rgba(0, 8, 20, 0.4)',
+                    zIndex: 1
+                }} />
+                
                 <div
                     ref={trackRef}
                     style={{
@@ -411,6 +433,8 @@ function AsgScrollPhrase() {
                         paddingRight: '10vw',
                         whiteSpace: 'nowrap',
                         willChange: 'transform',
+                        position: 'relative',
+                        zIndex: 2
                     }}
                 >
                     {words.map((word, i) => (

@@ -820,7 +820,7 @@ footer.footer-two.brb-footer {
 
 .brb-footer .brb-footer-brand p {
   color: rgba(232, 241, 255, 0.82);
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.65;
   font-weight: 400;
 }
@@ -841,7 +841,7 @@ footer.footer-two.brb-footer {
 
 .brb-footer .brb-footer-bottom p {
   color: rgba(232, 241, 255, 0.72);
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.45;
   font-weight: 400;
 }
@@ -1208,7 +1208,7 @@ header.header-glass .sticky-header.main-bar-wraper.two.is-fixed .header-search-b
 
   .resumo-card p {
     color: rgba(200, 220, 255, 0.7);
-    font-size: 17px;
+    font-size: 20px;
     line-height: 1.65;
     margin: 0;
     flex: 1;
@@ -1721,7 +1721,7 @@ header.header-glass .sticky-header.main-bar-wraper.two.is-fixed .header-search-b
 
 .perfil-highlight-card p {
   color: #475569;
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.7;
   margin: 0;
 }
@@ -2229,13 +2229,13 @@ header.header-glass .sticky-header.main-bar-wraper.two.is-fixed .header-search-b
 }
 .gov-info-box-body p {
   color: rgba(200,220,255,0.72);
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.72;
   margin-bottom: 10px;
 }
 .gov-info-box-desc {
   color: rgba(200,220,255,0.62);
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.72;
   margin: 0;
   position: relative;
