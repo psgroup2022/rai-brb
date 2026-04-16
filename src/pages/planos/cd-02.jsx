@@ -357,18 +357,48 @@ function SecaoArrecadacao() {
   const fluxData = {
     labels: ["2023", "2024", "2025"],
     datasets: [
-      { label: "Arrecadação", data: [3494.26, 2939.10, 2435.61], backgroundColor: "#00aeef", borderRadius: 4 },
-      { label: "Benefícios/Institutos", data: [15638.14, 10939.53, 9155.84], backgroundColor: "#0074c8", borderRadius: 4 },
+      { label: "Arrecadação", data: [3494263, 2939098, 2435607], backgroundColor: "#00aeef", borderRadius: 4 },
+      { label: "Benefícios/Institutos", data: [15638144, 10939525, 9155841], backgroundColor: "#0074c8", borderRadius: 4 },
     ],
   };
+
+  const fmtAxis = (v) => {
+    if (v >= 1_000_000) return "R$ " + (v / 1_000_000).toFixed(0) + "M";
+    if (v >= 1_000) return "R$ " + (v / 1_000).toFixed(0) + "K";
+    return "R$ " + v;
+  };
+
+  const fmtLabel = (v) =>
+    "R$ " + v.toLocaleString("pt-BR");
+
   const fluxOptions = {
-    plugins: { legend: { position: "top", labels: { color: DARK_CHART_OPTS.color } } },
+    plugins: {
+      legend: { position: "top", labels: { color: DARK_CHART_OPTS.color } },
+      datalabels: { display: false },
+    },
     scales: {
       y: {
-        ticks: { callback: (v) => "R$ " + v.toLocaleString("pt-BR"), color: DARK_CHART_OPTS.color },
+        ticks: { callback: fmtAxis, color: DARK_CHART_OPTS.color },
         grid: { color: DARK_CHART_OPTS.borderColor },
       },
       x: { ticks: { color: DARK_CHART_OPTS.color }, grid: { display: false } },
+    },
+    animation: {
+      onComplete: function () {
+        const chart = this;
+        const ctx = chart.ctx;
+        ctx.font = 'bold 11px Sora, Poppins, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,0.92)';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        chart.data.datasets.forEach((dataset, di) => {
+          const meta = chart.getDatasetMeta(di);
+          meta.data.forEach((bar, i) => {
+            const val = dataset.data[i];
+            if (val > 0) ctx.fillText(fmtLabel(val), bar.x, bar.y - 4);
+          });
+        });
+      },
     },
   };
 
@@ -386,36 +416,10 @@ function SecaoArrecadacao() {
         </p>
 
         <div className="plano-chart-box">
-          <div className="plano-chart-title">Evolução Arrecadação vs. Benefícios (R$ milhares)</div>
+          <div className="plano-chart-title">Evolução Arrecadação vs. Benefícios/Institutos</div>
           <Bar data={fluxData} options={fluxOptions} />
         </div>
 
-        <div className="plano-table-wrap">
-          <table className="plano-table">
-            <thead>
-              <tr>
-                <th>Rubrica</th>
-                <th className="num">2023</th>
-                <th className="num">2024</th>
-                <th className="num">2025</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Arrecadação</td>
-                <td className="num">R$ 3.494.263</td>
-                <td className="num">R$ 2.939.098</td>
-                <td className="num">R$ 2.435.607</td>
-              </tr>
-              <tr>
-                <td>Benefícios/Institutos</td>
-                <td className="num">R$ 15.638.144</td>
-                <td className="num">R$ 10.939.525</td>
-                <td className="num">R$ 9.155.841</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </div>
     </section>
   );
@@ -433,6 +437,21 @@ function SecaoAtuarial() {
           Resultado <span className="dstq-accent">Atuarial</span>
         </h2>
         <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
+
+        <div className="dstq-reveal dstq-reveal--d2" style={{ marginBottom: '32px' }}>
+          <p className="dstq-text-body dstq-text-body--on-light" style={{ marginBottom: '14px' }}>
+            Cotejando o Patrimônio de Cobertura do Plano em 31 de dezembro de 2025, no montante de <strong style={{ color: '#0a1f3c' }}>R$ 70.809.127,92</strong>, com as Provisões Matemáticas, no mesmo período, de <strong style={{ color: '#0a1f3c' }}>R$ 69.958.449,64</strong>, o Plano CD-02 registrou <strong style={{ color: '#0a1f3c' }}>Resultado Atuarial de R$ 0,00</strong>, com equilíbrio técnico pleno.
+          </p>
+          <p className="dstq-text-body dstq-text-body--on-light" style={{ marginBottom: '14px' }}>
+            As Provisões Matemáticas dimensionadas em 31 de dezembro de 2025, no montante de <strong style={{ color: '#0a1f3c' }}>R$ 69.958.449,64</strong>, comparativamente àquelas constantes da Avaliação Atuarial de 2024, que perfizeram <strong style={{ color: '#0a1f3c' }}>R$ 68.656.354,01</strong>, representaram um aumento de aproximadamente <strong style={{ color: '#0a1f3c' }}>1,90%</strong>.
+          </p>
+          <p className="dstq-text-body dstq-text-body--on-light" style={{ marginBottom: '14px' }}>
+            A variação registrada é justificada pela manutenção de contribuições de participantes e patrocinadores, acrescidas do estoque e respectiva rentabilidade auferida no período, inferior aos montantes de resgate, portabilidade e concessões ocorridas no exercício.
+          </p>
+          <p className="dstq-text-body dstq-text-body--on-light">
+            O Plano de Benefícios CD-02 encontra-se em <strong style={{ color: '#0a1f3c' }}>Equilíbrio Técnico</strong> e, portanto, não há necessidade de aplicação de plano de equacionamento.
+          </p>
+        </div>
 
         {/* Tabela Ativo Líquido */}
         <div className="plano-table-wrap">
@@ -506,16 +525,6 @@ function SecaoAtuarial() {
           </table>
         </div>
 
-        <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d2" style={{ marginTop: 36 }}>
-          As Provisões Matemáticas dimensionadas em 31 de dezembro de 2025, no montante de R$ 69.958.449,64, comparativamente àquelas constantes de Avaliação Atuarial de 2024, que perfizeram R$ 68.656.354,01, representaram um aumento de aproximadamente 1,90%.
-        </p>
-        <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d3" style={{ marginTop: 16 }}>
-          A variação registrada é justificada pela manutenção de contribuições de participantes e patrocinadores, acrescidas do estoque e respectiva rentabilidade auferida no período, inferior aos montantes de resgate, portabilidade e concessões ocorridas no exercício.
-        </p>
-        <p className="dstq-text-body dstq-text-body--on-light dstq-reveal dstq-reveal--d3" style={{ marginTop: 16 }}>
-          O Plano de Benefícios CD-02 encerrou o exercício de 2025 com Equilíbrio Técnico econômico e atuarial, registrando, portanto, suficiência de cobertura e solvência.
-        </p>
-
         {/* CTA */}
         <div className="dstq-cta-wrap" style={{ marginTop: 40 }}>
           <a
@@ -588,19 +597,22 @@ function SecaoCustos() {
           <table className="plano-table">
             <thead>
               <tr>
-                <th>Despesas (R$)</th>
-                <th className="num">Gestão Própria</th>
+                <th colSpan={4} style={{ textAlign: 'center' }}>Despesas (R$)</th>
+              </tr>
+              <tr>
+                <th>Gestão Própria</th>
                 <th className="num">Gestão Previdencial</th>
+                <th className="num">Gestão de Investimentos</th>
                 <th className="num">Total</th>
               </tr>
             </thead>
             <tbody>
               {[
-                ["Pessoal e Encargos", "104.386", "117.712", "222.097"],
-                ["Treinamento e Viagens", "981", "1.106", "2.087"],
-                ["Serviços de Terceiros", "36.785", "41.481", "78.266"],
-                ["Despesas de Consumo, Depreciações, Tafic etc", "10.289", "11.602", "21.891"],
-                ["Contingências (PIS e COFINS)", "42", "19.436", "19.478"],
+                ["Pessoal e Encargos",                           "104.386", "117.712", "222.097"],
+                ["Treinamento e Viagens",                        "981",     "1.106",   "2.087"],
+                ["Serviços de Terceiros",                        "36.785",  "41.481",  "78.266"],
+                ["Despesas de Consumo, Depreciações, Tafic etc", "10.289",  "11.602",  "21.891"],
+                ["Contingências (PIS e COFINS)",                 "42",      "19.436",  "19.478"],
               ].map(([desc, propria, previdencial, tot], i) => (
                 <tr key={i}>
                   <td>{desc}</td>
@@ -611,66 +623,62 @@ function SecaoCustos() {
               ))}
               <tr className="total">
                 <td><strong>TOTAIS</strong></td>
-                <td className="num">152.482</td>
-                <td className="num">191.337</td>
-                <td className="num">343.820</td>
+                <td className="num"><strong>152.482</strong></td>
+                <td className="num"><strong>191.337</strong></td>
+                <td className="num"><strong>343.820</strong></td>
               </tr>
             </tbody>
           </table>
         </div>
 
         {/* Tabela 2 — Custos com a Gestão dos Planos Previdenciais */}
-        <div className="plano-table-wrap" style={{ marginTop: 48 }}>
-          <h3 className="dstq-section-heading dstq-reveal" style={{ fontSize: "1.4rem", marginBottom: "24px" }}>
+        <div style={{ marginTop: '40px' }}>
+          <h3 className="dstq-section-heading dstq-reveal" style={{ fontSize: '1.3rem', marginBottom: '20px' }}>
             Custos com a Gestão dos Planos Previdenciais
           </h3>
-          <table className="plano-table">
-            <thead>
-              <tr>
-                <th>Descrição</th>
-                <th className="num">CD-02</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ["Despesas de Fomento", "—"],
-                ["Pessoal e Encargos", "2.656.919"],
-                ["Treinamentos/Viagens", "24.966"],
-                ["Serviços de Terceiros", "936.284"],
-                ["Despesas de Consumo, Depreciação, Tafic, etc", "263.558"],
-                ["Contingências (PIS e COFINS)", "279.889"],
-              ].map(([desc, val], i) => (
-                <tr key={i}>
-                  <td>{desc}</td>
-                  <td className="num">{val}</td>
+          <div className="plano-table-wrap dstq-reveal">
+            <table className="plano-table">
+              <thead>
+                <tr>
+                  <th>Descrição</th>
+                  <th className="num">CD-02</th>
                 </tr>
-              ))}
-              <tr className="total">
-                <td><strong>TOTAL</strong></td>
-                <td className="num">4.161.616</td>
-              </tr>
-              {[
-                ["Corretagens/Emolumentos Bolsa Valores", "—"],
-                ["Taxa Adm/Gestão Fundos Abertos", "25.747"],
-                ["Taxa Custódia/Controladoria Fundos Abertos", "8.048"],
-                ["Taxa Performance Fundos Abertos", "9"],
-                ["Outras Despesas Fundos Abertos", "18.328"],
-              ].map(([desc, val], i) => (
-                <tr key={i}>
-                  <td>{desc}</td>
-                  <td className="num">{val}</td>
+              </thead>
+              <tbody>
+                {[
+                  ["Despesas de Fomento",                          "—"],
+                  ["Pessoal e Encargos",                           "2.656.919"],
+                  ["Treinamentos/Viagens",                         "24.966"],
+                  ["Serviços de Terceiros",                        "936.284"],
+                  ["Despesas de Consumo, Depreciação, Tafic, Etc", "263.558"],
+                  ["Contingências (PIS e COFINS)",                 "279.889"],
+                ].map(([desc, val], i) => (
+                  <tr key={i}><td>{desc}</td><td className="num">{val}</td></tr>
+                ))}
+                <tr className="total">
+                  <td><strong>Sub-Total (Despesas Adm)</strong></td>
+                  <td className="num"><strong>4.161.616</strong></td>
                 </tr>
-              ))}
-              <tr style={{ background: "rgba(0,174,239,0.06)" }}>
-                <td><strong>Sub-total (Despesas Outras)</strong></td>
-                <td className="num">52.132</td>
-              </tr>
-              <tr className="total">
-                <td><strong>TOTAL GERAL</strong></td>
-                <td className="num">4.213.747</td>
-              </tr>
-            </tbody>
-          </table>
+                {[
+                  ["Corretagens/Emolumentos Bolsa Valores",        "—"],
+                  ["Taxa Adm/Gestão Fundos Abertos",               "25.747"],
+                  ["Taxa Custódia/Controladoria Fundos Abertos",   "8.048"],
+                  ["Taxa Performance Fundos Abertos",              "9"],
+                  ["Outras Despesas Fundos Abertos",               "18.328"],
+                ].map(([desc, val], i) => (
+                  <tr key={i}><td>{desc}</td><td className="num">{val}</td></tr>
+                ))}
+                <tr className="total">
+                  <td><strong>Sub-Total (Despesas Outras)</strong></td>
+                  <td className="num"><strong>52.132</strong></td>
+                </tr>
+                <tr className="total" style={{ background: 'rgba(0,174,239,0.12)' }}>
+                  <td><strong>TOTAL</strong></td>
+                  <td className="num"><strong>4.213.747</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>
