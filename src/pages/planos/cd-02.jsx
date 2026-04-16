@@ -578,7 +578,7 @@ function SecaoEquilibrio() {
 /* ─────────────────────────────────────────────
    Seção 7 — Custos
 ───────────────────────────────────────────── */
-function SecaoCustos() {
+function SecaoCustos(texto) {
   return (
     <section className="plano-section plano-section--dark">
       <div className="container">
@@ -589,6 +589,7 @@ function SecaoCustos() {
         <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
         <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
+          {texto}
           Em 2025, os custos com a administração do Plano de Benefícios CD-02, formados pelas despesas com a gestão previdencial e a gestão de investimentos do Plano, foram distribuídos conforme demonstrado a seguir:
         </p>
 
@@ -608,11 +609,11 @@ function SecaoCustos() {
             </thead>
             <tbody>
               {[
-                ["Pessoal e Encargos",                           "104.386", "117.712", "222.097"],
-                ["Treinamento e Viagens",                        "981",     "1.106",   "2.087"],
-                ["Serviços de Terceiros",                        "36.785",  "41.481",  "78.266"],
-                ["Despesas de Consumo, Depreciações, Tafic etc", "10.289",  "11.602",  "21.891"],
-                ["Contingências (PIS e COFINS)",                 "42",      "19.436",  "19.478"],
+                ["Pessoal e Encargos", "104.386", "117.712", "222.097"],
+                ["Treinamento e Viagens", "981", "1.106", "2.087"],
+                ["Serviços de Terceiros", "36.785", "41.481", "78.266"],
+                ["Despesas de Consumo, Depreciações, Tafic etc", "10.289", "11.602", "21.891"],
+                ["Contingências (PIS e COFINS)", "42", "19.436", "19.478"],
               ].map(([desc, propria, previdencial, tot], i) => (
                 <tr key={i}>
                   <td>{desc}</td>
@@ -646,12 +647,12 @@ function SecaoCustos() {
               </thead>
               <tbody>
                 {[
-                  ["Despesas de Fomento",                          "—"],
-                  ["Pessoal e Encargos",                           "2.656.919"],
-                  ["Treinamentos/Viagens",                         "24.966"],
-                  ["Serviços de Terceiros",                        "936.284"],
+                  ["Despesas de Fomento", "—"],
+                  ["Pessoal e Encargos", "2.656.919"],
+                  ["Treinamentos/Viagens", "24.966"],
+                  ["Serviços de Terceiros", "936.284"],
                   ["Despesas de Consumo, Depreciação, Tafic, Etc", "263.558"],
-                  ["Contingências (PIS e COFINS)",                 "279.889"],
+                  ["Contingências (PIS e COFINS)", "279.889"],
                 ].map(([desc, val], i) => (
                   <tr key={i}><td>{desc}</td><td className="num">{val}</td></tr>
                 ))}
@@ -660,11 +661,11 @@ function SecaoCustos() {
                   <td className="num"><strong>4.161.616</strong></td>
                 </tr>
                 {[
-                  ["Corretagens/Emolumentos Bolsa Valores",        "—"],
-                  ["Taxa Adm/Gestão Fundos Abertos",               "25.747"],
-                  ["Taxa Custódia/Controladoria Fundos Abertos",   "8.048"],
-                  ["Taxa Performance Fundos Abertos",              "9"],
-                  ["Outras Despesas Fundos Abertos",               "18.328"],
+                  ["Corretagens/Emolumentos Bolsa Valores", "—"],
+                  ["Taxa Adm/Gestão Fundos Abertos", "25.747"],
+                  ["Taxa Custódia/Controladoria Fundos Abertos", "8.048"],
+                  ["Taxa Performance Fundos Abertos", "9"],
+                  ["Outras Despesas Fundos Abertos", "18.328"],
                 ].map(([desc, val], i) => (
                   <tr key={i}><td>{desc}</td><td className="num">{val}</td></tr>
                 ))}
@@ -684,6 +685,8 @@ function SecaoCustos() {
     </section>
   );
 }
+
+
 
 /* ─────────────────────────────────────────────
    Componente principal
