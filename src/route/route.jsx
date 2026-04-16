@@ -42,6 +42,8 @@ const rootdata = [
     { path: "/destaques-2025", element: <Destaques2025 /> },
     { path: "/plano-bd-01", element: <PlanoBD01 /> },
     { path: "/plano-cd-02", element: <PlanoCD02 /> },
+    { path: "/cd-02", element: <Navigate to="/plano-cd-02" replace /> },
+    { path: "/plano-cd02", element: <Navigate to="/plano-cd-02" replace /> },
     { path: "/plano-cv-03", element: <PlanoCV03 /> },
     { path: "/plano-cd-metro", element: <PlanoCDMetro /> },
     { path: "/plano-cd-05", element: <PlanoCD05 /> },

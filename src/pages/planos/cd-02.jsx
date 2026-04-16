@@ -593,7 +593,7 @@ function SecaoEquilibrio() {
 /* ─────────────────────────────────────────────
    Seção 7 — Custos
 ───────────────────────────────────────────── */
-function SecaoCustos(texto) {
+function SecaoCustos() {
   return (
     <section className="plano-section plano-section--dark">
       <div className="container">
@@ -604,7 +604,6 @@ function SecaoCustos(texto) {
         <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
         <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
-          {texto}
           Em 2025, os custos com a administração do Plano de Benefícios CD-02, formados pelas despesas com a gestão previdencial e a gestão de investimentos do Plano, foram distribuídos conforme demonstrado a seguir:
         </p>
 
