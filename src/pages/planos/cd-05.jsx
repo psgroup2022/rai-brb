@@ -120,7 +120,7 @@ function SecaoDesempenho() {
                 offset: 6,
                 clamp: true,
                 clip: false,
-                font: { weight: 700, size: 12 },
+                font: { weight: 800, size: 16 },
                 formatter: (value) =>
                     `${Number(value).toLocaleString("pt-BR", {
                         minimumFractionDigits: 2,

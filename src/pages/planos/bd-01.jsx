@@ -434,7 +434,7 @@ function SecaoArrecadacao() {
                 anchor: 'end',
                 align: 'end',
                 color: '#fff',
-                font: { size: 12, weight: 'bold' },
+                font: { size: 16, weight: 800 },
                 formatter: (val) => 'R$ ' + val.toLocaleString('pt-BR'),
             },
         },

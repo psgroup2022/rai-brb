@@ -42,7 +42,7 @@ const chartOpts = (yFmt) => ({
             anchor: "end",
             align: "end",
             color: "rgba(200,225,255,0.9)",
-            font: { weight: "700", size: 11 },
+            font: { weight: 800, size: 16 },
             formatter: (v) => yFmt(v),
         },
     },
@@ -720,7 +720,7 @@ function PerfilCorporativo() {
                                     anchor: "end",
                                     align: "end",
                                     color: "rgba(200,225,255,0.9)",
-                                    font: { weight: "700", size: 14 },
+                                    font: { weight: 800, size: 16 },
                                     formatter: (v) => v.toFixed(2).replace(".", ","),
                                 },
                             },
@@ -753,7 +753,7 @@ function PerfilCorporativo() {
                                     anchor: "end",
                                     align: "end",
                                     color: "rgba(200,225,255,0.9)",
-                                    font: { weight: "700", size: 11 },
+                                    font: { weight: 800, size: 16 },
                                     formatter: (v) => v.toFixed(2).replace(".", ",") + "%",
                                 },
                             },
@@ -786,7 +786,7 @@ function PerfilCorporativo() {
                                     anchor: "end",
                                     align: "end",
                                     color: "rgba(200,225,255,0.9)",
-                                    font: { weight: "700", size: 11 },
+                                    font: { weight: 800, size: 16 },
                                     formatter: (v) => v.toFixed(2).replace(".", ","),
                                 },
                             },
@@ -827,7 +827,7 @@ function PerfilCorporativo() {
                                     anchor: "end",
                                     align: "end",
                                     color: "rgba(200,225,255,0.9)",
-                                    font: { weight: "700", size: 14 },
+                                    font: { weight: 800, size: 16 },
                                     formatter: (v) => v.toFixed(2).replace(".", ","),
                                 },
                             },
@@ -898,7 +898,7 @@ function PerfilCorporativo() {
                                     anchor: "end",
                                     align: "end",
                                     color: "rgba(200,225,255,0.9)",
-                                    font: { weight: "700", size: 14 },
+                                    font: { weight: 800, size: 16 },
                                     formatter: (v) => v.toFixed(2).replace(".", ","),
                                 },
                             },
@@ -935,7 +935,7 @@ function PerfilCorporativo() {
                                     anchor: "end",
                                     align: "end",
                                     color: "rgba(200,225,255,0.9)",
-                                    font: { weight: "700", size: 13 },
+                                    font: { weight: 800, size: 16 },
                                     formatter: (v) => v.toLocaleString("pt-BR", { minimumFractionDigits: 2 }),
                                 },
                             },
@@ -984,7 +984,7 @@ function PerfilCorporativo() {
                                     anchor: "end",
                                     align: "end",
                                     color: "rgba(200,225,255,0.9)",
-                                    font: { weight: "700", size: 14 },
+                                    font: { weight: 800, size: 16 },
                                     formatter: (v) => v.toFixed(2).replace(".", ","),
                                 },
                             },
@@ -1073,7 +1073,7 @@ function PerfilCorporativo() {
                                     anchor: "end",
                                     align: "end",
                                     color: "rgba(200,225,255,0.9)",
-                                    font: { weight: "700", size: 11 },
+                                    font: { weight: 800, size: 16 },
                                     formatter: (v) => v,
                                 },
                             },
@@ -1097,7 +1097,7 @@ function PerfilCorporativo() {
                             plugins: {
                                 legend: { display: false },
                                 tooltip: { callbacks: { label: (ctx) => ctx.parsed.y } },
-                                datalabels: { anchor: "end", align: "end", color: "rgba(200,225,255,0.9)", font: { weight: "700", size: 14 }, formatter: (v) => v },
+                                datalabels: { anchor: "end", align: "end", color: "rgba(200,225,255,0.9)", font: { weight: 800, size: 16 }, formatter: (v) => v },
                             },
                             scales: {
                                 x: { ticks: { color: "rgba(200,220,255,.75)", font: { size: 13 } }, grid: { color: "rgba(255,255,255,.06)" } },
@@ -1334,7 +1334,7 @@ function PerfilCorporativo() {
 
                 <div className="perfil-chart-block perfil-chart-block--light mt-2">
                     <h3 className="perfil-chart-title" style={{ color: '#0f172a' }}>Receita Previdencial Per Capita</h3>
-                    <Bar data={receitaPerCapitaData} options={{ responsive: true, layout: { padding: { top: 30 } }, plugins: { legend: { position: 'bottom', labels: { color: "#475569", font: { size: 13 } } }, tooltip: { callbacks: { label: (ctx) => ctx.dataset.label + ": R$ " + ctx.parsed.y.toLocaleString("pt-BR", { minimumFractionDigits: 2 }) } }, datalabels: { anchor: "end", align: "end", color: "#0f172a", font: { weight: "700", size: 11 }, formatter: (v) => v.toLocaleString("pt-BR", { minimumFractionDigits: 2 }) } }, scales: { x: { ticks: { color: "#475569", font: { size: 13 } }, grid: { color: "rgba(15,23,42,.08)" } }, y: { min: 0, ticks: { color: "#475569", callback: (v) => "R$ " + v.toLocaleString("pt-BR"), font: { size: 12 } }, grid: { color: "rgba(15,23,42,.08)" } } } }} height={80} />
+                    <Bar data={receitaPerCapitaData} options={{ responsive: true, layout: { padding: { top: 30 } }, plugins: { legend: { position: 'bottom', labels: { color: "#475569", font: { size: 13 } } }, tooltip: { callbacks: { label: (ctx) => ctx.dataset.label + ": R$ " + ctx.parsed.y.toLocaleString("pt-BR", { minimumFractionDigits: 2 }) } }, datalabels: { anchor: "end", align: "end", color: "#0f172a", font: { weight: 800, size: 16 }, formatter: (v) => v.toLocaleString("pt-BR", { minimumFractionDigits: 2 }) } }, scales: { x: { ticks: { color: "#475569", font: { size: 13 } }, grid: { color: "rgba(15,23,42,.08)" } }, y: { min: 0, ticks: { color: "#475569", callback: (v) => "R$ " + v.toLocaleString("pt-BR"), font: { size: 12 } }, grid: { color: "rgba(15,23,42,.08)" } } } }} height={80} />
                 </div>
 
                 {/* Número de Instituidores */}
@@ -1357,7 +1357,7 @@ function PerfilCorporativo() {
                             plugins: {
                                 legend: { display: false },
                                 tooltip: { callbacks: { label: (ctx) => ctx.parsed.y } },
-                                datalabels: { anchor: "end", align: "end", color: "#0f172a", font: { weight: "700", size: 14 }, formatter: (v) => v },
+                                datalabels: { anchor: "end", align: "end", color: "#0f172a", font: { weight: 800, size: 16 }, formatter: (v) => v },
                             },
                             scales: {
                                 x: { ticks: { color: "#475569", font: { size: 13 } }, grid: { color: "rgba(15,23,42,.08)" } },

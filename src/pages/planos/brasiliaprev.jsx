@@ -125,7 +125,7 @@ function SecaoDesempenho() {
                 anchor: "end",
                 align: "start",
                 offset: 4,
-                font: { weight: "bold", size: 12 },
+                font: { weight: 800, size: 16 },
                 formatter: (v) => `${v.toFixed(2)}%`,
             },
         },
@@ -497,7 +497,7 @@ function SecaoArrecadacao() {
                 anchor: "end",
                 align: "top",
                 offset: 4,
-                font: { weight: "bold", size: 10 },
+                font: { weight: 800, size: 16 },
                 formatter: (value) => 
                     value.toLocaleString("pt-BR", { minimumFractionDigits: 0, maximumFractionDigits: 0 }),
                 display: (context) => context.dataset.data[context.dataIndex] > 500000 ? true : 'auto', // Avoid crowding on small bars
