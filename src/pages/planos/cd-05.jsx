@@ -398,7 +398,7 @@ function SecaoInvestimentos() {
                                     <td><strong>Índice de Referência</strong></td>
                                     <td className="num">5,03</td>
                                     <td className="num">3,24</td>
-                                    <td className="num">8,44</td>
+                                    <td className="num">8,43</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -491,7 +491,17 @@ function SecaoArrecadacao() {
         plugins: {
             legend: { position: "top", labels: { color: DARK_CHART_OPTS.color } },
             tooltip: { callbacks: { label: (ctx) => ` ${ctx.dataset.label}: R$ ${ctx.raw.toLocaleString("pt-BR")}` } },
-            datalabels: { display: false },
+            datalabels: {
+                display: true,
+                color: "rgba(255,255,255,0.95)",
+                anchor: "end",
+                align: "top",
+                offset: 4,
+                clamp: true,
+                clip: false,
+                font: { weight: 800, size: 16 },
+                formatter: (value) => `R$ ${Number(value).toLocaleString("pt-BR")}`,
+            },
         },
         scales: {
             y: {
