@@ -38,6 +38,13 @@ function Header2() {
         setSearch(!search);
     };
 
+    const handleNavLinkClick = (targetPath) => {
+        if (location.pathname === targetPath) {
+            window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+        }
+        setShow(false);
+    };
+
     return (
         <header className={`position-relative header-glass ${isSticky ? 'is-sticky' : ''}`}>  
             <div className={`sticky-header main-bar-wraper two ${isSticky ? 'is-fixed' : ''}`}>
@@ -66,12 +73,24 @@ function Header2() {
                                         if (menuClassName === 'navbar-dropdown menu-item-children') {
                                             return (
                                                 <li key={index} className={menuClassName}>
-                                                    <Link to={item.link} className={isCurrentPath || isSubMenuActive ? "active" : ""}>{item.title}</Link>
+                                                    <Link
+                                                        to={item.link}
+                                                        className={isCurrentPath || isSubMenuActive ? "active" : ""}
+                                                        onClick={() => handleNavLinkClick(item.link)}
+                                                    >
+                                                        {item.title}
+                                                    </Link>
                                                     {item.subMenu && (
                                                         <ul className="sub-menu">
                                                             {item.subMenu.map((subItem, subIndex) => (
                                                                 <li key={subIndex}>
-                                                                    <Link to={subItem.link} className={location.pathname === subItem.link ? "active" : ""}>{subItem.title}</Link>
+                                                                    <Link
+                                                                        to={subItem.link}
+                                                                        className={location.pathname === subItem.link ? "active" : ""}
+                                                                        onClick={() => handleNavLinkClick(subItem.link)}
+                                                                    >
+                                                                        {subItem.title}
+                                                                    </Link>
                                                                 </li>
                                                             ))}
                                                         </ul>
@@ -82,7 +101,13 @@ function Header2() {
                                         else {
                                             return (
                                                 <li key={index} className="navbar-dropdown">
-                                                    <Link to={item.link} className={isCurrentPath ? "active" : ""}>{item.title}</Link>
+                                                    <Link
+                                                        to={item.link}
+                                                        className={isCurrentPath ? "active" : ""}
+                                                        onClick={() => handleNavLinkClick(item.link)}
+                                                    >
+                                                        {item.title}
+                                                    </Link>
                                                 </li>
                                             )
                                         }
@@ -113,12 +138,12 @@ function Header2() {
                                 if (menuClassName === 'menu-item-has-children') {
                                     return (
                                         <li key={i} className={`menu-item-has-children ${i == isActive ? 'active' : ''} ${isCurrentPath || isSubMenuActive ? 'active-page' : ''}`} onClick={() => menuHandler(i)}>
-                                            <Link to={item.link}>{item.title}</Link>
+                                            <Link to={item.link} onClick={() => handleNavLinkClick(item.link)}>{item.title}</Link>
                                             {item.subMenu && (
                                                 <ul className="sub-menu">
                                                     {item.subMenu.map((subItem, subIndex) => (
                                                         <li key={subIndex} className={location.pathname === subItem.link ? "active-page" : ""}>
-                                                            <Link to={subItem.link}>{subItem.title}</Link>
+                                                            <Link to={subItem.link} onClick={() => handleNavLinkClick(subItem.link)}>{subItem.title}</Link>
                                                         </li>
                                                     ))}
                                                 </ul>
@@ -129,7 +154,7 @@ function Header2() {
                                 else {
                                     return (
                                         <li key={i} className={isCurrentPath ? "active-page" : ""}>
-                                            <Link to={item.link}>{item.title}</Link>
+                                            <Link to={item.link} onClick={() => handleNavLinkClick(item.link)}>{item.title}</Link>
                                         </li>
                                     )
                                 }

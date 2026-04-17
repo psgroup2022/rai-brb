@@ -15,6 +15,7 @@ import integridadeImg13 from "../../assets/img/img_13.jpg";
 import integridadeImg14 from "../../assets/img/img_14.jpg";
 import integridadeImg15 from "../../assets/img/img_15.jpg";
 import integridadeImg17 from "../../assets/img/img_17.jpg";
+import protecaoDadosImg18 from "../../assets/img/img_18.jpg";
 import { IMAGES } from "../../constant/theme";
 
 /* ─────────────────────────────────────────────
@@ -425,7 +426,7 @@ function SecaoSeguranca() {
                     </div>
                     <div className="col-lg-4 dstq-reveal dstq-reveal--d4 d-none d-lg-block">
                         <div className="dstq-img-card" style={{ position: 'sticky', top: '120px' }}>
-                            <img src={IMAGES.officeCollab} alt="Segurança da Informação" style={{ borderRadius: '20px', width: '100%', height: 'auto' }} />
+                            <img src={protecaoDadosImg18} alt="Segurança da Informação" style={{ borderRadius: '20px', width: '100%', height: 'auto' }} />
                         </div>
                     </div>
                 </div>
