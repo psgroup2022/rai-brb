@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Footer2 from "../layout/footer2";
 import Header2 from "../layout/header2";
-import ParticlesComponent from "../components/ui/particles-bg";
+import WovenLightHero from "../components/ui/woven-light-hero";
 import { motion } from "framer-motion";
 import { Download, FileText, FileDown, ShieldCheck } from "lucide-react";
 
@@ -73,50 +73,21 @@ const Anexos = () => {
     return (
         <div className="anexos-page">
             <Header2 />
-            
-            {/* HERO SECTION */}
-            <section className="anexos-hero" style={{ 
-                padding: "130px 0 60px", 
-                background: "#021935", 
-                position: "relative",
-                overflow: "hidden"
-            }}>
-                <ParticlesComponent />
-                <div className="container" style={{ position: "relative", zIndex: 2 }}>
-                    <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <span style={{ 
-                            color: "#00aeef", 
-                            fontWeight: "700", 
-                            textTransform: "uppercase", 
-                            letterSpacing: "2px",
-                            fontSize: "0.8rem",
-                            display: "block",
-                            marginBottom: "10px"
-                        }}>
-                            Transparência e Governança
-                        </span>
-                        <h1 style={{ 
-                            color: "#fff", 
-                            fontSize: "2.8rem", 
-                            fontWeight: "800",
-                            marginBottom: "15px",
-                            lineHeight: "1.1"
-                        }}>
-                            Anexos e <span style={{ color: "#00aeef" }}>Documentos</span>
-                        </h1>
-                        <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "1rem" }}>
-                            Acesse aqui a lista completa de demonstrações atuariais, pareceres, notas explicativas e relatórios de auditoria da Previdência BRB.
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
+
+            <WovenLightHero
+                title="Anexos"
+                label="Transparência e Governança"
+                subtitle="Acesse a lista completa de demonstrações atuariais, pareceres, notas explicativas e relatórios de auditoria da Previdência BRB."
+                buttonText="Ver documentos"
+                onButtonClick={() => {
+                    const section = document.getElementById("anexos-list");
+                    section?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                height="68vh"
+            />
 
             {/* DOCUMENT LIST SECTION */}
-            <section className="anexos-list" style={{ padding: "60px 0", background: "#f8fafc" }}>
+            <section id="anexos-list" className="anexos-list" style={{ padding: "60px 0", background: "#f8fafc" }}>
                 <div className="container">
                     <div className="row">
                         {documentList.map((doc, index) => {
@@ -215,15 +186,9 @@ const Anexos = () => {
                 .anexos-page {
                     font-family: 'Sora', sans-serif;
                 }
-                .anexos-hero h1 {
-                    font-family: 'Sora', sans-serif;
-                }
                 @media (max-width: 768px) {
-                    .anexos-hero {
-                        padding: 140px 0 70px !important;
-                    }
-                    .anexos-hero h1 {
-                        font-size: 2.5rem !important;
+                    #anexos-list {
+                        padding-top: 46px !important;
                     }
                 }
             `}</style>
