@@ -137,46 +137,16 @@ function Governanca() {
     const heroRef = useRef(null);
     const heroVideoRef = useRef(null);
 
-    // Scroll scrub no vídeo do hero
+    // Scroll para o topo ao carregar a página
     useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
+        window.scrollTo(0, 0);
+    }, []);
+
+    // Autoplay do vídeo do hero (sem scroll scrub)
+    useEffect(() => {
         const video = heroVideoRef.current;
-        if (!video || !heroRef.current) return;
-
-        const setupScrollVideo = () => {
-            const duration = video.duration || 0;
-            if (!duration) return;
-            
-            // Permite autoplay inicial por 2 segundos antes de ativar o scroll scrub
-            setTimeout(() => {
-                video.currentTime = 0;
-                video.pause();
-
-                const trigger = ScrollTrigger.create({
-                    trigger: heroRef.current,
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: true,
-                    onUpdate: (self) => {
-                        const targetTime = self.progress * duration;
-                        video.currentTime = Math.min(Math.max(targetTime, 0), Math.max(duration - 0.01, 0));
-                    },
-                });
-
-                return () => trigger.kill();
-            }, 2000);
-        };
-
-        let cleanup;
-        if (video.readyState >= 1) {
-            cleanup = setupScrollVideo();
-        } else {
-            const handler = () => { cleanup = setupScrollVideo(); };
-            video.addEventListener("loadedmetadata", handler, { once: true });
-            return () => video.removeEventListener("loadedmetadata", handler);
-        }
-
-        return () => cleanup && cleanup();
+        if (!video) return;
+        video.play().catch(() => {});
     }, []);
 
     useEffect(() => {
