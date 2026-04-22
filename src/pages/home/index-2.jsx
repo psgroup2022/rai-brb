@@ -76,7 +76,7 @@ function Index2() {
                                 <h2>Mensagem de Abertura</h2>
                                 <div className="presentation-text">
                                     <p>A Previdência BRB apresenta no Relatório Anual de Informações, destacando as realizações e resultados alcançados, em 2025.</p>
-                                    <p>De fato, o ano de 2025 foi marcado por importantes avanços, tendo como foco estratégico a sustentabilidade dos 7 planos de benefícios administrados e do PGA e, por consequência, a perenidade da Previdência BRB.</p>
+                                    <p>O ano de 2025 foi marcado por importantes avanços, tendo como foco estratégico a sustentabilidade dos 7 planos de benefícios administrados e do PGA e, por consequência, a perenidade da Previdência BRB.</p>
                                     <p>O Relatório Anual, de fato, traduz o compromisso da Entidade com Participantes, Patrocinadores e Instituidores e a certeza de que os passos dados levarão a Previdência BRB a novos horizontes, pois muitas iniciativas estratégicas realizadas, se traduzirão em crescimento e fortalecimento da Previdência BRB.</p>
                                     <p>A prestação de contas, a transparência, equidade e responsabilidade corporativa são pilares essenciais na governança corporativa. É com base nesses pilares que o RAI 2025 é apresentado, trazendo informações relevantes da gestão, indicadores, realizações e perspectivas.</p>
                                     <p>Boa leitura!</p>

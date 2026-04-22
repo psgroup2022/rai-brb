@@ -137,7 +137,7 @@ function SecaoInvestimentos() {
                             Adicionalmente, as diretrizes relacionadas à sustentabilidade foram formalmente previstas na Política de Investimentos, que contemplam a avaliação de riscos associados a fatores ambientais, sociais e de governança no âmbito da gestão dos recursos garantidores, reforçando a integração entre a gestão de riscos e as decisões de alocação.
                         </p>
                         <p className="dstq-text-body dstq-reveal dstq-reveal--d4">
-                            Paralelamente, foram conduzidas análises internas e discussões técnicas com vistas ao desenvolvimento do framework de integração de fatores ASG às atividades da área de investimentos, com foco na evolução dos critérios de análise, identificação de materialidade, monitoramento e reporte.
+                            Paralelamente, foram conduzidas análises internas e discussões técnicas com vistas ao desenvolvimento do <em>framework</em> de integração de fatores ASG às atividades da área de investimentos, com foco na evolução dos critérios de análise, identificação de materialidade, monitoramento e reporte.
                         </p>
                         <p className="dstq-text-body dstq-reveal dstq-reveal--d4">
                             A Entidade reforça seu compromisso com o contínuo aperfeiçoamento das práticas ASG, incluindo a ampliação da integração sistemática desses fatores nos processos de investimento ao longo de 2026, visando o fortalecimento da gestão de riscos, a transparência e a geração de valor sustentável de longo prazo para participantes e assistidos.
@@ -250,10 +250,10 @@ function SecaoComunicacao() {
                         O ambiente digital conta com notícias constantemente atualizadas, além de disponibilizar diferentes frentes de informação, como o Previdência em Números, informativo mensal com dados e indicadores dos planos de benefícios, publicado em área aberta para acesso público.
                     </p>
                     <p className="dstq-text-body dstq-text-body--on-light">
-                        Destaca-se também o Comunica Previdência BRB, canal voltado à disseminação de conteúdos relacionados a compliance, integridade, ESG e LGPD, reforçando o compromisso da Entidade com as melhores práticas de governança e conformidade.
+                        Destaca-se também o Comunica Previdência BRB, canal voltado à disseminação de conteúdos relacionados a compliance, integridade, ASG e LGPD, reforçando o compromisso da Entidade com as melhores práticas de governança e conformidade.
                     </p>
                     <p className="dstq-text-body dstq-text-body--on-light">
-                        Em linha com os princípios de transparência, o site reúne ainda uma área dedicada à divulgação do orçamento da Entidade, bem como conteúdos específicos sobre as ações ESG desenvolvidas, permitindo maior visibilidade às iniciativas socioambientais e de governança. Também, são disponibilizadas informações completas sobre os planos de benefícios, incluindo regulamentos, características e desempenho, bem como a carteira de investimentos, garantindo amplo acesso às informações e promovendo uma comunicação clara, acessível e responsável.
+                        Em linha com os princípios de transparência, o site reúne ainda uma área dedicada à divulgação do orçamento da Entidade, bem como conteúdos específicos sobre as ações ASG desenvolvidas, permitindo maior visibilidade às iniciativas socioambientais e de governança. Também, são disponibilizadas informações completas sobre os planos de benefícios, incluindo regulamentos, características e desempenho, bem como a carteira de investimentos, garantindo amplo acesso às informações e promovendo uma comunicação clara, acessível e responsável.
                     </p>
                     <p className="dstq-text-body dstq-text-body--on-light">
                         Com essas iniciativas, a Previdência BRB reafirma seu compromisso com a transparência ativa, a prestação de contas e o fortalecimento da confiança junto aos seus públicos.
@@ -379,13 +379,13 @@ function SecaoSeguranca() {
                 <div className="row mt-5 g-5 flex-row-reverse">
                     <div className="col-lg-8 dstq-reveal dstq-reveal--d2">
                         <p className="dstq-editorial-paragraph is-lead">
-                            No exercício de 2025, a PREVIDÊNCIA BRB manteve seu posicionamento institucional em governança, segurança da informação e proteção de dados pessoais, consolidando práticas estruturadas ao longo dos ciclos anteriores de certificação, demonstrando que seus controles não apenas estão implementados, mas internalizados em sua cultura organizacional e nos processos decisórios estratégicos.
+                            No exercício de 2025, a Previdência BRB manteve seu posicionamento institucional em governança, segurança da informação e proteção de dados pessoais, consolidando práticas estruturadas ao longo dos ciclos anteriores de certificação, demonstrando que seus controles não apenas estão implementados, mas internalizados em sua cultura organizacional e nos processos decisórios estratégicos.
                         </p>
                         <p className="dstq-editorial-paragraph">
                             A manutenção desse posicionamento ganha especial relevância ao se considerar que a Entidade se encontra no terceiro ciclo de auditoria de certificação das ISO 27.001 e 27.701, evidenciando estabilidade, continuidade e efetividade do seu Sistema de Gestão da Segurança da Informação (SGSI) e do Sistema de Gestão da Privacidade da Informação (SGPI).
                         </p>
                         <p className="dstq-editorial-paragraph">
-                            No período, além da manutenção das certificações, a PREVIDÊNCIA BRB promoveu evolução relevante de seu sistema de gestão, com a realização de upgrade normativo da certificação ISO/IEC 27001, passando integralmente à versão mais atual da norma (ISO/IEC 27001:2022), conforme certificado emitido por organismo acreditado internacionalmente.
+                            No período, além da manutenção das certificações, a Previdência BRB promoveu evolução relevante de seu sistema de gestão, com a realização de upgrade normativo da certificação ISO/IEC 27001, passando integralmente à versão mais atual da norma (ISO/IEC 27001:2022), conforme certificado emitido por organismo acreditado internacionalmente.
                         </p>
                         <p className="dstq-editorial-paragraph">
                             Tal movimento não se limita a uma atualização, mas representa a adequação estrutural do modelo de gestão aos novos requisitos internacionais, especialmente no que se refere à abordagem de riscos, contexto organizacional, governança de controles e integração com temas emergentes, como segurança cibernética, continuidade operacional e aspectos ambientais.
@@ -403,7 +403,7 @@ function SecaoSeguranca() {
                             Os resultados obtidos demonstraram que as não conformidades identificadas em ciclos anteriores foram devidamente tratadas, com implementação de ações corretivas, análise de causa raiz e validação de eficácia, evidenciando a efetividade do modelo de melhoria contínua adotado pela Entidade.
                         </p>
                         <p className="dstq-editorial-paragraph">
-                            O registro formal dessas tratativas reforça a rastreabilidade das ações e a capacidade institucional de evolução contínua, inclusive em temas contemporâneos como gestão de vulnerabilidades, governança de dados e integração com práticas ESG.
+                            O registro formal dessas tratativas reforça a rastreabilidade das ações e a capacidade institucional de evolução contínua, inclusive em temas contemporâneos como gestão de vulnerabilidades, governança de dados e integração com práticas ASG.
                         </p>
                         <p className="dstq-editorial-paragraph">
                             No campo da segurança da informação, a Entidade promoveu avanços relevantes, com destaque para a implementação de autenticação multifator (MFA), em ambientes críticos, reforçando os mecanismos de controle de acesso e mitigando riscos associados a credenciais comprometidas.
@@ -415,7 +415,7 @@ function SecaoSeguranca() {
                             A realização de testes de intrusão (pentests) e avaliações periódicas de vulnerabilidades contribuiu para a validação da eficácia dos controles implementados, não sendo identificadas vulnerabilidades críticas de alto impacto, o que reforça a consistência do ambiente tecnológico da Entidade.
                         </p>
                         <p className="dstq-editorial-paragraph">
-                            No que se refere à gestão de incidentes, a PREVIDÊNCIA BRB demonstrou capacidade estruturada de resposta, com registro formal, análise técnica, adoção de medidas de contenção e implementação de ações preventivas, em conformidade com a legislação aplicável, especialmente a Lei Geral de Proteção de Dados Pessoais (LGPD).
+                            No que se refere à gestão de incidentes, a Previdência BRB demonstrou capacidade estruturada de resposta, com registro formal, análise técnica, adoção de medidas de contenção e implementação de ações preventivas, em conformidade com a legislação aplicável, especialmente a Lei Geral de Proteção de Dados Pessoais (LGPD).
                         </p>
                         <p className="dstq-editorial-paragraph">
                             Paralelamente, a Entidade já se encontra estrategicamente posicionada para o próximo ciclo evolutivo, com iniciativas voltadas à adequação futura aos novos referenciais internacionais de privacidade, incluindo a preparação para a atualização da ISO/IEC 27701:2025, o que reforça sua postura proativa e alinhada às tendências regulatórias.
@@ -451,10 +451,10 @@ function SecaoInovacao() {
                 <div className="row mt-5">
                     <div className="col-lg-10 offset-lg-1 dstq-reveal dstq-reveal--d3">
                         <p className="dstq-editorial-paragraph is-lead">
-                            O ano de 2025, ocorreu avanços com relação às iniciativas estratégicas voltadas à experiência do participante, eficiência operacional e segurança da informação.
+                            No ano de 2025, ocorreu avanços com relação às iniciativas estratégicas voltadas à experiência do participante, eficiência operacional e segurança da informação.
                         </p>
                         <p className="dstq-editorial-paragraph">
-                            Foi implantada a VIVI, assistente virtual baseada em inteligência artificial, integrada ao WhatsApp. A solução trouxe mais agilidade, disponibilidade e qualidade no atendimento aos participantes, permitindo respostas rápidas e padronizadas, com vistas a ampliar a capacidade de atendimento da entidade. A VIVI está franco aprimoramento e, serão incorporados novos temas para essa nova modalidade de atendimento aos participantes.
+                            Foi implantada a VIVI, assistente virtual baseada em inteligência artificial, integrada ao WhatsApp. A solução trouxe mais agilidade, disponibilidade e qualidade no atendimento aos participantes, permitindo respostas rápidas e padronizadas, com vistas a ampliar a capacidade de atendimento da entidade. A VIVI está em franco aprimoramento e, serão incorporados novos temas para essa nova modalidade de atendimento aos participantes.
                         </p>
                         <p className="dstq-editorial-paragraph">
                             Iniciou-se, também, a construção de um novo aplicativo institucional, com foco em modernização, usabilidade e integração de serviços, com vistas a oferecer uma experiência digital mais completa, intuitiva e alinhada às necessidades dos participantes, consolidando diversos serviços em um único canal.

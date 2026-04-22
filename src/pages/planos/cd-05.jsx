@@ -829,7 +829,7 @@ function SecaoCustos() {
                                     <tr key={i}><td>{desc}</td><td className="num">{val}</td></tr>
                                 ))}
                                 <tr className="total">
-                                    <td><strong>Sub-Total (Despesas Outras)</strong></td>
+                                    <td><strong>Total (Despesas Outras)</strong></td>
                                     <td className="num"><strong>26.810</strong></td>
                                 </tr>
                                 <tr className="total" style={{ background: 'rgba(0,174,239,0.12)' }}>

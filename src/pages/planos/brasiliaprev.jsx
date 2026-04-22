@@ -785,7 +785,7 @@ function SecaoCustos() {
                             <tr><td>Taxa Custódia/Controladoria Fundos Abertos</td><td className="num">717</td></tr>
                             <tr><td>Taxa Performance Fundos Abertos</td><td className="num">-</td></tr>
                             <tr><td>Outras Despesas Fundos Abertos</td><td className="num">551</td></tr>
-                            <tr className="total"><td><strong>Sub-Total (Despesas Outras)</strong></td><td className="num"><strong>3.137</strong></td></tr>
+                            <tr className="total"><td><strong>Total (Despesas Outras)</strong></td><td className="num"><strong>3.137</strong></td></tr>
                             <tr className="total"><td><strong>Total</strong></td><td className="num"><strong>23.835</strong></td></tr>
                         </tbody>
                     </table>

@@ -12,8 +12,9 @@ import {
     Title, Tooltip, Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
 
 function useReveal() {
     useEffect(() => {
@@ -356,7 +357,17 @@ function SecaoArrecadacao() {
     };
 
     const fluxOptions = {
-        plugins: { legend: { position: "top", labels: { color: DARK_CHART_OPTS.color } } },
+        layout: { padding: { top: 28 } },
+        plugins: {
+            legend: { position: "top", labels: { color: DARK_CHART_OPTS.color } },
+            datalabels: {
+                anchor: "end",
+                align: "end",
+                color: "#ffffff",
+                font: { size: 13, weight: "bold" },
+                formatter: (v) => `R$ ${v}M`,
+            },
+        },
         scales: {
             y: {
                 ticks: { callback: (v) => `R$ ${v}M`, color: DARK_CHART_OPTS.color },

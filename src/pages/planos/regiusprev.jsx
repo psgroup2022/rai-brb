@@ -297,7 +297,7 @@ function SecaoInvestimentos() {
           </table>
         </div>
 
-        <div style={{ marginTop: 48 }}>
+          <div style={{ marginTop: 48 }}>
           <h3 className="dstq-section-heading dstq-section-heading--on-light dstq-reveal" style={{ fontSize: "1.4rem" }}>
             Resultado dos Investimentos
           </h3>
@@ -305,7 +305,10 @@ function SecaoInvestimentos() {
             <table className="plano-table plano-table--light">
               <thead>
                 <tr>
-                  <th>Segmento</th>
+                  <th rowSpan={2}>Segmento</th>
+                  <th className="num" colSpan={3} style={{ textAlign: "center" }}>Desempenho</th>
+                </tr>
+                <tr>
                   <th className="num">1º SEM</th>
                   <th className="num">2º SEM</th>
                   <th className="num">2025</th>

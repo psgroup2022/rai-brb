@@ -860,7 +860,7 @@ function SecaoCustos() {
                                     <tr key={i}><td>{desc}</td><td className="num">{val}</td></tr>
                                 ))}
                                 <tr className="total">
-                                    <td><strong>Sub-Total (Despesas Adm)</strong></td>
+                                    <td><strong>Total (Despesas Adm)</strong></td>
                                     <td className="num"><strong>14.079.942</strong></td>
                                 </tr>
                                 {[
@@ -873,7 +873,7 @@ function SecaoCustos() {
                                     <tr key={i}><td>{desc}</td><td className="num">{val}</td></tr>
                                 ))}
                                 <tr className="total">
-                                    <td><strong>Sub-Total (Despesas Outras)</strong></td>
+                                    <td><strong>Total (Despesas Outras)</strong></td>
                                     <td className="num"><strong>191.837</strong></td>
                                 </tr>
                                 <tr className="total" style={{ background: 'rgba(0,174,239,0.12)' }}>

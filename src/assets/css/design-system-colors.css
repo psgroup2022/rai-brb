@@ -3013,6 +3013,9 @@ header.header-glass .sticky-header.main-bar-wraper.two.is-fixed .header-search-b
   border-radius: 18px;
   padding: 12px 14px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: linear-gradient(160deg, rgba(25, 76, 128, 0.9), rgba(12, 43, 84, 0.82));
   border: 1px solid rgba(142, 201, 255, 0.24);
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35), inset 0 0 18px rgba(142, 205, 255, 0.06);

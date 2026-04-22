@@ -373,7 +373,7 @@ function PerfilCorporativo() {
                             Somos uma Entidade Fechada de Previdência Complementar, instituída como uma sociedade civil sem fins lucrativos. Desde 2023 adotamos o nome fantasia de Previdência BRB, em homenagem à Patrocinadora Fundadora, o BRB-Banco de Brasília S/A, onde tudo começou em 1985.
                         </p>
                         <p className="perfil-body-text">
-                            Administramos 7 Planos de Benefícios (BD-01, CD-02, CV-03, CD-Metrô-DF, CD-05, RegiusPrev – de entes federativos e o plano instituído BrasíliaPrev, além do PGA – Plano de Gestão Administrativa, que garante a sustentabilidade administrativa da Entidade.
+                            Administramos 7 Planos de Benefícios (BD-01, CD-02, CV-03, CD-Metrô-DF, CD-05, RegiusPrev – de entes federativos e o plano instituído BrasíliaPrev), além do PGA – Plano de Gestão Administrativa, que garantem a sustentabilidade administrativa da Entidade.
                         </p>
                         <p className="perfil-body-text">
                             Em 2025, a Previdência BRB consolidou avanços relevantes em sua estratégia de crescimento, fortalecimento institucional e aprimoramento da governança, com destaque para os seguintes resultados:
@@ -398,7 +398,7 @@ function PerfilCorporativo() {
                             <h4 className="destaque-card__title">Expansão e Parcerias</h4>
                             <ul className="destaque-card__list">
                                 <li>Aprovação da distribuição do Plano BrasíliaPrev nos canais do BRB – Banco de Brasília S.A., incluindo a plataforma digital da BRB Investimentos e as agências físicas com o apoio da BRB Seguros.</li>
-                                <li>Celebração de convênios com novos instituidores, com destaque para o CRMV-DF e formalização de parcerias com cinco novos filiados: Colégio Biângulo, PPN Tecnologia e Colégio do Sol.</li>
+                                <li>Celebração de convênios com novos instituidores, com destaque para o CRMV-DF e formalização de parcerias com cinco novos filiados: Colégio Biângulo, PPN Tecnologia, Colégio do Sol, Bloco 244 e GS3 Tecnologia.</li>
                                 <li>Êxito nos processos seletivos para administração de planos de benefícios das estatais federais Telebrás S.A. e Infra S.A., aguardando aprovação na SEST.</li>
                             </ul>
                         </div>
@@ -478,7 +478,7 @@ function PerfilCorporativo() {
                         <div className="destaque-card">
                             <div className="destaque-card__icon">📚</div>
                             <h4 className="destaque-card__title">Educação Financeira e Previdenciária</h4>
-                            <p className="destaque-card__text">Projetos em escolas públicas e privadas do DF, com foco em alunos do ensino fundamental e médio — palestras, atividades práticas e ações educativas voltadas ao uso responsável dos recursos financeiros. Apresentado no <strong>Congresso da ABRAPP</strong>, reforçando o compromisso com a agenda <strong>ESG</strong>.</p>
+                            <p className="destaque-card__text">Projetos em escolas públicas e privadas do DF, com foco em alunos do ensino fundamental e médio — palestras, atividades práticas e ações educativas voltadas ao uso responsável dos recursos financeiros. Apresentado no <strong>Congresso da ABRAPP</strong>, reforçando o compromisso com a agenda <strong>ASG</strong>.</p>
                             <p className="destaque-card__text">Plataforma interativa disponível em: <a href="https://educacao.previdenciabrb.org.br/" target="_blank" rel="noreferrer">educacao.previdenciabrb.org.br</a></p>
                         </div>
                     </div>
@@ -497,7 +497,7 @@ function PerfilCorporativo() {
                     <div className="destaques-item">
                         <div className="destaque-card destaque-card--esg">
                             <div className="destaque-card__icon">🌱</div>
-                            <h4 className="destaque-card__title">Sustentabilidade e Governança (ESG)</h4>
+                            <h4 className="destaque-card__title">Sustentabilidade e Governança (ASG)</h4>
                             <ul className="destaque-card__list">
                                 <li>Implementação da nova <strong>Política de Responsabilidade Socioambiental (PRSA)</strong>, incorporando diretrizes ASG para investimentos e gestão de pessoas (DEI).</li>
                                 <li>Conquista do <strong>Selo de Autorregulação em Governança Corporativa (ABRAPP)</strong>.</li>
@@ -997,7 +997,7 @@ function PerfilCorporativo() {
                 <div className="perfil-chart-block mt-5">
                     <p className="perfil-eyebrow" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '12px', color: '#00aeef', marginBottom: '8px' }}>INDICADOR DO SISTEMA DE INTEGRIDADE</p>
                     <h3 className="perfil-chart-title">Controles do Registro no SGBR – Sistema de Gestão Baseada em Riscos</h3>
-                    <p className="perfil-body-text" style={{ fontStyle: 'italic', marginBottom: '8px' }}>Cumprimento de Plano de Ações (PA), dos Registro de Não Conformidade e Ações de Melhorias (AM).</p>
+                    <p className="perfil-body-text" style={{ fontStyle: 'italic', marginBottom: '8px' }}>Cumprimento de Plano de Ações (PA), dos Registro de Não Conformidade (RNC) e Ações de Melhorias (AM).</p>
                     <p className="perfil-body-text">No SGBR ficam registrados os instrumentos de aprimoramento da Gestão de Riscos, no âmbito da Previdência BRB. Em 2025, constata-se que foram concluídos 12 Planos de Ações, 26 Registros de Não Conformidade (RNC) e 12 Ações de Melhorias (AM). Esse processo é dinâmico e mostra que a melhoria nos processos operacionais é meta constante na Previdência BRB.</p>
                 </div>
 
