@@ -4,7 +4,7 @@ import { servicedata2 } from "../../constant/alldata";
 import Footer2 from "../../layout/footer2";
 import Header2 from "../../layout/header2";
 import ParticlesComponent from "../../components/ui/particles-bg";
-import LuxuryDashboard from "../../componenet/luxurydashboard";
+import LuxuryDashboard from "../../components/ui/luxurydashboard";
 import headerVideo from '../../assets/img/header.mp4';
 
 function Index2() {
