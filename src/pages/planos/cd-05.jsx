@@ -204,18 +204,18 @@ function SecaoDesempenho() {
                         <div className="pop-card">
                             <div className="pop-card-label">Distribuição por Gênero</div>
                             <div className="pop-gender-bar">
-                                <div className="pop-gender-masc" style={{ width: '65.33%' }}>
+                                <div className="pop-gender-masc" style={{ width: '65%' }}>
                                     <span>♂ Masculino</span>
-                                    <strong>65,33%</strong>
+                                    <strong>65%</strong>
                                 </div>
-                                <div className="pop-gender-fem" style={{ width: '34.67%' }}>
-                                    <strong>34.67%</strong>
+                                <div className="pop-gender-fem" style={{ width: '35%' }}>
+                                    <strong>35%</strong>
                                     <span>Feminino ♀</span>
                                 </div>
                             </div>
                             <div className="pop-gender-legend">
-                                <span><i className="pop-dot pop-dot--masc" />Masculino — 65,33%</span>
-                                <span><i className="pop-dot pop-dot--fem" />Feminino — 34,67%</span>
+                                <span><i className="pop-dot pop-dot--masc" />Masculino — 65%</span>
+                                <span><i className="pop-dot pop-dot--fem" />Feminino — 35%</span>
                             </div>
                         </div>
 
