@@ -769,19 +769,39 @@ function SecaoSustentabilidade() {
         <div className="dstq-divider dstq-reveal dstq-reveal--d2" />
 
         <p className="dstq-text-body dstq-reveal dstq-reveal--d2">
-          O Fundo Administrativo registra o resultado do movimento de receitas e despesas administrativas dos planos de benefícios. Como se fosse uma conta bancária, seu saldo ao final do mês cresce quando as receitas administrativas são maiores do que as despesas administrativas – neste caso, diz-se que houve uma "constituição". Já quando o saldo diminui, pelo fato de as despesas serem maiores que as receitas no período, há uma "reversão" do fundo administrativo.
+          <b>Fundo Administrativo</b>
+          <br /><br />
+          O Fundo Administrativo representa o conjunto de recursos utilizados para custear as atividades administrativas da Entidade, no âmbito do Plano de Gestão Administrativa (PGA). De forma simplificada, ele funciona como se fosse uma “conta bancária”, seu saldo ao final do mês cresce quando as receitas administrativas são maiores do que as despesas administrativas, neste caso, diz-se que houve uma “constituição”. Já quando o saldo diminui, pelo fato de as despesas serem maiores que as receitas no período, há uma “reversão” do fundo administrativo.
         </p>
-
         <p className="dstq-text-body dstq-reveal dstq-reveal--d3" style={{ marginTop: 16 }}>
-          Estes recursos acumulados no fundo administrativo dos planos são aplicados no mercado financeiro e os resultados desses investimentos revertem, mais uma vez, para os próprios fundos administrativos.
+          Os recursos acumulados no Fundo Administrativo não permanecem parados. Eles são aplicados no mercado financeiro, conforme as diretrizes da política de investimentos do PGA, gerando rendimentos que são incorporados ao próprio fundo, contribuindo para sua manutenção e crescimento ao longo do tempo.
         </p>
-
         <p className="dstq-text-body dstq-reveal dstq-reveal--d4" style={{ marginTop: 16 }}>
-          A Resolução CNPC nº 28/2018 estabelece que as entidades que possuírem sobras administrativas podem constituir fundo de fomento, cabendo ao Conselho Deliberativo definir o montante ou limite percentual a ser constituído, que será destinado para cobertura dos gastos indicados para fomento.
+          Na Previdência BRB, a gestão desses recursos é realizada de forma compartilhada entre os planos de benefícios. Isso significa que, embora exista um fundo único, é possível identificar quanto cada plano participa desse montante. Essa participação é calculada mensalmente, considerando fatores como as receitas oriundas dos planos de benefícios, como a taxa de administração e/ou a taxa de carregamento, despesas administrativas e resultados financeiros que são rateados entre cada plano, garantindo uma distribuição justa e transparente.
         </p>
-
+        <br />
         <p className="dstq-text-body dstq-reveal dstq-reveal--d5" style={{ marginTop: 16 }}>
-          Em 2024, os gastos com fomento totalizaram R$ 299.813. O fundo tem o objetivo de cobrir os gastos com prospecção, elaboração, implantação e fomento de novos Planos de Benefícios.
+          <b>Fundo Administrativo Compartilhado</b>
+          <br /><br />
+          Além do Fundo Administrativo tradicional, a regulamentação permite a criação do chamado Fundo Administrativo Compartilhado, que possui uma finalidade distinta e caráter estratégico.
+        </p>
+        <p className="dstq-text-body dstq-reveal dstq-reveal--d6" style={{ marginTop: 16 }}>
+          No âmbito da Previdência BRB, já existia saldo constituído nesse fundo com base na Resolução CNPC nº 43/2021, totalizando, em dezembro de 2025, o montante de R$ 156 mil. Com a evolução normativa promovida pela Resolução CNPC nº 62/2024, o modelo foi aprimorado, passando a exigir estudo de viabilidade técnico-financeira e aprovação pelos órgãos de governança.
+        </p>
+        <p className="dstq-text-body dstq-reveal dstq-reveal--d7" style={{ marginTop: 16 }}>
+          Nesse contexto, o Conselho Deliberativo aprovou em 2026 a constituição adicional de recursos no montante de R$ 3,8 milhões, destinados à utilização em ações de fomento e inovação ao longo dos exercícios de 2026, 2027 e 2028, conforme diretrizes do Plano de Gestão Administrativa e alinhamento ao planejamento estratégico institucional.
+        </p>
+        <p className="dstq-text-body dstq-reveal dstq-reveal--d8" style={{ marginTop: 16 }}>
+          Diferentemente do Fundo Administrativo, que está diretamente relacionado às despesas do dia a dia da Entidade, o Fundo Administrativo Compartilhado é destinado a investimentos em iniciativas de crescimento e desenvolvimento institucional. Entre essas iniciativas, destacam-se ações de fomento, inovação, prospecção e captação de novas patrocinadoras e instituidoras, bem como melhorias tecnológicas e ampliação dos serviços oferecidos.
+        </p>
+        <p className="dstq-text-body dstq-reveal dstq-reveal--d9" style={{ marginTop: 16 }}>
+          Outra diferença importante é que, nesse fundo, os recursos não são vinculados individualmente a cada plano de benefícios. Em vez disso, eles são utilizados de forma conjunta, com foco no fortalecimento da Entidade como um todo, sempre respeitando critérios de governança, transparência e sustentabilidade financeira.
+        </p>
+        <p className="dstq-text-body dstq-reveal dstq-reveal--d10" style={{ marginTop: 16 }}>
+          A criação desse fundo permite que a Entidade invista de forma planejada em seu crescimento, sem comprometer os recursos necessários para a manutenção das atividades administrativas regulares.
+        </p>
+        <p className="dstq-text-body dstq-reveal dstq-reveal--d11" style={{ marginTop: 16 }}>
+          Ressalta-se que, no exercício de 2025, não houve utilização de recursos do Fundo Administrativo Compartilhado, não sendo registrados gastos com ações de fomento ou inovação no período.
         </p>
       </div>
     </section>
