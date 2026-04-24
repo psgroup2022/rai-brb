@@ -82,15 +82,15 @@ function MemberCard({ name, role, isPresident = false }) {
 
 /* ─── data ─── */
 const values = [
-    { icon: "fa-heart",        label: "Respeito",                desc: "Respeitamos e valorizamos as pessoas." },
-    { icon: "fa-users",        label: "Foco no Participante",    desc: "Reconhecemos no participante a razão de existir da Previdência BRB." },
-    { icon: "fa-handshake",    label: "Relações Institucionais", desc: "Zelamos pela qualidade e transparência nas relações." },
-    { icon: "fa-eye",          label: "Transparência",           desc: "Primamos pela clareza e tempestividade na prestação de informações." },
-    { icon: "fa-star",         label: "Compromisso",             desc: "Somos comprometidos com a realização dos sonhos e qualidade de vida dos participantes e seus familiares." },
-    { icon: "fa-chart-line",   label: "Eficácia na Gestão",      desc: "Temos foco no resultado e agimos com transparência, integridade e responsabilidade socioambiental." },
-    { icon: "fa-shield-alt",   label: "Segurança",               desc: "Prezamos pela segurança das informações, do dinheiro investido e pelo cumprimento das normas e regulamentos." },
-    { icon: "fa-lightbulb",    label: "Espírito Empreendedor",   desc: "Agimos com pensamento inovador para agregar valor à experiência dos nossos clientes." },
-    { icon: "fa-leaf",         label: "Sustentabilidade",        desc: "Priorizamos a sustentabilidade dos planos administrados e a perenidade da Previdência BRB." },
+    { icon: "fa-heart", label: "Respeito", desc: "Respeitamos e valorizamos as pessoas." },
+    { icon: "fa-users", label: "Foco no Participante", desc: "Reconhecemos no participante a razão de existir da Previdência BRB." },
+    { icon: "fa-handshake", label: "Relações Institucionais", desc: "Zelamos pela qualidade e transparência nas relações." },
+    { icon: "fa-eye", label: "Transparência", desc: "Primamos pela clareza e tempestividade na prestação de informações." },
+    { icon: "fa-star", label: "Compromisso", desc: "Somos comprometidos com a realização dos sonhos e qualidade de vida dos participantes e seus familiares." },
+    { icon: "fa-chart-line", label: "Eficácia na Gestão", desc: "Temos foco no resultado e agimos com transparência, integridade e responsabilidade socioambiental." },
+    { icon: "fa-shield-alt", label: "Segurança", desc: "Prezamos pela segurança das informações, do dinheiro investido e pelo cumprimento das normas e regulamentos." },
+    { icon: "fa-lightbulb", label: "Espírito Empreendedor", desc: "Agimos com pensamento inovador para agregar valor à experiência dos nossos clientes." },
+    { icon: "fa-leaf", label: "Sustentabilidade", desc: "Priorizamos a sustentabilidade dos planos administrados e a perenidade da Previdência BRB." },
 ];
 
 const comites = [
@@ -137,16 +137,18 @@ function Governanca() {
     const heroRef = useRef(null);
     const heroVideoRef = useRef(null);
 
-    // Scroll para o topo ao carregar a página
+    // Scroll para o topo ao carregar a página (com reforço para navegadores)
     useEffect(() => {
         window.scrollTo(0, 0);
+        const timeout = setTimeout(() => window.scrollTo(0, 0), 100);
+        return () => clearTimeout(timeout);
     }, []);
 
     // Autoplay do vídeo do hero (sem scroll scrub)
     useEffect(() => {
         const video = heroVideoRef.current;
         if (!video) return;
-        video.play().catch(() => {});
+        video.play().catch(() => { });
     }, []);
 
     useEffect(() => {
@@ -194,7 +196,7 @@ function Governanca() {
         const gradients = [
             "linear-gradient(135deg, #031128 0%, #063468 100%)",   /* CONDE  — azul profundo */
             "linear-gradient(135deg, #0d3d2e 0%, #0a6e4f 100%)",   /* COFIS  — verde esmeralda */
-            "linear-gradient(135deg, #3d1a0d 0%, #8b3a1a 100%)",   /* DIRET. — âmbar / terracota */
+            "linear-gradient(135deg, #3d1a0d 0%, #8b3a1a 100%)",   /* DIREX — âmbar / terracota */
             "linear-gradient(135deg, #1a0a3d 0%, #4a1a7a 100%)",   /* AUDIN  — violeta */
         ];
 
@@ -216,13 +218,13 @@ function Governanca() {
             if (index === 0) return;
             const previous = cards[index - 1];
             tl.to(previous, { y: -210, opacity: 0.36, scale: 0.9, rotateX: 9, zIndex: 5, duration: 0.8 }, ">")
-              .fromTo(
-                card,
-                { y: 210, opacity: 0, scale: 0.95, rotateX: -8, zIndex: 25 },
-                { y: 0, opacity: 1, scale: 1, rotateX: 0, duration: 0.9 },
-                "<"
-              )
-              .to(bg, { background: gradients[index], duration: 0.9 }, "<");
+                .fromTo(
+                    card,
+                    { y: 210, opacity: 0, scale: 0.95, rotateX: -8, zIndex: 25 },
+                    { y: 0, opacity: 1, scale: 1, rotateX: 0, duration: 0.9 },
+                    "<"
+                )
+                .to(bg, { background: gradients[index], duration: 0.9 }, "<");
         });
 
         const handleResize = () => ScrollTrigger.refresh();
@@ -437,7 +439,7 @@ function Governanca() {
                                 </div>
                                 <div>
                                     <div className="gov-info-box-toprow">
-                                        <span className="gov-info-box-tag"><i className="fas fa-cogs" />DIRET.</span>
+                                        <span className="gov-info-box-tag"><i className="fas fa-cogs" />DIREX</span>
                                         <span className="gov-info-box-arrow" aria-hidden="true">↗</span>
                                     </div>
                                     <h3 className="gov-scroll-card-title">Diretoria Executiva</h3>
@@ -446,8 +448,8 @@ function Governanca() {
                                         Responsável pela administração geral da Previdência BRB, cabe à Diretoria Executiva garantir a observância das normas legais, estatutárias e regulamentares, além de implementar as diretrizes estabelecidas pelo Conselho Deliberativo, alinhadas aos objetivos institucionais.
                                     </p>
                                     <ul className="gov-scroll-card-desc">
-                                        <li>Diretor-Presidente – definido por processo seletivo; </li>
-                                        <li>Diretor Financeiro — definido por processo seletivo</li>
+                                        <li>Diretor-Presidente – definido após processo seletivo; </li>
+                                        <li>Diretor Financeiro — definido após processo seletivo; </li>
                                         <li>Diretor de Previdência – eleito dentre os Participantes Ativos e Assistidos.</li>
                                     </ul>
                                 </div>
@@ -471,7 +473,7 @@ function Governanca() {
                                     <h3 className="gov-scroll-card-title">Auditoria Interna</h3>
                                     <p className="gov-info-box-subtitle">Linha de defesa da gestão de riscos</p>
                                     <p className="gov-scroll-card-desc">
-                                       Subordinada ao Conselho Deliberativo, a Auditoria Interna, se estrutura como mais uma linha de defesa da gestão de riscos, controles e conformidade.
+                                        Subordinada ao Conselho Deliberativo, a Auditoria Interna, se estrutura como mais uma linha de defesa da gestão de riscos, controles e conformidade.
                                     </p>
                                 </div>
                                 <div className="gov-info-box-img-wrap">
@@ -494,7 +496,7 @@ function Governanca() {
                         <h3 className="gov-subsection-title" style={{ color: "#fff" }}>Comitês Estratégicos</h3>
                         <p style={{ color: "rgba(200,220,255,.65)", fontSize: "19px", marginTop: "12px", lineHeight: "1.7" }}>
                             Os Órgãos Estatutários da Previdência BRB contam com o suporte de quatro comitês estratégicos: o Comitê de Investimentos (COMIN), o Comitê de Patrocinadoras (COPAT), o Comitê de Gerenciamento de Crise e Imagem (COMCI) e o Comitê de Gestão de Riscos (CORIS).
-Os comitês COMIN e COPAT são formados por membros indicados pelas Patrocinadoras e Instituidoras dos planos administrados pela Entidade. Já os comitês COMCI e CORIS são compostos por representantes das unidades organizacionais da Previdência BRB.
+                            Os comitês COMIN e COPAT são formados por membros indicados pelas Patrocinadoras e Instituidoras dos planos administrados pela Entidade. Já os comitês COMCI e CORIS são compostos por representantes das unidades organizacionais da Previdência BRB.
 
                         </p>
                         <div className="gov-divider" style={{ marginTop: "20px" }} />
@@ -540,7 +542,7 @@ Os comitês COMIN e COPAT são formados por membros indicados pelas Patrocinador
                     </div>
                     <h4 className="gov-members-category">Membros Suplentes</h4>
                     <div className="row g-3">
-                        <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "0ms" }}><MemberCard name="Cynthia Judite Perciano Borges" role="Suplente" /></div>
+                        <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "0ms" }}><MemberCard name="Cynthia Judite Perciano Borges" role="Presidente (desde jan/2026)" /></div>
                         <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "80ms" }}><MemberCard name="Robério César Bonfim Mangueira" role="Suplente" /></div>
                         <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "160ms" }}><MemberCard name="Luciano Henn Bernardi" role="Suplente" /></div>
                         <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "240ms" }}><MemberCard name="José Cristóvão de Souza" role="Suplente" /></div>
@@ -560,7 +562,7 @@ Os comitês COMIN e COPAT são formados por membros indicados pelas Patrocinador
                         <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "0ms" }}><MemberCard name="Wendell Feitosa Castro" role="Conselheiro" isPresident /></div>
                         <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "80ms" }}><MemberCard name="Carlos José Alves Costa" role="Conselheiro" /></div>
                         <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "160ms" }}><MemberCard name="Gabriele Galheno Dias" role="Conselheira" /></div>
-                        <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "240ms" }}><MemberCard name="Rodrigo Alves dos Santos" role="Conselheiro" /></div>
+                        <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "240ms" }}><MemberCard name="Haendel Magalhães Pires" role="Conselheiro" /></div>
                     </div>
                     <h4 className="gov-members-category">Membros Suplentes</h4>
                     <div className="row g-3">
@@ -576,7 +578,7 @@ Os comitês COMIN e COPAT são formados por membros indicados pelas Patrocinador
                 {/* Diretoria */}
                 <div className="gov-body-group">
                     <div className="gov-body-label">
-                        <span className="gov-body-label-tag gov-body-label-tag--dir">DIRET.</span>
+                        <span className="gov-body-label-tag gov-body-label-tag--dir">DIREX</span>
                         <h3 className="gov-body-title">Diretoria Executiva</h3>
                     </div>
                     <div className="row g-4">
@@ -604,135 +606,135 @@ Os comitês COMIN e COPAT são formados por membros indicados pelas Patrocinador
                         style={{ "--orgchart-scale": orgChartScale, "--orgchart-height": `${1240 * orgChartScale}px` }}
                     >
                         <div className="gov-orgchart-canvas-stage">
-                        <div className="gov-orgchart-canvas">
-                            <svg viewBox="0 0 1680 1240" aria-hidden="true">
-                                <line className="gov-org-line gov-org-line-strong" x1="840" y1="116" x2="840" y2="220" />
-                                <line className="gov-org-line" x1="840" y1="220" x2="550" y2="220" />
-                                <line className="gov-org-line" x1="840" y1="220" x2="1130" y2="220" />
-                                <line className="gov-org-line gov-org-line-strong" x1="840" y1="220" x2="840" y2="820" />
+                            <div className="gov-orgchart-canvas">
+                                <svg viewBox="0 0 1680 1240" aria-hidden="true">
+                                    <line className="gov-org-line gov-org-line-strong" x1="840" y1="116" x2="840" y2="220" />
+                                    <line className="gov-org-line" x1="840" y1="220" x2="550" y2="220" />
+                                    <line className="gov-org-line" x1="840" y1="220" x2="1130" y2="220" />
+                                    <line className="gov-org-line gov-org-line-strong" x1="840" y1="220" x2="840" y2="820" />
 
-                                <line className="gov-org-line" x1="840" y1="353" x2="560" y2="353" />
-                                <line className="gov-org-line" x1="840" y1="435" x2="560" y2="435" />
-                                <line className="gov-org-line" x1="840" y1="524" x2="560" y2="524" />
-                                <line className="gov-org-line" x1="840" y1="538" x2="730" y2="538" />
-                                <line className="gov-org-line" x1="840" y1="653" x2="560" y2="653" />
-                                <line className="gov-org-line" x1="840" y1="742" x2="560" y2="742" />
+                                    <line className="gov-org-line" x1="840" y1="353" x2="560" y2="353" />
+                                    <line className="gov-org-line" x1="840" y1="435" x2="560" y2="435" />
+                                    <line className="gov-org-line" x1="840" y1="524" x2="560" y2="524" />
+                                    <line className="gov-org-line" x1="840" y1="538" x2="730" y2="538" />
+                                    <line className="gov-org-line" x1="840" y1="653" x2="560" y2="653" />
+                                    <line className="gov-org-line" x1="840" y1="742" x2="560" y2="742" />
 
-                                <line className="gov-org-line gov-org-line-strong" x1="840" y1="896" x2="840" y2="930" />
-                                <line className="gov-org-line gov-org-line-strong" x1="260" y1="930" x2="1460" y2="930" />
+                                    <line className="gov-org-line gov-org-line-strong" x1="840" y1="896" x2="840" y2="930" />
+                                    <line className="gov-org-line gov-org-line-strong" x1="260" y1="930" x2="1460" y2="930" />
 
-                                <line className="gov-org-line" x1="260" y1="930" x2="260" y2="960" />
-                                <line className="gov-org-line" x1="710" y1="930" x2="710" y2="960" />
-                                <line className="gov-org-line" x1="950" y1="930" x2="950" y2="960" />
-                                <line className="gov-org-line" x1="1190" y1="930" x2="1190" y2="960" />
-                                <line className="gov-org-line" x1="1460" y1="930" x2="1460" y2="960" />
+                                    <line className="gov-org-line" x1="260" y1="930" x2="260" y2="960" />
+                                    <line className="gov-org-line" x1="710" y1="930" x2="710" y2="960" />
+                                    <line className="gov-org-line" x1="950" y1="930" x2="950" y2="960" />
+                                    <line className="gov-org-line" x1="1190" y1="930" x2="1190" y2="960" />
+                                    <line className="gov-org-line" x1="1460" y1="930" x2="1460" y2="960" />
 
-                                <line className="gov-org-line" x1="260" y1="1036" x2="260" y2="1070" />
-                                <line className="gov-org-line" x1="220" y1="1070" x2="440" y2="1070" />
-                                <line className="gov-org-line" x1="220" y1="1070" x2="220" y2="1110" />
-                                <line className="gov-org-line" x1="440" y1="1070" x2="440" y2="1110" />
+                                    <line className="gov-org-line" x1="260" y1="1036" x2="260" y2="1070" />
+                                    <line className="gov-org-line" x1="220" y1="1070" x2="440" y2="1070" />
+                                    <line className="gov-org-line" x1="220" y1="1070" x2="220" y2="1110" />
+                                    <line className="gov-org-line" x1="440" y1="1070" x2="440" y2="1110" />
 
-                                <line className="gov-org-line" x1="1460" y1="1056" x2="1460" y2="1070" />
-                                <line className="gov-org-line" x1="1406" y1="1070" x2="1592" y2="1070" />
-                                <line className="gov-org-line" x1="1406" y1="1070" x2="1406" y2="1110" />
-                                <line className="gov-org-line" x1="1592" y1="1070" x2="1592" y2="1110" />
-                            </svg>
+                                    <line className="gov-org-line" x1="1460" y1="1056" x2="1460" y2="1070" />
+                                    <line className="gov-org-line" x1="1406" y1="1070" x2="1592" y2="1070" />
+                                    <line className="gov-org-line" x1="1406" y1="1070" x2="1406" y2="1110" />
+                                    <line className="gov-org-line" x1="1592" y1="1070" x2="1592" y2="1110" />
+                                </svg>
 
-                            <article className="gov-org-node gov-org-node-core gov-org-node-center" style={{ left: 730, top: 40, width: 220, minHeight: 76, animationDelay: "0.02s" }}>
-                                <h3>Conde</h3>
-                                <p>Conselho Deliberativo</p>
-                            </article>
+                                <article className="gov-org-node gov-org-node-core gov-org-node-center" style={{ left: 730, top: 40, width: 220, minHeight: 76, animationDelay: "0.02s" }}>
+                                    <h3>Conde</h3>
+                                    <p>Conselho Deliberativo</p>
+                                </article>
 
-                            <article className="gov-org-node gov-org-node-side" style={{ left: 280, top: 180, width: 270, minHeight: 76, animationDelay: "0.08s" }}>
-                                <h3>Audin</h3>
-                                <p>Auditoria Interna</p>
-                            </article>
+                                <article className="gov-org-node gov-org-node-side" style={{ left: 280, top: 180, width: 270, minHeight: 76, animationDelay: "0.08s" }}>
+                                    <h3>Audin</h3>
+                                    <p>Auditoria Interna</p>
+                                </article>
 
-                            <article className="gov-org-node gov-org-node-side" style={{ left: 1130, top: 180, width: 270, minHeight: 76, animationDelay: "0.1s" }}>
-                                <h3>Cofis</h3>
-                                <p>Conselho Fiscal</p>
-                            </article>
+                                <article className="gov-org-node gov-org-node-side" style={{ left: 1130, top: 180, width: 270, minHeight: 76, animationDelay: "0.1s" }}>
+                                    <h3>Cofis</h3>
+                                    <p>Conselho Fiscal</p>
+                                </article>
 
-                            <article className="gov-org-node gov-org-node-side" style={{ left: 250, top: 320, width: 310, minHeight: 66, animationDelay: "0.15s" }}>
-                                <h3>Comed</h3>
-                                <p>Comitê de Ética e Disciplina</p>
-                            </article>
+                                <article className="gov-org-node gov-org-node-side" style={{ left: 250, top: 320, width: 310, minHeight: 66, animationDelay: "0.15s" }}>
+                                    <h3>Comed</h3>
+                                    <p>Comitê de Ética e Disciplina</p>
+                                </article>
 
-                            <article className="gov-org-node gov-org-node-side" style={{ left: 250, top: 402, width: 310, minHeight: 66, animationDelay: "0.18s" }}>
-                                <h3>Coris</h3>
-                                <p>Comitê de Gestão de Riscos</p>
-                            </article>
+                                <article className="gov-org-node gov-org-node-side" style={{ left: 250, top: 402, width: 310, minHeight: 66, animationDelay: "0.18s" }}>
+                                    <h3>Coris</h3>
+                                    <p>Comitê de Gestão de Riscos</p>
+                                </article>
 
-                            <article className="gov-org-node gov-org-node-side" style={{ left: 250, top: 484, width: 310, minHeight: 66, animationDelay: "0.2s" }}>
-                                <h3>Comci</h3>
-                                <p>Comitê de Gerenciamento de Crise e Imagem</p>
-                            </article>
+                                <article className="gov-org-node gov-org-node-side" style={{ left: 250, top: 484, width: 310, minHeight: 66, animationDelay: "0.2s" }}>
+                                    <h3>Comci</h3>
+                                    <p>Comitê de Gerenciamento de Crise e Imagem</p>
+                                </article>
 
-                            <article className="gov-org-node gov-org-node-core" style={{ left: 730, top: 500, width: 240, minHeight: 76, animationDelay: "0.22s" }}>
-                                <h3>Direx</h3>
-                                <p>Diretoria Executiva</p>
-                            </article>
+                                <article className="gov-org-node gov-org-node-core" style={{ left: 730, top: 500, width: 240, minHeight: 76, animationDelay: "0.22s" }}>
+                                    <h3>Direx</h3>
+                                    <p>Diretoria Executiva</p>
+                                </article>
 
-                            <article className="gov-org-node gov-org-node-side" style={{ left: 250, top: 620, width: 310, minHeight: 66, animationDelay: "0.25s" }}>
-                                <h3>Comin</h3>
-                                <p>Comitê de Investimento</p>
-                            </article>
+                                <article className="gov-org-node gov-org-node-side" style={{ left: 250, top: 620, width: 310, minHeight: 66, animationDelay: "0.25s" }}>
+                                    <h3>Comin</h3>
+                                    <p>Comitê de Investimento</p>
+                                </article>
 
-                            <article className="gov-org-node gov-org-node-side" style={{ left: 250, top: 702, width: 310, minHeight: 66, animationDelay: "0.28s" }}>
-                                <h3>Copat</h3>
-                                <p>Comitê de Patrocinadoras e Instituidoras</p>
-                            </article>
+                                <article className="gov-org-node gov-org-node-side" style={{ left: 250, top: 702, width: 310, minHeight: 66, animationDelay: "0.28s" }}>
+                                    <h3>Copat</h3>
+                                    <p>Comitê de Patrocinadoras e Instituidoras</p>
+                                </article>
 
-                            <article className="gov-org-node gov-org-node-presi gov-org-node-core" style={{ left: 690, top: 820, width: 300, minHeight: 76, animationDelay: "0.32s" }}>
-                                <h3>Presi</h3>
-                                <p>Presidência</p>
-                            </article>
+                                <article className="gov-org-node gov-org-node-presi gov-org-node-core" style={{ left: 690, top: 820, width: 300, minHeight: 76, animationDelay: "0.32s" }}>
+                                    <h3>Presi</h3>
+                                    <p>Presidência</p>
+                                </article>
 
-                            <article className="gov-org-node" style={{ left: 120, top: 960, width: 280, minHeight: 76, animationDelay: "0.36s" }}>
-                                <h3>Dipre</h3>
-                                <p>Previdência</p>
-                            </article>
+                                <article className="gov-org-node" style={{ left: 120, top: 960, width: 280, minHeight: 76, animationDelay: "0.36s" }}>
+                                    <h3>Dipre</h3>
+                                    <p>Previdência</p>
+                                </article>
 
-                            <article className="gov-org-node" style={{ left: 600, top: 960, width: 220, minHeight: 76, animationDelay: "0.38s" }}>
-                                <h3>Gejur</h3>
-                                <p>Jurídico</p>
-                            </article>
+                                <article className="gov-org-node gov-org-node-child" style={{ left: 600, top: 960, width: 220, minHeight: 76, animationDelay: "0.38s" }}>
+                                    <h3>Gejur</h3>
+                                    <p>Jurídico</p>
+                                </article>
 
-                            <article className="gov-org-node" style={{ left: 840, top: 960, width: 220, minHeight: 76, animationDelay: "0.4s" }}>
-                                <h3>Gegop</h3>
-                                <p>Governança e Planejamento</p>
-                            </article>
+                                <article className="gov-org-node gov-org-node-child" style={{ left: 840, top: 960, width: 220, minHeight: 76, animationDelay: "0.4s" }}>
+                                    <h3>Gegop</h3>
+                                    <p>Governança e Planejamento</p>
+                                </article>
 
-                            <article className="gov-org-node" style={{ left: 1080, top: 960, width: 220, minHeight: 76, animationDelay: "0.42s" }}>
-                                <h3>Gecor</h3>
-                                <p>Controle, Orçamento e Risco (Compliance Officer)</p>
-                            </article>
+                                <article className="gov-org-node gov-org-node-child" style={{ left: 1080, top: 960, width: 220, minHeight: 76, animationDelay: "0.42s" }}>
+                                    <h3>Gecor</h3>
+                                    <p>Controle, Orçamento e Risco (Compliance Officer)</p>
+                                </article>
 
-                            <article className="gov-org-node" style={{ left: 1320, top: 960, width: 280, minHeight: 76, animationDelay: "0.44s" }}>
-                                <h3>Difin</h3>
-                                <p>Diretoria de Administração e Finanças</p>
-                            </article>
+                                <article className="gov-org-node" style={{ left: 1320, top: 960, width: 280, minHeight: 76, animationDelay: "0.44s" }}>
+                                    <h3>Difin</h3>
+                                    <p>Diretoria de Administração e Finanças</p>
+                                </article>
 
-                            <article className="gov-org-node gov-org-node-child" style={{ left: 120, top: 1110, width: 200, minHeight: 68, animationDelay: "0.47s" }}>
-                                <h3>Gerep</h3>
-                                <p>Relacionamento e Previdência</p>
-                            </article>
+                                <article className="gov-org-node gov-org-node-child" style={{ left: 120, top: 1110, width: 200, minHeight: 68, animationDelay: "0.47s" }}>
+                                    <h3>Gerep</h3>
+                                    <p>Relacionamento e Previdência</p>
+                                </article>
 
-                            <article className="gov-org-node gov-org-node-child" style={{ left: 340, top: 1110, width: 200, minHeight: 68, animationDelay: "0.49s" }}>
-                                <h3>Gecat</h3>
-                                <p>Canais e Tecnologia</p>
-                            </article>
+                                <article className="gov-org-node gov-org-node-child" style={{ left: 340, top: 1110, width: 200, minHeight: 68, animationDelay: "0.49s" }}>
+                                    <h3>Gecat</h3>
+                                    <p>Canais e Tecnologia</p>
+                                </article>
 
-                            <article className="gov-org-node gov-org-node-child" style={{ left: 1318, top: 1110, width: 176, minHeight: 68, animationDelay: "0.52s" }}>
-                                <h3>Geinv</h3>
-                                <p>Investimento</p>
-                            </article>
+                                <article className="gov-org-node gov-org-node-child" style={{ left: 1318, top: 1110, width: 176, minHeight: 68, animationDelay: "0.52s" }}>
+                                    <h3>Geinv</h3>
+                                    <p>Investimento</p>
+                                </article>
 
-                            <article className="gov-org-node gov-org-node-child" style={{ left: 1504, top: 1110, width: 176, minHeight: 68, animationDelay: "0.54s" }}>
-                                <h3>Gepac</h3>
-                                <p>Pessoas, Adm. e Contratos</p>
-                            </article>
-                        </div>
+                                <article className="gov-org-node gov-org-node-child" style={{ left: 1504, top: 1110, width: 176, minHeight: 68, animationDelay: "0.54s" }}>
+                                    <h3>Gepac</h3>
+                                    <p>Pessoas, Adm. e Contratos</p>
+                                </article>
+                            </div>
                         </div>
                     </section>
 
@@ -759,9 +761,9 @@ Os comitês COMIN e COPAT são formados por membros indicados pelas Patrocinador
                             <article className="gov-org-node gov-org-node-child"><h3>Gerep</h3><p>Relacionamento e Previdência</p></article>
                             <article className="gov-org-node gov-org-node-child"><h3>Gecat</h3><p>Canais e Tecnologia</p></article>
 
-                            <article className="gov-org-node"><h3>Gejur</h3><p>Jurídico</p></article>
-                            <article className="gov-org-node"><h3>Gegop</h3><p>Governança e Planejamento</p></article>
-                            <article className="gov-org-node"><h3>Gecor</h3><p>Controle, Orçamento e Risco (Compliance Officer)</p></article>
+                            <article className="gov-org-node gov-org-node-child"><h3>Gejur</h3><p>Jurídico</p></article>
+                            <article className="gov-org-node gov-org-node-child"><h3>Gegop</h3><p>Governança e Planejamento</p></article>
+                            <article className="gov-org-node gov-org-node-child"><h3>Gecor</h3><p>Controle, Orçamento e Risco (Compliance Officer)</p></article>
 
                             <article className="gov-org-node"><h3>Difin</h3><p>Diretoria de Administração e Finanças</p></article>
                             <article className="gov-org-node gov-org-node-child"><h3>Geinv</h3><p>Investimento</p></article>

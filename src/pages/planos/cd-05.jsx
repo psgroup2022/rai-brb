@@ -680,7 +680,9 @@ function SecaoAtuarial() {
                             lineHeight: '1.5',
                             fontWeight: '500'
                         }}>
+                        <a href="https://previdenciabrb.org.br/wp-content/uploads/2026/04/parecer-atuarial-exercicio-2025-cd-05-previdencia-brb.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                             <strong style={{ color: '#0074c8', fontWeight: '800' }}>CLIQUE AQUI</strong> para acessar o Parecer Atuarial do Plano CD-05 Arquivo anexo
+                        </a>
                         </p>
                     </div>
                     <div style={{

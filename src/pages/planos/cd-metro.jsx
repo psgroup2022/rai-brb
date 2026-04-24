@@ -528,7 +528,7 @@ function SecaoAtuarial() {
                 </div>
 
                 <div className="dstq-reveal" style={{ marginTop: 40, paddingBottom: 24 }}>
-                    <a href="#" className="plano-cta-link" style={{ fontSize: "1.1rem", color: "#0074c8", textDecoration: "none", fontWeight: 600, display: "inline-block", padding: "12px 24px", border: "2px solid #00aeef", borderRadius: "8px", transition: "all 0.2s" }} onMouseOver={e => { e.currentTarget.style.background = "#00aeef"; e.currentTarget.style.color="#fff"; }} onMouseOut={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color="#0074c8"; }}>
+                    <a href="https://previdenciabrb.org.br/wp-content/uploads/2026/04/parecer-atuarial-exercicio-2025-cd-metro-previdencia-brb.pdf" target="_blank" rel="noopener noreferrer" className="plano-cta-link" style={{ fontSize: "1.1rem", color: "#0074c8", textDecoration: "none", fontWeight: 600, display: "inline-block", padding: "12px 24px", border: "2px solid #00aeef", borderRadius: "8px", transition: "all 0.2s" }} onMouseOver={e => { e.currentTarget.style.background = "#00aeef"; e.currentTarget.style.color="#fff"; }} onMouseOut={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color="#0074c8"; }}>
                         Clique aqui para acessar o Parecer Atuarial do Plano CD-METRÔ-DF – Arquivo anexo
                     </a>
                 </div>

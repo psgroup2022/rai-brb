@@ -1,4 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import ScrollToTop from "../components/ScrollToTop";
 import Index2 from "../pages/home/index-2";
 import MensagemLiderancas from "../pages/mensagem/mensagem-liderancas";
 import PerfilCorporativo from "../pages/perfil/perfil-corporativo";
@@ -40,6 +41,7 @@ const rootdata = [
 function Root() {
     return (
         <BrowserRouter>
+            <ScrollToTop />
             <Routes>
                 {rootdata.map((data, i) => (
                     <Route key={i} path={data.path} element={data.element} />

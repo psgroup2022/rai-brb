@@ -72,8 +72,7 @@ function Index2() {
                         </div>
                         <div className="col-lg-6">
                             <div className="heading">
-                                <span># Apresentação</span>
-                                <h2>Mensagem de Abertura</h2>
+                                <h2>Apresentação</h2>
                                 <div className="presentation-text">
                                     <p>A Previdência BRB apresenta no Relatório Anual de Informações, destacando as realizações e resultados alcançados, em 2025.</p>
                                     <p>O ano de 2025 foi marcado por importantes avanços, tendo como foco estratégico a sustentabilidade dos 7 planos de benefícios administrados e do PGA e, por consequência, a perenidade da Previdência BRB.</p>

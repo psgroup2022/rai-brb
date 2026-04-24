@@ -544,7 +544,9 @@ function SecaoAtuarial() {
 
         <div className="dstq-cta-wrap" style={{ marginTop: 40, textAlign: 'center' }}>
           <a
-            href="#"
+            href="https://previdenciabrb.org.br/wp-content/uploads/2026/04/parecer-atuarial-exercicio-2025-regiusprev-previdencia-brb.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="dstq-cta-btn dstq-cta-btn--light"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}
           >

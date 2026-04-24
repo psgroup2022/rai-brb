@@ -60,7 +60,7 @@ function Header2() {
                                     </div>
                                 </div>
                             </div>
-                            <Link to={"#"} id="mobile-menu" className="menu-start" onClick={() => handleclick(show)}>
+                            <Link to={"#"} id="mobile-menu" className="menu-start d-lg-none" onClick={() => handleclick(show)}>
                                 <i className="fa-solid fa-bars" />
                             </Link>
                             <nav className="navbar">
@@ -114,7 +114,7 @@ function Header2() {
                                     })}
                                 </ul>
                             </nav>
-                            <div className="header-menu-right">
+                            <div className="header-menu-right d-none d-lg-none d-md-none">
                                 <div className="header-search-button search-box-outer" onClick={() => addBodyClass(search)}>
                                     <Link to={"#"} id="show">
                                         <svg enableBackground="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m128 102.4c0-14.138 11.462-25.6 25.6-25.6h332.8c14.138 0 25.6 11.462 25.6 25.6s-11.462 25.6-25.6 25.6h-332.8c-14.138 0-25.6-11.463-25.6-25.6zm358.4 128h-460.8c-14.138 0-25.6 11.463-25.6 25.6 0 14.138 11.462 25.6 25.6 25.6h460.8c14.138 0 25.6-11.462 25.6-25.6 0-14.137-11.462-25.6-25.6-25.6zm0 153.6h-230.4c-14.137 0-25.6 11.462-25.6 25.6 0 14.137 11.463 25.6 25.6 25.6h230.4c14.138 0 25.6-11.463 25.6-25.6 0-14.138-11.462-25.6-25.6-25.6z"></path></svg>

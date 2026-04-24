@@ -52,27 +52,29 @@ function Footer2() {
 
                     <div className="col-lg-4 col-md-12">
                         <div className="brb-footer-col brb-footer-contact">
-                            <h5>Contato</h5>
+                            <h5>Conecte-se conosco!</h5>
                             <ul>
                                 <li>
-                                    <span className="icon">📍</span>
-                                    SGAS Quadra 902, Ed. Athenas, Bloco A, Térreo, Brasília - DF, CEP: 70.390-020
+                                    SGAS Quadra 902, Ed. Athenas, Bloco A,<br />
+                                    Térreo, Brasília - DF, CEP: 70.390-020
                                 </li>
                                 <li>
-                                    <span className="icon">📞</span>
                                     SAC: 0800 000 2977
                                 </li>
                                 <li>
-                                    <span className="icon">💬</span>
                                     WhatsApp: (61) 99803-1922
                                 </li>
                                 <li>
-                                    <span className="icon">✉️</span>
+                                    Atendimento:<br />
                                     relacionamento@previdenciabrb.org.br
                                 </li>
                                 <li>
-                                    <span className="icon">🔒</span>
+                                    Fale com o Encarregado de Dados:<br />
                                     encarregadodedados@previdenciabrb.org.br
+                                </li>
+                                <li>
+                                    Ouvidoria:<br />
+                                    canal.ouvidordigital.com.br
                                 </li>
                             </ul>
                         </div>
@@ -85,7 +87,9 @@ function Footer2() {
                             <p>© 2025 Previdência BRB · Todos os direitos reservados · RAI 2025</p>
                         </div>
                         <div className="col-md-4 text-md-end">
-                            <p>Conecte-se conosco!</p>
+                            <p>
+                                Desenvolvido com ❤️ por <a href="https://mirador360.com.br" target="_blank" rel="noopener noreferrer" style={{color: 'inherit', textDecoration: 'underline'}}>Mirador Atuarial</a>
+                            </p>
                         </div>
                     </div>
                 </div>

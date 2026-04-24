@@ -20,7 +20,7 @@ function MensagemLiderancas() {
         },
         {
             value: '11,51%',
-            label: 'Rentabilidade média dos Planos em 2025 (ao ano)',
+            label: 'Rentabilidade média dos Planos em 2025',
         },
         {
             value: '53',
@@ -410,16 +410,16 @@ function AsgScrollPhrase() {
 
     return (
         <div className="asg-scroll-wrapper" style={{ position: 'relative' }}>
-            <div 
-                ref={sectionRef} 
-                style={{ 
+            <div
+                ref={sectionRef}
+                style={{
                     backgroundImage: `url(${imgAsg})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundAttachment: 'fixed',
-                    overflow: 'hidden', 
-                    height: '100vh', 
-                    display: 'flex', 
+                    overflow: 'hidden',
+                    height: '100vh',
+                    display: 'flex',
                     alignItems: 'center',
                     position: 'relative'
                 }}
@@ -431,7 +431,7 @@ function AsgScrollPhrase() {
                     background: 'rgba(0, 8, 20, 0.4)',
                     zIndex: 1
                 }} />
-                
+
                 <div
                     ref={trackRef}
                     style={{

@@ -414,7 +414,7 @@ function PerfilCorporativo() {
                                 <li>Todos os planos superaram suas metas de rentabilidade e os respectivos índices de referência.</li>
                                 <li>O Plano BD-01 apresentou superávit de <strong>R$ 91,141 milhões</strong>, e o CV-03, de <strong>R$ 8,215 milhões</strong>.</li>
                                 <li>A base de participantes atingiu <strong>7.619 participantes</strong>, com crescimento anual de <strong>5,31%</strong>.</li>
-                                <li>O ICP alcançou <strong>87,59%</strong>.</li>
+                                <li>O Índice de Cobertura Previdencial (ICP) alcançou <strong>87,59%</strong>.</li>
                             </ul>
                         </div>
                     </div>
@@ -467,7 +467,7 @@ function PerfilCorporativo() {
                             <div className="destaque-card__icon">💡</div>
                             <h4 className="destaque-card__title">Produtos, Inovação e Expansão</h4>
                             <ul className="destaque-card__list">
-                                <li>Implantação do <strong>Projeto Correspondentes</strong>, com foco na ampliação da base de patrocinadores, instituidores e participantes.</li>
+                                <li>Implantação do <strong>Projeto Correspondentes</strong>, com foco na ampliação da base de patrocinadores, instituidores e participantes, por meio de consultores credenciados.</li>
                                 <li>Lançamento do programa <strong>Indique e Ganhe</strong>, voltado à expansão da base de participantes do Plano BrasíliaPrev.</li>
                                 <li>Desenvolvimento da segunda edição do <strong>Projeto Eureka</strong>, estimulando ideias inovadoras entre os colaboradores.</li>
                             </ul>
@@ -584,50 +584,50 @@ function PerfilCorporativo() {
                             <tbody>
                                 {(() => {
                                     const rows = [
-                                        ["BD-01","Patrocinadora","BRB","2"],
-                                        ["BD-01","Patrocinadora","Previdência BRB",""],
-                                        ["CD-02","Patrocinadora","BRB","2"],
-                                        ["CD-02","Patrocinadora","Previdência BRB",""],
-                                        ["CV-03","Patrocinadora","BRB","4"],
-                                        ["CV-03","Patrocinadora","Previdência BRB",""],
-                                        ["CV-03","Patrocinadora","Corretora Seguros BRB",""],
-                                        ["CV-03","Patrocinadora","BRBCARD",""],
-                                        ["CD-Metrô","Patrocinadora","Metrô-DF","1"],
-                                        ["CD-05","Patrocinadora","BRB","6"],
-                                        ["CD-05","Patrocinadora","Previdência BRB",""],
-                                        ["CD-05","Patrocinadora","BRBCARD",""],
-                                        ["CD-05","Patrocinadora","Saúde BRB",""],
-                                        ["CD-05","Patrocinadora","Aneabrb",""],
-                                        ["CD-05","Patrocinadora","CEASA-DF",""],
-                                        ["BrasíliaPrev","Instituidora","Previdência BRB","15"],
-                                        ["BrasíliaPrev","Instituidora","Aneabrb",""],
-                                        ["BrasíliaPrev","Instituidora","COPEV-DF",""],
-                                        ["BrasíliaPrev","Instituidora","AABR",""],
-                                        ["BrasíliaPrev","Instituidora","ABRAPP",""],
-                                        ["BrasíliaPrev","Instituidora","CRMV-DF",""],
-                                        ["BrasíliaPrev","Instituidora Filiada","Bloco 244",""],
-                                        ["BrasíliaPrev","Instituidora Filiada","GS3 Tecnologia",""],
-                                        ["BrasíliaPrev","Instituidora Filiada","Colégio Biângulo",""],
-                                        ["BrasíliaPrev","Instituidora Filiada","PPN Tecnologia",""],
-                                        ["BrasíliaPrev","Instituidora Filiada","Colégio do Sol",""],
-                                        ["BrasíliaPrev","Instituidora Filiada","Prime",""],
-                                        ["BrasíliaPrev","Instituidora Filiada","Academia Ultra 1",""],
-                                        ["BrasíliaPrev","Instituidora Filiada","Academia Ultra 2",""],
-                                        ["BrasíliaPrev","Instituidora Filiada","Academia Ultra 3",""],
-                                        ["RegiusPrev","Patrocinadora","Cruzeiro do Oeste Câmara Municipal","14"],
-                                        ["RegiusPrev","Patrocinadora","Município de Cruzeiro do Oeste",""],
-                                        ["RegiusPrev","Patrocinadora","Cruzeiro do Sul Câmara Municipal",""],
-                                        ["RegiusPrev","Patrocinadora","Município de Cruzeiro do Sul",""],
-                                        ["RegiusPrev","Patrocinadora","Município de São Tomé",""],
-                                        ["RegiusPrev","Patrocinadora","São Tomé Câmara Municipal",""],
-                                        ["RegiusPrev","Patrocinadora","Município de Querência do Norte",""],
-                                        ["RegiusPrev","Patrocinadora","Querência do Norte Câmara Municipal",""],
-                                        ["RegiusPrev","Patrocinadora","Município de Maringá – Prefeitura",""],
-                                        ["RegiusPrev","Patrocinadora","Agência Maringaense de Regulação – AMR",""],
-                                        ["RegiusPrev","Patrocinadora","IPPLAM",""],
-                                        ["RegiusPrev","Patrocinadora","Maringá Previdência",""],
-                                        ["RegiusPrev","Patrocinadora","Instituto Ambiental de Maringá – IAM",""],
-                                        ["RegiusPrev","Patrocinadora","Câmara Municipal de Maringá",""],
+                                        ["BD-01", "Patrocinadora", "BRB", "2"],
+                                        ["BD-01", "Patrocinadora", "Previdência BRB", ""],
+                                        ["CD-02", "Patrocinadora", "BRB", "2"],
+                                        ["CD-02", "Patrocinadora", "Previdência BRB", ""],
+                                        ["CV-03", "Patrocinadora", "BRB", "4"],
+                                        ["CV-03", "Patrocinadora", "Previdência BRB", ""],
+                                        ["CV-03", "Patrocinadora", "Corretora Seguros BRB", ""],
+                                        ["CV-03", "Patrocinadora", "BRBCARD", ""],
+                                        ["CD-Metrô", "Patrocinadora", "Metrô-DF", "1"],
+                                        ["CD-05", "Patrocinadora", "BRB", "6"],
+                                        ["CD-05", "Patrocinadora", "Previdência BRB", ""],
+                                        ["CD-05", "Patrocinadora", "BRBCARD", ""],
+                                        ["CD-05", "Patrocinadora", "Saúde BRB", ""],
+                                        ["CD-05", "Patrocinadora", "Aneabrb", ""],
+                                        ["CD-05", "Patrocinadora", "CEASA-DF", ""],
+                                        ["BrasíliaPrev", "Instituidora", "Previdência BRB", "15"],
+                                        ["BrasíliaPrev", "Instituidora", "Aneabrb", ""],
+                                        ["BrasíliaPrev", "Instituidora", "COPEV-DF", ""],
+                                        ["BrasíliaPrev", "Instituidora", "AABR", ""],
+                                        ["BrasíliaPrev", "Instituidora", "ABRAPP", ""],
+                                        ["BrasíliaPrev", "Instituidora", "CRMV-DF", ""],
+                                        ["BrasíliaPrev", "Instituidora Filiada", "Bloco 244", ""],
+                                        ["BrasíliaPrev", "Instituidora Filiada", "GS3 Tecnologia", ""],
+                                        ["BrasíliaPrev", "Instituidora Filiada", "Colégio Biângulo", ""],
+                                        ["BrasíliaPrev", "Instituidora Filiada", "PPN Tecnologia", ""],
+                                        ["BrasíliaPrev", "Instituidora Filiada", "Colégio do Sol", ""],
+                                        ["BrasíliaPrev", "Instituidora Filiada", "Prime", ""],
+                                        ["BrasíliaPrev", "Instituidora Filiada", "Academia Ultra 1", ""],
+                                        ["BrasíliaPrev", "Instituidora Filiada", "Academia Ultra 2", ""],
+                                        ["BrasíliaPrev", "Instituidora Filiada", "Academia Ultra 3", ""],
+                                        ["RegiusPrev", "Patrocinadora", "Cruzeiro do Oeste Câmara Municipal", "14"],
+                                        ["RegiusPrev", "Patrocinadora", "Município de Cruzeiro do Oeste", ""],
+                                        ["RegiusPrev", "Patrocinadora", "Cruzeiro do Sul Câmara Municipal", ""],
+                                        ["RegiusPrev", "Patrocinadora", "Município de Cruzeiro do Sul", ""],
+                                        ["RegiusPrev", "Patrocinadora", "Município de São Tomé", ""],
+                                        ["RegiusPrev", "Patrocinadora", "São Tomé Câmara Municipal", ""],
+                                        ["RegiusPrev", "Patrocinadora", "Município de Querência do Norte", ""],
+                                        ["RegiusPrev", "Patrocinadora", "Querência do Norte Câmara Municipal", ""],
+                                        ["RegiusPrev", "Patrocinadora", "Município de Maringá – Prefeitura", ""],
+                                        ["RegiusPrev", "Patrocinadora", "Agência Maringaense de Regulação – AMR", ""],
+                                        ["RegiusPrev", "Patrocinadora", "IPPLAM", ""],
+                                        ["RegiusPrev", "Patrocinadora", "Maringá Previdência", ""],
+                                        ["RegiusPrev", "Patrocinadora", "Instituto Ambiental de Maringá – IAM", ""],
+                                        ["RegiusPrev", "Patrocinadora", "Câmara Municipal de Maringá", ""],
                                     ];
                                     // Pre-compute rowspan for each unique plano group
                                     const spanMap = {};
@@ -1197,14 +1197,14 @@ function PerfilCorporativo() {
                             </thead>
                             <tbody>
                                 {[
-                                    ["BD-01","95.716.065,00","92.269.766,14","+3,74%"],
-                                    ["CD-02","2.435.606,70","2.938.860,98","-17,12%"],
-                                    ["CV-03","74.803.748,39","69.290.707,34","+7,96%"],
-                                    ["CD-Metrô","16.648.083,33","15.906.670,42","+4,66%"],
-                                    ["CD-05","15.117.462,10","11.976.829,12","+26,22%"],
-                                    ["BrasíliaPrev","5.194.243,35","1.240.895,88","+318,59%"],
-                                    ["RegiusPrev","367.055,58","251.055,06","+46,21%"],
-                                    ["TOTAL","210.282.264,45","193.874.784,94","+8,46%"],
+                                    ["BD-01", "95.716.065,00", "92.269.766,14", "+3,74%"],
+                                    ["CD-02", "2.435.606,70", "2.938.860,98", "-17,12%"],
+                                    ["CV-03", "74.803.748,39", "69.290.707,34", "+7,96%"],
+                                    ["CD-Metrô", "16.648.083,33", "15.906.670,42", "+4,66%"],
+                                    ["CD-05", "15.117.462,10", "11.976.829,12", "+26,22%"],
+                                    ["BrasíliaPrev", "5.194.243,35", "1.240.895,88", "+318,59%"],
+                                    ["RegiusPrev", "367.055,58", "251.055,06", "+46,21%"],
+                                    ["TOTAL", "210.282.264,45", "193.874.784,94", "+8,46%"],
                                 ].map(([plano, v25, v24, delta], i) => (
                                     <tr key={i} className={plano === "TOTAL" ? "perfil-table-total" : ""}>
                                         <td><span className="perfil-badge">{plano}</span></td>
@@ -1259,14 +1259,14 @@ function PerfilCorporativo() {
                             </thead>
                             <tbody>
                                 {[
-                                    ["BD-01","1.781","1.793","-0,67%"],
-                                    ["CV-03","2.351","2.385","-1,43%"],
-                                    ["CD-02","221","247","-10,53%"],
-                                    ["CD Metrô","932","896","+4,02%"],
-                                    ["CD 05","1.171","899","+30,26%"],
-                                    ["BrasíliaPrev","1.098","956","+14,85%"],
-                                    ["RegiusPrev","65","59","+10,17%"],
-                                    ["TOTAL","7.619","7.235","+5,31%"],
+                                    ["BD-01", "1.781", "1.793", "-0,67%"],
+                                    ["CV-03", "2.351", "2.385", "-1,43%"],
+                                    ["CD-02", "221", "247", "-10,53%"],
+                                    ["CD Metrô", "932", "896", "+4,02%"],
+                                    ["CD 05", "1.171", "899", "+30,26%"],
+                                    ["BrasíliaPrev", "1.098", "956", "+14,85%"],
+                                    ["RegiusPrev", "65", "59", "+10,17%"],
+                                    ["TOTAL", "7.619", "7.235", "+5,31%"],
                                 ].map(([plano, v25, v24, delta], i) => (
                                     <tr key={i} className={plano === "TOTAL" ? "perfil-table-total" : ""}>
                                         <td><span className="perfil-badge">{plano}</span></td>

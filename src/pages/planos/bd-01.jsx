@@ -210,17 +210,17 @@ function SecaoDesempenho() {
                     <div className="pop-bar-wrap dstq-reveal dstq-reveal--d1">
                         <div className="pop-bar-label">Composição do plano</div>
                         <div className="pop-bar">
-                            <div className="pop-bar-seg pop-bar-seg--pensionistas" style={{ width: '78%' }}>
-                                <span>Pensionistas</span>
-                                <strong>78,0%</strong>
+                            <div className="pop-bar-seg pop-bar-seg--assistidos" style={{ width: '76.13%' }}>
+                                <span>Assistidos</span>
+                                <strong>76,13%</strong>
                             </div>
-                            <div className="pop-bar-seg pop-bar-seg--ativos" style={{ width: '11.28%' }}>
+                            <div className="pop-bar-seg pop-bar-seg--ativos" style={{ width: '13.5%' }}>
                                 <span>Ativos</span>
-                                <strong>11,28%</strong>
+                                <strong>13,50%</strong>
                             </div>
-                            <div className="pop-bar-seg pop-bar-seg--assistidos" style={{ width: '10.72%' }}>
-                                <span>Assist.</span>
-                                <strong>10,7%</strong>
+                            <div className="pop-bar-seg pop-bar-seg--pensionistas" style={{ width: '10.37%' }}>
+                                <span>Pensionistas</span>
+                                <strong>10,37%</strong>
                             </div>
                         </div>
                     </div>
@@ -252,15 +252,21 @@ function SecaoDesempenho() {
                             <div className="pop-card-label">Média de Idade</div>
                             <div className="pop-age-pair">
                                 <div className="pop-age-item">
-                                    <span className="pop-age-num">60,94</span>
+                                    <span className="pop-age-num">60,40</span>
                                     <span className="pop-age-lbl">anos</span>
                                     <span className="pop-age-tag">Ativos</span>
                                 </div>
                                 <div className="pop-age-divider" />
                                 <div className="pop-age-item">
-                                    <span className="pop-age-num">72,21</span>
+                                    <span className="pop-age-num">68,50</span>
                                     <span className="pop-age-lbl">anos</span>
                                     <span className="pop-age-tag">Assistidos</span>
+                                </div>
+                                <div className="pop-age-divider" />
+                                <div className="pop-age-item">
+                                    <span className="pop-age-num">75,40</span>
+                                    <span className="pop-age-lbl">anos</span>
+                                    <span className="pop-age-tag">Pensionistas</span>
                                 </div>
                             </div>
                         </div>
@@ -609,7 +615,7 @@ function SecaoAtuarial() {
 
                 {/* CTA */}
                 <div className="dstq-reveal" style={{ marginTop: '32px', textAlign: 'center' }}>
-                    <a href="#" className="dstq-cta-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                    <a href="https://previdenciabrb.org.br/wp-content/uploads/2026/04/parecer-atuarial-exercicio-2025-bd-01-previdencia-brb.pdf" target="_blank" rel="noopener noreferrer" className="dstq-cta-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
                         Clique aqui para acessar o Parecer Atuarial do Plano BD-01 <span>→</span>
                     </a>
                 </div>

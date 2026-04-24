@@ -77,6 +77,13 @@ const METRICS = [
     note: 'expansão da base de contribuições',
     color: BLUE,
   },
+  {
+    id: 8, target: 6.7, prefix: '', decimals: 1,
+    unit: '%', unitSmall: 'de redução',
+    label: 'Despesas administrativas X Patrimônio Administrado',
+    note: 'otimização da gestão de recursos',
+    color: ACCENT,
+  },
 ];
 
 function formatVal(metric, val) {
@@ -349,15 +356,7 @@ const LuxuryDashboard = () => {
                 opacity: 0.55, transition: 'opacity .4s ease',
               }} />
 
-              {/* Índice */}
-              <span className="hn-index" style={{
-                fontFamily: '"Sora", sans-serif', fontSize: '0.62rem',
-                fontWeight: 700, letterSpacing: '4px',
-                color: WHITE_30, marginBottom: 36, display: 'block',
-                opacity: 0,   /* GSAP anima */
-              }}>
-                {String(i + 1).padStart(2, '0')} / {String(METRICS.length).padStart(2, '0')}
-              </span>
+
 
               {/* Número grande */}
               <div style={{

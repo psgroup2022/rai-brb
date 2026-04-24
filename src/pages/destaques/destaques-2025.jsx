@@ -479,6 +479,12 @@ function Destaques2025() {
     const heroRef = useRef(null);
     const headerVideoRef = useRef(null);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        const timeout = setTimeout(() => window.scrollTo(0, 0), 100);
+        return () => clearTimeout(timeout);
+    }, []);
+
     // Animações GSAP no hero
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
