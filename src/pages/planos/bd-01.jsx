@@ -395,7 +395,9 @@ function SecaoInvestimentos() {
 
                 <div className="dstq-reveal" style={{ marginTop: '32px', textAlign: 'center' }}>
                     <a
-                        href="#"
+                        href="https://previdenciabrb.org.br/wp-content/uploads/2026/04/demonstracao-atuarial-2025-plano-bd-01.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="dstq-cta-btn"
                         style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}
                     >

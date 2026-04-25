@@ -420,7 +420,7 @@ function SecaoInvestimentos() {
 
                 {/* CTA Demonstrativo Analítico */}
                 <motion.a
-                    href="https://previdenciabrb.org.br/brasiliaprev-instituido-cd/"
+                    href="https://previdenciabrb.org.br/wp-content/uploads/2026/04/demonstracao-atuarial-2025-plano-brasiliaprev.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="dstq-reveal"

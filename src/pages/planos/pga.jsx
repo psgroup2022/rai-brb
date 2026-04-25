@@ -400,7 +400,7 @@ function SecaoRateioEInvestimentos() {
         </div>
 
         <div className="dstq-cta-wrap" style={{ marginTop: 24 }}>
-          <a href="#" className="dstq-cta-btn"
+          <a href="https://previdenciabrb.org.br/wp-content/uploads/2026/04/demonstracao-atuarial-2025-plano-pga.pdf" target="_blank" rel="noopener noreferrer" className="dstq-cta-btn"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
             <strong>CLIQUE AQUI</strong> para acessar o Demonstrativo Analítico dos Investimentos do Plano PGA – Dezembro/2025 <span>→</span>
           </a>
