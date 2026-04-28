@@ -109,7 +109,7 @@ function MensagemLiderancas() {
                                 lineHeight: '1.2',
                                 marginBottom: '16px',
                             }}>
-                                <span>Mensagem das </span><span style={{ color: '#00aeef' }}>Lideranças</span>
+                                <span>Mensagem da </span><span style={{ color: '#00aeef' }}>Diretoria</span>
                             </h1>
                             <ol className="breadcrumb" style={{ marginBottom: 0, padding: 0, background: 'transparent' }}>
                                 <li className="breadcrumb-item">
@@ -120,7 +120,7 @@ function MensagemLiderancas() {
                                     aria-current="page"
                                     style={{ color: '#00aeef' }}
                                 >
-                                    Mensagem das Lideranças
+                                    Mensagem da Diretoria
                                 </li>
                             </ol>
                         </div>

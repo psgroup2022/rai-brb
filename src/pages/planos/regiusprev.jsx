@@ -181,7 +181,9 @@ function SecaoDesempenho() {
               <div className="pop-total-num">65</div>
               <span className="pop-total-label">participantes em 2025</span>
               <div className="pop-total-delta">
-                <span className="pop-delta-badge">▲ 10,17%</span>
+                      <span className="pop-delta-badge" style={{ color: '#16a34a', background: 'rgba(22, 163, 74, 0.1)' }}>
+                        ▲ 10,17%
+                      </span>
                 <span className="pop-delta-context">vs. 59 em 2024</span>
               </div>
             </div>
@@ -206,18 +208,18 @@ function SecaoDesempenho() {
             <div className="pop-card">
               <div className="pop-card-label">Distribuição por Gênero</div>
               <div className="pop-gender-bar">
-                <div className="pop-gender-masc" style={{ width: '52%' }}>
+                <div className="pop-gender-masc" style={{ width: '56.92%' }}>
                   <span>♂ Masculino</span>
-                  <strong>52%</strong>
+                  <strong>56,92%</strong>
                 </div>
-                <div className="pop-gender-fem" style={{ width: '48%' }}>
-                  <strong>48%</strong>
+                <div className="pop-gender-fem" style={{ width: '43.08%' }}>
+                  <strong>43,08%</strong>
                   <span>Feminino ♀</span>
                 </div>
               </div>
               <div className="pop-gender-legend">
-                <span><i className="pop-dot pop-dot--masc" />Masculino — 52%</span>
-                <span><i className="pop-dot pop-dot--fem" />Feminino — 48%</span>
+                <span><i className="pop-dot pop-dot--masc" />Masculino — 56,92%</span>
+                <span><i className="pop-dot pop-dot--fem" />Feminino — 43,08%</span>
               </div>
             </div>
 

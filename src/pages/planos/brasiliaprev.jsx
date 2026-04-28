@@ -181,7 +181,7 @@ function SecaoDesempenho() {
                             <div className="pop-total-num">1.098</div>
                             <span className="pop-total-label">participantes em 2025</span>
                             <div className="pop-total-delta">
-                                <span className="pop-delta-badge">▲ 14,85%</span>
+                                <span className="pop-delta-badge" style={{ color: '#16a34a', background: 'rgba(22, 163, 74, 0.1)' }}>▲ 14,85%</span>
                                 <span className="pop-delta-context">vs. 956 em 2024</span>
                             </div>
                         </div>

@@ -210,67 +210,59 @@ function SecaoDesempenho() {
                     <div className="pop-bar-wrap dstq-reveal dstq-reveal--d1">
                         <div className="pop-bar-label">Composição do plano</div>
                         <div className="pop-bar">
-                            <div className="pop-bar-seg pop-bar-seg--assistidos" style={{ width: '76.13%' }}>
-                                <span>Assistidos</span>
-                                <strong>76,13%</strong>
+                            <div className="pop-bar-seg pop-bar-seg--ativos" style={{ flex: 11.3 }}>
+                                <span>Ativos</span><strong>11,3%</strong>
                             </div>
-                            <div className="pop-bar-seg pop-bar-seg--ativos" style={{ width: '13.5%' }}>
-                                <span>Ativos</span>
-                                <strong>13,50%</strong>
+                            <div className="pop-bar-seg pop-bar-seg--assistidos" style={{ flex: 78.0 }}>
+                                <span>Aposentados</span><strong>78,0%</strong>
                             </div>
-                            <div className="pop-bar-seg pop-bar-seg--pensionistas" style={{ width: '10.37%' }}>
-                                <span>Pensionistas</span>
-                                <strong>10,37%</strong>
+                            <div className="pop-bar-seg pop-bar-seg--pensionistas" style={{ flex: 10.7 }}>
+                                <span>Pensionistas</span><strong>10,7%</strong>
                             </div>
                         </div>
                     </div>
 
                     {/* ── Grid: Gênero | Idades | Maturidade ── */}
                     <div className="pop-bottom-grid dstq-reveal dstq-reveal--d2">
-
                         {/* Gênero */}
                         <div className="pop-card">
                             <div className="pop-card-label">Distribuição por Gênero</div>
                             <div className="pop-gender-bar">
-                                <div className="pop-gender-masc" style={{ width: '63%' }}>
-                                    <span>♂ Masculino</span>
-                                    <strong>63%</strong>
+                                <div className="pop-gender-masc" style={{ flex: 62.72 }}>
+                                    <span>♂ Masculino</span><strong>62,72%</strong>
                                 </div>
-                                <div className="pop-gender-fem" style={{ width: '37%' }}>
-                                    <strong>37%</strong>
-                                    <span>Feminino ♀</span>
+                                <div className="pop-gender-fem" style={{ flex: 37.28 }}>
+                                    <strong>37,28%</strong><span>Feminino ♀</span>
                                 </div>
                             </div>
                             <div className="pop-gender-legend">
-                                <span><i className="pop-dot pop-dot--masc" />Masculino — 63%</span>
-                                <span><i className="pop-dot pop-dot--fem" />Feminino — 37%</span>
+                                <span><i className="pop-dot pop-dot--masc" />Masculino — 62,72%</span>
+                                <span><i className="pop-dot pop-dot--fem" />Feminino — 37,28%</span>
                             </div>
                         </div>
-
                         {/* Médias de Idade */}
                         <div className="pop-card">
                             <div className="pop-card-label">Média de Idade</div>
                             <div className="pop-age-pair">
                                 <div className="pop-age-item">
-                                    <span className="pop-age-num">60,40</span>
+                                    <span className="pop-age-num">60,94</span>
                                     <span className="pop-age-lbl">anos</span>
                                     <span className="pop-age-tag">Ativos</span>
                                 </div>
                                 <div className="pop-age-divider" />
                                 <div className="pop-age-item">
-                                    <span className="pop-age-num">68,50</span>
+                                    <span className="pop-age-num">72,21</span>
                                     <span className="pop-age-lbl">anos</span>
-                                    <span className="pop-age-tag">Assistidos</span>
+                                    <span className="pop-age-tag">Aposentados</span>
                                 </div>
                                 <div className="pop-age-divider" />
                                 <div className="pop-age-item">
-                                    <span className="pop-age-num">75,40</span>
+                                    <span className="pop-age-num">69,92</span>
                                     <span className="pop-age-lbl">anos</span>
                                     <span className="pop-age-tag">Pensionistas</span>
                                 </div>
                             </div>
                         </div>
-
                         {/* Maturidade */}
                         <div className="pop-card pop-card--maturity">
                             <div className="pop-card-label">Maturidade do Plano</div>
@@ -278,9 +270,8 @@ function SecaoDesempenho() {
                             <div className="pop-maturity-bar">
                                 <div className="pop-maturity-fill" style={{ width: '88.71%' }} />
                             </div>
-                            <span className="pop-maturity-sub">Predominância de assistidos e pensionistas</span>
+                            <span className="pop-maturity-sub">Predominância de aposentados e pensionistas</span>
                         </div>
-
                     </div>
                 </div>
             </div>

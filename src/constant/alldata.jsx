@@ -28,7 +28,7 @@ export const menudata2 = [
         classChange: "navbar-dropdown menu-item-children",
         classChange2: "menu-item-has-children",
         subMenu: [
-            { title: "Mensagem das Lideranças", link: "/mensagem-liderancas" },
+            { title: "Mensagem da Diretoria", link: "/mensagem-liderancas" },
             { title: "Perfil Corporativo", link: "/perfil-corporativo" },
             { title: "Governança", link: "/governanca" },
             { title: "Rentabilidade 2025", link: "/rentabilidade-2025" },
