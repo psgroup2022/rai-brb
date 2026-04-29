@@ -40,7 +40,7 @@ const rootdata = [
 
 function Root() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/2025">
             <ScrollToTop />
             <Routes>
                 {rootdata.map((data, i) => (
