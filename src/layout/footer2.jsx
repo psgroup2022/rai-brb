@@ -16,7 +16,7 @@ function Footer2() {
                                 Previdência Complementar administrando sete planos de benefícios e um Plano de
                                 Gestão Administrativa.
                             </p>
-                            <p className="brb-footer-cnpj">CNPJ: informação institucional em atualização - PREVIC supervisionada</p>
+                            <p className="brb-footer-cnpj">CNPJ: 01.225.861/0001-30</p>
                         </div>
                     </div>
 
@@ -59,22 +59,22 @@ function Footer2() {
                                     Térreo, Brasília - DF, CEP: 70.390-020
                                 </li>
                                 <li>
-                                    SAC: 0800 000 2977
+                                    SAC: <a href="tel:08000002977" style={{color: 'inherit', textDecoration: 'underline'}}>0800 000 2977</a>
                                 </li>
                                 <li>
-                                    WhatsApp: (61) 99803-1922
+                                    WhatsApp: <a href="https://wa.me/5561998031922" target="_blank" rel="noopener noreferrer" style={{color: 'inherit', textDecoration: 'underline'}}>(61) 99803-1922</a>
                                 </li>
                                 <li>
                                     Atendimento:<br />
-                                    relacionamento@previdenciabrb.org.br
+                                    <a href="mailto:relacionamento@previdenciabrb.org.br" style={{color: 'inherit', textDecoration: 'underline'}}>relacionamento@previdenciabrb.org.br</a>
                                 </li>
                                 <li>
                                     Fale com o Encarregado de Dados:<br />
-                                    encarregadodedados@previdenciabrb.org.br
+                                    <a href="mailto:encarregadodedados@previdenciabrb.org.br" style={{color: 'inherit', textDecoration: 'underline'}}>encarregadodedados@previdenciabrb.org.br</a>
                                 </li>
                                 <li>
                                     Ouvidoria:<br />
-                                    canal.ouvidordigital.com.br
+                                    <a href="https://canal.ouvidordigital.com.br" target="_blank" rel="noopener noreferrer" style={{color: 'inherit', textDecoration: 'underline'}}>canal.ouvidordigital.com.br</a>
                                 </li>
                             </ul>
                         </div>
@@ -84,11 +84,11 @@ function Footer2() {
                 <div className="brb-footer-bottom">
                     <div className="row align-items-center">
                         <div className="col-md-8">
-                            <p>© 2025 Previdência BRB · Todos os direitos reservados · RAI 2025</p>
+                            <p>© 2026 Previdência BRB · Todos os direitos reservados · RAI 2025</p>
                         </div>
                         <div className="col-md-4 text-md-end">
-                            <p>
-                                    Desenvolvido com ❤️ por <a href="https://mirador360.com.br" target="_blank" rel="noopener noreferrer" style={{color: 'inherit', textDecoration: 'underline'}}>Mirador Technology</a>
+                            <p style={{ fontSize: '0.95rem', whiteSpace: 'nowrap', marginBottom: 0 }}>
+                                Desenvolvido com ❤️ por <a href="https://mirador360.com.br" target="_blank" rel="noopener noreferrer" style={{color: 'inherit', textDecoration: 'underline'}}>Mirador Technology</a>
                             </p>
                         </div>
                     </div>

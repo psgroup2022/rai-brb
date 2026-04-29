@@ -729,7 +729,7 @@ function SecaoCustos() {
                                 </tr>
                             ))}
                             <tr className="total">
-                                <td><strong>TOTAL</strong></td>
+                                <td><strong>Sub-total (Despesas Adm)</strong></td>
                                 <td className="num">343.820</td>
                             </tr>
                             {[
