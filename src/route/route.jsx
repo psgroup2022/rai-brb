@@ -39,8 +39,10 @@ const rootdata = [
 ]
 
 function Root() {
+    // Usa o basename do ambiente para flexibilidade
+    const basename = import.meta.env.VITE_BASE || '/';
     return (
-        <BrowserRouter basename="/2025">
+        <BrowserRouter basename={basename}>
             <ScrollToTop />
             <Routes>
                 {rootdata.map((data, i) => (
