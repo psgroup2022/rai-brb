@@ -774,7 +774,7 @@ function SecaoCustos() {
                                 ["Treinamento e Viagens",                        "512",     "578",    "1.090"],
                                 ["Serviços de Terceiros",                        "19.216",  "21.669", "40.885"],
                                 ["Despesas de Consumo, Depreciações, Tafic etc", "5.529",   "6.235",  "11.764"],
-                                ["Contingências (PIS e COFINS)",                 "91",      "3.937",  "13.946"],
+                                ["Contingências (PIS e COFINS)",                 "9",      "13.937",  "13.946"],
                             ].map(([desc, prev, inv, tot], i) => (
                                 <tr key={i}>
                                     <td>{desc}</td>
@@ -818,7 +818,7 @@ function SecaoCustos() {
                                     <tr key={i}><td>{desc}</td><td className="num">{val}</td></tr>
                                 ))}
                                 <tr className="total">
-                                    <td><strong>Total</strong></td>
+                                    <td><strong>Sub-total (Despesas Adm)</strong></td>
                                     <td className="num"><strong>183.707</strong></td>
                                 </tr>
                                 {[
@@ -831,7 +831,7 @@ function SecaoCustos() {
                                     <tr key={i}><td>{desc}</td><td className="num">{val}</td></tr>
                                 ))}
                                 <tr className="total">
-                                    <td><strong>Total (Despesas Outras)</strong></td>
+                                    <td><strong>Sub-total (Despesas Outras)</strong></td>
                                     <td className="num"><strong>26.810</strong></td>
                                 </tr>
                                 <tr className="total" style={{ background: 'rgba(0,174,239,0.12)' }}>

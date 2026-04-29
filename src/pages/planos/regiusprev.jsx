@@ -633,7 +633,7 @@ function SecaoCustos() {
                 <tr><td>Despesas de Consumo, Depreciação, Tafic etc</td><td className="num">130</td></tr>
                 <tr><td>Contingências (PIS e COFINS)</td><td className="num">614</td></tr>
                 <tr className="total">
-                  <td><strong>TOTAL</strong></td><td className="num">2.265</td>
+                  <td><strong>Sub-total (Despesas Adm)</strong></td><td className="num">2.265</td>
                 </tr>
                 <tr><td>Corretagens/Emolumentos Bolsa Valores</td><td className="num">-</td></tr>
                 <tr><td>Taxa Adm/Gestão Fundos Abertos</td><td className="num">195</td></tr>

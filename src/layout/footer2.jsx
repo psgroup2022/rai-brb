@@ -88,7 +88,7 @@ function Footer2() {
                         </div>
                         <div className="col-md-4 text-md-end">
                             <p>
-                                Desenvolvido com ❤️ por <a href="https://mirador360.com.br" target="_blank" rel="noopener noreferrer" style={{color: 'inherit', textDecoration: 'underline'}}>Mirador Atuarial</a>
+                                    Desenvolvido com ❤️ por <a href="https://mirador360.com.br" target="_blank" rel="noopener noreferrer" style={{color: 'inherit', textDecoration: 'underline'}}>Mirador Technology</a>
                             </p>
                         </div>
                     </div>

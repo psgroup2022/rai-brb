@@ -535,15 +535,15 @@ function Governanca() {
                     </div>
                     <h4 className="gov-members-category">Membros Efetivos</h4>
                     <div className="row g-3 mb-4">
-                        <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "0ms" }}><MemberCard name="Cristiane Maria Lima Bukowitz" role="Conselheira" isPresident /></div>
-                        <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "80ms" }}><MemberCard name="Dario Oswaldo Garcia Júnior" role="Conselheiro" /></div>
+                        <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "0ms" }}><MemberCard name="Cristiane Maria Lima Bukowitz" role="Conselheira até Dezembro 2025" isPresident /></div>
+                        <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "80ms" }}><MemberCard name="Dario Oswaldo Garcia Júnior" role="Conselheiro até Outubro 2025" /></div>
                         <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "160ms" }}><MemberCard name="Marcelo da Costa Bernardo" role="Conselheiro" /></div>
                         <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "240ms" }}><MemberCard name="Eliomar dos Santos Lacerda" role="Conselheiro" /></div>
                     </div>
                     <h4 className="gov-members-category">Membros Suplentes</h4>
                     <div className="row g-3">
                         <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "0ms" }}><MemberCard name="Cynthia Judite Perciano Borges" role="Presidente (desde jan/2026)" /></div>
-                        <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "80ms" }}><MemberCard name="Robério César Bonfim Mangueira" role="Suplente" /></div>
+                        <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "80ms" }}><MemberCard name="Robério César Bonfim Mangueira" role="Conselheiro até Dezembro 2025" /></div>
                         <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "160ms" }}><MemberCard name="Luciano Henn Bernardi" role="Suplente" /></div>
                         <div className="col-lg-3 col-md-6" data-reveal style={{ transitionDelay: "240ms" }}><MemberCard name="José Cristóvão de Souza" role="Suplente" /></div>
                     </div>

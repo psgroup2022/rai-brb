@@ -746,16 +746,16 @@ function SecaoCustos() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>Pessoal e Encargos</td><td className="num">5.965</td><td className="num">6.727</td><td className="num">-</td><td className="num">12.692</td></tr>
-                            <tr><td>Treinamento e Viagens</td><td className="num">56</td><td className="num">63</td><td className="num">-</td><td className="num">119</td></tr>
-                            <tr><td>Serviços de Terceiros</td><td className="num">2.102</td><td className="num">2.371</td><td className="num">-</td><td className="num">4.473</td></tr>
-                            <tr><td>Despesas de Consumo, Depreciações, Tafic etc</td><td className="num">530</td><td className="num">598</td><td className="num">-</td><td className="num">1.127</td></tr>
-                            <tr><td>Contingências (PIS e COFINS)</td><td className="num">0</td><td className="num">2.287</td><td className="num">-</td><td className="num">2.287</td></tr>
+                            <tr><td>Pessoal e Encargos</td><td className="num">5.965</td><td className="num">6.727</td><td className="num">6.727</td><td className="num">12.692</td></tr>
+                            <tr><td>Treinamento e Viagens</td><td className="num">56</td><td className="num">63</td><td className="num">63</td><td className="num">119</td></tr>
+                            <tr><td>Serviços de Terceiros</td><td className="num">2.102</td><td className="num">2.371</td><td className="num">2.371</td><td className="num">4.473</td></tr>
+                            <tr><td>Despesas de Consumo, Depreciações, Tafic etc</td><td className="num">530</td><td className="num">598</td><td className="num">598</td><td className="num">1.127</td></tr>
+                            <tr><td>Contingências (PIS e COFINS)</td><td className="num">0</td><td className="num">2.287</td><td className="num">2.287</td><td className="num">2.287</td></tr>
                             <tr className="total">
                                 <td><strong>TOTAIS</strong></td>
                                 <td className="num"><strong>8.654</strong></td>
                                 <td className="num"><strong>12.045</strong></td>
-                                <td className="num"><strong>-</strong></td>
+                                <td className="num"><strong>12.045</strong></td>
                                 <td className="num"><strong>20.698</strong></td>
                             </tr>
                         </tbody>
@@ -781,13 +781,13 @@ function SecaoCustos() {
                             <tr><td>Serviços de Terceiros</td><td className="num">4.473</td></tr>
                             <tr><td>Despesas de Consumo, Depreciação, Tafic, etc</td><td className="num">1.127</td></tr>
                             <tr><td>Contingências (PIS e COFINS)</td><td className="num">2.287</td></tr>
-                            <tr className="total"><td><strong>Total</strong></td><td className="num"><strong>20.698</strong></td></tr>
+                            <tr className="total"><td><strong>Sub-total (Despesas Adm)</strong></td><td className="num"><strong>20.698</strong></td></tr>
                             <tr><td>Corretagens/Emolumentos Bolsa Valores</td><td className="num">-</td></tr>
                             <tr><td>Taxa Adm/Gestão Fundos Abertos</td><td className="num">1.869</td></tr>
                             <tr><td>Taxa Custódia/Controladoria Fundos Abertos</td><td className="num">717</td></tr>
                             <tr><td>Taxa Performance Fundos Abertos</td><td className="num">-</td></tr>
                             <tr><td>Outras Despesas Fundos Abertos</td><td className="num">551</td></tr>
-                            <tr className="total"><td><strong>Total (Despesas Outras)</strong></td><td className="num"><strong>3.137</strong></td></tr>
+                            <tr className="total"><td><strong>Sub-total (Despesas Outras)</strong></td><td className="num"><strong>3.137</strong></td></tr>
                             <tr className="total"><td><strong>Total</strong></td><td className="num"><strong>23.835</strong></td></tr>
                         </tbody>
                     </table>
