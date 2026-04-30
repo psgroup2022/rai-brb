@@ -1,9 +1,9 @@
-# Checklist de Deploy - Subdiretório /2025/
+# Checklist de Deploy - Subdiretório /rai/2025/
 
 ## ✅ Alterações já feitas no código:
 
-1. **vite.config.js** - Configurado `base: '/2025/'`
-2. **src/route/route.jsx** - Configurado `basename="/2025"` no BrowserRouter
+1. **vite.config.js** - Configurado `base: '/rai/2025/'`
+2. **src/route/route.jsx** - Configurado `basename="/rai/2025"` no BrowserRouter
 3. **public/.htaccess** - Criado arquivo para Apache com regras de rewrite
 
 ## 📋 Passos para fazer o deploy:
@@ -20,10 +20,10 @@ Após o build, verifique se:
 - Existem as pastas `dist/assets/` com CSS, JS e imagens
 
 ### 3. Upload para o servidor
-- Faça upload de **TODO** o conteúdo da pasta `dist/` para o diretório `/2025/` no servidor
+- Faça upload de **TODO** o conteúdo da pasta `dist/` para o diretório `/rai/2025/` no servidor
 - Estrutura final no servidor deve ser:
   ```
-  /2025/
+  /rai/2025/
     ├── index.html
     ├── .htaccess
     ├── assets/
@@ -42,8 +42,8 @@ Após o build, verifique se:
 #### Se for Nginx:
 Adicione ao arquivo de configuração do site:
 ```nginx
-location /2025/ {
-    try_files $uri $uri/ /2025/index.html;
+location /rai/2025/ {
+    try_files $uri $uri/ /rai/2025/index.html;
 }
 ```
 
@@ -51,9 +51,9 @@ location /2025/ {
 
 Acesse as seguintes URLs e verifique se carregam corretamente:
 
-- ✅ `https://stagebrb.regiusprev.com.br/2025/`
-- ✅ `https://stagebrb.regiusprev.com.br/2025/governanca`
-- ✅ `https://stagebrb.regiusprev.com.br/2025/plano-bd-01`
+- ✅ `https://stagebrb.regiusprev.com.br/rai/2025/`
+- ✅ `https://stagebrb.regiusprev.com.br/rai/2025/governanca`
+- ✅ `https://stagebrb.regiusprev.com.br/rai/2025/plano-bd-01`
 - ✅ Navegue entre as páginas usando o menu
 
 ## 🔍 Troubleshooting
@@ -67,7 +67,7 @@ Acesse as seguintes URLs e verifique se carregam corretamente:
 **Solução:**
 - Abra o console do navegador (F12 → Console)
 - Verifique se há erros de carregamento de arquivos
-- Confirme que os arquivos CSS e JS estão sendo carregados de `/2025/assets/...`
+- Confirme que os arquivos CSS e JS estão sendo carregados de `/rai/2025/assets/...`
 
 ### Problema: Erro 404 ao navegar entre páginas
 **Causa:** Configuração de rewrite não está funcionando
@@ -80,7 +80,7 @@ sudo systemctl restart apache2
 
 # Verifique se AllowOverride está configurado
 # No arquivo de configuração do site (ex: /etc/apache2/sites-available/000-default.conf)
-<Directory /var/www/html/2025>
+<Directory /var/www/html/rai/2025>
     AllowOverride All
 </Directory>
 ```
@@ -94,7 +94,7 @@ Adicione a configuração de try_files mencionada acima
 **Solução:**
 - Verifique se o build foi feito APÓS alterar o `vite.config.js`
 - Faça um novo build: `npm run build`
-- Verifique no `dist/index.html` se os caminhos dos assets começam com `/2025/`
+- Verifique no `dist/index.html` se os caminhos dos assets começam com `/rai/2025/`
 
 ### Problema: Imagens não carregam
 **Causa:** Caminhos de imagens podem estar incorretos
